@@ -7,7 +7,7 @@
 * Bulma 不仅源码简洁，更现代化，它还融合了语义 CSS 框架和 原子 CSS 框架（参见 helpers）的优点；
 
 ### js 基于 stimulus 开发
-* 实现了常见 UI 框架中几乎所有常见的功能，得益于 stimulus 赋能，实际代码量是任意 js 框架代码量的五分之一或者更少；
+* 实现了常见 UI 框架中几乎所有常见的功能，得益于 [Stimulus](https://github.com/hotwired/stimulus)，代码量是任何其他 Javascript UI 框架代码量的五分之一或更少；
 
 ### SVG spirit
 * svg 图标解决方案中性能最好的方案；
