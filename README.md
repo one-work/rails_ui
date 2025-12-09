@@ -18,9 +18,3 @@
   * 对 scss 源码进行了语法上的精简，为了更方便阅读源码；
   * 对 css 代码逻辑进行了更适配于 rails partial 拆分的适应性开发（也就是尽量在 layout 层定义 class 的特点）
 
-## 约定
-
-* 可以 import：
-  * app/assets 下的文件
-* entry(rollup input)
-  * app/javascripts 下的文件进入
