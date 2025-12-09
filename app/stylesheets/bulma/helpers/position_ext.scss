@@ -1,0 +1,26 @@
+.is-absolute-centered {
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.as-top {
+  width: 100%;
+  height: 100vh;
+  border: none;
+  position: fixed;
+  top: 0;
+  z-index: 41;
+}
+
+body {
+  position: relative;
+}
+
+.form-bottom {
+  position: fixed;
+  width: -webkit-fill-available;
+}

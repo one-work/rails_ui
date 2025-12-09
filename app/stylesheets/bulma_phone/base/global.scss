@@ -1,0 +1,35 @@
+:root {
+  --bulma-body-overflow-y: auto;
+}
+
+body {
+  background-color: #ededed;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+
+  > :last-child {
+    margin-bottom: var(--bulma-block-spacing);
+  }
+
+  > .button-to:not(:last-child) {
+    margin-bottom: var(--bulma-block-spacing);
+  }
+
+  & > .box:first-child,
+  & > .media:first-child,
+  & > .fixed-grid:first-child,
+  & > .as-show:first-child,
+  & > .as-boxed:first-child,
+  & > #form_wrapper:first-child, {
+    margin-top: 0.75rem;
+  }
+}
+
+#weui-tab__panel {
+  overflow-y: auto;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}

@@ -1,0 +1,27 @@
+input[type="checkbox"] {
+  & + label {
+    padding-left: 0.25em;
+  }
+  &.xl {
+    height: 1.5rem;
+    width: 1.5rem;
+  }
+}
+
+.labels {
+  label + label {
+    display: block;
+  }
+}
+
+.toggle-check {
+  display: none;
+}
+
+.toggle-check + .fa-check {
+  display: none;
+}
+
+.toggle-check:checked + .fa-check {
+  display: block;
+}

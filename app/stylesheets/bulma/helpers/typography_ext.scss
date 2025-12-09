@@ -1,0 +1,31 @@
+.size-0_9 {
+  font-size: 0.9rem !important;
+}
+
+.size-0_8 {
+  font-size: 0.8rem !important;
+}
+
+.size-0_5 {
+  font-size: 0.5rem !important;
+}
+
+.size-0 {
+  font-size: 0 !important;
+}
+
+.is-line-through {
+  text-decoration: line-through;
+}
+
+.truncate {
+  display: block;
+  white-space: nowrap;
+  overflow-x: hidden !important;
+  text-overflow: ellipsis;
+}
+
+del {
+  text-decoration: none;
+  background: linear-gradient(to left top, transparent 47.75%, currentColor 49.5%, currentColor 50.5%, transparent 52.25%);
+}

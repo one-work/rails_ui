@@ -1,0 +1,68 @@
+@use '../utilities/initial-variables' as iv;
+@use '../utilities/css-variables' as cv;
+
+.panel {
+  &.is-fit {
+    width: fit-content;
+    align-self: center;
+  }
+
+  &.is-white {
+    .panel-block {
+      background-color: white;
+    }
+  }
+
+  &.is-border {
+    border: solid 1px var(--ext-panel-border-color, cv.getVar('primary'));
+  }
+
+  &[data-typer-local-target=container] {
+    position: absolute;
+    z-index: 5;
+    background-color: #222;
+    max-height: 200px;
+    overflow-y: scroll;
+
+    .panel-block {
+      cursor: default;
+      color: white;
+    }
+
+    .panel-block:hover {
+      background-color: #5e206b;
+    }
+  }
+}
+
+.panel-tabs .button_to {
+  border-bottom-color: cv.getVar('panel-tab-border-bottom-color');
+  border-bottom-style: cv.getVar('panel-tab-border-bottom-style');
+  border-bottom-width: cv.getVar('panel-tab-border-bottom-width');
+  margin-bottom: calc(-1 * 1px);
+  padding: 0.75em;
+
+  &.is-active {
+    border-bottom-color: cv.getVar('panel-tab-border-bottom-color', hsl(cv.getVar('panel-h'), cv.getVar('panel-s'), cv.getVar('panel-color-l')));
+    color: cv.getVar('panel-tab-active-color');
+  }
+}
+
+.panel-heading {
+  &.is-narrow {
+    padding: 0.5rem 1rem;
+  }
+}
+
+.panel-block {
+  .media {
+    width: 100%;
+  }
+}
+
+form.#{iv.$class-prefix}panel-block {
+
+  &:hover {
+    background-color: cv.getVar('panel-block-hover-background-color');
+  }
+}

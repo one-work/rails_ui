@@ -1,0 +1,44 @@
+.dropdown + .dropdown,
+.dropdown + .field,
+.button + .dropdown,
+.button_to + .dropdown {
+  margin-left: 0.75rem;
+}
+
+.dropdown {
+  &.pop-right,
+  &.pop-right-bottom {
+    padding: 0.5rem 0.75rem;
+
+    .dropdown-menu {
+      position: fixed;
+      padding-top: 0;
+    }
+
+    .dropdown-trigger {
+      text-align: center;
+
+      svg {
+        font-size: 2em;
+      }
+
+      div {
+        margin-top: 5px;
+        font-size: 0.9rem;
+      }
+    }
+  }
+
+  &.pop-right-bottom {
+    .dropdown-menu {
+      bottom: 0;
+      top: auto;
+    }
+  }
+
+  &.popup-right {
+    .dropdown-menu {
+      left: 100%;
+    }
+  }
+}

@@ -1,0 +1,104 @@
+.details {
+  display: block;
+  padding: 0.75rem;
+
+  summary {
+    line-height: 1rem;
+    list-style-type: none;
+    cursor: pointer;
+
+    &:not([role]) {
+      color: var(--bulma-black-ter);
+    }
+
+
+    //transition: color var(#{$css-var-prefix}transition);
+
+
+    // Reset marker
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &::marker {
+      display: none;
+    }
+
+    &::-moz-list-bullet {
+      list-style-type: none;
+    }
+
+    // Marker
+    &::after {
+      display: block;
+      width: 1rem;
+      height: 1rem;
+      margin-inline-start: calc(var(--bulma-size-small, 1rem) * 0.5);
+      float: right;
+      transform: rotate(-90deg);
+      background-image: url(icons/chevron-down.svg);
+      background-position: right center;
+      background-size: 1rem auto;
+      background-repeat: no-repeat;
+      content: "";
+      //transition: transform var(#{$css-var-prefix}transition);
+    }
+
+    &:focus {
+      outline: none;
+
+      &:not([role]) {
+        color: var(--bulma-primary);
+      }
+    }
+
+    &:focus-visible {
+      &:not([role]) {
+        outline: 0.125rem solid var(--bulma-primary);
+        outline-offset: calc(var(--bulma-size-small, 1rem) * 0.5);
+        color: var(--bulma-primary);
+      }
+    }
+
+    // Type button
+    &[role="button"] {
+      width: 100%;
+      text-align: left;
+
+      // Marker
+      &::after {
+        height: calc(1rem * 1.5);
+      }
+    }
+  }
+
+  // Open
+  &[open] {
+    > summary {
+      margin-bottom: var(--bulma-size-small);
+
+      &:not([role]) {
+        &:not(:focus) {
+          color: var(--bulma-primary);
+        }
+      }
+
+      &::after {
+        transform: rotate(0);
+      }
+    }
+  }
+}
+
+[dir="rtl"] {
+  .details {
+    summary {
+      text-align: right;
+
+      &::after {
+        float: left;
+        background-position: left center;
+      }
+    }
+  }
+}

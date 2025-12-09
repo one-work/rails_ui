@@ -1,0 +1,11 @@
+.is-drawable:hover {
+  cursor: grab;
+}
+
+.cursor-none {
+  pointer-events: none;
+}
+
+.cursor-text {
+  cursor: text;
+}

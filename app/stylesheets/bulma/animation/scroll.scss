@@ -1,0 +1,55 @@
+@keyframes scrollUp {
+  0% {
+    transform: translateY(var(--animate-scroll-from, 0));
+  }
+  90% {
+    transform: translateY(var(--animate-scroll-to, -100%));
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.has-animate-scrollUp {
+  animation-name: scrollUp;
+  animation-duration: var(--animate-duration, 10s);
+  animation-fill-mode: forwards;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.has-animate-scrollUp:hover {
+  animation-play-state: paused;
+}
+
+.ghost-table {
+  overflow-y: hidden;
+}
+
+.scroll-table {
+  table {
+    border-collapse: separate;
+
+    thead {
+      position: sticky;
+      z-index: 1;
+      top: 0;
+    }
+
+    tfoot {
+      position: sticky;
+      z-index: 1;
+      bottom: 0;
+    }
+
+    &.is-bordered {
+      border-width: 0;
+
+      td, th {
+        border-top-width: 0;
+        border-right-width: 0;
+        border-left-width: 1px;
+      }
+    }
+  }
+}

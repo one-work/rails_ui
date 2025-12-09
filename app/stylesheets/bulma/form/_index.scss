@@ -1,0 +1,33 @@
+@forward 'shared';
+@forward 'input-textarea';
+@forward 'checkbox-radio';
+@forward 'select';
+@forward 'select_ext';
+@forward 'file';
+@forward 'tools';
+@forward 'tools_ext';
+
+@forward 'button_ext';
+@forward 'checkbox_ext';
+@forward 'file_ext';
+@forward 'general_ext';
+@forward 'radio_ext';
+
+@forward 'switch_ext';
+
+.required.field > .checkbox:after,
+.required.field>label:after,
+.required.fields.grouped>label:after,
+.required.fields:not(.grouped)>.field>.checkbox:after,
+.required.fields:not(.grouped)>.field>label:after {
+  margin: -.2em 0 0 .2em;
+  content: '*';
+  color: #db2828
+}
+
+.required.field > label:after,
+.required.fields.grouped > label:after,
+.required.fields:not(.grouped) > .field > label:after {
+  display:inline-block;
+  vertical-align: top;
+}

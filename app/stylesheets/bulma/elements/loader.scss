@@ -1,0 +1,6 @@
+@use '../utilities/initial-variables' as iv;
+@use '../utilities/mixins' as mx;
+
+.loader {
+  @include mx.loader
+}

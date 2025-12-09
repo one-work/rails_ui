@@ -1,0 +1,39 @@
+main.columns {
+  margin: 0;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 0;
+  }
+
+  &.container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
+}
+
+.columns {
+  &.as-border > .column + .column {
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+  }
+}
+
+.column {
+  &.is-fullheight {
+    height: 100%;
+  }
+
+  .column_box {
+    border: 1px solid var(--bulma-primary);
+    //box-shadow: $shadow;
+    border-radius: 6px;
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+  }
+}

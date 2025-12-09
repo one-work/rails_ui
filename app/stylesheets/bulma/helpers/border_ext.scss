@@ -1,0 +1,37 @@
+.is-bordered {
+  border: 1px solid darkgrey;
+}
+
+.as-boxed {
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: var(--bulma-radius-large);
+  box-shadow: var(--bulma-shadow);
+  background-color: var(--bulma-scheme-main);
+}
+
+.has-border-primary {
+  border: 1px solid var(--bulma-primary);
+}
+
+.has-border-bottom {
+  border-bottom: 1px solid #ececec;
+}
+
+.has-border-top {
+  border-top: 1px solid #ececec;
+}
+
+.has-border-left-primary {
+  border-left: 4px solid var(--bulma-primary);
+  padding-left: 0.5em;
+}
+
+.has-border-bottom-arc {
+  border-radius: 0 0 80% 80%;
+  background-color: white;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+}

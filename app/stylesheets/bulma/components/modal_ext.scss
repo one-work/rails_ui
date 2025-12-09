@@ -1,0 +1,50 @@
+.modal-card {
+  .modal-card-body:first-child,
+  .as-bar {
+    border-start-start-radius: var(--bulma-modal-card-head-radius);
+    border-start-end-radius: var(--bulma-modal-card-head-radius);
+  }
+}
+
+.modal-card-body {
+  &.is-narrow {
+    --bulma-modal-card-body-padding: 0.75rem;
+  }
+}
+
+.modal.as-preview {
+  justify-content: flex-start;
+
+  .images {
+    z-index: 0;
+    background-color: white;
+    width: 100%;
+  }
+
+  .modal-content {
+    flex-grow: 1;
+    align-content: center;
+  }
+
+  .modal-next,
+  .modal-prev {
+    position: fixed;
+    top: 50%;
+  }
+
+  .modal-next {
+    right: 20px;
+  }
+
+  .modal-prev {
+    left: 20px;
+  }
+}
+
+form.modal-card {
+  overflow-y: hidden;
+
+  .modal-card-foot {
+    justify-content: center;
+  }
+}

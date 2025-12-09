@@ -1,0 +1,71 @@
+@use 'sass:list';
+
+@use '../utilities/initial-variables' as iv;
+@use '../utilities/css-variables' as cv;
+@use '../utilities/mixins' as mx;
+
+$dimensions: 16 24 32 48 64 96 128 !default;
+
+.image {
+  display: block;
+  position: relative;
+
+  img {
+    display: block;
+    height: auto;
+    width: 100%;
+
+    &.is-rounded {
+      border-radius: cv.getVar("radius-rounded");
+    }
+  }
+
+  &.is-fullwidth {
+    width: 100%;
+  }
+
+  // Ratio
+  &.is-square {
+    img,
+    .has-ratio {
+      @include mx.overlay;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  &.is-square {
+    aspect-ratio: 1;
+  }
+
+  @each $pair in iv.$aspect-ratios {
+    $w: list.nth($pair, 1);
+    $h: list.nth($pair, 2);
+
+    &.is-#{$w}by#{$h} {
+      aspect-ratio: #{$w} / #{$h};
+
+      img,
+      .has-ratio {
+        @include mx.overlay;
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+
+  // Sizes
+  @each $dimension in $dimensions {
+    &.is-#{$dimension}x#{$dimension} {
+      height: $dimension * 1px;
+      width: $dimension * 1px;
+    }
+  }
+
+  // Heights
+  @each $dimension in $dimensions {
+    &.is-#{$dimension}-h {
+      height: $dimension * 1px;
+    }
+  }
+}

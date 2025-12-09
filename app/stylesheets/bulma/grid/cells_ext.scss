@@ -1,0 +1,31 @@
+.grid {
+  &.as-actions {
+    place-items: center;
+
+    .cell {
+      button {
+        line-height: inherit;
+      }
+      svg {
+        font-size: 1.5em;
+        color: var(--bulma-primary);
+      }
+      span,
+      strong {
+        font-size: 0.8rem;
+        color: var(--bulma-grey);
+      }
+      svg + span, strong,
+      div + span, strong {
+        margin-top: 0.25rem;
+      }
+      svg + span {
+        font-weight: var(--bulma-body-weight);
+      }
+    }
+  }
+
+  .cell {
+    margin-bottom: 0;
+  }
+}

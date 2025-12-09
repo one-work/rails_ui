@@ -1,0 +1,213 @@
+@use '../utilities/css-variables' as cv;
+@use '../utilities/derived-variables' as dv;
+@use '../utilities/initial-variables' as iv;
+@use '../utilities/mixins' as mx;
+@use '../utilities/extends';
+
+$tag-h: cv.getVar("scheme-h");
+$tag-s: cv.getVar("scheme-s");
+$tag-background-l: cv.getVar("background-l");
+$tag-background-l-delta: 0%;
+$tag-hover-background-l-delta: cv.getVar("hover-background-l-delta");
+$tag-active-background-l-delta: cv.getVar("active-background-l-delta");
+$tag-color-l: cv.getVar("text-l");
+$tag-radius: cv.getVar("radius") !default;
+$tag-delete-margin: 1px !default;
+
+$tag-colors: dv.$colors !default;
+
+.tags {
+  @extend %block;
+
+  align-items: center;
+  color: hsl(cv.getVar("tag-h"), cv.getVar("tag-s"), cv.getVar("tag-color-l"));
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: flex-start;
+
+  // Sizes
+  &.are-medium {
+    .tag:not(.is-normal):not(
+        .is-large
+      ) {
+      font-size: cv.getVar("size-normal");
+    }
+  }
+
+  &.are-large {
+    .tag:not(.is-normal):not(
+        .is-medium
+      ) {
+      font-size: cv.getVar("size-medium");
+    }
+  }
+
+  &.is-centered {
+    gap: 0.25rem;
+    justify-content: center;
+  }
+
+  &.is-right {
+    justify-content: flex-end;
+  }
+
+  &.has-addons {
+    gap: 0;
+
+    .tag {
+      &:not(:first-child) {
+        border-start-start-radius: 0; // Top left
+        border-end-start-radius: 0; // Top right
+      }
+
+      &:not(:last-child) {
+        border-start-end-radius: 0; // Bottom left
+        border-end-end-radius: 0; // Bottom right
+      }
+    }
+  }
+}
+
+.tag {
+  @include cv.register-vars(
+    (
+      "tag-h": #{$tag-h},
+      "tag-s": #{$tag-s},
+      "tag-background-l": #{$tag-background-l},
+      "tag-background-l-delta": #{$tag-background-l-delta},
+      "tag-hover-background-l-delta": #{$tag-hover-background-l-delta},
+      "tag-active-background-l-delta": #{$tag-active-background-l-delta},
+      "tag-color-l": #{$tag-color-l},
+      "tag-radius": #{$tag-radius},
+      "tag-delete-margin": #{$tag-delete-margin},
+    )
+  );
+
+  align-items: center;
+  background-color: hsl(cv.getVar("tag-h"), cv.getVar("tag-s"), calc(#{cv.getVar("tag-background-l")} + #{cv.getVar("tag-background-l-delta")}));
+  border-radius: $tag-radius;
+  color: hsl(cv.getVar("tag-h"), cv.getVar("tag-s"), cv.getVar("tag-color-l"));
+  display: inline-flex;
+  font-size: cv.getVar("size-small");
+  height: 2em;
+  justify-content: center;
+  line-height: 1.5;
+  padding-left: 0.75em;
+  padding-right: 0.75em;
+  white-space: nowrap;
+
+  .delete {
+    margin-inline-start: 0.25rem;
+    margin-inline-end: -0.375rem;
+  }
+
+  // Colors
+  @each $name, $pair in $tag-colors {
+    &.is-#{$name} {
+      @include cv.register-vars(
+        (
+          "tag-h": #{cv.getVar($name, "", "-h")},
+          "tag-s": #{cv.getVar($name, "", "-s")},
+          "tag-background-l": #{cv.getVar($name, "", "-l")},
+          "tag-color-l": #{cv.getVar($name, "", "-invert-l")}
+        )
+      );
+
+      &.is-light {
+        @include cv.register-vars(
+          (
+            "tag-background-l": #{cv.getVar("light-l")},
+            "tag-color-l": #{cv.getVar($name, "", "-light-invert-l")}
+          )
+        );
+      }
+    }
+  }
+
+  // Sizes
+  &.is-normal {
+    font-size: cv.getVar("size-small");
+  }
+
+  &.is-medium {
+    font-size: cv.getVar("size-normal");
+  }
+
+  &.is-large {
+    font-size: cv.getVar("size-medium");
+  }
+
+  .icon {
+    &:first-child:not(:last-child) {
+      margin-inline-start: -0.375em;
+      margin-inline-end: 0.1875em;
+    }
+
+    &:last-child:not(:first-child) {
+      margin-inline-start: 0.1875em;
+      margin-inline-end: -0.375em;
+    }
+
+    &:first-child:last-child {
+      margin-inline-start: -0.375em;
+      margin-inline-end: -0.375em;
+    }
+  }
+
+  // Modifiers
+  &.is-delete {
+    margin-inline-start: cv.getVar("tag-delete-margin");
+    padding: 0;
+    position: relative;
+    width: 2em;
+
+    &::before,
+    &::after {
+      background-color: currentColor;
+      content: "";
+      display: block;
+      left: 50%;
+      position: absolute;
+      top: 50%;
+      transform: translateX(-50%) translateY(-50%) rotate(45deg);
+      transform-origin: center center;
+    }
+
+    &::before {
+      height: 1px;
+      width: 50%;
+    }
+
+    &::after {
+      height: 50%;
+      width: 1px;
+    }
+  }
+
+  &.is-rounded {
+    border-radius: cv.getVar("radius-rounded");
+  }
+}
+
+a.tag,
+button.tag,
+.tag.is-hoverable {
+  cursor: pointer;
+
+  &:hover {
+    @include cv.register-vars(
+      (
+        "tag-background-l-delta": #{cv.getVar("tag-hover-background-l-delta")}
+      )
+    );
+  }
+
+  &:active {
+    @include cv.register-vars(
+      (
+        "tag-background-l-delta": #{cv.getVar("tag-active-background-l-delta")}
+      )
+    );
+  }
+}

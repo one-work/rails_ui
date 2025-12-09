@@ -1,0 +1,29 @@
+del {
+  color: red;
+}
+
+input {
+  line-height: inherit;
+}
+
+time {
+  font-family: monospace;
+  font-size: 14px;
+}
+
+a[disabled=disabled] {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.as-attached-top:not(:last-child) {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  margin-bottom: 0;
+
+  & + .table,
+  & + .box {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+}

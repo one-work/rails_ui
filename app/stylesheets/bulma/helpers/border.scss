@@ -1,0 +1,14 @@
+@use '../utilities/css-variables' as cv;
+
+$radii: (
+  "small": "radius-small",
+  "normal": "radius",
+  "large": "radius-large",
+  "rounded": "radius-rounded"
+);
+
+@each $name, $var in $radii {
+  .radius-#{$name} {
+    border-radius: cv.getVar($var);
+  }
+}

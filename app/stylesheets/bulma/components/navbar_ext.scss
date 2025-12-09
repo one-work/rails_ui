@@ -1,0 +1,31 @@
+.navbar-brand + .navbar-menu {
+  padding-left: 2em;
+}
+
+.navbar {
+  &.is-transparent {
+    background-color: transparent;
+  }
+}
+
+.navbar-dropdown {
+  width: max-content;
+}
+
+.navbar-breadcrumb {
+  display: flex;
+  justify-content: space-between;
+
+  .breadcrumb {
+    flex-grow: 1;
+    padding: 0.75rem;
+    margin-bottom: 0;
+  }
+}
+
+.column {
+  .navbar-breadcrumb {
+    margin-left: -0.75rem;
+    margin-right: -0.75rem;
+  }
+}

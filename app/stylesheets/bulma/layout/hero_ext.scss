@@ -1,0 +1,66 @@
+.hero-body {
+  h2 {
+    text-align: center;
+    color: var(--bulma-black);
+    font-size: 2rem;
+    font-weight: bold;
+    line-height: 1.125;
+  }
+
+  h2 + .cards {
+    margin-top: 1rem;
+  }
+}
+
+.card-content {
+  h3::before {
+    content: url(icons/quote-left.svg);
+    display: inline-block;
+    width: 1.5rem;
+    height: 1.5rem;
+    padding-right: 0.5rem;
+  }
+}
+
+.card-footer {
+  p {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+
+    a {
+      background-color: var(--bulma-danger);
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      color: var(--bulma-white);
+    }
+  }
+}
+
+.work_layout {
+  section:nth-child(even) {
+    background-color: hsl(0, 0%, 96%);
+  }
+}
+
+.point_layout {
+  .cards {
+    .card:nth-child(odd) {
+      background-color: hsl(347, 90%, 96%);
+
+      h3::before {
+        content: url(icons/minus.svg);
+        color: hsl(348, 86%, 43%);
+        padding-right: 0.5rem;
+      }
+    }
+    .card:nth-child(even) {
+      background-color: hsl(171, 100%, 96%);
+
+      h3::before {
+        content: url(icons/check.svg);
+        color: hsl(171, 100%, 29%);
+        padding-right: 0.5rem;
+      }
+    }
+  }
+}

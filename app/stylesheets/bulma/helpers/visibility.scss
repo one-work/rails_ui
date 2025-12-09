@@ -1,0 +1,221 @@
+@use '../utilities/initial-variables' as iv;
+@use '../utilities/mixins' as mx;
+
+.display-none,
+.hidden {
+  display: none !important;
+}
+
+$displays: block flex inline inline-block inline-flex grid;
+
+@each $display in $displays {
+  .display-#{$display},
+  .#{$display} {
+    display: $display !important;
+  }
+
+  @include mx.mobile {
+    .display-#{$display}-mobile,
+    .#{$display}-mobile {
+      display: $display !important;
+    }
+  }
+
+  @include mx.tablet {
+    .display-#{$display}-tablet,
+    .#{$display}-tablet {
+      display: $display !important;
+    }
+  }
+
+  @include mx.tablet-only {
+    .display-#{$display}-tablet-only,
+    .#{$display}-tablet-only {
+      display: $display !important;
+    }
+  }
+
+  @include mx.touch {
+    .display-#{$display}-touch,
+    .#{$display}-touch {
+      display: $display !important;
+    }
+  }
+
+  @include mx.desktop {
+    .display-#{$display}-desktop,
+    .#{$display}-desktop {
+      display: $display !important;
+    }
+  }
+
+  @include mx.desktop-only {
+    .display-#{$display}-desktop-only,
+    .#{$display}-desktop-only {
+      display: $display !important;
+    }
+  }
+
+  @include mx.widescreen {
+    .display-#{$display}-widescreen,
+    .#{$display}-widescreen {
+      display: $display !important;
+    }
+  }
+
+  @include mx.widescreen-only {
+    .display-#{$display}-widescreen-only,
+    .#{$display}-widescreen-only {
+      display: $display !important;
+    }
+  }
+
+  @include mx.fullhd {
+    .display-#{$display}-fullhd,
+    .#{$display}-fullhd {
+      display: $display !important;
+    }
+  }
+}
+
+.sr-only {
+  border: none !important;
+  clip: rect(0, 0, 0, 0) !important;
+  height: 0.01em !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  white-space: nowrap !important;
+  width: 0.01em !important;
+}
+
+@include mx.mobile {
+  .display-none-mobile,
+  .hidden-mobile {
+    display: none !important;
+  }
+}
+
+@include mx.tablet {
+  .display-none-tablet,
+  .hidden-tablet {
+    display: none !important;
+  }
+}
+
+@include mx.tablet-only {
+  .display-none-tablet-only,
+  .hidden-tablet-only {
+    display: none !important;
+  }
+}
+
+@include mx.touch {
+  .display-none-touch,
+  .hidden-touch {
+    display: none !important;
+  }
+}
+
+@include mx.desktop {
+  .display-none-desktop,
+  .hidden-desktop {
+    display: none !important;
+  }
+}
+
+@include mx.desktop-only {
+  .display-none-desktop-only,
+  .hidden-desktop-only {
+    display: none !important;
+  }
+}
+
+@include mx.widescreen {
+  .display-none-widescreen,
+  .hidden-widescreen {
+    display: none !important;
+  }
+}
+
+@include mx.widescreen-only {
+  .display-none-widescreen-only,
+  .hidden-widescreen-only {
+    display: none !important;
+  }
+}
+
+@include mx.fullhd {
+  .display-none-fullhd,
+  .hidden-fullhd {
+    display: none !important;
+  }
+}
+
+.visibility-hidden,
+.invisible {
+  visibility: hidden !important;
+}
+
+@include mx.mobile {
+  .visibility-hidden-mobile,
+  .invisible-mobile {
+    visibility: hidden !important;
+  }
+}
+
+@include mx.tablet {
+  .visibility-hidden-tablet,
+  .invisible-tablet {
+    visibility: hidden !important;
+  }
+}
+
+@include mx.tablet-only {
+  .visibility-hidden-tablet-only,
+  .invisible-tablet-only {
+    visibility: hidden !important;
+  }
+}
+
+@include mx.touch {
+  .visibility-hidden-touch,
+  .invisible-touch {
+    visibility: hidden !important;
+  }
+}
+
+@include mx.desktop {
+  .visibility-hidden-desktop,
+  .invisible-desktop {
+    visibility: hidden !important;
+  }
+}
+
+@include mx.desktop-only {
+  .visibility-hidden-desktop-only,
+  .invisible-desktop-only {
+    visibility: hidden !important;
+  }
+}
+
+@include mx.widescreen {
+  .visibility-hidden-widescreen,
+  .invisible-widescreen {
+    visibility: hidden !important;
+  }
+}
+
+@include mx.widescreen-only {
+  .visibility-hidden-widescreen-only,
+  .invisible-widescreen-only {
+    visibility: hidden !important;
+  }
+}
+
+@include mx.fullhd {
+  .visibility-hidden-fullhd,
+  .invisible-fullhd {
+    visibility: hidden !important;
+  }
+}

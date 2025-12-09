@@ -1,0 +1,114 @@
+dl.as-show {
+  padding: var(--bulma-block-spacing);
+  margin-bottom: var(--bulma-block-spacing);
+
+  &.grid {
+    column-gap: 3rem;
+  }
+
+  &.is-striped {
+    padding: 0;
+
+    & > div {
+      padding: 0.5rem var(--bulma-block-spacing);
+    }
+
+    & > div:nth-child(even) {
+      background-color: var(--bulma-scheme-main-bis);
+
+      .input,
+      .textarea {
+        background-color: var(--bulma-scheme-main-bis);
+      }
+    }
+
+    & > div:last-child {
+      border-bottom-left-radius: var(--bulma-radius-large);
+      border-bottom-right-radius: var(--bulma-radius-large);
+    }
+
+    dt {
+      align-self: center;
+    }
+  }
+
+  & > div,
+  & > a {
+    display: flex;
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  dt {
+    color: var(--bulma-text-60);
+    font-size: 0.9em;
+    text-align-last: auto;
+    width: auto;
+    align-self: start;
+    flex-shrink: 0;
+  }
+
+  dd {
+    flex-grow: 1;
+    padding-left: 2rem;
+    text-align: right;
+    overflow-x: auto;
+
+    .input,
+    textarea {
+      padding-inline: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+      box-shadow: none;
+      text-align: right;
+      font-size: var(--bulma-body-font-size);
+      width: 100%;
+    }
+
+    input:not(:focus),
+    textarea:not(:focus) {
+      border-color: transparent;
+    }
+
+    input:focus,
+    textarea:focus {
+      padding-inline: 0.5rem;
+    }
+
+    textarea {
+      resize: none;
+      overflow: hidden;
+    }
+
+    .image {
+      display: inline-block;
+    }
+
+    &.no-wrap {
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow-x: hidden;
+    }
+
+    form.has-select {
+      display: inline-block;
+
+      button > * {
+        vertical-align: middle;
+      }
+
+      button::after {
+        display: inline-block;
+        content: '';
+        height: 1em;
+        width: 1em;
+        vertical-align: middle;
+        background-image: url(light/chevron-right.svg);
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+
+.weui-menu-sidebar {
+  border-top-right-radius: 6px;
+}
+
+.weui-menu-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  overflow: hidden;
+  padding-left: 0.75rem;
+}

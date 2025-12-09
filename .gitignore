@@ -1,0 +1,12 @@
+.bundle/
+docs/
+db/
+node_modules/
+log/*.log
+tmp/**/*.*
+!tmp/.keep
+!tmp/sockets/.keep
+
+*.gem
+app/assets/builds/*
+!app/assets/builds/.keep

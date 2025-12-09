@@ -1,0 +1,138 @@
+.flex-none {
+  flex: none;
+}
+
+.flex-auto {
+  flex: auto;
+}
+
+.has-block-left {
+  display: flex;
+  align-items: center;
+}
+
+.has-block-centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.has-block-right {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.has-block-space-around {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.has-block-space-between {
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.has-column-centered {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.xx {
+  & > form:not(:first-child),
+  & > button:not(:first-child) {
+    margin-top: 5px;
+  }
+}
+
+.has-column-normal {
+  display: flex;
+  flex-direction: column;
+}
+
+.has-column-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.has-column-right {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+
+.has-page-centered {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.has-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.has-column-space-between {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.has-column-space-around {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.is-several {
+  display: inline-flex;
+  align-items: center;
+  width: available;
+}
+
+.has-inline-centered {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.has-inline-space-between {
+  display: inline-flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.has-inline-space-around {
+  width: 100%;
+  display: inline-flex;
+  justify-content: space-around;
+}
+
+.has-v-centered {
+  display: flex;
+  align-items: center;
+}
+
+.has-v-end {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.has-block-left,
+.has-block-right {
+  column-gap: 0.5em;
+}
+
+.has-inline-centered,
+.is-several {
+  column-gap: 0.25em;
+}

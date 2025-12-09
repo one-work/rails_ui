@@ -1,0 +1,19 @@
+@use '../utilities/initial-variables' as iv;
+@use '../utilities/extends';
+
+.radiusless {
+  border-radius: 0 !important;
+}
+
+.shadowless {
+  box-shadow: none !important;
+}
+
+.clickable {
+  cursor: pointer !important;
+  pointer-events: all !important;
+}
+
+.unselectable {
+  @extend %unselectable;
+}

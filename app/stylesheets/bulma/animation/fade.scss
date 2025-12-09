@@ -1,0 +1,64 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes autoFade {
+  to {
+    opacity: 0.5;
+    display: none;
+  }
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes pulsate {
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.has-animate-fade-in {
+  animation-name: fadeIn;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+
+.has-animate-fade-out {
+  animation-name: fadeOut;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+
+.has-animate-auto-fade {
+  animation-name: autoFade;
+  animation-fill-mode: forwards;
+}
+
+.has-animate-fade-in-out {
+  animation-name: fadeInOut;
+  animation-fill-mode: forwards;
+}

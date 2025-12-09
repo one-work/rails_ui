@@ -1,0 +1,173 @@
+@use 'sass:list';
+@use '../utilities/derived-variables' as dv;
+@use '../utilities/initial-variables' as iv;
+@use '../utilities/mixins' as mx;
+
+@mixin typography-size($target: "") {
+  @each $size in dv.$sizes {
+    $i: list.index(dv.$sizes, $size);
+
+    .size-#{$i}#{if($target == "", "", "-" + $target)} {
+      font-size: $size !important;
+    }
+  }
+}
+
+@include typography-size;
+
+@include mx.mobile {
+  @include typography-size("mobile");
+}
+
+@include mx.tablet {
+  @include typography-size("tablet");
+}
+
+@include mx.touch {
+  @include typography-size("touch");
+}
+
+@include mx.desktop {
+  @include typography-size("desktop");
+}
+
+@include mx.widescreen {
+  @include typography-size("widescreen");
+}
+
+@include mx.fullhd {
+  @include typography-size("fullhd");
+}
+
+$alignments: (
+  "centered": "center",
+  "justified": "justify",
+  "left": "left",
+  "right": "right"
+);
+
+@each $alignment, $text-align in $alignments {
+  .text-#{$alignment} {
+    text-align: #{$text-align} !important;
+  }
+}
+
+@each $alignment, $text-align in $alignments {
+  @include mx.mobile {
+    .text-#{$alignment}-mobile {
+      text-align: #{$text-align} !important;
+    }
+  }
+
+  @include mx.tablet {
+    .text-#{$alignment}-tablet {
+      text-align: #{$text-align} !important;
+    }
+  }
+
+  @include mx.tablet-only {
+    .text-#{$alignment}-tablet-only {
+      text-align: #{$text-align} !important;
+    }
+  }
+
+  @include mx.touch {
+    .text-#{$alignment}-touch {
+      text-align: #{$text-align} !important;
+    }
+  }
+
+  @include mx.desktop {
+    .text-#{$alignment}-desktop {
+      text-align: #{$text-align} !important;
+    }
+  }
+
+  @include mx.desktop-only {
+    .text-#{$alignment}-desktop-only {
+      text-align: #{$text-align} !important;
+    }
+  }
+
+  @include mx.widescreen {
+    .text-#{$alignment}-widescreen {
+      text-align: #{$text-align} !important;
+    }
+  }
+
+  @include mx.widescreen-only {
+    .text-#{$alignment}-widescreen-only {
+      text-align: #{$text-align} !important;
+    }
+  }
+
+  @include mx.fullhd {
+    .text-#{$alignment}-fullhd {
+      text-align: #{$text-align} !important;
+    }
+  }
+}
+
+.capitalized {
+  text-transform: capitalize !important;
+}
+
+.lowercase {
+  text-transform: lowercase !important;
+}
+
+.uppercase {
+  text-transform: uppercase !important;
+}
+
+.italic {
+  font-style: italic !important;
+}
+
+.underlined {
+  text-decoration: underline !important;
+}
+
+.text-weight-light {
+  font-weight: iv.$weight-light !important;
+}
+
+.text-weight-normal {
+  font-weight: iv.$weight-normal !important;
+}
+
+.text-weight-medium {
+  font-weight: iv.$weight-medium !important;
+}
+
+.text-weight-semibold {
+  font-weight: iv.$weight-semibold !important;
+}
+
+.text-weight-bold {
+  font-weight: iv.$weight-bold !important;
+}
+
+.text-weight-extrabold {
+  font-weight: iv.$weight-extrabold !important;
+}
+
+.family-primary {
+  font-family: dv.$family-primary !important;
+}
+
+.family-secondary {
+  font-family: dv.$family-secondary !important;
+}
+
+.family-sans-serif {
+  font-family: iv.$family-sans-serif !important;
+}
+
+.family-monospace {
+  font-family: iv.$family-monospace !important;
+}
+
+.family-code {
+  font-family: dv.$family-code !important;
+}

@@ -1,0 +1,10 @@
+@use 'themes/light';
+@use 'themes/setup';
+
+:root {
+  @include light.light-theme;
+}
+
+:root {
+  @include setup.setup-theme;
+}
