@@ -1,4 +1,4 @@
 module Design
-  class BaseController < BaseController
+  class BaseController < ApplicationController
   end
 end
