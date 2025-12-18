@@ -6,8 +6,8 @@ $timeline-axis-width: 2px !default;
 $timeline-axis-color: $border-color !default;
 $timeline-left: 1rem !default;
 
-$timeline-step-bg: white !default;
-$timeline-step-width: 26px !default;
+$timeline-step-bg: green !default;
+$timeline-step-width: 40px !default;
 $timeline-step-height: $timeline-step-width !default;
 $timeline-step-radius: 50% !default;
 $timeline-step-transform: translateX(-50%) !default;
@@ -23,8 +23,6 @@ $timeline-content-top: -6px !default;
 .timeline {
   position: relative;
 
-  // Axis
-
   &:before {
     content: '';
     position: absolute;
@@ -35,15 +33,11 @@ $timeline-content-top: -6px !default;
   }
 }
 
-
-
-// Timeline blocks
-
 .timeline-block {
   position: relative;
 
   &:after {
-    content: "";
+    content: '';
     display: table;
     clear: both;
   }
@@ -56,8 +50,6 @@ $timeline-content-top: -6px !default;
     margin-bottom: 0;
   }
 }
-
-// Timeline steps
 
 .timeline-step {
   position: absolute;
@@ -77,13 +69,11 @@ $timeline-content-top: -6px !default;
   z-index: 1;
 
   svg, i {
+    color: white;
     line-height: $timeline-step-line-height;
   }
 }
 
-
-
-// Timeline content and body
 .timeline-content {
   position: relative;
   margin-left: $timeline-content-margin-left;
@@ -92,13 +82,11 @@ $timeline-content-top: -6px !default;
   top: $timeline-content-top;
 
   &:after {
-    content: "";
+    content: '';
     display: table;
     clear: both;
   }
 }
-
-// One side timeline
 
 .timeline-one-side {
   &:before {
@@ -112,8 +100,8 @@ $timeline-content-top: -6px !default;
   .timeline-content {
     width: auto;
   }
-}
 
-.timeline-one-side .timeline-block:nth-child(even) .timeline-content {
-  float: none;
+  .timeline-block:nth-child(even) .timeline-content {
+    float: none;
+  }
 }
