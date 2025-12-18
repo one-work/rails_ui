@@ -81,6 +81,10 @@ $timeline-content-top: -6px !default;
   position: relative;
   top: $timeline-content-top;
 
+  .title {
+    color: $timeline-step-bg;
+  }
+
   &:after {
     content: '';
     display: table;
