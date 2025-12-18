@@ -1,11 +1,15 @@
 import { Controller } from '@hotwired/stimulus'
 import { DateTime } from 'luxon'
 window.DateTime = DateTime
+const FORMAT = {
+  human: 'yyyy-MM-dd HH:mm:ss'
+}
 
 // data-controller="time"
 export default class extends Controller {
   static values = {
-    localized: Boolean
+    localized: Boolean,
+    locale: String
   }
 
   connect() {
@@ -19,7 +23,11 @@ export default class extends Controller {
 
     if (this.str) {
       const time = DateTime.fromISO(this.str)
-      this.element.innerText = time.toFormat(this.format)
+      if (this.hasLocaleValue) {
+        this.element.innerText = time.toLocaleString(DateTime[this.localeValue])
+      } else {
+        this.element.innerText = time.toFormat(this.format)
+      }
       this.localizedValue = true
     }
   }
