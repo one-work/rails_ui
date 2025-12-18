@@ -6,7 +6,7 @@ $timeline-axis-width: 2px !default;
 $timeline-axis-color: $border-color !default;
 $timeline-left: 1rem !default;
 
-$timeline-step-bg: green !default;
+$timeline-step-bg: hsl(198, 100%, 45%) !default;
 $timeline-step-width: 40px !default;
 $timeline-step-height: $timeline-step-width !default;
 $timeline-step-radius: 50% !default;
@@ -83,6 +83,8 @@ $timeline-content-top: -6px !default;
 
   .title {
     color: $timeline-step-bg;
+    font-size: 16px;
+    line-height: max($timeline-step-line-height, $timeline-step-height);
   }
 
   &:after {
