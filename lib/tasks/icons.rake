@@ -1,4 +1,4 @@
 desc '生成需要的图标'
 task icons: :environment do
-  SvgHelper.builder
+  RailsUi::SvgHelper.builder
 end
