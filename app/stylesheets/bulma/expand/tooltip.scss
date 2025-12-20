@@ -9,7 +9,9 @@ $tip-arrow-size: 0 !default;
   --tip-move: 4px;
 }
 
-[aria-label] {
+span[aria-label],
+button[aria-label],
+a[aria-label] {
   position: relative; // alt. absolute or fixed
 
   // Fixing iOS Safari event issue.
