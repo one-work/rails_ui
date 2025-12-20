@@ -1,6 +1,6 @@
-@use "../utilities/initial-variables" as iv;
-@use "../utilities/css-variables.scss" as cv;
-@use "../utilities/mixins" as mx;
+@use '../utilities/initial-variables' as iv;
+@use '../utilities/css-variables.scss' as cv;
+@use '../utilities/mixins' as mx;
 
 $body-background-color: cv.getVar("scheme-main") !default;
 $body-size: 1em !default;
@@ -59,7 +59,7 @@ $pre-code-font-size: 1em !default;
       "strong-weight": #{$strong-weight},
       "pre-font-size": #{$pre-font-size},
       "pre-padding": #{$pre-padding},
-      "pre-code-font-size": #{$pre-code-font-size},
+      "pre-code-font-size": #{$pre-code-font-size}
     )
   );
 }
