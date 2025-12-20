@@ -1,5 +1,7 @@
 module RailsUi #:nodoc:
   mattr_accessor :config, default: ActiveSupport::OrderedOptions.new
 
-  config.svg_dir = Rails.root.join('public/svgs')
+  ActiveSupport.on_load(:before_initialize) do
+    config.svg_dir = Rails.root.join('public/svgs')
+  end
 end
