@@ -1,6 +1,4 @@
 @use '../utilities/css-variables' as cv;
-@use '../utilities/derived-variables' as dv;
-@use '../utilities/initial-variables' as iv;
 @use '../utilities/mixins' as mx;
 @use '../utilities/extends';
 
@@ -26,7 +24,8 @@ $content-table-body-last-row-cell-border-bottom-width: 0 !default;
 $content-table-foot-cell-border-width: 2px 0 0 !default;
 $content-table-foot-cell-color: #{cv.getVar("text-strong")} !default;
 
-.content {
+.content,
+.lexxy-content {
   @include cv.register-vars(
     (
       "content-heading-color": #{$content-heading-color},
@@ -50,7 +49,8 @@ $content-table-foot-cell-color: #{cv.getVar("text-strong")} !default;
   );
 }
 
-.content {
+.content,
+.lexxy-content {
   @extend %block;
 
   // Inline
