@@ -7,7 +7,6 @@
     --bulma-menu-item-selected-h: 300;
     --bulma-menu-item-selected-s: 90%;
 
-    background-color: transparent;
     flex-grow: 1;
     overflow-y: scroll;
     scrollbar-width: none;
@@ -26,8 +25,6 @@
     --bulma-menu-item-selected-h: 0;
     --bulma-menu-item-selected-s: 0%;
     --bulma-menu-item-selected-color-l: 20%;
-
-    background-color: transparent;
 
     .menu-list {
       height: 100%;
@@ -59,6 +56,8 @@
 
   &.as-side,
   &.as-wrap {
+    background-color: transparent;
+
     .menu-item {
       border-radius: 0;
     }
