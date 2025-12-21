@@ -10,22 +10,22 @@
   background-position: right center;
 }
 
-.is-cover {
+.background-cover {
   background-size: cover;
   background-repeat: no-repeat;
 }
 
-.is-contain {
+.background-contain {
   background-size: contain;
   background-repeat: no-repeat;
 }
 
-.is-contain-x {
+.background-contain-x {
   background-size: auto 100%;
   background-repeat: repeat-x;
 }
 
-.is-contain-y {
+.background-contain-y {
   background-size: contain;
   background-repeat: repeat-y;
 }
