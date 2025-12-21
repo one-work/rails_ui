@@ -20,11 +20,22 @@ main.columns {
   &.as-border > .column + .column {
     border-left: 1px solid rgba(0, 0, 0, 0.1);
   }
+
+  &.as-main {
+    background-color: hsl(212, 52%, 95%)
+  }
 }
 
 .column {
   &.is-fullheight {
     height: 100%;
+  }
+
+  &.as-body {
+    padding-top: 16px;
+    padding-left: 0;
+    padding-right: 24px;
+    padding-bottom: 0;
   }
 
   .column_box {
