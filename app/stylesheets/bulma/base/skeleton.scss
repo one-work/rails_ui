@@ -1,7 +1,7 @@
-@use "../utilities/css-variables" as cv;
-@use "../utilities/initial-variables" as iv;
-@use "../utilities/mixins" as mx;
-@use "../utilities/extends";
+@use '../utilities/css-variables' as cv;
+@use '../utilities/initial-variables' as iv;
+@use '../utilities/mixins' as mx;
+@use '../utilities/extends';
 
 $skeleton-background: cv.getVar("border") !default;
 $skeleton-radius: cv.getVar("radius-small") !default;
@@ -16,7 +16,7 @@ $skeleton-line-height: 0.75em !default;
       "skeleton-radius": #{$skeleton-radius},
       "skeleton-block-min-height": #{$skeleton-block-min-height},
       "skeleton-lines-gap": #{$skeleton-lines-gap},
-      "skeleton-line-height": #{$skeleton-line-height},
+      "skeleton-line-height": #{$skeleton-line-height}
     )
   );
 }
@@ -32,7 +32,7 @@ $skeleton-line-height: 0.75em !default;
   pointer-events: none;
 }
 
-.#{iv.$class-prefix}is-skeleton {
+.is-skeleton {
   @extend %skeleton-pulsation;
   color: transparent !important;
 
@@ -45,13 +45,13 @@ $skeleton-line-height: 0.75em !default;
     visibility: hidden;
   }
 
-  &.#{iv.$class-prefix}checkbox {
+  &.checkbox {
     input {
       opacity: 0;
     }
   }
 
-  &.#{iv.$class-prefix}delete {
+  &.delete {
     border-radius: cv.getVar("radius-rounded");
 
     &::before,
@@ -61,8 +61,8 @@ $skeleton-line-height: 0.75em !default;
   }
 }
 
-input.#{iv.$class-prefix}is-skeleton,
-textarea.#{iv.$class-prefix}is-skeleton {
+input.is-skeleton,
+textarea.is-skeleton {
   resize: none;
 
   @include mx.placeholder {
@@ -70,7 +70,7 @@ textarea.#{iv.$class-prefix}is-skeleton {
   }
 }
 
-.#{iv.$class-prefix}has-skeleton {
+.has-skeleton {
   color: transparent !important;
   position: relative;
 
@@ -88,14 +88,14 @@ textarea.#{iv.$class-prefix}is-skeleton {
   }
 }
 
-.#{iv.$class-prefix}skeleton-block {
+.skeleton-block {
   @extend %block;
   @extend %skeleton-pulsation;
   color: transparent !important;
   min-height: cv.getVar("skeleton-block-min-height");
 }
 
-.#{iv.$class-prefix}skeleton-lines {
+.skeleton-lines {
   color: transparent !important;
   display: flex;
   flex-direction: column;
