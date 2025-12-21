@@ -64,42 +64,4 @@
     var(--bulma-menu-item-s),
     calc(var(--bulma-menu-item-background-l) + var(--bulma-menu-item-background-l-delta))
   );
-
-  &.as-side,
-  &.as-wrap {
-    .menu-item {
-      border-radius: 0;
-    }
-  }
-
-  &.as-wrap {
-    flex-grow: 1;
-    overflow-y: scroll;
-    scrollbar-width: none;
-  }
-
-  &.as-logo {
-    --bulma-menu-item-radius: 0;
-
-    .menu-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-  }
-}
-
-.menu-brand {
-  a {
-    display: block;
-    color: #00b2ff;
-  }
-
-  img {
-    width: 64px;
-    box-sizing: content-box;
-    padding-top: 1rem;
-    margin-left: auto;
-    margin-right: auto;
-  }
 }

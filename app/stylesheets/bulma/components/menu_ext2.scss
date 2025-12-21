@@ -4,9 +4,13 @@
   --bulma-menu-item-background-l: 95%;
 
   &.as-wrap {
-    background-color: transparent;
     --bulma-menu-item-selected-h: 300;
     --bulma-menu-item-selected-s: 90%;
+
+    background-color: transparent;
+    flex-grow: 1;
+    overflow-y: scroll;
+    scrollbar-width: none;
 
     .menu-item:not(.is-active),
     .menu-list a:not(.is-active) {
@@ -22,6 +26,7 @@
     --bulma-menu-item-selected-h: 0;
     --bulma-menu-item-selected-s: 0%;
     --bulma-menu-item-selected-color-l: 20%;
+
     background-color: transparent;
 
     .menu-list {
@@ -50,5 +55,37 @@
     .is-active + .flex-grow-1 {
       border-top-right-radius: 16px;
     }
+  }
+
+  &.as-side,
+  &.as-wrap {
+    .menu-item {
+      border-radius: 0;
+    }
+  }
+
+  &.as-logo {
+    --bulma-menu-item-radius: 0;
+
+    .menu-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+}
+
+.menu-brand {
+  a {
+    display: block;
+    color: #00b2ff;
+  }
+
+  img {
+    width: 64px;
+    box-sizing: content-box;
+    padding-top: 1rem;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
