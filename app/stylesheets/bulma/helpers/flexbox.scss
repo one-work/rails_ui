@@ -1,5 +1,3 @@
-@use '../utilities/initial-variables' as iv;
-
 $flex-direction-values: row, row-reverse, column, column-reverse;
 
 @each $value in $flex-direction-values {
