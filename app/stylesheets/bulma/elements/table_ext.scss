@@ -76,13 +76,8 @@ td:has(table) {
     th {
       text-align: right;
       white-space: nowrap;
-      color: var(--bulma-text-light);
+      color: var(--bulma-text-40);
       font-size: 0.75em;
-    }
-
-    th::after {
-      content: ':';
-      color: var(--bulma-text-light)-light;
     }
 
     td {
