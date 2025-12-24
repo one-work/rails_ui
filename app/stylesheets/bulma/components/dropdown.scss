@@ -1,5 +1,4 @@
 @use '../utilities/css-variables' as cv;
-@use '../utilities/initial-variables' as iv;
 @use '../utilities/mixins' as mx;
 @use '../utilities/extends';
 
@@ -117,11 +116,7 @@ $dropdown-divider-background-color: cv.getVar("border-weak") !default;
 
 a.dropdown-item,
 button.dropdown-item {
-  background-color: hsl(
-    #{cv.getVar("dropdown-item-h")},
-    #{cv.getVar("dropdown-item-s")},
-    calc(#{cv.getVar("dropdown-item-background-l")} + #{cv.getVar("dropdown-item-background-l-delta")})
-  );
+  background-color: hsl(#{cv.getVar("dropdown-item-h")}, #{cv.getVar("dropdown-item-s")}, calc(#{cv.getVar("dropdown-item-background-l")} + #{cv.getVar("dropdown-item-background-l-delta")}));
   padding-inline-end: 3rem;
   text-align: inherit;
   white-space: nowrap;
