@@ -1,10 +1,3 @@
-.dropdown + .dropdown,
-.dropdown + .field,
-.button + .dropdown,
-.button_to + .dropdown {
-  margin-left: 0.75rem;
-}
-
 .dropdown {
   &.pop-right,
   &.pop-right-bottom {
