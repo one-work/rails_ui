@@ -1,7 +1,6 @@
 @use 'sass:list';
 
 @use '../utilities/css-variables' as cv;
-@use '../utilities/initial-variables' as iv;
 @use '../utilities/controls';
 @use 'shared';
 
@@ -26,7 +25,7 @@ $textarea-colors: shared.$form-colors !default;
   @each $name, $pair in $textarea-colors {
     $color: list.nth($pair, 1);
 
-    &.#{iv.$class-prefix}is-#{$name} {
+    &.is-#{$name} {
       @include cv.register-vars(
         (
           "input-h": #{cv.getVar($name, "", "-h")},
@@ -42,40 +41,40 @@ $textarea-colors: shared.$form-colors !default;
   }
 
   // Sizes
-  &.#{iv.$class-prefix}is-small {
+  &.is-small {
     @include controls.control-small;
   }
 
-  &.#{iv.$class-prefix}is-medium {
+  &.is-medium {
     @include controls.control-medium;
   }
 
-  &.#{iv.$class-prefix}is-large {
+  &.is-large {
     @include controls.control-large;
   }
 
   // Modifiers
-  &.#{iv.$class-prefix}is-fullwidth {
+  &.is-fullwidth {
     display: block;
     width: 100%;
   }
 
-  &.#{iv.$class-prefix}is-inline {
+  &.is-inline {
     display: inline;
     width: auto;
   }
 }
 
-.#{iv.$class-prefix}input {
+.input {
   @extend %input-textarea;
 
-  &.#{iv.$class-prefix}is-rounded {
+  &.is-rounded {
     border-radius: cv.getVar("radius-rounded");
     padding-left: calc(#{controls.$control-padding-horizontal} + 0.375em);
     padding-right: calc(#{controls.$control-padding-horizontal} + 0.375em);
   }
 
-  &.#{iv.$class-prefix}is-static {
+  &.is-static {
     background-color: transparent;
     border-color: transparent;
     box-shadow: none;
@@ -84,13 +83,13 @@ $textarea-colors: shared.$form-colors !default;
   }
 }
 
-.#{iv.$class-prefix}textarea {
+.textarea {
   @extend %input-textarea;
   @include cv.register-vars(
     (
       "textarea-padding": #{$textarea-padding},
       "textarea-max-height": #{$textarea-max-height},
-      "textarea-min-height": #{$textarea-min-height},
+      "textarea-min-height": #{$textarea-min-height}
     )
   );
   display: block;
@@ -109,7 +108,7 @@ $textarea-colors: shared.$form-colors !default;
   }
 
   // Modifiers
-  &.#{iv.$class-prefix}has-fixed-size {
+  &.has-fixed-size {
     resize: none;
   }
 }

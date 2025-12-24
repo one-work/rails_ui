@@ -1,18 +1,15 @@
-@use "shared";
-@use "../utilities/controls";
-@use "../utilities/css-variables" as cv;
-@use "../utilities/initial-variables" as iv;
-@use "../utilities/extends";
-@use "../utilities/mixins" as mx;
+@use '../utilities/css-variables' as cv;
+@use '../utilities/initial-variables' as iv;
+@use '../utilities/mixins' as mx;
+@use '../utilities/extends';
+@use '../utilities/controls';
+@use 'shared';
 
 $label-color: cv.getVar("text-strong") !default;
 $label-spacing: 0.5em !default;
 $label-weight: cv.getVar("weight-semibold") !default;
-
 $help-size: cv.getVar("size-small") !default;
-
 $label-colors: shared.$form-colors !default;
-
 $field-block-spacing: 0.75rem !default;
 
 #{iv.$variables-host} {
@@ -22,12 +19,12 @@ $field-block-spacing: 0.75rem !default;
       "label-spacing": #{$label-spacing},
       "label-weight": #{$label-weight},
       "help-size": #{$help-size},
-      "field-block-spacing": #{$field-block-spacing},
+      "field-block-spacing": #{$field-block-spacing}
     )
   );
 }
 
-.#{iv.$class-prefix}label {
+.label {
   color: cv.getVar("label-color");
   display: block;
   font-size: cv.getVar("size-normal");
@@ -38,26 +35,26 @@ $field-block-spacing: 0.75rem !default;
   }
 
   // Sizes
-  &.#{iv.$class-prefix}is-small {
+  &.is-small {
     font-size: cv.getVar("size-small");
   }
 
-  &.#{iv.$class-prefix}is-medium {
+  &.is-medium {
     font-size: cv.getVar("size-medium");
   }
 
-  &.#{iv.$class-prefix}is-large {
+  &.is-large {
     font-size: cv.getVar("size-large");
   }
 }
 
-.#{iv.$class-prefix}help {
+.help {
   display: block;
   font-size: cv.getVar("help-size");
   margin-top: 0.25rem;
 
   @each $name, $pair in $label-colors {
-    &.#{iv.$class-prefix}is-#{$name} {
+    &.is-#{$name} {
       color: hsl(
         #{cv.getVar($name, "", "-h")},
         #{cv.getVar($name, "", "-s")},
@@ -69,64 +66,64 @@ $field-block-spacing: 0.75rem !default;
 
 // Containers
 
-.#{iv.$class-prefix}field {
+.field {
   @include cv.register-vars(
     (
-      "block-spacing": #{cv.getVar("field-block-spacing")},
+      "block-spacing": #{cv.getVar("field-block-spacing")}
     )
   );
 
   @extend %block;
 
   // Modifiers
-  &.#{iv.$class-prefix}has-addons {
+  &.has-addons {
     display: flex;
     justify-content: flex-start;
 
-    .#{iv.$class-prefix}control {
+    .control {
       &:not(:last-child) {
         margin-inline-end: -1px;
       }
 
       &:not(:first-child):not(:last-child) {
-        .#{iv.$class-prefix}button,
-        .#{iv.$class-prefix}input,
-        .#{iv.$class-prefix}select select {
+        .button,
+        .input,
+        .select select {
           border-radius: 0;
         }
       }
 
       &:first-child:not(:only-child) {
-        .#{iv.$class-prefix}button,
-        .#{iv.$class-prefix}input,
-        .#{iv.$class-prefix}select select {
+        .button,
+        .input,
+        .select select {
           border-start-end-radius: 0;
           border-end-end-radius: 0;
         }
       }
 
       &:last-child:not(:only-child) {
-        .#{iv.$class-prefix}button,
-        .#{iv.$class-prefix}input,
-        .#{iv.$class-prefix}select select {
+        .button,
+        .input,
+        .select select {
           border-start-start-radius: 0;
           border-end-start-radius: 0;
         }
       }
 
-      .#{iv.$class-prefix}button,
-      .#{iv.$class-prefix}input,
-      .#{iv.$class-prefix}select select {
+      .button,
+      .input,
+      .select select {
         &:not([disabled]) {
           &:hover,
-          &.#{iv.$class-prefix}is-hovered {
+          &.is-hovered {
             z-index: 2;
           }
 
           &:focus,
-          &.#{iv.$class-prefix}is-focused,
+          &.is-focused,
           &:active,
-          &.#{iv.$class-prefix}is-active {
+          &.is-active {
             z-index: 3;
 
             &:hover {
@@ -136,64 +133,64 @@ $field-block-spacing: 0.75rem !default;
         }
       }
 
-      &.#{iv.$class-prefix}is-expanded {
+      &.is-expanded {
         flex-grow: 1;
         flex-shrink: 1;
       }
     }
 
-    &.#{iv.$class-prefix}has-addons-centered {
+    &.has-addons-centered {
       justify-content: center;
     }
 
-    &.#{iv.$class-prefix}has-addons-right {
+    &.has-addons-right {
       justify-content: flex-end;
     }
 
-    &.#{iv.$class-prefix}has-addons-fullwidth {
-      .#{iv.$class-prefix}control {
+    &.has-addons-fullwidth {
+      .control {
         flex-grow: 1;
         flex-shrink: 0;
       }
     }
   }
 
-  &.#{iv.$class-prefix}is-grouped {
+  &.is-grouped {
     display: flex;
     gap: 0.75rem;
     justify-content: flex-start;
 
-    & > .#{iv.$class-prefix}control {
+    & > .control {
       flex-shrink: 0;
 
-      &.#{iv.$class-prefix}is-expanded {
+      &.is-expanded {
         flex-grow: 1;
         flex-shrink: 1;
       }
     }
 
-    &.#{iv.$class-prefix}is-grouped-centered {
+    &.is-grouped-centered {
       justify-content: center;
     }
 
-    &.#{iv.$class-prefix}is-grouped-right {
+    &.is-grouped-right {
       justify-content: flex-end;
     }
 
-    &.#{iv.$class-prefix}is-grouped-multiline {
+    &.is-grouped-multiline {
       flex-wrap: wrap;
     }
   }
 
-  &.#{iv.$class-prefix}is-horizontal {
+  &.is-horizontal {
     @include mx.tablet {
       display: flex;
     }
   }
 }
 
-.#{iv.$class-prefix}field-label {
-  .#{iv.$class-prefix}label {
+.field-label {
+  .label {
     font-size: inherit;
   }
 
@@ -208,29 +205,29 @@ $field-block-spacing: 0.75rem !default;
     margin-inline-end: 1.5rem;
     text-align: right;
 
-    &.#{iv.$class-prefix}is-small {
+    &.is-small {
       font-size: cv.getVar("size-small");
       padding-top: 0.375em;
     }
 
-    &.#{iv.$class-prefix}is-normal {
+    &.is-normal {
       padding-top: 0.375em;
     }
 
-    &.#{iv.$class-prefix}is-medium {
+    &.is-medium {
       font-size: cv.getVar("size-medium");
       padding-top: 0.375em;
     }
 
-    &.#{iv.$class-prefix}is-large {
+    &.is-large {
       font-size: cv.getVar("size-large");
       padding-top: 0.375em;
     }
   }
 }
 
-.#{iv.$class-prefix}field-body {
-  .#{iv.$class-prefix}field .#{iv.$class-prefix}field {
+.field-body {
+  .field .field {
     margin-bottom: 0;
   }
 
@@ -240,14 +237,14 @@ $field-block-spacing: 0.75rem !default;
     flex-grow: 5;
     flex-shrink: 1;
 
-    .#{iv.$class-prefix}field {
+    .field {
       margin-bottom: 0;
     }
 
-    & > .#{iv.$class-prefix}field {
+    & > .field {
       flex-shrink: 1;
 
-      &:not(.#{iv.$class-prefix}is-narrow) {
+      &:not(.is-narrow) {
         flex-grow: 1;
       }
 
@@ -258,7 +255,7 @@ $field-block-spacing: 0.75rem !default;
   }
 }
 
-.#{iv.$class-prefix}control {
+.control {
   box-sizing: border-box;
   clear: both;
   font-size: cv.getVar("size-normal");
@@ -266,36 +263,36 @@ $field-block-spacing: 0.75rem !default;
   text-align: inherit;
 
   // Modifiers
-  &.#{iv.$class-prefix}has-icons-left,
-  &.#{iv.$class-prefix}has-icons-right {
-    .#{iv.$class-prefix}input,
-    .#{iv.$class-prefix}select {
+  &.has-icons-left,
+  &.has-icons-right {
+    .input,
+    .select {
       &:hover {
-        & ~ .#{iv.$class-prefix}icon {
+        & ~ .icon {
           color: cv.getVar("input-icon-hover-color");
         }
       }
 
       &:focus {
-        & ~ .#{iv.$class-prefix}icon {
+        & ~ .icon {
           color: cv.getVar("input-icon-focus-color");
         }
       }
 
-      &.#{iv.$class-prefix}is-small ~ .#{iv.$class-prefix}icon {
+      &.is-small ~ .icon {
         font-size: cv.getVar("size-small");
       }
 
-      &.#{iv.$class-prefix}is-medium ~ .#{iv.$class-prefix}icon {
+      &.is-medium ~ .icon {
         font-size: cv.getVar("size-medium");
       }
 
-      &.#{iv.$class-prefix}is-large ~ .#{iv.$class-prefix}icon {
+      &.is-large ~ .icon {
         font-size: cv.getVar("size-large");
       }
     }
 
-    .#{iv.$class-prefix}icon {
+    .icon {
       color: cv.getVar("input-icon-color");
       height: cv.getVar("input-height");
       pointer-events: none;
@@ -306,29 +303,29 @@ $field-block-spacing: 0.75rem !default;
     }
   }
 
-  &.#{iv.$class-prefix}has-icons-left {
-    .#{iv.$class-prefix}input,
-    .#{iv.$class-prefix}select select {
+  &.has-icons-left {
+    .input,
+    .select select {
       padding-left: cv.getVar("input-height");
     }
 
-    .#{iv.$class-prefix}icon.#{iv.$class-prefix}is-left {
+    .icon.is-left {
       left: 0;
     }
   }
 
-  &.#{iv.$class-prefix}has-icons-right {
-    .#{iv.$class-prefix}input,
-    .#{iv.$class-prefix}select select {
+  &.has-icons-right {
+    .input,
+    .select select {
       padding-right: cv.getVar("input-height");
     }
 
-    .#{iv.$class-prefix}icon.#{iv.$class-prefix}is-right {
+    .icon.is-right {
       right: 0;
     }
   }
 
-  &.#{iv.$class-prefix}is-loading {
+  &.is-loading {
     &::after {
       @extend %loader;
       inset-inline-end: 0.75em;
@@ -337,15 +334,15 @@ $field-block-spacing: 0.75rem !default;
       z-index: 4;
     }
 
-    &.#{iv.$class-prefix}is-small:after {
+    &.is-small:after {
       font-size: cv.getVar("size-small");
     }
 
-    &.#{iv.$class-prefix}is-medium:after {
+    &.is-medium:after {
       font-size: cv.getVar("size-medium");
     }
 
-    &.#{iv.$class-prefix}is-large:after {
+    &.is-large:after {
       font-size: cv.getVar("size-large");
     }
   }

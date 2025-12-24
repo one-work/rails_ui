@@ -1,5 +1,4 @@
 @use 'shared';
-@use '../utilities/initial-variables' as iv;
 
 %checkbox-radio {
   cursor: pointer;
@@ -19,16 +18,16 @@
   }
 }
 
-.#{iv.$class-prefix}checkbox {
+.checkbox {
   @extend %checkbox-radio;
 }
 
-.#{iv.$class-prefix}radio {
+.radio {
   @extend %checkbox-radio;
 }
 
-.#{iv.$class-prefix}checkboxes,
-.#{iv.$class-prefix}radios {
+.checkboxes,
+.radios {
   display: flex;
   flex-wrap: wrap;
   column-gap: 1em;

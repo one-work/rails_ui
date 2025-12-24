@@ -1,6 +1,5 @@
 @use '../utilities/css-variables' as cv;
 @use '../utilities/derived-variables' as dv;
-@use '../utilities/initial-variables' as iv;
 @use '../utilities/mixins' as mx;
 @use '../utilities/extends';
 
@@ -20,13 +19,7 @@ $input-color-l: cv.getVar("text-strong-l") !default;
 $input-background-l: cv.getVar("scheme-main-l") !default;
 $input-background-l-delta: 0% !default;
 $input-height: cv.getVar("control-height") !default;
-$input-shadow: inset 0 0.0625em 0.125em
-  hsla(
-    #{cv.getVar("scheme-h")},
-    #{cv.getVar("scheme-s")},
-    #{cv.getVar("scheme-invert-l")},
-    0.05
-  ) !default;
+$input-shadow: inset 0 0.0625em 0.125em hsla(#{cv.getVar("scheme-h")}, #{cv.getVar("scheme-s")}, #{cv.getVar("scheme-invert-l")}, 0.05) !default;
 $input-placeholder-color: hsla(#{cv.getVar("text-h")}, #{cv.getVar("text-s")}, #{cv.getVar("text-strong-l")}, 0.3) !default;
 
 $input-focus-h: cv.getVar("focus-h") !default;
@@ -48,10 +41,10 @@ $input-icon-focus-color: cv.getVar("link") !default;
 
 $input-radius: cv.getVar("radius") !default;
 
-.#{iv.$class-prefix}control,
-.#{iv.$class-prefix}input,
-.#{iv.$class-prefix}textarea,
-.#{iv.$class-prefix}select {
+.control,
+.input,
+.textarea,
+.select {
   @include cv.register-vars(
     (
       "input-h": #{$input-h},
@@ -100,7 +93,7 @@ $input-radius: cv.getVar("radius") !default;
   }
 
   &:hover,
-  &.#{iv.$class-prefix}is-hovered {
+  &.is-hovered {
     @include cv.register-vars(
       (
         "input-border-l-delta": #{cv.getVar("input-hover-border-l-delta")}
@@ -109,7 +102,7 @@ $input-radius: cv.getVar("radius") !default;
   }
 
   &:active,
-  &.#{iv.$class-prefix}is-active {
+  &.is-active {
     @include cv.register-vars(
       (
         "input-border-l-delta": #{cv.getVar("input-active-border-l-delta")}
@@ -119,7 +112,7 @@ $input-radius: cv.getVar("radius") !default;
 
   &:focus,
   &:focus-within,
-  &.#{iv.$class-prefix}is-focused {
+  &.is-focused {
     border-color: hsl(cv.getVar("input-focus-h"), cv.getVar("input-focus-s"), cv.getVar("input-focus-l"));
     box-shadow: cv.getVar("input-focus-shadow-size") hsla(cv.getVar("input-focus-h"), cv.getVar("input-focus-s"), cv.getVar("input-focus-l"), cv.getVar("input-focus-shadow-alpha"));
   }

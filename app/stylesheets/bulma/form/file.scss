@@ -1,8 +1,7 @@
-@use "shared";
-@use "../utilities/css-variables" as cv;
-@use "../utilities/initial-variables" as iv;
-@use "../utilities/controls";
-@use "../utilities/extends";
+@use 'shared';
+@use '../utilities/css-variables' as cv;
+@use '../utilities/controls';
+@use '../utilities/extends';
 
 $file-radius: cv.getVar("radius") !default;
 
