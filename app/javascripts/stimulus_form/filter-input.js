@@ -2,7 +2,6 @@ import BaseController from '../base_controller'
 
 export default class extends BaseController {
 
-
   submit(e) {
     const el = e.currentTarget
     for (const input of el.form.elements) {
@@ -13,6 +12,15 @@ export default class extends BaseController {
       }
     }
     el.form.requestSubmit()
+  }
+
+  submitButton(e) {
+    const el = e.currentTarget
+    for (const input of el.form.elements) {
+      if (input.name === el.dataset.item && input.type === 'hidden') {
+        input.remove()
+      }
+    }
   }
 
   confirm(e) {

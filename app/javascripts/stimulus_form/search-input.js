@@ -4,7 +4,7 @@ export default class extends BaseController {
   static targets = ['input', 'content']
   static values = {
     url: String,
-    auto: { type: Boolean, default: false}
+    auto: { type: Boolean, default: false }
   }
 
   connect() {
