@@ -40,7 +40,7 @@ export default class extends BaseController {
 
   cancel(e) {
     const ele = e.currentTarget
-    if (ele.value.length === 0) {
+    if (ele.value.length === 0 && ele.defaultValue.length > 0) {
       for (let el of ele.form.elements) {
         if (el.value) {
         } else {
