@@ -3,25 +3,27 @@ import BaseController from '../base_controller'
 export default class extends BaseController {
   static targets = ['input', 'content']
   static values = {
-    url: String,
-    auto: { type: Boolean, default: false }
+    url: String
   }
 
   connect() {
-    if (this.autoValue) {
-      this.initInput()
+    if (this.hasInputTarget) {
+      this.initInput(this.inputTarget)
     }
   }
 
-  initInput() {
-    const ele = this.inputTarget
+  initInput(ele) {
     ele.addEventListener('input', this.submit)
     ele.addEventListener('compositionstart', event => {
       event.target.removeEventListener('input', this.submit)
     })
     ele.addEventListener('compositionend', event => {
       event.target.addEventListener('input', this.submit)
-      this.conForm(ele)
+      if (this.hasUrlValue) {
+        this.inputPost(ele)
+      } else {
+        ele.form.requestSubmit()
+      }
     })
   }
 
@@ -36,17 +38,10 @@ export default class extends BaseController {
     }
   }
 
-  cancel() {
-    if (this.inputTarget.value.length === 0) {
+  cancel(e) {
+    const el = e.currentTarget
+    if (el.value.length === 0) {
       Turbo.visit(location.pathname, { action: 'replace' })
-    }
-  }
-
-  conForm(ele) {
-    if (this.hasUrlValue) {
-      this.inputPost(ele)
-    } else {
-      ele.form.requestSubmit()
     }
   }
 
