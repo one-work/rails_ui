@@ -39,9 +39,15 @@ export default class extends BaseController {
   }
 
   cancel(e) {
-    const el = e.currentTarget
-    if (el.value.length === 0) {
-      Turbo.visit(location.pathname, { action: 'replace' })
+    const ele = e.currentTarget
+    if (ele.value.length === 0) {
+      for (let el of ele.form.elements) {
+        if (el.value) {
+        } else {
+          el.disabled = true
+        }
+      }
+      ele.form.requestSubmit()
     }
   }
 
