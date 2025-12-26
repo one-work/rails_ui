@@ -6,3 +6,6 @@ application.register('antv-line-multi', AntvLineMultiController)
 
 import AntvLineXController from './antv-line-x'
 application.register('antv-line-x', AntvLineXController)
+
+import AntvPieController from './antv-pie'
+application.register('antv-pie', AntvPieController)
