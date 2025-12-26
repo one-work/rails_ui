@@ -9,12 +9,14 @@ export default class extends AntvBaseController {
     super.connect()
     this.chart.options({
       theme: 'classic',
-      data: this.dataValue
-    })
-    this.chart.type = 'interval'
-    this.chart.encode({
-      y: 'value',
-      color: 'category'
+      data: this.dataValue,
+      type: 'interval',
+      transform: [{ type: 'stackY' }],
+      coordinate: { type: 'theta' },
+      encode: {
+        y: 'value',
+        color: 'category'
+      }
     })
     this.chart.render()
   }
