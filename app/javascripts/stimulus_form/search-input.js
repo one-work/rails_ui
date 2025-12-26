@@ -1,7 +1,7 @@
 import BaseController from '../base_controller'
 
 export default class extends BaseController {
-  static targets = ['input', 'content']
+  static targets = ['input', 'content', 'submit']
   static values = {
     url: String
   }
@@ -48,6 +48,12 @@ export default class extends BaseController {
         }
       }
       ele.form.requestSubmit()
+    } else if (this.hasSubmitTarget) {
+      if (ele.value.length > 0) {
+        this.submitTarget.disabled = false
+      } else {
+        this.submitTarget.disabled = true
+      }
     }
   }
 
