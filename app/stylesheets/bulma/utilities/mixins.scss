@@ -439,9 +439,9 @@
 }
 
 @mixin overlay($offset: 0) {
+  position: absolute;
   bottom: $offset;
   left: $offset;
-  position: absolute;
   right: $offset;
   top: $offset;
 }
