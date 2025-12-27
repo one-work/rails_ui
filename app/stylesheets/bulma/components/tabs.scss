@@ -66,18 +66,13 @@ $tabs-toggle-link-active-color: cv.getVar("link-invert") !default;
   @extend %block;
   @extend %unselectable;
   @include mx.overflow-touch;
+  align-items: stretch;
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  flex-grow: 1;
-  flex-shrink: 0;
+  font-size: cv.getVar("size-normal");
+  justify-content: space-between;
   overflow: hidden;
   overflow-x: auto;
   white-space: nowrap;
-  font-size: cv.getVar("size-normal");
-  border-bottom-color: cv.getVar("tabs-border-bottom-color");
-  border-bottom-style: cv.getVar("tabs-border-bottom-style");
-  border-bottom-width: cv.getVar("tabs-border-bottom-width");
 
   a {
     align-items: center;
@@ -110,20 +105,31 @@ $tabs-toggle-link-active-color: cv.getVar("link-invert") !default;
     }
   }
 
-  &.is-left {
-    padding-right: 0.75em;
-  }
+  ul {
+    align-items: center;
+    border-bottom-color: cv.getVar("tabs-border-bottom-color");
+    border-bottom-style: cv.getVar("tabs-border-bottom-style");
+    border-bottom-width: cv.getVar("tabs-border-bottom-width");
+    display: flex;
+    flex-grow: 1;
+    flex-shrink: 0;
+    justify-content: flex-start;
 
-  &.is-center {
-    flex: none;
-    justify-content: center;
-    padding-left: 0.75em;
-    padding-right: 0.75em;
-  }
+    &.is-left {
+      padding-right: 0.75em;
+    }
 
-  &.is-right {
-    justify-content: flex-end;
-    padding-left: 0.75em;
+    &.is-center {
+      flex: none;
+      justify-content: center;
+      padding-left: 0.75em;
+      padding-right: 0.75em;
+    }
+
+    &.is-right {
+      justify-content: flex-end;
+      padding-left: 0.75em;
+    }
   }
 
   .icon {
@@ -138,11 +144,15 @@ $tabs-toggle-link-active-color: cv.getVar("link-invert") !default;
 
   // Alignment
   &.is-centered {
-    justify-content: center;
+    ul {
+      justify-content: center;
+    }
   }
 
   &.is-right {
-    justify-content: flex-end;
+    ul {
+      justify-content: flex-end;
+    }
   }
 
   // Styles
@@ -154,16 +164,22 @@ $tabs-toggle-link-active-color: cv.getVar("link-invert") !default;
 
       &:hover {
         background-color: cv.getVar("tabs-boxed-link-hover-background-color");
-        border-bottom-color: cv.getVar("tabs-boxed-link-hover-border-bottom-color");
+        border-bottom-color: cv.getVar(
+          "tabs-boxed-link-hover-border-bottom-color"
+        );
       }
     }
 
     li {
       &.is-active {
         a {
-          background-color: cv.getVar("tabs-boxed-link-active-background-color");
+          background-color: cv.getVar(
+            "tabs-boxed-link-active-background-color"
+          );
           border-color: cv.getVar("tabs-boxed-link-active-border-color");
-          border-bottom-color: cv.getVar("tabs-boxed-link-active-border-bottom-color") !important;
+          border-bottom-color: cv.getVar(
+            "tabs-boxed-link-active-border-bottom-color"
+          ) !important;
         }
       }
     }
@@ -177,8 +193,6 @@ $tabs-toggle-link-active-color: cv.getVar("link-invert") !default;
   }
 
   &.is-toggle {
-    border-bottom: none;
-
     a {
       border-color: cv.getVar("tabs-toggle-link-border-color");
       border-style: cv.getVar("tabs-toggle-link-border-style");
@@ -195,7 +209,9 @@ $tabs-toggle-link-active-color: cv.getVar("link-invert") !default;
 
     li {
       & + li {
-        margin-inline-start: calc(-1 * #{cv.getVar("tabs-toggle-link-border-width")});
+        margin-inline-start: calc(
+          -1 * #{cv.getVar("tabs-toggle-link-border-width")}
+        );
       }
 
       &:first-child a {
@@ -210,12 +226,18 @@ $tabs-toggle-link-active-color: cv.getVar("link-invert") !default;
 
       &.is-active {
         a {
-          background-color: cv.getVar("tabs-toggle-link-active-background-color");
+          background-color: cv.getVar(
+            "tabs-toggle-link-active-background-color"
+          );
           border-color: cv.getVar("tabs-toggle-link-active-border-color");
           color: cv.getVar("tabs-toggle-link-active-color");
           z-index: 1;
         }
       }
+    }
+
+    ul {
+      border-bottom: none;
     }
 
     &.is-toggle-rounded {
