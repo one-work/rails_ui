@@ -1,10 +1,8 @@
-@use "sass:list";
-
-@use "../utilities/css-variables" as cv;
-@use "../utilities/derived-variables" as dv;
-@use "../utilities/initial-variables" as iv;
-@use "../utilities/extends";
-@use "../utilities/mixins" as mx;
+@use 'sass:list';
+@use '../utilities/css-variables' as cv;
+@use '../utilities/derived-variables' as dv;
+@use '../utilities/mixins' as mx;
+@use '../utilities/extends';
 
 $title-color: cv.getVar("text-strong") !default;
 $title-family: false !default;
@@ -24,8 +22,8 @@ $subtitle-line-height: 1.25 !default;
 $subtitle-strong-color: cv.getVar("text-strong") !default;
 $subtitle-strong-weight: cv.getVar("weight-semibold") !default;
 
-.#{iv.$class-prefix}title,
-.#{iv.$class-prefix}subtitle {
+.title,
+.subtitle {
   @include cv.register-vars(
     (
       "title-color": #{$title-color},
@@ -48,8 +46,8 @@ $subtitle-strong-weight: cv.getVar("weight-semibold") !default;
   );
 }
 
-.#{iv.$class-prefix}title,
-.#{iv.$class-prefix}subtitle {
+.title,
+.subtitle {
   @extend %block;
   word-break: break-word;
 
@@ -66,12 +64,12 @@ $subtitle-strong-weight: cv.getVar("weight-semibold") !default;
     font-size: cv.getVar("title-sup-size");
   }
 
-  .#{iv.$class-prefix}tag {
+  .tag {
     vertical-align: middle;
   }
 }
 
-.#{iv.$class-prefix}title {
+.title {
   color: cv.getVar("title-color");
   font-size: cv.getVar("title-size");
   font-weight: cv.getVar("title-weight");
@@ -86,7 +84,7 @@ $subtitle-strong-weight: cv.getVar("weight-semibold") !default;
     font-weight: cv.getVar("title-strong-weight");
   }
 
-  &:not(.#{iv.$class-prefix}is-spaced):has(+ .#{iv.$class-prefix}subtitle) {
+  &:not(.is-spaced):has(+ .subtitle) {
     margin-bottom: 0;
   }
 
@@ -94,13 +92,13 @@ $subtitle-strong-weight: cv.getVar("weight-semibold") !default;
   @each $size in dv.$sizes {
     $i: list.index(dv.$sizes, $size);
 
-    &.#{iv.$class-prefix}is-#{$i} {
+    &.is-#{$i} {
       font-size: $size;
     }
   }
 }
 
-.#{iv.$class-prefix}subtitle {
+.subtitle {
   color: cv.getVar("subtitle-color");
   font-size: cv.getVar("subtitle-size");
   font-weight: cv.getVar("subtitle-weight");
@@ -115,7 +113,7 @@ $subtitle-strong-weight: cv.getVar("weight-semibold") !default;
     font-weight: cv.getVar("subtitle-strong-weight");
   }
 
-  &:not(.#{iv.$class-prefix}is-spaced):has(+ .#{iv.$class-prefix}title) {
+  &:not(.is-spaced):has(+ .title) {
     margin-bottom: 0;
   }
 
@@ -123,7 +121,7 @@ $subtitle-strong-weight: cv.getVar("weight-semibold") !default;
   @each $size in dv.$sizes {
     $i: list.index(dv.$sizes, $size);
 
-    &.#{iv.$class-prefix}is-#{$i} {
+    &.is-#{$i} {
       font-size: $size;
     }
   }

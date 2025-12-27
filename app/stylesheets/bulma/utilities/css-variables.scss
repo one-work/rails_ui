@@ -475,8 +475,8 @@
 }
 
 @mixin bulma-theme($name) {
-  [data-#{iv.$class-prefix}theme="#{$name}"],
-  .#{iv.$class-prefix}theme-#{$name} {
+  [data-theme="#{$name}"],
+  .theme-#{$name} {
     @content;
   }
 }

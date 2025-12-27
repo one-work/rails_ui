@@ -58,9 +58,9 @@ $control-focus-shadow-l: 50% !default;
   &:focus,
   &:focus-visible,
   &:focus-within,
-  &.#{iv.$class-prefix}is-focused,
+  &.is-focused,
   &:active,
-  &.#{iv.$class-prefix}is-active {
+  &.is-active {
     outline: none;
   }
 

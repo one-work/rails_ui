@@ -1,5 +1,5 @@
-@use "initial-variables" as iv;
-@use "functions" as fn;
+@use 'initial-variables' as iv;
+@use 'functions' as fn;
 
 // Scheme colors
 
@@ -103,7 +103,7 @@ $shades: fn.mergeColorMaps(
     "grey-light": iv.$grey-light,
     "grey-lighter": iv.$grey-lighter,
     "white-ter": iv.$white-ter,
-    "white-bis": iv.$white-bis,
+    "white-bis": iv.$white-bis
   ),
   $custom-shades
 ) !default;
