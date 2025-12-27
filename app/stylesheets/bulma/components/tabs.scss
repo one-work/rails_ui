@@ -164,22 +164,16 @@ $tabs-toggle-link-active-color: cv.getVar("link-invert") !default;
 
       &:hover {
         background-color: cv.getVar("tabs-boxed-link-hover-background-color");
-        border-bottom-color: cv.getVar(
-          "tabs-boxed-link-hover-border-bottom-color"
-        );
+        border-bottom-color: cv.getVar("tabs-boxed-link-hover-border-bottom-color");
       }
     }
 
     li {
       &.is-active {
         a {
-          background-color: cv.getVar(
-            "tabs-boxed-link-active-background-color"
-          );
+          background-color: cv.getVar("tabs-boxed-link-active-background-color");
           border-color: cv.getVar("tabs-boxed-link-active-border-color");
-          border-bottom-color: cv.getVar(
-            "tabs-boxed-link-active-border-bottom-color"
-          ) !important;
+          border-bottom-color: cv.getVar("tabs-boxed-link-active-border-bottom-color") !important;
         }
       }
     }
@@ -209,9 +203,7 @@ $tabs-toggle-link-active-color: cv.getVar("link-invert") !default;
 
     li {
       & + li {
-        margin-inline-start: calc(
-          -1 * #{cv.getVar("tabs-toggle-link-border-width")}
-        );
+        margin-inline-start: calc(-1 * #{cv.getVar("tabs-toggle-link-border-width")});
       }
 
       &:first-child a {
@@ -226,9 +218,7 @@ $tabs-toggle-link-active-color: cv.getVar("link-invert") !default;
 
       &.is-active {
         a {
-          background-color: cv.getVar(
-            "tabs-toggle-link-active-background-color"
-          );
+          background-color: cv.getVar("tabs-toggle-link-active-background-color");
           border-color: cv.getVar("tabs-toggle-link-active-border-color");
           color: cv.getVar("tabs-toggle-link-active-color");
           z-index: 1;
