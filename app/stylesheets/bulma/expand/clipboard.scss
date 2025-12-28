@@ -1,0 +1,12 @@
+.clipboard {
+  display: flex;
+  align-items: center;
+
+  .truncate {
+    flex-grow: 1;
+  }
+
+  .copy {
+    flex-shrink: 0;
+  }
+}
