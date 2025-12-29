@@ -4,12 +4,12 @@ turbo-frame {
   .loading {
     text-align: center;
     background-color: #ccc;
-    color: red;
+    color: darkseagreen;
     display: none;
     position: absolute;
     left: 0;
     top: 0;
-    right: 0;
+    right: 24px;
   }
 
   &[busy] {
