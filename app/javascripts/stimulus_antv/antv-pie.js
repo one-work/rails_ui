@@ -30,7 +30,15 @@ export default class extends AntvBaseController {
           position: 'outside',
           text: (data) => `${data.category}: ${data.value}`
         }
-      ]
+      ],
+      tooltip: {
+        items: [
+          (data) => ({
+            name: data.category,
+            value: data.value
+          }),
+        ]
+      }
     })
     this.chart.render()
   }
