@@ -16,7 +16,21 @@ export default class extends AntvBaseController {
       encode: {
         y: 'value',
         color: 'category'
-      }
+      },
+      legend: {
+        color: {
+          position: 'bottom',
+          layout: {
+            justifyContent: 'center'
+          }
+        }
+      },
+      labels: [
+        {
+          position: 'outside',
+          text: (data) => `${data.category}: ${data.value}`
+        }
+      ]
     })
     this.chart.render()
   }
