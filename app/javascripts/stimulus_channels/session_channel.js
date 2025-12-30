@@ -22,6 +22,10 @@ export default class extends BaseCable {
           const countDown = document.getElementById('login_count_down')
           countDown.getController('count-down').resetCounter('', data.remaining)
           countDown.classList.remove('display-none')
+        },
+
+        appear() {
+          this.perform("appear", { appearing_on: 'ddddd' })
         }
      }
     )
