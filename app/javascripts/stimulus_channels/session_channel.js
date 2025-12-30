@@ -24,8 +24,12 @@ export default class extends BaseCable {
           countDown.classList.remove('display-none')
         },
 
+        connected() {
+          this.appear()
+        },
+
         appear() {
-          this.perform("appear", { appearing_on: 'ddddd' })
+          this.perform('appear', { appearing_on: 'ddddd' })
         }
      }
     )
