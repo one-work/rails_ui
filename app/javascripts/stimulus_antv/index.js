@@ -1,3 +1,6 @@
+import AntvBarController from './antv-bar'
+application.register('antv-bar', AntvBarController)
+
 import AntvLineController from './antv-line'
 application.register('antv-line', AntvLineController)
 
