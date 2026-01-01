@@ -11,7 +11,10 @@ export default class extends Controller {
   connect() {
     this.chart = new Chart({
       container: this.element,
-      autoFit: true,
+      autoFit: true
+    })
+    this.chart.options({
+      type: 'interval',
       ...this.optionsValue
     })
 
