@@ -23,7 +23,6 @@ export default class extends AntvBaseController {
         },
         {
           type: 'point',
-          style: { fill: "white" },
           encode: { shape: 'point' },
           tooltip: false
         }
