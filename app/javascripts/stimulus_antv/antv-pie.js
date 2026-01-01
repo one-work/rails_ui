@@ -1,15 +1,11 @@
 import AntvBaseController from './antv-base'
 
 export default class extends AntvBaseController {
-  static values = {
-    data: { type: Array, default: [] }
-  }
 
   connect() {
     super.connect()
     this.chart.options({
       theme: 'classic',
-      data: this.dataValue,
       type: 'interval',
       transform: [{ type: 'stackY' }],
       coordinate: { type: 'theta' },

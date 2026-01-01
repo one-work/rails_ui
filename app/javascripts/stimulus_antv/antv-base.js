@@ -4,7 +4,8 @@ import { Chart } from '@antv/g2'
 export default class extends Controller {
   static values = {
     url: String,
-    options: { type: Object, default: {} }
+    options: { type: Object, default: {} },
+    data: { type: Array, default: [] }
   }
 
   connect() {
@@ -13,6 +14,8 @@ export default class extends Controller {
       autoFit: true,
       ...this.optionsValue
     })
+
+    // 获取数据
     if (this.hasUrlValue) {
       const url = new URL(this.urlValue, location.origin)
       url.pathname = `${url.pathname}.json`
@@ -23,6 +26,10 @@ export default class extends Controller {
           value: url,
           format: 'json'
         }
+      })
+    } else if (this.hasDataValue) {
+      this.chart.options({
+        data: this.dataValue
       })
     }
   }
