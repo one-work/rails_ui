@@ -98,6 +98,9 @@ application.register('sticky-bottom', StickyBottomController)
 import SwipeController from './swipe'
 application.register('swipe', SwipeController)
 
+import TrActionsController from './tr-actions'
+application.register('tr-actions', TrActionsController)
+
 // 切换元素的显示状态
 import SwitchController from './switch'
 application.register('switch', SwitchController)
