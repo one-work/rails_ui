@@ -25,7 +25,6 @@ export default class extends Controller {
         button.ariaLabel = item.title
 
         this.#setIcon(fragment, item.icon)
-
         div.appendChild(fragment)
       } else {
         const fragment = templateLink.content.cloneNode(true)
@@ -36,6 +35,7 @@ export default class extends Controller {
         span.innerText = item.title
 
         this.#setIcon(fragment, item.icon)
+        div.appendChild(a)
       }
     })
 
