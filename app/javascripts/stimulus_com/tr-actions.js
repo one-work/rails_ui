@@ -24,6 +24,10 @@ export default class extends Controller {
           const form = fragment.querySelector('form')
           form.action = item.action
 
+          if (item.method) {
+            form.method = item.method
+          }
+
           const button = fragment.querySelector('button')
           button.ariaLabel = item.title
 
