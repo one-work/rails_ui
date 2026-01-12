@@ -9,6 +9,9 @@ export default class extends Controller {
   connect() {
     const template = document.getElementById(this.templateValue)
     const td = document.createElement('td')
+    const div = document.createElement('div')
+    div.dataset.showTarget = 'item'
+    div.classList.add('visibility-hidden')
 
     this.dataValue.forEach(item => {
       const fragment = template.content.cloneNode(true)
@@ -21,9 +24,10 @@ export default class extends Controller {
       const use = fragment.querySelector('use')
       use.setAttribute('href', `${use.href.baseVal}#${item.icon}`)
 
-      td.appendChild(fragment)
+      div.appendChild(fragment)
     })
 
+    td.appendChild(div)
     this.element.appendChild(td)
   }
 
