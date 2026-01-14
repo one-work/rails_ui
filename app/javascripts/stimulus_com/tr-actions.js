@@ -42,9 +42,6 @@ export default class extends Controller {
           const a = fragment.querySelector('a')
           a.href = item.href
 
-          const span = fragment.querySelector('span')
-          span.innerText = item.title
-
           this.#setIcon(fragment, item)
           div.appendChild(a)
         }
@@ -56,6 +53,11 @@ export default class extends Controller {
   }
 
   #setIcon(fragment, item) {
+    if (item.position !== 0) {
+      const span = fragment.querySelector('span')
+      span.innerText = item.title
+    }
+
     const use = fragment.querySelector('use')
     if (item.icon) {
       use.setAttribute('href', `${use.href.baseVal}#${item.icon}`)
