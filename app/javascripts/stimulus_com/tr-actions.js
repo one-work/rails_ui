@@ -28,6 +28,10 @@ export default class extends Controller {
             form.method = item.method
           }
 
+          if (item.confirm) {
+            form.dataset.turboConfirm = item.confirm
+          }
+
           const button = fragment.querySelector('button')
           button.ariaLabel = item.title
 
@@ -59,6 +63,15 @@ export default class extends Controller {
     } else {
       use.parentNode.remove()
     }
+  }
+
+  input(value = 'delete') {
+    const input = document.createElement('input')
+    input.type = 'hidden'
+    input.name = '_method'
+    input.value = value
+
+    return input
   }
 
 }
