@@ -1,3 +1,6 @@
+import AdminActionsController from './admin-actions'
+application.register('admin-actions', AdminActionsController)
+
 import AlertController from './alert'
 application.register('alert', AlertController)
 
