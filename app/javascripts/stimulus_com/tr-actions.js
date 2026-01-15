@@ -32,8 +32,10 @@ export default class extends Controller {
             form.dataset.turboConfirm = item.confirm
           }
 
-          const button = fragment.querySelector('button')
-          button.ariaLabel = item.title
+          if (item.position === 0) {
+            const button = fragment.querySelector('button')
+            button.ariaLabel = item.title
+          }
 
           this.#setIcon(fragment, item)
           div.appendChild(fragment)
