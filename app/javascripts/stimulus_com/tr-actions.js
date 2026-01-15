@@ -50,6 +50,7 @@ export default class extends Controller {
     })
 
     this.element.appendChild(td)
+    this.element.removeAttribute('data-tr-actions-data-value')
   }
 
   #setIcon(fragment, item) {
