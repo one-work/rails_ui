@@ -32,9 +32,13 @@ export default class extends Controller {
             form.dataset.turboConfirm = item.confirm
           }
 
+          const span = fragment.querySelector('span')
           if (item.position === 0) {
             const button = fragment.querySelector('button')
             button.ariaLabel = item.title
+            span.remove()
+          } else {
+            span.innerText = item.title
           }
 
           this.#setIcon(fragment, item)
@@ -43,6 +47,9 @@ export default class extends Controller {
           const fragment = templateLink.content.cloneNode(true)
           const a = fragment.querySelector('a')
           a.href = item.href
+
+          const span = fragment.querySelector('span')
+          span.innerText = item.title
 
           this.#setIcon(fragment, item)
           div.appendChild(a)
@@ -56,11 +63,6 @@ export default class extends Controller {
   }
 
   #setIcon(fragment, item) {
-    if (item.position !== 0) {
-      const span = fragment.querySelector('span')
-      span.innerText = item.title
-    }
-
     const use = fragment.querySelector('use')
     if (item.icon) {
       use.setAttribute('href', `${use.href.baseVal}#${item.icon}`)
