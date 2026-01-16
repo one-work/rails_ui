@@ -1,0 +1,27 @@
+.input {
+  &.as-number {
+    text-align: center;
+    height: 1.5rem;
+    width: 3em;
+    padding-left: 0;
+    padding-right: 0;
+
+    &::-webkit-inner-spin-button {
+      display: none;
+    }
+  }
+}
+
+.form-horizontal {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.75rem;
+
+  .is-horizontal {
+    display: contents;
+
+    .field-label {
+      white-space: nowrap;
+    }
+  }
+}
