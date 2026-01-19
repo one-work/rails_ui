@@ -2,7 +2,6 @@
 
 .clipped {
   overflow: hidden !important;
-  scrollbar-gutter: stable;
   background-color: hsla(var(--bulma-scheme-h), var(--bulma-scheme-s), var(--bulma-scheme-invert-l), 0.86);
 
   body {
