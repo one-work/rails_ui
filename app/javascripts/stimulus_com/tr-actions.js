@@ -32,10 +32,22 @@ export default class extends Controller {
             form.dataset.turboConfirm = item.confirm
           }
 
+          if (item.params) {
+            Object.entries(item.params).forEach(([k, v]) => {
+              if (v instanceof Object) {
+                Object.entries(v).forEach(([sk, sv]) => {
+                  this.#input(form, `${k}[${sk}]`, sv)
+                })
+              } else {
+                this.#input(form, k, v)
+              }
+            })
+          }
+
           const span = fragment.querySelector('span')
-          if (item.position === 0) {
+          if (item.label) {
             const button = fragment.querySelector('button')
-            button.ariaLabel = item.title
+            button.ariaLabel = item.label
             span.remove()
           } else {
             span.innerText = item.title
@@ -72,13 +84,13 @@ export default class extends Controller {
     }
   }
 
-  input(value = 'delete') {
+  #input(form, name, value) {
     const input = document.createElement('input')
     input.type = 'hidden'
-    input.name = '_method'
+    input.name = name
     input.value = value
 
-    return input
+    form.appendChild(input)
   }
 
 }
