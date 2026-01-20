@@ -60,6 +60,10 @@ export default class extends Controller {
           const a = fragment.querySelector('a')
           a.href = item.href
 
+          if (item.target) {
+            a.target = item.target
+          }
+
           const span = fragment.querySelector('span')
           span.innerText = item.title
 
