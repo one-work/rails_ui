@@ -8,11 +8,22 @@ export default class extends BaseController {
 
   connect() {
     if (this.hasInputTarget) {
-      this.initInput(this.inputTarget)
+      this.#initInput(this.inputTarget)
     }
   }
 
-  initInput(ele) {
+  submitTargetConnected(submit) {
+    submit.addEventListener('click', () => {
+      for (let el of submit.form.elements) {
+        if (el.value) {
+        } else {
+          el.disabled = true
+        }
+      }
+    })
+  }
+
+  #initInput(ele) {
     ele.addEventListener('input', this.submit)
     ele.addEventListener('compositionstart', event => {
       event.target.removeEventListener('input', this.submit)
