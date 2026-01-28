@@ -1,0 +1,10 @@
+.transition-background {
+  background-position: center;
+  background-size: 100% 100%;
+  transition-property: background-size;
+  transition-duration: 0.3s;
+}
+
+.transition-background:hover {
+  background-size: 120% 120%;
+}
