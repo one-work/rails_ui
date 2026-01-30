@@ -8,8 +8,7 @@
     --bulma-menu-item-selected-s: 90%;
 
     flex-grow: 1;
-    overflow-y: scroll;
-    scrollbar-width: none;
+
 
     .menu-item:not(.is-active),
     .menu-list a:not(.is-active) {
@@ -57,6 +56,8 @@
   &.as-side,
   &.as-wrap {
     background-color: transparent;
+    scrollbar-width: none;
+    overflow-y: scroll;
 
     .menu-item {
       border-radius: 0;
