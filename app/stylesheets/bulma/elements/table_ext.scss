@@ -19,6 +19,8 @@ td:has(table) {
 }
 
 .table {
+  --bulma-link-text: var(--bulma-dark);
+
   thead th {
     text-align: left;
     font-size: 0.9em;
