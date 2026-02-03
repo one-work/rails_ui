@@ -1,14 +1,19 @@
 import { Controller } from '@hotwired/stimulus'
 
 export default class extends Controller {
-  static targets = ['price']
+  static targets = ['price', 'form']
   static values = {
     seat: Object
   }
 
   choose(e) {
     const el = e.currentTarget
-    this.priceTarget.innerText = el.parentNode.dataset.seatNo
+    const els = this.checked.map(i => i.parentNode.dataset.seatNo).join(',')
+    this.priceTarget.innerText = els
+  }
+
+  get checked() {
+    return Array.from(this.formTarget.elements).filter(el => el.checked)
   }
 
 }
