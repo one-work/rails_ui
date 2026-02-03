@@ -82,6 +82,9 @@ application.register('scroll', ScrollController)
 import ScrollNextController from './scroll-next'
 application.register('scroll-next', ScrollNextController)
 
+import SeatsController from './seats'
+application.register('seats', SeatsController)
+
 import ShowController from './show'
 application.register('show', ShowController)
 
