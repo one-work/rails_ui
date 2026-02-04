@@ -16,6 +16,13 @@ export default class extends BaseController {
     }
   }
 
+  checkedSubmit(e) {
+    const el = e.currentTarget
+    if (el.checked) {
+      el.form.requestSubmit()
+    }
+  }
+
   submit(el) {
     el.currentTarget.form.requestSubmit()
   }
