@@ -9,7 +9,9 @@ export default class extends Controller {
   choose(e) {
     const el = e.currentTarget
     const els = this.checked.map(i => i.parentNode.dataset.seatNo).join(',')
-    this.priceTarget.innerText = els
+    if (this.hasPriceTarget) {
+      this.priceTarget.innerText = els
+    }
   }
 
   get checked() {
