@@ -41,6 +41,10 @@ $digits: (
     background-color: $background !important;
   }
 
+  .outline-#{$name} {
+    outline: solid 1px $color;
+  }
+
   // Invert
   .text-#{$name}-invert {
     color: hsl(#{cv.getVar($name, "", "-h")}, #{cv.getVar($name, "", "-s")}, #{cv.getVar($name, "", "-invert-l")}) !important;
