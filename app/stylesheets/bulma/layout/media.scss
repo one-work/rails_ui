@@ -26,6 +26,9 @@ $media-level-2-spacing: 0.5rem !default;
       "media-level-2-spacing": #{$media-level-2-spacing}
     )
   );
+
+  --bulma-link-text: var(--bulma-dark);
+
   align-items: flex-start;
   display: flex;
   text-align: inherit;
