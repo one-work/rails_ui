@@ -1,6 +1,6 @@
-import { Controller } from '@hotwired/stimulus'
+import BaseController from '../base_controller'
 
-export default class extends Controller {
+export default class extends BaseController {
 
   connect() {
     document.addEventListener('visibilitychange', () => {
@@ -8,6 +8,7 @@ export default class extends Controller {
         document.addEventListener('visibilitychange', () => {
           if (document.visibilityState === 'visible') {
             alert('你回来了')
+            this.get('/appear')
           }
         }, { once: true })
       }
