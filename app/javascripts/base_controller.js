@@ -16,7 +16,7 @@ export default class extends Controller {
     this.request(url, 'GET')
   }
 
-  post(url, body, headers) {
+  post(url, body = {}, headers = {}) {
     this.request(
       url,
       'POST',
