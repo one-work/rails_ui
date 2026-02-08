@@ -10,6 +10,9 @@ application.register('animate-scroll', AnimateScrollController)
 import AnimateTyperController from './animate-typer'
 application.register('animate-typer', AnimateTyperController)
 
+import AppearController from './appear'
+application.register('appear', AppearController)
+
 import AudioPlayerController from './audio-player'
 application.register('audio-player', AudioPlayerController)
 
