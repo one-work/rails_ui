@@ -14,6 +14,10 @@ export default class extends Controller {
     }
   }
 
+  uncheck(e) {
+
+  }
+
   get checked() {
     return Array.from(this.formTarget.elements).filter(el => el.checked)
   }
