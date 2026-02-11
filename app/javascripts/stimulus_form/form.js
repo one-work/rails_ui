@@ -31,7 +31,8 @@ const I18N = {
 export default class extends BaseController {
   static targets = ['ids', 'submit']
   static values = {
-    css: { type: String, default: 'is-danger' }
+    css: { type: String, default: 'is-danger' },
+    visible: Number
   }
 
   connect() {
@@ -48,6 +49,13 @@ export default class extends BaseController {
           })
         }
       })
+    }
+    if (this.hasVisibleValue && this.element.tagName === 'FORM') {
+      if (this.element.elements.length > this.visibleValue) {
+        this.element.elements.commit.disabled = false
+      } else {
+        this.element.elements.commit.disabled = true
+      }
     }
   }
 

@@ -21,6 +21,11 @@ export default class extends Controller {
       el.parentNode.remove()
       checkBox.checked = false
     }
+
+    const submit = document.getElementById('order_form_submit')
+    if (submit && submit.form.elements.length <= 2) {
+      submit.disabled = true
+    }
   }
 
   get checked() {
