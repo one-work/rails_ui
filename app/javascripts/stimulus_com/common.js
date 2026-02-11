@@ -18,6 +18,10 @@ export default class extends BaseController {
     this.post(this.urlValue, this.bodyValue)
   }
 
+  removeEle() {
+    this.element.remove()
+  }
+
   streamFormPost() {
     const dom = document.getElementById(this.bodyValue)
     if (dom) {
