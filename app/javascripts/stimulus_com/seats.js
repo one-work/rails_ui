@@ -15,7 +15,12 @@ export default class extends Controller {
   }
 
   uncheck(e) {
-
+    const el = e.currentTarget
+    const checkBox = document.getElementById(el.dataset.id)
+    if (checkBox) {
+      el.parentNode.remove()
+      checkBox.checked = false
+    }
   }
 
   get checked() {
