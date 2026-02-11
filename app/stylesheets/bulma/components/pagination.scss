@@ -30,12 +30,12 @@ $pagination-item-outer-shadow-s: 0%;
 $pagination-item-outer-shadow-l: 20%;
 $pagination-item-outer-shadow-a: 0.05;
 
-$pagination-selected-item-h: cv.getVar("link-h");
-$pagination-selected-item-s: cv.getVar("link-s");
-$pagination-selected-item-l: cv.getVar("link-l");
-$pagination-selected-item-background-l: cv.getVar("link-l");
-$pagination-selected-item-border-l: cv.getVar("link-l");
-$pagination-selected-item-color-l: cv.getVar("link-invert-l");
+$pagination-selected-item-h: cv.getVar("primay-h");
+$pagination-selected-item-s: cv.getVar("primay-s");
+$pagination-selected-item-l: cv.getVar("primay-l");
+$pagination-selected-item-background-l: cv.getVar("primay-l");
+$pagination-selected-item-border-l: cv.getVar("primay-l");
+$pagination-selected-item-color-l: cv.getVar("primay-invert-l");
 
 $pagination-nav-padding-left: 0.75em !default;
 $pagination-nav-padding-right: 0.75em !default;
@@ -44,7 +44,7 @@ $pagination-disabled-color: cv.getVar("text-weak") !default;
 $pagination-disabled-background-color: cv.getVar("border") !default;
 $pagination-disabled-border-color: cv.getVar("border") !default;
 
-$pagination-current-color: cv.getVar("link-invert") !default;
+$pagination-current-color: cv.getVar("primay-invert") !default;
 $pagination-current-background-color: cv.getVar("link") !default;
 $pagination-current-border-color: cv.getVar("link") !default;
 
