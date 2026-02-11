@@ -28,7 +28,7 @@ $grid-container-name: bulma-fixed-grid;
     @include cv.register-vars(
       (
         "grid-gap-count": calc(#{cv.getVar("grid-column-count")} - 1),
-        "grid-column-count": 2,
+        "grid-column-count": 2
       )
     );
 
