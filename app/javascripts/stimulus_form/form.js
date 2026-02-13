@@ -144,6 +144,21 @@ export default class extends BaseController {
     this.element.reset()
   }
 
+  // 目前只用在 seats 选座，择机重构优化
+  uncheck(e) {
+    const el = e.currentTarget
+    const checkBox = document.getElementById(el.dataset.id)
+    if (checkBox) {
+      el.parentNode.remove()
+      checkBox.checked = false
+    }
+
+    const submit = this.element.elements.commit
+    if (submit && submit.form.elements.length <= 2) {
+      submit.disabled = true
+    }
+  }
+
   submit(e) {
     const el = e.currentTarget
     if (el.value) {
