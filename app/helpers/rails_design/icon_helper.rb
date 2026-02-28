@@ -8,7 +8,7 @@ module RailsDesign::IconHelper
     end
 
     content_tag :svg, options do
-      content_tag :use, nil, 'href' => "#{asset_path "icons_#{kind}.svg", host: request.host_with_port}##{name}"
+      content_tag :use, nil, 'href' => "#{asset_path("icons_#{kind}.svg", protocol: :request)}##{name}"
     end
   end
 
