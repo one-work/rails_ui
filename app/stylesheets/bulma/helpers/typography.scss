@@ -7,7 +7,7 @@
   @each $size in dv.$sizes {
     $i: list.index(dv.$sizes, $size);
 
-    .size-#{$i}#{if($target == "", "", "-" + $target)} {
+    .size-#{$i}#{if(sass($target == ""): ""; else: "-" + $target)} {
       font-size: $size !important;
     }
   }
