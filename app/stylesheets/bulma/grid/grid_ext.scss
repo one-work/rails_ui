@@ -2,3 +2,9 @@
 .grid-auto-fit {
   grid-template-columns: repeat(auto-fit, 1em)
 }
+
+.grid {
+  &.is-centered {
+    justify-items: center;
+  }
+}
