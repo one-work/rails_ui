@@ -7,7 +7,7 @@ module RailsUi
       turbo_stream_action_tag :append_body, template: template
     end
 
-    def visit(url: '/')
+    def visit(url: request.url)
       turbo_stream_action_tag :visit, url: url
     end
 
