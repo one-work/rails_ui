@@ -17,7 +17,10 @@ export default class extends BaseController {
       for (let el of submit.form.elements) {
         if (el.value) {
         } else {
-          el.disabled = true
+          if (el.type === 'submit') {
+          } else {
+            el.disabled = true
+          }
         }
       }
     })
