@@ -13,17 +13,7 @@ export default class extends BaseController {
   }
 
   submitTargetConnected(submit) {
-    submit.addEventListener('click', () => {
-      for (let el of submit.form.elements) {
-        if (el.value) {
-        } else {
-          if (el.type === 'submit') {
-          } else {
-            el.disabled = true
-          }
-        }
-      }
-    })
+    submit.addEventListener('click', this.checkBlank)
   }
 
   #initInput(ele) {
@@ -50,6 +40,25 @@ export default class extends BaseController {
     } else {
       this.form.requestSubmit()
     }
+  }
+
+  checkBlank(e) {
+    const submit = e.currentTarget
+    for (let el of submit.form.elements) {
+      if (el.value) {
+      } else {
+        if (el.type === 'submit') {
+        } else {
+          el.disabled = true
+        }
+      }
+    }
+  }
+
+  enterSubmit(e) {
+    const ele = e.currentTarget
+    this.checkBlank(e)
+    ele.form.requestSubmit()
   }
 
   cancel(e) {
