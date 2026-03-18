@@ -62,6 +62,13 @@ $dimensions: 16 24 32 48 64 96 128 !default;
     }
   }
 
+  // Widths
+  @each $dimension in $dimensions {
+    &.is-#{$dimension}-w {
+      width: $dimension * 1px;
+    }
+  }
+
   // Heights
   @each $dimension in $dimensions {
     &.is-#{$dimension}-h {
