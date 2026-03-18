@@ -6,6 +6,18 @@ export default class extends BaseController {
     params: Object,
     form: String
   }
+  static targets = ['input']
+
+  input() {
+    wx.ready(() => {
+      wx.scanQRCode({
+        needResult: 1,
+        success: (res) => {
+          this.inputTarget.value = res.resultStr
+        }
+      })
+    })
+  }
 
   report(event) {
     const ele = event.currentTarget
