@@ -1,5 +1,5 @@
-const weixin_fetch = function({ url = location.href, success, ...args } = {}) {
-  fetch('/wechat/js', {
+const weixin_fetch = function(configUrl, { url = location.href, success, ...args } = {}) {
+  fetch(configUrl, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -53,7 +53,7 @@ if (weixin_script && wxwork_script) {
     wxwork_fetch()
   })
 } else if (weixin_script) {
-  weixin_script.addEventListener('load', event => {
-    weixin_fetch()
+  weixin_script.addEventListener('load', () => {
+    weixin_fetch(weixin_script.dataset.url)
   })
 }
