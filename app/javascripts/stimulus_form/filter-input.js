@@ -40,6 +40,7 @@ export default class extends BaseController {
 
     if (el.type === 'datetime-local' && el.name.endsWith('-lte') && lteEl.value) {
       // 激活确认按钮
+      el.form.requestSubmit()
     }
   }
 
