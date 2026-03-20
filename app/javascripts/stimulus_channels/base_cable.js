@@ -1,8 +1,8 @@
 import { Controller } from '@hotwired/stimulus'
-import { createConsumer, getConfig } from '@rails/actioncable/src'
+import { createConsumer } from '@rails/actioncable/src'
 
 export default class BaseCable extends Controller {
-  static consumer = createConsumer(getConfig('url'))
+  static consumer = createConsumer()
 
 }
 
