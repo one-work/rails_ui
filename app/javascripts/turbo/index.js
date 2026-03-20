@@ -4,7 +4,7 @@ import './events'
 Turbo.StreamActions.visit = function() {
   const url = this.getAttribute('url')
 
-  Turbo.visit(url)
+  Turbo.visit(url || this.baseURI)
 }
 
 Turbo.StreamActions.append_body = function() {
