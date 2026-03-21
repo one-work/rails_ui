@@ -1,4 +1,4 @@
-import SearchInputController from './search_input'
+import SearchInputController from './search-input'
 
 export default class extends SearchInputController {
 
@@ -21,7 +21,6 @@ export default class extends SearchInputController {
     console.debug('ITEMS' ,items)
 
     for (const input of el.form.elements) {
-
       if (items.includes(input.name) && input.type === 'hidden') {
         console.debug('to delete----', input.name)
         input.disabled = true
@@ -29,6 +28,7 @@ export default class extends SearchInputController {
         console.debug('dddd------------', input.name, input.type)
       }
     }
+    this.checkBlank(e)
     el.form.requestSubmit()
   }
 
