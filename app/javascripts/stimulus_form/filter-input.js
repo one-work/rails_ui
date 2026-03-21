@@ -1,6 +1,6 @@
-import BaseController from '../base_controller'
+import SearchInputController from './search_input'
 
-export default class extends BaseController {
+export default class extends SearchInputController {
 
   submit(e) {
     const el = e.currentTarget
@@ -40,6 +40,7 @@ export default class extends BaseController {
 
     if (el.type === 'datetime-local' && el.name.endsWith('-lte') && lteEl.value) {
       // 激活确认按钮
+      this.checkBlank(e)
       el.form.requestSubmit()
     }
   }
