@@ -4,7 +4,8 @@ export default class extends BaseController {
   static values = {
     debug: Boolean,
     params: Object,
-    form: String
+    form: String,
+    regex: String
   }
   static targets = ['input']
 
@@ -13,7 +14,12 @@ export default class extends BaseController {
       wx.scanQRCode({
         needResult: 1,
         success: (res) => {
-          this.inputTarget.value = res.resultStr
+          if (this.hasRegexValue) {
+            const regex = new RegExp(this.regexValue, 'gm')
+            this.inputTarget.value = res.resultStr.match(regex)
+          } else {
+            this.inputTarget.value = res.resultStr
+          }
         }
       })
     })
