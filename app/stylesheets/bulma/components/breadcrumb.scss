@@ -14,14 +14,16 @@ $breadcrumb-item-separator-color: cv.getVar("border") !default;
 
 .breadcrumb {
   @include cv.register-vars(
-    (
-      "breadcrumb-item-color": #{$breadcrumb-item-color},
-      "breadcrumb-item-hover-color": #{$breadcrumb-item-hover-color},
-      "breadcrumb-item-active-color": #{$breadcrumb-item-active-color},
-      "breadcrumb-item-padding-vertical": #{$breadcrumb-item-padding-vertical},
-      "breadcrumb-item-padding-horizontal": #{$breadcrumb-item-padding-horizontal},
-      "breadcrumb-item-separator-color": #{$breadcrumb-item-separator-color}
-    )
+          (
+            /* "breadcrumb-item-color": #{$breadcrumb-item-color},*/
+            "breadcrumb-item-color":hsl(200deg, 100%, 63%),
+            /*"breadcrumb-item-hover-color": #{$breadcrumb-item-hover-color},*/
+            "breadcrumb-item-hover-color": hsl(210deg, 91%, 51%),
+            "breadcrumb-item-active-color": #{$breadcrumb-item-active-color},
+            "breadcrumb-item-padding-vertical": #{$breadcrumb-item-padding-vertical},
+            "breadcrumb-item-padding-horizontal": #{$breadcrumb-item-padding-horizontal},
+            "breadcrumb-item-separator-color": #{$breadcrumb-item-separator-color}
+          )
   );
 }
 

@@ -3,6 +3,7 @@
 
 %arrow {
   @include mixins.arrow;
+  --bulma-arrow-color: hsl(210deg,100%,63%);
 }
 
 %block {
