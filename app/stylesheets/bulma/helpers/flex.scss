@@ -7,24 +7,24 @@
 }
 
 .has-block-left {
-  display: flex;
+  display: flex !important;
   align-items: center;
 }
 
 .has-block-centered {
-  display: flex;
+  display: flex !important;
   justify-content: center;
   align-items: center;
 }
 
 .has-block-right {
-  display: flex;
+  display: flex !important;
   justify-content: end;
   align-items: center;
 }
 
 .has-block-space-around {
-  display: flex;
+  display: flex !important;
   justify-content: space-around;
   align-items: center;
 }
@@ -36,7 +36,7 @@
 }
 
 .has-column-centered {
-  display: flex;
+  display: flex !important;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -50,24 +50,24 @@
 }
 
 .has-column-normal {
-  display: flex;
+  display: flex !important;
   flex-direction: column;
 }
 
 .has-column-left {
-  display: flex;
+  display: flex !important;
   flex-direction: column;
   justify-content: center;
 }
 
 .has-column-right {
-  display: flex;
+  display: flex !important;
   flex-direction: column;
   align-items: end;
 }
 
 .has-page-centered {
-  display: flex;
+  display: flex !important;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -75,54 +75,54 @@
 }
 
 .has-page {
-  display: flex;
+  display: flex !important;
   flex-direction: column;
   height: 100vh;
 }
 
 .has-column-space-between {
-  display: flex;
+  display: flex !important;
   flex-direction: column;
   justify-content: space-between;
 }
 
 .has-column-space-around {
-  display: flex;
+  display: flex !important;
   flex-direction: column;
   justify-content: space-around;
 }
 
 .is-several {
-  display: inline-flex;
+  display: inline-flex !important;
   align-items: center;
   width: available;
 }
 
 .has-inline-centered {
-  display: inline-flex;
+  display: inline-flex !important;
   justify-content: center;
   align-items: center;
 }
 
 .has-inline-space-between {
-  display: inline-flex;
+  display: inline-flex !important;
   width: 100%;
   justify-content: space-between;
 }
 
 .has-inline-space-around {
   width: 100%;
-  display: inline-flex;
+  display: inline-flex !important;
   justify-content: space-around;
 }
 
 .has-v-centered {
-  display: flex;
+  display: flex !important;
   align-items: center;
 }
 
 .has-v-end {
-  display: flex;
+  display: flex !important;
   justify-content: center;
   align-items: flex-end;
 }
