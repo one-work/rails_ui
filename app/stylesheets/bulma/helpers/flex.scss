@@ -80,6 +80,12 @@
   height: 100vh;
 }
 
+.has-page-grow {
+  display: flex !important;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
 .has-column-space-between {
   display: flex !important;
   flex-direction: column;
