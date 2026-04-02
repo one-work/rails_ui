@@ -1,5 +1,5 @@
 .is-drawable:hover {
-  cursor: grab;
+  cursor: grab !important;
 }
 
 .cursor-none {
@@ -7,5 +7,5 @@
 }
 
 .cursor-text {
-  cursor: text;
+  cursor: text !important;
 }
