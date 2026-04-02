@@ -96,6 +96,7 @@ $tabs-toggle-link-active-color: cv.getVar("link-invert") !default;
 
   li {
     display: block;
+    line-height: 2;
 
     &.is-active {
       a {
