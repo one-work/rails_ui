@@ -7,10 +7,6 @@ const I18N = {
 // data-controller="modal"
 export default class extends BaseController {
 
-  connect() {
-    document.documentElement.classList.add('clipped')
-  }
-
   close() {
     if (this.closeCheck()) {
       this.element.remove()
@@ -33,6 +29,7 @@ export default class extends BaseController {
   }
 
   show() {
+    document.documentElement.classList.add('clipped')
     this.element.classList.add('is-active')
   }
 
