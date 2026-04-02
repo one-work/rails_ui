@@ -172,6 +172,13 @@ td:has(table) {
     }
   }
 
+  &.two-rows {
+    td:first-child {
+      width: 1px;
+      white-space: nowrap;
+    }
+  }
+
   tr.left-border {
     td:first-child {
       border-left: solid 1px var(--bulma-text-light);
