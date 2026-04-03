@@ -71,10 +71,10 @@ a.box {
 }
 
 .box-header {
-  padding: 0.75rem 1rem;
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
 }
 
 a.box-header {
@@ -82,7 +82,7 @@ a.box-header {
 }
 
 .box-footer {
-  padding: 0.75rem 1rem;
   display: flex;
   justify-content: space-between;
+  padding: 0.75rem 1rem;
 }
