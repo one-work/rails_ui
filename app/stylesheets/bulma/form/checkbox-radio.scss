@@ -20,6 +20,10 @@
 
 .checkbox {
   @extend %checkbox-radio;
+
+  .label {
+    display: inline;
+  }
 }
 
 .radio {
