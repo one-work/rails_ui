@@ -122,10 +122,10 @@ $panel-colors: dv.$colors !default;
 }
 
 .panel-tabs {
-  align-items: flex-end;
   display: flex;
-  font-size: cv.getVar("panel-tabs-font-size");
   justify-content: center;
+  align-items: flex-end;
+  font-size: cv.getVar("panel-tabs-font-size");
 
   a {
     border-bottom-color: cv.getVar("panel-tab-border-bottom-color");
@@ -153,10 +153,10 @@ $panel-colors: dv.$colors !default;
 }
 
 .panel-block {
-  align-items: center;
-  color: cv.getVar("panel-block-color");
   display: flex;
   justify-content: flex-start;
+  align-items: center;
+  color: cv.getVar("panel-block-color");
   padding: 0.75em 1em;
 
   input[type="checkbox"] {
