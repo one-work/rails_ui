@@ -64,3 +64,18 @@ $icon-text-spacing: 0.25em !default;
 div.icon-text {
   display: flex;
 }
+
+svg.icon {
+  fill: currentColor;
+  vertical-align: bottom;
+
+  &.size-4 {
+    height: 1.5rem;
+    width: 1.5rem;
+  }
+
+  & + span,
+  & + strong {
+    vertical-align: bottom;
+  }
+}
