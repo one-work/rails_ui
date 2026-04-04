@@ -1,14 +1,37 @@
-svg.icon {
-  fill: currentColor;
+.left-badge,
+.right-badge {
+  position: relative;
+
+  .weui-badge {
+    position: absolute;
+    top: -0.4em;
+  }
+}
+
+.left-badge {
+  .weui-badge {
+    width: max-content;
+    left: 1.5em;
+  }
+}
+
+.right-badge {
+  padding-left: 5px;
+  transform: translateX(-5px);
+
+  .weui-badge {
+    right: -5px;
+  }
+}
+
+.weui-badge {
+  display: inline-block;
+  padding: 0.15em 0.4em;
+  border-radius: 18px;
+  background-color: var(--bulma-danger);
+  color: #fff;
+  line-height: 1.2;
+  text-align: center;
+  font-size: 12px;
   vertical-align: middle;
-
-  &.size-4 {
-    height: 1.5rem;
-    width: 1.5rem;
-  }
-
-  & + span,
-  & + strong {
-    vertical-align: middle;
-  }
 }
