@@ -16,8 +16,13 @@
 }
 
 .right-badge {
+  display: flex;
   padding-left: 5px;
   transform: translateX(-5px);
+
+  .icon {
+    height: 28.5px;
+  }
 
   .weui-badge {
     right: -5px;
