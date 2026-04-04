@@ -20,10 +20,10 @@ $icon-text-spacing: 0.25em !default;
 }
 
 .icon {
-  align-items: center;
   display: inline-flex;
-  flex-shrink: 0;
   justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
   height: cv.getVar("icon-dimensions");
   transition-duration: cv.getVar("duration");
   transition-property: color;
@@ -47,9 +47,9 @@ $icon-text-spacing: 0.25em !default;
 }
 
 .icon-text {
+  display: inline-flex;
   align-items: flex-start;
   color: inherit;
-  display: inline-flex;
   flex-wrap: wrap;
   gap: cv.getVar("icon-text-spacing");
   line-height: cv.getVar("icon-dimensions");
