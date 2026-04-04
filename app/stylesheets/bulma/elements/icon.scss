@@ -24,9 +24,9 @@ $icon-text-spacing: 0.25em !default;
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
-  height: cv.getVar("icon-dimensions");
   transition-duration: cv.getVar("duration");
   transition-property: color;
+  height: cv.getVar("icon-dimensions");
   width: cv.getVar("icon-dimensions");
 
   // Sizes
