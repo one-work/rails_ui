@@ -17,3 +17,8 @@ $footer-padding: 3rem 1.5rem 6rem !default;
   padding: cv.getVar("footer-padding");
   color: cv.getVar("footer-color");
 }
+
+.column > .footer {
+  margin-right: -0.75rem;
+  margin-bottom: -0.75rem;
+}

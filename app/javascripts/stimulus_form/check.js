@@ -5,12 +5,13 @@ const I18N = {
 }
 
 export default class extends BaseController {
-  static outlets = ['form']
   static targets = ['all']
   static values = {
     container: String,
     range: String,
-    total: { type: String, default: 'check_total' }
+    total: { type: String, default: 'check_total' },
+    ids: { type: String, default: 'ids' },
+    forms: { type: String, default: 'form.button_to' }
   }
 
   connect() {
@@ -54,13 +55,16 @@ export default class extends BaseController {
   }
 
   showCommits(ids) {
-    this.formOutlets.forEach(el => {
+    this.forms.forEach(el => {
       if (ids.length > 0) {
-        if (el.hasSubmitTarget) {
-          el.submitTarget.disabled = false
+        const submit = Array.from(el.elements).find(i => i.type === 'submit')
+        if (submit) {
+          submit.disabled = false
         }
-        if (el.hasIdsTarget) {
-          el.idsTarget.value = ids
+
+        const idsInput = el.elements.namedItem(this.idsValue)
+        if (idsInput) {
+          idsInput.value = ids
         }
       }
     })
@@ -71,12 +75,15 @@ export default class extends BaseController {
   }
 
   hiddenCommits() {
-    this.formOutlets.forEach(el => {
-      if (el.hasSubmitTarget) {
-        el.submitTarget.disabled = true
+    this.forms.forEach(el => {
+      const submit = Array.from(el.elements).find(i => i.type === 'submit')
+      if (submit) {
+        submit.disabled = true
       }
-      if (el.hasIdsTarget) {
-        el.idsTarget.value = ''
+
+      const idsInput = el.elements.namedItem(this.idsValue)
+      if (idsInput) {
+        idsInput.value = ''
       }
     })
     if (this.totalContainer) {
@@ -132,6 +139,10 @@ export default class extends BaseController {
 
   get totalContainer() {
     return document.getElementById(this.totalValue)
+  }
+
+  get forms() {
+    return document.querySelectorAll(this.formsValue)
   }
 
 }
