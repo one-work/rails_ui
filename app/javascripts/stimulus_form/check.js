@@ -10,7 +10,7 @@ export default class extends BaseController {
     container: String,
     range: String,
     total: { type: String, default: 'check_total' },
-    ids: { type: String, default: 'ids' },
+    ids: { type: String, default: 'ids[]' },
     forms: { type: String, default: 'form.button_to' }
   }
 
@@ -62,10 +62,12 @@ export default class extends BaseController {
           submit.disabled = false
         }
 
-        const idsInput = el.elements.namedItem(this.idsValue)
-        if (idsInput) {
-          idsInput.value = ids
-        }
+        Array.from(el.elements).filter(i => i.name === this.idsValue).forEach(i => i.remove())
+        ids.forEach(id => {
+          const input = this.idsInput
+          input.value = id
+          el.appendChild(input)
+        })
       }
     })
     if (this.totalContainer) {
@@ -81,10 +83,7 @@ export default class extends BaseController {
         submit.disabled = true
       }
 
-      const idsInput = el.elements.namedItem(this.idsValue)
-      if (idsInput) {
-        idsInput.value = ''
-      }
+      Array.from(el.elements).filter(i => i.name === this.idsValue).forEach(i => i.remove())
     })
     if (this.totalContainer) {
       this.totalContainer.innerText = ''
@@ -139,6 +138,15 @@ export default class extends BaseController {
 
   get totalContainer() {
     return document.getElementById(this.totalValue)
+  }
+
+  get idsInput() {
+    const input = document.createElement('input')
+    input.type = 'hidden'
+    input.autocomplete = 'off'
+    input.name = this.idsValue
+
+    return input
   }
 
   get forms() {
