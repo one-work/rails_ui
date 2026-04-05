@@ -36,7 +36,6 @@
 
     .menu-item {
       text-align: center;
-      border-radius: 0 !important;
       background-color: #f0f0f0;
       --bulma-menu-list-link-padding: 0.7em 0.75em;
     }
@@ -44,8 +43,7 @@
     .menu-item.is-active {
       --bulma-menu-item-selected-background-l: 98%;
       --bulma-menu-item-background-l-delta: -5%;
-      background-color: #5ccabb;
-      color: white;
+      background-color: #f9f9f9;
     }
 
     .menu-item:has(+ .is-active) {
