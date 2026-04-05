@@ -83,14 +83,14 @@ $tag-colors: dv.$colors !default;
     )
   );
 
+  display: inline-flex;
+  justify-content: center;
   align-items: center;
   background-color: hsl(cv.getVar("tag-h"), cv.getVar("tag-s"), calc(#{cv.getVar("tag-background-l")} + #{cv.getVar("tag-background-l-delta")}));
   border-radius: $tag-radius;
   color: hsl(cv.getVar("tag-h"), cv.getVar("tag-s"), cv.getVar("tag-color-l"));
-  display: inline-flex;
   font-size: cv.getVar("size-small");
   height: 2em;
-  justify-content: center;
   line-height: 1.5;
   padding-left: 0.75em;
   padding-right: 0.75em;
