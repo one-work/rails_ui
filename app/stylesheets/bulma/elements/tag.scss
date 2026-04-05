@@ -189,7 +189,6 @@ $tag-colors: dv.$colors !default;
   }
 
   &.is-badge {
-    display: inline-block;
     padding: 0.15em 0.4em;
     border-radius: 18px;
     background-color: var(--bulma-danger);
