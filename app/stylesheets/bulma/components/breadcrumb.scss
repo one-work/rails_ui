@@ -44,7 +44,7 @@ $breadcrumb-item-separator-color: cv.getVar("border") !default;
     padding: cv.getVar("breadcrumb-item-padding-vertical") cv.getVar("breadcrumb-item-padding-horizontal");
 
     &:hover {
-      color: cv.getVar("breadcrumb-item-hover-color");
+      color: cv.getVar("breadcrumb-item-hover-color") !important;
     }
   }
 
