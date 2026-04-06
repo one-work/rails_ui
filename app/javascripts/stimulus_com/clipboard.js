@@ -12,14 +12,18 @@ export default class extends Controller {
     alert('复制成功!')
   }
 
-  copy() {
+  copy(e) {
     navigator.clipboard?.writeText(this.sourceTarget.textContent)
+    const el = e.currentTarget
+
     if (this.hasToastTarget) {
       this.toastTarget.style.animationDuration = '2s'
+      el.classList.add('display-none')
       this.toastTarget.classList.remove('display-none')
       this.toastTarget.classList.add('has-animate-fade-in-out')
       this.toastTarget.addEventListener('animationend', (event) => {
         event.currentTarget.classList.add('display-none')
+        el.classList.remove('display-none')
         event.currentTarget.classList.remove('has-animate-fade-in-out')
       }, { once: true })
     } else {
