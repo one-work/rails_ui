@@ -66,22 +66,22 @@ $tabs-toggle-link-active-color: cv.getVar("link-invert") !default;
   @extend %block;
   @extend %unselectable;
   @include mx.overflow-touch;
-  align-items: stretch;
   display: flex;
-  font-size: cv.getVar("size-normal");
   justify-content: space-between;
+  align-items: stretch;
+  font-size: cv.getVar("size-normal");
   overflow: hidden;
   overflow-x: auto;
   white-space: nowrap;
 
   a {
+    display: flex;
+    justify-content: center;
     align-items: center;
     border-bottom-color: cv.getVar("tabs-border-bottom-color");
     border-bottom-style: cv.getVar("tabs-border-bottom-style");
     border-bottom-width: cv.getVar("tabs-border-bottom-width");
     color: cv.getVar("tabs-link-color");
-    display: flex;
-    justify-content: center;
     margin-bottom: calc(-1 * #{cv.getVar("tabs-border-bottom-width")});
     padding: cv.getVar("tabs-link-padding");
     transition-duration: cv.getVar("duration");
@@ -107,14 +107,14 @@ $tabs-toggle-link-active-color: cv.getVar("link-invert") !default;
   }
 
   ul {
+    display: flex;
+    justify-content: flex-start;
     align-items: center;
     border-bottom-color: cv.getVar("tabs-border-bottom-color");
     border-bottom-style: cv.getVar("tabs-border-bottom-style");
     border-bottom-width: cv.getVar("tabs-border-bottom-width");
-    display: flex;
     flex-grow: 1;
     flex-shrink: 0;
-    justify-content: flex-start;
 
     &.is-left {
       padding-right: 0.75em;
