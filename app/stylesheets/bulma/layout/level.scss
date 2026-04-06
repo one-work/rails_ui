@@ -7,9 +7,9 @@ $level-item-spacing: calc(#{cv.getVar("block-spacing")} * 0.5) !default;
 .level {
   @extend %block;
   @include cv.register-var("level-item-spacing", #{$level-item-spacing});
-  align-items: center;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   gap: cv.getVar("level-item-spacing");
 
   code {
@@ -24,11 +24,11 @@ $level-item-spacing: calc(#{cv.getVar("block-spacing")} * 0.5) !default;
 
 .level-item {
   display: flex;
+  justify-content: center;
   align-items: center;
   flex-basis: auto;
   flex-grow: 0;
   flex-shrink: 0;
-  justify-content: center;
 
   .title,
   .subtitle {
