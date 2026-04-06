@@ -61,9 +61,9 @@ $file-colors: shared.$form-colors !default;
     )
   );
 
-  align-items: stretch;
   display: flex;
   justify-content: flex-start;
+  align-items: stretch;
   position: relative;
 
   // Colors
