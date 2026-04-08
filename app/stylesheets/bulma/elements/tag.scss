@@ -148,9 +148,9 @@ $tag-colors: dv.$colors !default;
       margin-inline-end: -0.375em;
     }
 
-    &:first-child:last-child {
-      margin-inline-start: -0.375em;
-      margin-inline-end: -0.375em;
+    &:only-child {
+      margin-inline-start: 0;
+      margin-inline-end: 0;
     }
   }
 

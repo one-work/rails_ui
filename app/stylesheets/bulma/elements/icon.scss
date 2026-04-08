@@ -35,11 +35,6 @@ $icon-text-spacing: 0.25em !default;
     width: cv.getVar("icon-dimensions-small");
   }
 
-  &.is-smaller {
-    width: 0.7rem;
-    height: 0.7rem;
-  }
-
   &.is-medium {
     height: cv.getVar("icon-dimensions-medium");
     width: cv.getVar("icon-dimensions-medium");
