@@ -69,6 +69,10 @@ svg.icon {
   fill: currentColor;
   vertical-align: middle;
 
+  &.is-small {
+    height: 22.5px;
+  }
+
   &.size-4 {
     height: 1.5rem;
     width: 1.5rem;
