@@ -12,7 +12,7 @@ $content-blockquote-background-color: #{cv.getVar("background")} !default;
 $content-blockquote-border-left: 5px solid #{cv.getVar("border")} !default;
 $content-blockquote-padding: 1.25em 1.5em !default;
 
-$content-pre-padding: 1.25em 1.5em !default;
+$content-pre-padding: 0.25em 0.5em !default;
 
 $content-table-cell-border: 1px solid #{cv.getVar("border")} !default;
 $content-table-cell-border-width: 0 0 1px !default;
@@ -161,7 +161,7 @@ $content-table-foot-cell-color: #{cv.getVar("text-strong")} !default;
 
   ul {
     list-style: disc outside;
-    margin-inline-start: 2em;
+    margin-inline-start: 1em;
 
     &:not(:first-child) {
       margin-top: 1em;
