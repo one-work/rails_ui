@@ -51,6 +51,7 @@ export default class extends Controller {
 
   drawFile(file) {
     const ctx = this.canvasTarget.getContext('2d')
+    ctx.filter = 'grayscale(100%)'
 
     const img = new Image()
     img.src = URL.createObjectURL(file) // 创建一个object URL，并不是你的本地路径
