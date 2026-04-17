@@ -19,19 +19,17 @@ export default class extends Controller {
         window.xxx = file
         this.previewFile2(file)
       }
-      const controller = new DirectUploadController(input, file)
 
+      const controller = new DirectUploadController(input, file)
       controller.directUploadWillCreateBlobWithXHR = (xhr) => {
         if (input.dataset.service) {
           xhr.setRequestHeader('Service-Name', input.dataset.service)
         }
       }
-
       controller.start(error => {
         if (error) {
           console.error('upload err', error)
         }
-
         input.disabled = false
         button.disabled = false
       })
