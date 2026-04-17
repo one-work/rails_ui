@@ -50,7 +50,7 @@ export default class extends Controller {
   }
 
   previewFile2(file) {
-    const template = this.previewTarget.getElementById('chart1')
+    const template = document.getElementById('chart1')
     const ctx = template.getContext('2d')
 
     const img = new Image()
