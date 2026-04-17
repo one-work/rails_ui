@@ -3,7 +3,7 @@ import { Controller } from '@hotwired/stimulus'
 
 // <input type="file" data-controller="picture">
 export default class extends Controller {
-  static targets = ['src', 'filename', 'preview', 'upload']
+  static targets = ['src', 'filename', 'preview', 'upload', 'icon', 'canvas']
 
   //<input type="file" data-action="picture#upload">
   upload(event) {
@@ -16,8 +16,11 @@ export default class extends Controller {
 
     Array.from(input.files).forEach(file => {
       if (file.type.startsWith('image/')) {
-        window.xxx = file
-        this.previewFile2(file)
+        if (this.hasCanvasTarget) {
+          this.drawFile(file)
+        } else {
+          this.previewFile(file)
+        }
       }
 
       const controller = new DirectUploadController(input, file)
@@ -38,24 +41,23 @@ export default class extends Controller {
     if (input.multiple) {
 
     } else {
-      const uploadIcon = this.uploadTarget.querySelector('.file-cta')
-      if (uploadIcon) {
-        uploadIcon.classList.add('invisible')
+      if (this.hasIconTarget) {
+        this.iconTarget.classList.add('invisible')
       }
     }
 
     input.value = null
   }
 
-  previewFile2(file) {
-    const template = document.getElementById('chart1')
-    const ctx = template.getContext('2d')
+  drawFile(file) {
+    const ctx = this.canvasTarget.getContext('2d')
 
     const img = new Image()
     img.src = URL.createObjectURL(file) // 创建一个object URL，并不是你的本地路径
     img.addEventListener('load', () => {
       URL.revokeObjectURL(img.src) // 图片加载后，释放object URL
-      ctx.drawImage(img, 0, 0)
+      console.debug('---------', img.width)
+      ctx.drawImage(img, 0, 0, 128, 128)
     })
   }
 
