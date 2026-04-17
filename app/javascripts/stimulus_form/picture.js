@@ -16,7 +16,8 @@ export default class extends Controller {
 
     Array.from(input.files).forEach(file => {
       if (file.type.startsWith('image/')) {
-        this.previewFile(file)
+        window.xxx = file
+        this.previewFile2(file)
       }
       const controller = new DirectUploadController(input, file)
 
@@ -48,15 +49,27 @@ export default class extends Controller {
     input.value = null
   }
 
+  previewFile2(file) {
+    const template = this.previewTarget.getElementById('chart1')
+    const ctx = template.getContext('2d')
+
+    const img = new Image()
+    img.src = URL.createObjectURL(file) // 创建一个object URL，并不是你的本地路径
+    img.addEventListener('load', () => {
+      URL.revokeObjectURL(img.src) // 图片加载后，释放object URL
+      ctx.drawImage(img, 0, 0)
+    })
+  }
+
   previewFile(file) {
     const template = this.previewTarget
     const cloned = template.cloneNode(true)
     cloned.classList.remove('display-none')
 
     const img = cloned.querySelector('img')
-    img.src = window.URL.createObjectURL(file) // 创建一个object URL，并不是你的本地路径
+    img.src = URL.createObjectURL(file) // 创建一个object URL，并不是你的本地路径
     img.addEventListener('load', () => {
-      window.URL.revokeObjectURL(img.src) // 图片加载后，释放object URL
+      URL.revokeObjectURL(img.src) // 图片加载后，释放object URL
     })
 
     template.after(cloned)
