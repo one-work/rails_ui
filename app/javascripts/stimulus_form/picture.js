@@ -1,5 +1,6 @@
 import { DirectUploadController } from '@rails/activestorage/src/direct_upload_controller'
 import { Controller } from '@hotwired/stimulus'
+import { PrintPic } from '../print_pic'
 
 // <input type="file" data-controller="picture">
 export default class extends Controller {
@@ -50,15 +51,13 @@ export default class extends Controller {
   }
 
   drawFile(file) {
-    const ctx = this.canvasTarget.getContext('2d')
-    ctx.filter = 'grayscale(100%)'
-
     const img = new Image()
-    img.src = URL.createObjectURL(file) // 创建一个object URL，并不是你的本地路径
-    img.addEventListener('load', () => {
+    const pic = new PrintPic(img)
+    const src = URL.createObjectURL(file) // 创建一个object URL，并不是你的本地路径
+
+    pic.loadImageToCanvas(this.canvasTarget, src, res => {
       URL.revokeObjectURL(img.src) // 图片加载后，释放object URL
-      console.debug('---------', img.width)
-      ctx.drawImage(img, 0, 0, 128, 128)
+      console.log(res)
     })
   }
 
