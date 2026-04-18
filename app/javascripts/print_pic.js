@@ -1,6 +1,6 @@
 export class PrintPic {
 
-  constructor(dpr = 1, img) {
+  constructor(img, dpr = 1) {
     this.dpr = dpr
     this.img = img
     this.defaultWidth = 280
