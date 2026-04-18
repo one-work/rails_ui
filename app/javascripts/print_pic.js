@@ -1,4 +1,4 @@
-export default class PrintPic {
+export class PrintPic {
 
   constructor(dpr = 1, img) {
     this.dpr = dpr
