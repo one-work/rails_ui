@@ -12,7 +12,6 @@ export default class extends Controller {
       el.type === 'submit' && el.name === 'commit'
     )
     input.disabled = true
-    button.disabled = true
 
     Array.from(input.files).forEach(file => {
       if (file.type.startsWith('image/')) {
