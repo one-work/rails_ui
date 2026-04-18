@@ -22,22 +22,22 @@ export default class extends Controller {
           const src = URL.createObjectURL(file) // 创建一个object URL，并不是你的本地路径
 
           pic.loadImageToCanvas(this.canvasTarget, src, res => {
-            URL.revokeObjectURL(img.src) // 图片加载后，释放object URL
+            URL.revokeObjectURL(src) // 图片加载后，释放object URL
             console.log(res)
 
             const hiddenInput = document.createElement('input')
             hiddenInput.type = 'hidden'
-            hiddenInput.name = this.input.name
+            hiddenInput.name = input.name
             input.insertAdjacentElement('beforebegin', hiddenInput)
 
             const arr = this.#image(res.data, res.meta)
             const x = new Uint8Array(arr)
-            x.toBase64()
+            hiddenInput.value = x.toBase64()
           })
         }
       }
     })
-    
+
     input.value = null
   }
 
