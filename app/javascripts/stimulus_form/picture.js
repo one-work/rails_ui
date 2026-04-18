@@ -58,6 +58,9 @@ export default class extends Controller {
     pic.loadImageToCanvas(this.canvasTarget, src, res => {
       URL.revokeObjectURL(img.src) // 图片加载后，释放object URL
       console.log(res)
+      const arr = this.#image(res.data, res.meta)
+      const x = new Uint8Array(arr)
+      x.toBase64()
     })
   }
 
@@ -93,6 +96,24 @@ export default class extends Controller {
 
     const wrap = e.currentTarget.parentNode
     wrap.remove()
+  }
+
+  #image(value, meta) {
+    const data = []
+    data.push(0x1b, 0x40)  // 初始化打印机：清除打印缓存，各参数恢复默认值
+    data.push(0x1d, 0x4c, 0x12, 0x00)  // 设置左限（左边距）：向右移动 18（0x12）点
+    data.push(
+      0x1d, 0x76, 0x30, 0x00,
+      ...this.#doubleDigit(meta.byteWidth),
+      ...this.#doubleDigit(meta.height),
+      ...value
+    )
+    data.push(...Array(5).fill(0x0a)) // 增加换行
+    return data
+  }
+
+  #doubleDigit(value) {
+    return [value % 256, Math.floor(value / 256)]
   }
 
 }
