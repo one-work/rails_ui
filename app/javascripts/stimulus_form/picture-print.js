@@ -1,9 +1,9 @@
-import { DirectUploadController } from '@rails/activestorage/src/direct_upload_controller'
 import { Controller } from '@hotwired/stimulus'
+import { PrintPic } from '../print_pic'
 
 // <input type="file" data-controller="picture">
 export default class extends Controller {
-  static targets = ['src', 'filename', 'preview', 'upload', 'icon']
+  static targets = ['src', 'filename', 'preview', 'upload', 'icon', 'canvas']
 
   //<input type="file" data-action="picture#upload">
   upload(event) {
@@ -16,22 +16,10 @@ export default class extends Controller {
 
     Array.from(input.files).forEach(file => {
       if (file.type.startsWith('image/')) {
-        this.previewFile(file)
-      }
-
-      const controller = new DirectUploadController(input, file)
-      controller.directUploadWillCreateBlobWithXHR = (xhr) => {
-        if (input.dataset.service) {
-          xhr.setRequestHeader('Service-Name', input.dataset.service)
+        if (this.hasCanvasTarget) {
+          this.drawFile(file)
         }
       }
-      controller.start(error => {
-        if (error) {
-          console.error('upload err', error)
-        }
-        input.disabled = false
-        button.disabled = false
-      })
     })
 
     if (input.multiple) {
@@ -45,18 +33,18 @@ export default class extends Controller {
     input.value = null
   }
 
-  previewFile(file) {
-    const template = this.previewTarget
-    const cloned = template.cloneNode(true)
-    cloned.classList.remove('display-none')
+  drawFile(file) {
+    const img = new Image()
+    const pic = new PrintPic(img)
+    const src = URL.createObjectURL(file) // 创建一个object URL，并不是你的本地路径
 
-    const img = cloned.querySelector('img')
-    img.src = URL.createObjectURL(file) // 创建一个object URL，并不是你的本地路径
-    img.addEventListener('load', () => {
+    pic.loadImageToCanvas(this.canvasTarget, src, res => {
       URL.revokeObjectURL(img.src) // 图片加载后，释放object URL
+      console.log(res)
+      const arr = this.#image(res.data, res.meta)
+      const x = new Uint8Array(arr)
+      x.toBase64()
     })
-
-    template.after(cloned)
   }
 
   removePreview(e) {
@@ -77,6 +65,24 @@ export default class extends Controller {
 
     const wrap = e.currentTarget.parentNode
     wrap.remove()
+  }
+
+  #image(value, meta) {
+    const data = []
+    data.push(0x1b, 0x40)  // 初始化打印机：清除打印缓存，各参数恢复默认值
+    data.push(0x1d, 0x4c, 0x12, 0x00)  // 设置左限（左边距）：向右移动 18（0x12）点
+    data.push(
+      0x1d, 0x76, 0x30, 0x00,
+      ...this.#doubleDigit(meta.byteWidth),
+      ...this.#doubleDigit(meta.height),
+      ...value
+    )
+    data.push(...Array(5).fill(0x0a)) // 增加换行
+    return data
+  }
+
+  #doubleDigit(value) {
+    return [value % 256, Math.floor(value / 256)]
   }
 
 }
