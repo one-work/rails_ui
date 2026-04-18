@@ -52,11 +52,6 @@ export default class extends Controller {
       fileInput.disabled = false
     }
 
-    const uploadIcon = this.uploadTarget.querySelector('.file-cta')
-    if (uploadIcon) {
-      uploadIcon.classList.remove('invisible')
-    }
-
     const wrap = e.currentTarget.parentNode
     wrap.remove()
   }
