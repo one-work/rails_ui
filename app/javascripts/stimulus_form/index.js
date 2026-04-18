@@ -52,6 +52,9 @@ application.register('picker', PickerController)
 import PictureController from './picture'
 application.register('picture', PictureController)
 
+import PicturePrintController from './picture-print'
+application.register('picture-print', PicturePrintController)
+
 import QqMapController from './qq-map'
 application.register('qq-map', QqMapController)
 

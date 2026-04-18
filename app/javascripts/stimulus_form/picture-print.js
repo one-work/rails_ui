@@ -17,34 +17,28 @@ export default class extends Controller {
     Array.from(input.files).forEach(file => {
       if (file.type.startsWith('image/')) {
         if (this.hasCanvasTarget) {
-          this.drawFile(file)
+          const img = new Image()
+          const pic = new PrintPic(img)
+          const src = URL.createObjectURL(file) // 创建一个object URL，并不是你的本地路径
+
+          pic.loadImageToCanvas(this.canvasTarget, src, res => {
+            URL.revokeObjectURL(img.src) // 图片加载后，释放object URL
+            console.log(res)
+
+            const hiddenInput = document.createElement('input')
+            hiddenInput.type = 'hidden'
+            hiddenInput.name = this.input.name
+            input.insertAdjacentElement('beforebegin', hiddenInput)
+
+            const arr = this.#image(res.data, res.meta)
+            const x = new Uint8Array(arr)
+            x.toBase64()
+          })
         }
       }
     })
-
-    if (input.multiple) {
-
-    } else {
-      if (this.hasIconTarget) {
-        this.iconTarget.classList.add('invisible')
-      }
-    }
-
+    
     input.value = null
-  }
-
-  drawFile(file) {
-    const img = new Image()
-    const pic = new PrintPic(img)
-    const src = URL.createObjectURL(file) // 创建一个object URL，并不是你的本地路径
-
-    pic.loadImageToCanvas(this.canvasTarget, src, res => {
-      URL.revokeObjectURL(img.src) // 图片加载后，释放object URL
-      console.log(res)
-      const arr = this.#image(res.data, res.meta)
-      const x = new Uint8Array(arr)
-      x.toBase64()
-    })
   }
 
   removePreview(e) {
