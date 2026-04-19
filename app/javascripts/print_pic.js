@@ -23,8 +23,8 @@ export class PrintPic {
 
       // 为了兼容高 DPR，我们把 canvas 的像素尺寸按 dpr 放大，
       // 并直接在像素级别绘制图像，这样拿到的 imageData 就是按物理像素的。
-      canvas.width = dw * this.dpr
-      canvas.height = dh * this.dpr
+      canvas.width = dw
+      canvas.height = dh 
 
       // 把图像拉伸到 canvas 的像素尺寸
       ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
