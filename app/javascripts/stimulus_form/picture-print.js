@@ -17,7 +17,7 @@ export default class extends Controller {
       if (file.type.startsWith('image/')) {
         if (this.hasCanvasTarget) {
           const img = new Image()
-          const pic = new PrintPic(img)
+          const pic = new PrintPic(img, window.devicePixelRatio)
           const src = URL.createObjectURL(file) // 创建一个object URL，并不是你的本地路径
 
           pic.loadImageToCanvas(this.canvasTarget, src, res => {
