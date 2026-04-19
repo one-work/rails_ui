@@ -39,11 +39,14 @@ export class PrintPic {
   imgToRaster(buf, w, h) {
     const grayArray = []
     const hist = new Array(256).fill(0)
+    let nonTransparentPixels = 0
     const totalPixels = Math.floor(buf.length / 4)
 
     for (let i = 0; i < buf.length; i += 4) {
+      const gray = Math.round(buf[i] * 0.299 + buf[i + 1] * 0.587 + buf[i + 2] * 0.114)
       if (buf[i + 3] > 0) {
-        hist[buf[i]]++
+        hist[gray]++
+        nonTransparentPixels++
       }
     }
 
@@ -51,23 +54,26 @@ export class PrintPic {
     for (let i = 0; i < 256; i++) {
       sum += i * hist[i]
     }
-    let sumB = 0, wB = 0, maxBetween = 0, threshold = 0;
+    let sumB = 0
+    let wB = 0
+    let maxBetween = 0
+    let threshold = 0
 
     // 专为 8-bit 灰度图像优化，固定 256 级
     for (let t = 0; t < 256; t++) {
-      wB += hist[t];
-      if (wB === 0) continue;
-      const wF = totalPixels - wB;
-      if (wF === 0) break;
+      wB += hist[t]
+      if (wB === 0) continue
+      const wF = nonTransparentPixels - wB
+      if (wF === 0) break
 
-      sumB += t * hist[t];
-      const mB = sumB / wB;
-      const mF = (sum - sumB) / wF;
-      const between = wB * wF * (mB - mF) ** 2;  // 类间方差
+      sumB += t * hist[t]
+      const mB = sumB / wB
+      const mF = (sum - sumB) / wF
+      const between = wB * wF * (mB - mF) ** 2  // 类间方差
 
       if (between > maxBetween) {
-        maxBetween = between;
-        threshold = t;
+        maxBetween = between
+        threshold = t
       }
     }
     console.debug('Threshold:', threshold)
