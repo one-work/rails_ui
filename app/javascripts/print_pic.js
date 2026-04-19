@@ -3,7 +3,7 @@ export class PrintPic {
   constructor(img, dpr = 1) {
     this.dpr = dpr
     this.img = img
-    this.defaultWidth = 280  // 统一缩放到 384 点宽（58 mm 纸）
+    this.defaultWidth = 280  // 统一缩放到 280 点宽（58 mm 纸）
   }
 
   // 画 canvas 并取 RGBA
@@ -21,15 +21,18 @@ export class PrintPic {
       const dh = Math.round((h * dw) / w)
       console.debug('图片信息：', w, h, dw, dh)
 
+      // 为了兼容高 DPR，我们把 canvas 的像素尺寸按 dpr 放大，
+      // 并直接在像素级别绘制图像，这样拿到的 imageData 就是按物理像素的。
       canvas.width = dw * this.dpr
       canvas.height = dh * this.dpr
-      //ctx.scale(dpr, dpr)
 
-      ctx.drawImage(img, 0, 0, dw, dh)
-      const imageData = ctx.getImageData(0, 0, dw, dh)
+      // 把图像拉伸到 canvas 的像素尺寸
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
+      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height)
       console.debug('canvas 数据：', imageData)
       window.xxx = imageData
-      const data = this.imgToRaster(imageData.data, dw, dh)
+      // 传入实际的像素宽高（已乘 dpr）到后续处理
+      const data = this.imgToRaster(imageData.data, canvas.width, canvas.height)
       console.debug('转化后的数据:', data)
       success?.(data)
     })
@@ -37,21 +40,29 @@ export class PrintPic {
 
   // RGBA → 1 bit 光栅命令
   imgToRaster(buf, w, h) {
+    // grayArray: 每个像素的灰度值（0-255）
+    // alphaMask: 对应像素是否不透明（true 表示参与阈值统计和打印决策）
     const grayArray = []
-    const bmpArray = []
+    const alphaMask = []
     const hist = new Array(256).fill(0)
     let nonTransparentPixels = 0
-    const totalPixels = Math.floor(buf.length / 4)
 
     for (let i = 0; i < buf.length; i += 4) {
-      const gray = Math.round(buf[i] * 0.299 + buf[i + 1] * 0.587 + buf[i + 2] * 0.114)
+      const r = buf[i]
+      const g = buf[i + 1]
+      const b = buf[i + 2]
+      const a = buf[i + 3]
+      const gray = Math.round(r * 0.299 + g * 0.587 + b * 0.114)
       grayArray.push(gray)
-      if (buf[i + 3] > 0) {
+      const opaque = a > 0
+      alphaMask.push(opaque)
+      if (opaque) {
         hist[gray]++
         nonTransparentPixels++
       }
     }
 
+    // 计算 Otsu 阈值（只基于不透明像素）
     let sum = 0
     for (let i = 0; i < 256; i++) {
       sum += i * hist[i]
@@ -61,7 +72,6 @@ export class PrintPic {
     let maxBetween = 0
     let threshold = 0
 
-    // 专为 8-bit 灰度图像优化，固定 256 级
     for (let t = 0; t < 256; t++) {
       wB += hist[t]
       if (wB === 0) continue
@@ -71,7 +81,7 @@ export class PrintPic {
       sumB += t * hist[t]
       const mB = sumB / wB
       const mF = (sum - sumB) / wF
-      const between = wB * wF * (mB - mF) ** 2  // 类间方差
+      const between = wB * wF * (mB - mF) ** 2
 
       if (between > maxBetween) {
         maxBetween = between
@@ -80,24 +90,34 @@ export class PrintPic {
     }
     console.debug('Threshold:', threshold)
 
-    for (let gray of grayArray) {
-      if (gray < threshold) {
-        bmpArray.push(1) // 打印像素点
+    // 构建二值位图（透明像素强制为 0 / 不打印）
+    const bmp = new Uint8Array(grayArray.length)
+    for (let i = 0; i < grayArray.length; i++) {
+      if (!alphaMask[i]) {
+        bmp[i] = 0
       } else {
-        bmpArray.push(0) // 不打印
+        bmp[i] = grayArray[i] < threshold ? 1 : 0
       }
     }
-    console.debug('转灰度后的数据：', bmpArray.length)
+    console.debug('转灰度后的数据：', bmp.length)
 
     const bytesPerLine = Math.ceil(w / 8)
     const raster = []
     const dataStr = []
 
+    // 逐行、逐字节汇总，避免在循环中使用数组 splice（性能更好）
     for (let y = 0; y < h; y++) {
-      const sub = bmpArray.splice(0, w)
-      for (let x = 0; x < bytesPerLine; x++) {
-        const a = parseInt(sub.splice(0, 8).join('').padEnd(8, '0'), 2)
-        raster.push(a) // 8 位二进制转 16进制，不足的用 0 补齐
+      const rowOffset = y * w
+      for (let xb = 0; xb < bytesPerLine; xb++) {
+        let byte = 0
+        for (let bit = 0; bit < 8; bit++) {
+          const x = xb * 8 + bit
+          const idx = rowOffset + x
+          const bitVal = x < w ? bmp[idx] : 0
+          byte = (byte << 1) | (bitVal & 1)
+        }
+        raster.push(byte)
+        dataStr.push(byte.toString(16).padStart(2, '0'))
       }
     }
 
