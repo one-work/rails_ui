@@ -38,12 +38,14 @@ export class PrintPic {
   // RGBA → 1 bit 光栅命令
   imgToRaster(buf, w, h) {
     const grayArray = []
+    const bmpArray = []
     const hist = new Array(256).fill(0)
     let nonTransparentPixels = 0
     const totalPixels = Math.floor(buf.length / 4)
 
     for (let i = 0; i < buf.length; i += 4) {
       const gray = Math.round(buf[i] * 0.299 + buf[i + 1] * 0.587 + buf[i + 2] * 0.114)
+      grayArray.push(gray)
       if (buf[i + 3] > 0) {
         hist[gray]++
         nonTransparentPixels++
@@ -78,22 +80,21 @@ export class PrintPic {
     }
     console.debug('Threshold:', threshold)
 
-    for (let i = 0; i < buf.length; i += 4) {
-      const gray = Math.round(buf[i] * 0.299 + buf[i + 1] * 0.587 + buf[i + 2] * 0.114)
+    for (let gray of grayArray) {
       if (gray < threshold) {
-        grayArray.push(1) // 打印像素点
+        bmpArray.push(1) // 打印像素点
       } else {
-        grayArray.push(0) // 不打印
+        bmpArray.push(0) // 不打印
       }
     }
-    console.debug('转灰度后的数据：', grayArray.length)
+    console.debug('转灰度后的数据：', bmpArray.length)
 
     const bytesPerLine = Math.ceil(w / 8)
     const raster = []
     const dataStr = []
 
     for (let y = 0; y < h; y++) {
-      const sub = grayArray.splice(0, w)
+      const sub = bmpArray.splice(0, w)
       for (let x = 0; x < bytesPerLine; x++) {
         const a = parseInt(sub.splice(0, 8).join('').padEnd(8, '0'), 2)
         raster.push(a) // 8 位二进制转 16进制，不足的用 0 补齐
