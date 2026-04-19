@@ -66,6 +66,7 @@ export default class extends Controller {
       ...value
     )
     data.push(...Array(5).fill(0x0a)) // 增加换行
+    data.push(0x1b, 0x69) // 切刀
     return data
   }
 
