@@ -24,7 +24,7 @@ export class PrintPic {
       // 为了兼容高 DPR，我们把 canvas 的像素尺寸按 dpr 放大，
       // 并直接在像素级别绘制图像，这样拿到的 imageData 就是按物理像素的。
       canvas.width = dw
-      canvas.height = dh 
+      canvas.height = dh
 
       // 把图像拉伸到 canvas 的像素尺寸
       ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
@@ -39,13 +39,16 @@ export class PrintPic {
   }
 
   // RGBA → 1 bit 光栅命令
-  imgToRaster(buf, w, h) {
+  // imgToRaster(buf, w, h, options)
+  // options: { dither: boolean, method: 'floyd' }
+  imgToRaster(buf, w, h, options = {}) {
     // grayArray: 每个像素的灰度值（0-255）
     // alphaMask: 对应像素是否不透明（true 表示参与阈值统计和打印决策）
     const grayArray = []
     const alphaMask = []
     const hist = new Array(256).fill(0)
     let nonTransparentPixels = 0
+    const { dither = false, method = 'floyd' } = options
 
     for (let i = 0; i < buf.length; i += 4) {
       const r = buf[i]
@@ -92,11 +95,52 @@ export class PrintPic {
 
     // 构建二值位图（透明像素强制为 0 / 不打印）
     const bmp = new Uint8Array(grayArray.length)
-    for (let i = 0; i < grayArray.length; i++) {
-      if (!alphaMask[i]) {
-        bmp[i] = 0
-      } else {
-        bmp[i] = grayArray[i] < threshold ? 1 : 0
+
+    if (dither && method === 'floyd') {
+      // Floyd–Steinberg error diffusion
+      const img = new Float32Array(grayArray) // mutable copy for error propagation
+      for (let y = 0; y < h; y++) {
+        for (let x = 0; x < w; x++) {
+          const idx = y * w + x
+          if (!alphaMask[idx]) {
+            bmp[idx] = 0
+            continue
+          }
+          const oldVal = img[idx]
+          const newVal = oldVal < threshold ? 0 : 255
+          const err = oldVal - newVal
+          bmp[idx] = newVal === 0 ? 1 : 0
+
+          // distribute error to neighbors, but only to opaque pixels
+          // right: x+1, y
+          if (x + 1 < w) {
+            const nIdx = idx + 1
+            if (alphaMask[nIdx]) img[nIdx] += err * 7 / 16
+          }
+          // bottom-left: x-1, y+1
+          if (x - 1 >= 0 && y + 1 < h) {
+            const nIdx = idx + w - 1
+            if (alphaMask[nIdx]) img[nIdx] += err * 3 / 16
+          }
+          // bottom: x, y+1
+          if (y + 1 < h) {
+            const nIdx = idx + w
+            if (alphaMask[nIdx]) img[nIdx] += err * 5 / 16
+          }
+          // bottom-right: x+1, y+1
+          if (x + 1 < w && y + 1 < h) {
+            const nIdx = idx + w + 1
+            if (alphaMask[nIdx]) img[nIdx] += err * 1 / 16
+          }
+        }
+      }
+    } else {
+      for (let i = 0; i < grayArray.length; i++) {
+        if (!alphaMask[i]) {
+          bmp[i] = 0
+        } else {
+          bmp[i] = grayArray[i] < threshold ? 1 : 0
+        }
       }
     }
     console.debug('转灰度后的数据：', bmp.length)
