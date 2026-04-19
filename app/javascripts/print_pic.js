@@ -28,16 +28,15 @@ export class PrintPic {
       ctx.drawImage(img, 0, 0, dw, dh)
       const imageData = ctx.getImageData(0, 0, dw, dh)
       console.debug('canvas 数据：', imageData)
-      const data = this.imgToRaster(imageData, dw, dh)
+      window.xxx = imageData
+      const data = this.imgToRaster(imageData.data, dw, dh)
       console.debug('转化后的数据:', data)
       success?.(data)
     })
   }
 
   // RGBA → 1 bit 光栅命令
-  imgToRaster(rgba, w, h) {
-    // 支持 ImageData 或 Uint8Array
-    const buf = rgba && rgba.data ? rgba.data : rgba
+  imgToRaster(buf, w, h) {
     const grayArray = []
     const hist = new Array(256).fill(0)
     const totalPixels = Math.floor(buf.length / 4)
