@@ -1,5 +1,4 @@
 import { Controller } from '@hotwired/stimulus'
-import { PrintPic } from '../print_pic'
 
 // <input type="file" data-controller="picture">
 export default class extends Controller {
@@ -16,8 +15,6 @@ export default class extends Controller {
     Array.from(input.files).forEach(file => {
       if (file.type.startsWith('image/')) {
         if (this.hasCanvasTarget) {
-          const img = new Image()
-          const pic = new PrintPic(img, window.devicePixelRatio)
           const src = URL.createObjectURL(file) // 创建一个object URL，并不是你的本地路径
 
           pic.loadImageToCanvas(this.canvasTarget, src, res => {
