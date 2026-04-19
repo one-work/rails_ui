@@ -8,9 +8,9 @@ export class PrintPic {
 
   // 画 canvas 并取 RGBA
   loadImageToCanvas(canvas, src, success) {
-    const ctx = canvas.getContext('2d')
-    ctx.clearRect(0, 0, 9999, 9999)
     console.debug('图片 src：', src)
+    const ctx = canvas.getContext('2d')
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
     const img = this.img
 
     img.src = src
