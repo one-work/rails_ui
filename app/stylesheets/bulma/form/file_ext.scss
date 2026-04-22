@@ -1,6 +1,9 @@
-input[type="file"] {
-  border: none;
-  box-shadow: none;
+.control {
+  input[type="file"] {
+    padding-left: 0;
+    border: none;
+    box-shadow: none;
+  }
 }
 
 input[type="file"]::-webkit-file-upload-button {
