@@ -63,6 +63,14 @@ export default class extends Controller {
   }
 
   remove() {
+    const idInput = this.element.nextElementSibling
+    if (idInput && idInput.type === 'hidden') {
+      const destroyInput = idInput.cloneNode(true)
+      destroyInput.name = idInput.name.replace('[id]', '[_destroy]')
+      destroyInput.value = 1
+      idInput.insertAdjacentElement('afterend', destroyInput)
+    }
+
     this.element.remove()
   }
 
