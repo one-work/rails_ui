@@ -30,11 +30,11 @@ $box-link-active-shadow:
 
 .box {
   @extend %block;
+  display: block;
   background-color: cv.getVar("box-background-color");
   border-radius: cv.getVar("box-radius");
   box-shadow: cv.getVar("box-shadow");
   color: cv.getVar("box-color");
-  display: block;
   padding: cv.getVar("box-padding");
 
   &.is-narrow {
