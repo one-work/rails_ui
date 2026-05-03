@@ -37,7 +37,7 @@ export default class extends Controller {
         this.paramsValue,
         res => {
           if (res.err_msg === 'get_brand_wcpay_request:ok') {
-            Turbo.visit(location.href)
+            Turbo.visit(location, { action: 'replace' })
           }
         })
     })
