@@ -24,6 +24,15 @@
     }
   }
 
+  &.as-bottom:has(a) {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+
+  &.as-bottom:last-child:has(a) {
+    padding-bottom: max(env(safe-area-inset-bottom), 0.75rem);
+  }
+
   &.as-navbar {
     --bulma-tabs-border-bottom-width: 0;
     --bulma-tabs-link-padding: 0.25em 0.5em;

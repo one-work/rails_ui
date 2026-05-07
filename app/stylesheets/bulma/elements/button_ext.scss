@@ -28,6 +28,15 @@
     padding-right: 0.75rem;
   }
 
+  &.as-bottom:has(.button) {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+
+  &.as-bottom:last-child:has(.button) {
+    padding-bottom: max(env(safe-area-inset-bottom), 0.75rem);
+  }
+
   &.flex-end {
     justify-content: flex-end;
   }
