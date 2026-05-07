@@ -18,8 +18,9 @@
         color: var(--bulma-primary);
       }
 
-      i + span {
-        margin-top: 2px;
+      svg + span {
+        margin-left: 0;
+        margin-top: 4px;
       }
     }
   }
