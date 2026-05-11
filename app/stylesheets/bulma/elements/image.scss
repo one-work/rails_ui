@@ -20,10 +20,6 @@ $dimensions: 16 24 32 48 64 96 128 !default;
     }
   }
 
-  &.is-fullwidth {
-    width: 100%;
-  }
-
   // Ratio
   &.is-square {
     img,
@@ -36,6 +32,11 @@ $dimensions: 16 24 32 48 64 96 128 !default;
 
   &.is-square {
     aspect-ratio: 1;
+  }
+
+  &.as-centered {
+    margin-left: auto;
+    margin-right: auto;
   }
 
   @each $pair in iv.$aspect-ratios {

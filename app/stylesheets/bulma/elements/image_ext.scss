@@ -24,11 +24,6 @@
     height: 1.25em;
   }
 
-  &.as-centered {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
   &.as-hover {
     .image:hover .image-overlay {
       opacity: 1;
