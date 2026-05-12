@@ -25,8 +25,8 @@
   background-color: var(--bulma-scheme-main);
   box-shadow: inset #ddd 0 5px 0.75rem;
   margin-bottom: 0 !important;
-}
 
-.as-bottom-safe {
-  padding-bottom: max(env(safe-area-inset-bottom), 0.75rem);
+  &:has(form) {
+    padding-bottom: max(env(safe-area-inset-bottom), 0.75rem);
+  }
 }
