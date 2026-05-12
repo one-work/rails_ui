@@ -1,6 +1,5 @@
 .media {
-  .box > &,
-  .box-body > & {
+  .box > & {
     --bulma-media-spacing: 0.75rem;
 
     padding-left: 1rem;
