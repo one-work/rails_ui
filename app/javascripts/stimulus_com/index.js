@@ -61,6 +61,9 @@ application.register('hover', HoverController)
 import GifController from './gif'
 application.register('gif', GifController)
 
+import MaskController from './mask'
+application.register('mask', MaskController)
+
 import NoticeController from './notice'
 application.register('notice', NoticeController)
 

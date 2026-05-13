@@ -1,8 +1,5 @@
 import '../stimulus_base'
 
-import MaskController from './mask'
-application.register('mask', MaskController)
-
 import MiniProgramController from './mini-program'
 application.register('mini-program', MiniProgramController)
 
