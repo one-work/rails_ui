@@ -59,7 +59,8 @@ td:has(table) {
   }
 
   td > p:not(.display-none) + p:not(.display-none),
-  td > div:not(.display-none) + div:not(.display-none) {
+  td > div:not(.display-none) + div:not(.display-none),
+  td > p + form {
     margin-top: 0.25rem;
   }
 
