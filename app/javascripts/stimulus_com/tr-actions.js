@@ -82,7 +82,9 @@ export default class extends Controller {
     const use = fragment.querySelector('use')
     if (item.icon) {
       use.setAttribute('href', `${use.href.baseVal}#${item.icon}`)
-      use.parentNode.classList.add(item.class)
+      if (item.class) {
+        use.parentNode.classList.add(item.class)
+      }
     } else {
       use.parentNode.remove()
     }
