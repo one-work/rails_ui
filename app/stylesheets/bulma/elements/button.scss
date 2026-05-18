@@ -170,7 +170,7 @@ $no-palette: ("white", "black", "light", "dark");
   }
 
   .icon {
-    &:first-child:last-child {
+    &:only-child {
       margin-inline-start: calc(-0.5 * #{cv.getVar("button-padding-horizontal")});
       margin-inline-end: calc(-0.5 * #{cv.getVar("button-padding-horizontal")});
     }
