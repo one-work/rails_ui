@@ -147,10 +147,8 @@ $no-palette: ("white", "black", "light", "dark");
   border-style: cv.getVar("button-border-style");
   border-width: cv.getVar("button-border-width");
   box-shadow:
-    0 0.0625em 0.125em
-      hsla(cv.getVar("button-outer-shadow-h"), cv.getVar("button-outer-shadow-s"), cv.getVar("button-outer-shadow-l"), cv.getVar("button-outer-shadow-a")),
-    0 0.125em 0.25em
-      hsla(cv.getVar("button-outer-shadow-h"), cv.getVar("button-outer-shadow-s"), cv.getVar("button-outer-shadow-l"), cv.getVar("button-outer-shadow-a"));
+    0 0.0625em 0.125em hsla(cv.getVar("button-outer-shadow-h"), cv.getVar("button-outer-shadow-s"), cv.getVar("button-outer-shadow-l"), cv.getVar("button-outer-shadow-a")),
+    0 0.125em 0.25em hsla(cv.getVar("button-outer-shadow-h"), cv.getVar("button-outer-shadow-s"), cv.getVar("button-outer-shadow-l"), cv.getVar("button-outer-shadow-a"));
   color: hsl(#{cv.getVar("button-h")}, #{cv.getVar("button-s")}, #{cv.getVar("button-color-l")});
   cursor: pointer;
   font-weight: cv.getVar("button-weight");

@@ -1,22 +1,32 @@
+@use '../utilities/css-variables' as cv;
+
 .button {
   &.is-unset {
     background-color: unset;
   }
+
   &.is-borderless {
     border-width: 0;
     background-color: transparent;
     box-shadow: none;
   }
+
   &.is-block {
     height: auto;
     flex-direction: column;
   }
+
   &.is-radius {
     border-radius: 6px;
   }
+
   &.is-small.is-radius {
     border-radius: 5px;
   }
+}
+
+a.button.is-borderless:first-child {
+  margin-left: calc(#{cv.getVar("button-border-width")} - #{cv.getVar("button-padding-horizontal")});
 }
 
 .buttons {
