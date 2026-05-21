@@ -7,10 +7,11 @@
   height: 45px; // 有在弹出框中应用(position: fixed), 必须指定高度；
 
   a,
-  button {
+  button,
+  form {
     display: inline-flex;
-    height: 100%;
     align-items: center;
+    height: stretch;
   }
 
   .bar-title {
