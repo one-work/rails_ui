@@ -58,6 +58,9 @@ application.register('frame-reload', FrameReloadController)
 import HoverController from './hover'
 application.register('hover', HoverController)
 
+import GeoController from './geo'
+application.register('gif', GeoController)
+
 import GifController from './gif'
 application.register('gif', GifController)
 
