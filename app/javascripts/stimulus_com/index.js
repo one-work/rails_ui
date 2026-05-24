@@ -59,7 +59,7 @@ import HoverController from './hover'
 application.register('hover', HoverController)
 
 import GeoController from './geo'
-application.register('gif', GeoController)
+application.register('geo', GeoController)
 
 import GifController from './gif'
 application.register('gif', GifController)
