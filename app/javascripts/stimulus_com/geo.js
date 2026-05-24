@@ -10,7 +10,7 @@ export default class extends BaseController {
       pos => {
         const crd = pos.coords;
         console.debug(crd)
-        this.post(this.urlValue, JSON.stringify(crd))
+        this.patch(this.urlValue, JSON.stringify(crd))
       },
       res => {
         alert(res)
