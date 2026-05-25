@@ -7,8 +7,12 @@ module RailsUi
       turbo_stream_action_tag :append_body, template: template
     end
 
-    def visit(url: @view_context.request.referer)
-      turbo_stream_action_tag :visit, url: url
+    def visit(url: @view_context.request.referer, **params)
+      if params.present?
+        url = URI(url)
+        url.query = params.to_query
+      end
+      turbo_stream_action_tag :visit, url: url.to_s
     end
 
   end
