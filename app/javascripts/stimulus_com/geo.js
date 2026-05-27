@@ -75,7 +75,7 @@ export default class extends BaseController {
           geo.value = `POINT (${crd.longitude} ${crd.latitude})`
         }
 
-        this.element.innerText = `POINT ${crd.longitude} ${crd.latitude}`
+        this.element.innerText = `经度：${crd.longitude}\n纬度：${crd.latitude}`
       },
       err => {
         alert(JSON.stringify(err))
