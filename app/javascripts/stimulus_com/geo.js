@@ -2,7 +2,8 @@ import BaseController from '../base_controller'
 
 export default class extends BaseController {
   static values = {
-    redirect: Boolean
+    redirect: Boolean,
+    assign: Boolean
   }
 
   connect() {
@@ -10,6 +11,8 @@ export default class extends BaseController {
       this.redirect()
     } else if (this.hasUrlValue) {
       this.url()
+    } else if (this.hasAssignValue) {
+      this.assign()
     }
   }
 
@@ -52,7 +55,7 @@ export default class extends BaseController {
     )
   }
 
-  assign(ele) {
+  assign() {
     navigator.geolocation.getCurrentPosition(
       pos => {
         const crd = pos.coords;
@@ -66,6 +69,8 @@ export default class extends BaseController {
         if (longitude) {
           longitude.value = crd.longitude
         }
+
+        this.element.innerText = `POINT ${crd.longitude} ${crd.latitude}`
       },
       err => {
         alert(JSON.stringify(err))
