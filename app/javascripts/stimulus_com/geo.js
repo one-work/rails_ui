@@ -70,6 +70,11 @@ export default class extends BaseController {
           longitude.value = crd.longitude
         }
 
+        const geo = document.getElementById('geo')
+        if (geo) {
+          geo.value = `POINT (${crd.longitude} ${crd.latitude})`
+        }
+
         this.element.innerText = `POINT ${crd.longitude} ${crd.latitude}`
       },
       err => {
