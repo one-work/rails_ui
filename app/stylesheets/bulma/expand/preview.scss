@@ -97,6 +97,10 @@ dl.as-show {
       display: inline-block;
       word-break: break-all;
 
+      button {
+        text-align: right;
+      }
+
       button > * {
         vertical-align: middle;
       }
