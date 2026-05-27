@@ -95,6 +95,7 @@ dl.as-show {
 
     form.has-select {
       display: inline-block;
+      word-break: break-all;
 
       button > * {
         vertical-align: middle;
