@@ -67,27 +67,34 @@ export default class extends Controller {
           src: 'https://mapapi.qq.com/web/lbs/javascriptGL/demo/img/marker-pink.png'
         })
       },
-      geometries: [{
-        position: new TMap.LatLng(xx.lat, xx.lng),
-        id: 'marker'
-      }]
+      geometries: [
+        {
+          position: new TMap.LatLng(xx.lat, xx.lng),
+          id: 'marker'
+        }
+      ]
     })
 
     const map = this.map
     const editor = new TMap.tools.GeometryEditor({
       map, // 编辑器绑定的地图对象
-      overlayList: [{
-        overlay: marker, // 可编辑图层
-        id: "marker",
-        selectedStyleId: "highlight"  // 被选中的marker会变为高亮样式
-      }],
+      overlayList: [
+        {
+          overlay: marker, // 可编辑图层
+          id: "marker",
+          selectedStyleId: "highlight"  // 被选中的marker会变为高亮样式
+        }
+      ],
       actionMode: TMap.tools.constants.EDITOR_ACTION.INTERACT, // 编辑器的工作模式
       activeOverlayId: "marker", // 激活图层
       selectable: true
     })
+    editor.setActiveOverlay('marker')
 
-    this.map.on('dragend', e => {
-      console.debug(e)
+    const data = marker.getGeometryById('marker');
+    window.xx1 = data
+    marker.on('dragend', e => {
+      alert(e)
       window.xxx = e
     })
   }
