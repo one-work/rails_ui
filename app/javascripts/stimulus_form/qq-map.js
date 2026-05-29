@@ -9,11 +9,25 @@ export default class extends Controller {
   static targets = ['load']
 
   connect() {
-    const center = new TMap.LatLng(39.984120, 116.307484)
-    this.map = new TMap.Map(this.element, {
-      center: center,
-      zoom: 17.2
-    })
+    navigator.geolocation.getCurrentPosition(
+      pos => {
+        const crd = pos.coords
+        console.debug(crd)
+        const center = new TMap.LatLng(crd.latitude, crd.longitude)
+        this.map = new TMap.Map(this.element, {
+          center: center,
+          zoom: 17.2
+        })
+      },
+      err => {
+        alert(JSON.stringify(err))
+      },
+      {
+        enableHighAccuracy: true,
+        timeout: 5000,
+        maximumAge: 0
+      }
+    )
   }
 
   selected(event) {
