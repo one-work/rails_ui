@@ -1,3 +1,6 @@
+import AmapController from './amap'
+application.register('amap', AmapController)
+
 import AssignController from './assign'
 application.register('assign', AssignController)
 
