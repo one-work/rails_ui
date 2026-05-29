@@ -68,7 +68,8 @@ export default class extends Controller {
         })
       },
       geometries: [{
-        position: new TMap.LatLng(xx.lat, xx.lng)
+        position: new TMap.LatLng(xx.lat, xx.lng),
+        id: 'marker'
       }]
     })
 
