@@ -20,6 +20,7 @@ export default class extends Controller {
         })
       },
       err => {
+        console.error(err)
         alert(JSON.stringify(err))
       },
       {
