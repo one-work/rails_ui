@@ -7,7 +7,7 @@ export default class extends Controller {
     key: String,
     geo: Object
   }
-  static targets = ['load']
+  static targets = ['load', 'map']
 
   connect() {
     navigator.geolocation.getCurrentPosition(
@@ -19,7 +19,13 @@ export default class extends Controller {
       err => {
         console.error(err)
         if (this.hasGeoValue) {
-          this.#initMap(this.geoValue.lat, this.geoValue.lng)
+          if (this.geoValue.lat && this.geoValue.lng) {
+            this.#initMap(this.geoValue.lat, this.geoValue.lng)
+          } else {
+            this.#initMap(39.984120, 116.307484)
+          }
+        } else {
+          this.#initMap(39.984120, 116.307484)
         }
       },
       {
@@ -41,9 +47,47 @@ export default class extends Controller {
 
   #initMap(lat, lng) {
     const center = new TMap.LatLng(lat, lng)
-    this.map = new TMap.Map(this.element, {
-      center: center,
-      zoom: 17.2
+    if (this.hasMapTarget) {
+      this.map = new TMap.Map(this.mapTarget, {
+        center: center,
+        zoom: 17.2
+      })
+    } else {
+      this.map = new TMap.Map(this.element, {
+        center: center,
+        zoom: 17.2
+      })
+    }
+
+    window.xx = this.map.getCenter()
+    const marker = new TMap.MultiMarker({
+      map: this.map,
+      styles: {
+        highlight: new TMap.MarkerStyle({
+          src: 'https://mapapi.qq.com/web/lbs/javascriptGL/demo/img/marker-pink.png'
+        })
+      },
+      geometries: [{
+        position: new TMap.LatLng(xx.lat, xx.lng)
+      }]
+    })
+
+    const map = this.map
+    const editor = new TMap.tools.GeometryEditor({
+      map, // 编辑器绑定的地图对象
+      overlayList: [{
+        overlay: marker, // 可编辑图层
+        id: "marker",
+        selectedStyleId: "highlight"  // 被选中的marker会变为高亮样式
+      }],
+      actionMode: TMap.tools.constants.EDITOR_ACTION.INTERACT, // 编辑器的工作模式
+      activeOverlayId: "marker", // 激活图层
+      selectable: true
+    })
+
+    this.map.on('dragend', e => {
+      console.debug(e)
+      window.xxx = e
     })
   }
 
