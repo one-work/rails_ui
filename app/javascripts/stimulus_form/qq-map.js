@@ -4,7 +4,8 @@ export default class extends Controller {
   static values = {
     name: String,
     index: Number,
-    key: String
+    key: String,
+    geo: Object
   }
   static targets = ['load']
 
@@ -13,15 +14,13 @@ export default class extends Controller {
       pos => {
         const crd = pos.coords
         console.debug(crd)
-        const center = new TMap.LatLng(crd.latitude, crd.longitude)
-        this.map = new TMap.Map(this.element, {
-          center: center,
-          zoom: 17.2
-        })
+        this.#initMap(crd.latitude, crd.longitude)
       },
       err => {
         console.error(err)
-        alert(JSON.stringify(err))
+        if (this.hasGeoValue) {
+          this.#initMap(this.geoValue.lat, this.geoValue.lng)
+        }
       },
       {
         enableHighAccuracy: true,
@@ -38,6 +37,14 @@ export default class extends Controller {
 
   select(event) {
     this.doSelected(event)
+  }
+
+  #initMap(lat, lng) {
+    const center = new TMap.LatLng(lat, lng)
+    this.map = new TMap.Map(this.element, {
+      center: center,
+      zoom: 17.2
+    })
   }
 
   doSelected(event) {
