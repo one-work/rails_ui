@@ -40,6 +40,7 @@ export default class extends BaseController {
         const crd = pos.coords;
         console.debug(crd)
         const url = new URL(location.href)
+        url.searchParams.delete('auth_token')
         url.searchParams.set('latitude', crd.latitude)
         url.searchParams.set('longitude', crd.longitude)
         Turbo.visit(url)
