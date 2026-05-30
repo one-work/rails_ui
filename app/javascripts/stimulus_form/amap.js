@@ -75,6 +75,7 @@ export default class extends Controller {
     const map = new AMap.Map(
       this.containerTarget,
       {
+        zoom: 19,
         center: [lat, lng]
       }
     )
