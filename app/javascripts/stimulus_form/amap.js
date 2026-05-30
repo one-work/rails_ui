@@ -1,7 +1,7 @@
 import { Controller } from '@hotwired/stimulus'
 
 export default class extends Controller {
-  static targets = ['container']
+  static targets = ['container', 'input']
   static values = {
     key: String,
     geo: Object
@@ -55,7 +55,6 @@ export default class extends Controller {
         console.error(err)
         if (this.hasGeoValue) {
           if (this.geoValue.lat && this.geoValue.lng) {
-            alert('dddd')
             this.#initMap(AMap, this.geoValue.lng, this.geoValue.lat)
           } else {
             this.#initMap(AMap, 116.307484, 39.984120)
@@ -76,7 +75,7 @@ export default class extends Controller {
     const map = new AMap.Map(
       this.containerTarget,
       {
-        zoom: 19,
+        zoom: 17.2,
         center: [lng, lat]
       }
     )
@@ -87,6 +86,9 @@ export default class extends Controller {
       icon: 'https://webapi.amap.com/theme/v1.3/markers/n/mark_b.png',
       draggable: true,
       position: [lng, lat]
+    })
+    marker.on('dragend', e => {
+      window.xx = e
     })
   }
 
