@@ -88,7 +88,9 @@ export default class extends Controller {
       position: [lng, lat]
     })
     marker.on('dragend', e => {
-      window.xx = e
+      if (this.hasInputTarget) {
+        this.inputTarget.value = `POINT (${e.lnglat.lng} ${e.lnglat.lat})`
+      }
     })
   }
 
