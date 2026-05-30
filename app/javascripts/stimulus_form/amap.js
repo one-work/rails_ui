@@ -9,7 +9,7 @@ export default class extends Controller {
 
   connect() {
     window._AMapSecurityConfig = {
-      securityJsCode: '「你申请的安全密钥」'
+      securityJsCode: 'e9bfe33eb20e7de78fa2cfded6323fe4'
     }
     this.#loadAMap()
   }
@@ -18,7 +18,7 @@ export default class extends Controller {
     AMapLoader.load({
       key: this.keyValue,
       version: '2.0',
-      plugins: ['AMap.Scale', 'AMap.Geolocation'],
+      plugins: ['AMap.Scale', 'AMap.Geolocation', 'AMap.AutoComplete', 'AMap.PlaceSearch'],
       AMapUI: {
         version: '1.1',
         plugins: ['overlay/SimpleMarker']
@@ -91,6 +91,17 @@ export default class extends Controller {
       if (this.hasInputTarget) {
         this.inputTarget.value = `POINT (${e.lnglat.lng} ${e.lnglat.lat})`
       }
+    })
+
+    const auto = new AMap.AutoComplete({
+      input: 'tipinput'
+    })
+    const placeSearch = new AMap.PlaceSearch({
+      map: map
+    })
+    auto.on('select', e => {
+      placeSearch.setCity(e.poi.adcode)
+      placeSearch.search(e.poi.name)
     })
   }
 
