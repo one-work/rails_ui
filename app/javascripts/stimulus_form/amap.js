@@ -76,12 +76,31 @@ export default class extends Controller {
     const map = new AMap.Map(
       this.containerTarget,
       {
+        resizeEnable: true,
         zoom: 17.2,
         center: [lng, lat]
       }
     )
     map.addControl(new AMap.Scale())
 
+
+
+    const auto = new AMap.AutoComplete({
+      input: 'tipinput'
+    })
+    const placeSearch = new AMap.PlaceSearch({
+      map: map
+    })
+    auto.on('select', e => {
+      placeSearch.setCity(e.poi.adcode)
+      placeSearch.search(e.poi.name)
+      window.xxx = e
+
+      this.#setMarker(AMap, map, e.poi.location.lng, e.poi.location.lat)
+    })
+  }
+
+  #setMarker(AMap, map, lng, lat) {
     const geocoder = new AMap.Geocoder({
       radius: 10000
     })
@@ -105,19 +124,6 @@ export default class extends Controller {
           this.addressTarget.value = result.regeocode.formattedAddress
         }
       })
-    })
-
-    const auto = new AMap.AutoComplete({
-      input: 'tipinput'
-    })
-    const placeSearch = new AMap.PlaceSearch({
-      map: map
-    })
-    auto.on('select', e => {
-      placeSearch.setCity(e.poi.adcode)
-      placeSearch.search(e.poi.name)
-      window.xxx = e
-      marker.setPosition(e.poi.location.lng, e.poi.location.lat)
     })
   }
 
