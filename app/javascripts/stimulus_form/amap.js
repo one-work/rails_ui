@@ -57,10 +57,10 @@ export default class extends Controller {
           if (this.geoValue.lat && this.geoValue.lng) {
             this.#initMap(AMap, this.geoValue.lat, this.geoValue.lng)
           } else {
-            this.#initMap(AMap, 39.984120, 116.307484)
+            this.#initMap(AMap, 116.307484, 39.984120)
           }
         } else {
-          this.#initMap(AMap, 39.984120, 116.307484)
+          this.#initMap(AMap, 116.307484, 39.984120)
         }
       },
       {
