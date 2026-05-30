@@ -55,7 +55,8 @@ export default class extends Controller {
         console.error(err)
         if (this.hasGeoValue) {
           if (this.geoValue.lat && this.geoValue.lng) {
-            this.#initMap(AMap, this.geoValue.lat, this.geoValue.lng)
+            alert('dddd')
+            this.#initMap(AMap, this.geoValue.lng, this.geoValue.lat)
           } else {
             this.#initMap(AMap, 116.307484, 39.984120)
           }
@@ -71,12 +72,12 @@ export default class extends Controller {
     )
   }
 
-  #initMap(AMap, lat, lng) {
+  #initMap(AMap, lng, lat) {
     const map = new AMap.Map(
       this.containerTarget,
       {
         zoom: 19,
-        center: [lat, lng]
+        center: [lng, lat]
       }
     )
     map.addControl(new AMap.Scale())
@@ -85,7 +86,7 @@ export default class extends Controller {
       map: map,
       icon: 'https://webapi.amap.com/theme/v1.3/markers/n/mark_b.png',
       draggable: true,
-      position: [lat, lng]
+      position: [lng, lat]
     })
   }
 
