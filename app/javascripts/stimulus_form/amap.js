@@ -4,12 +4,13 @@ export default class extends Controller {
   static targets = ['container', 'input']
   static values = {
     key: String,
+    code: String,
     geo: Object
   }
 
   connect() {
     window._AMapSecurityConfig = {
-      securityJsCode: 'e9bfe33eb20e7de78fa2cfded6323fe4'
+      securityJsCode: this.codeValue
     }
     this.#loadAMap()
   }
