@@ -3,17 +3,18 @@ import { Controller } from '@hotwired/stimulus'
 export default class extends Controller {
   static targets = ['container']
   static values = {
-    key: String
+    key: String,
+    geo: Object
   }
 
   connect() {
     window._AMapSecurityConfig = {
       securityJsCode: '「你申请的安全密钥」'
     }
-    this.#initMap()
+    this.#loadAMap()
   }
 
-  #initMap() {
+  #loadAMap() {
     AMapLoader.load({
       key: this.keyValue,
       version: '2.0',
@@ -26,10 +27,6 @@ export default class extends Controller {
         version: '2.0'
       }
     }).then(AMap => {
-      const map = new AMap.Map(this.containerTarget)
-      map.addControl(new AMap.Scale())
-
-
       const geolocation = new AMap.Geolocation({
         enableHighAccuracy: true,
         timeout: 10000,
@@ -40,20 +37,54 @@ export default class extends Controller {
 
       geolocation.getCurrentPosition((status, result) => {
         window.xx = result
-        const marker = new AMap.Marker({
-          map: map,
-          icon: 'https://webapi.amap.com/theme/v1.3/markers/n/mark_b.png',
-          draggable: true,
-          position: [
-            result.position.lat,
-            result.location.lng
-          ]
-        })
+        this.initMapWithLocation(AMap)
       })
-
-
     }).catch(e => {
       console.error(e)
+    })
+  }
+
+  initMapWithLocation(AMap) {
+    navigator.geolocation.getCurrentPosition(
+      pos => {
+        const crd = pos.coords
+        console.debug(crd)
+        this.#initMap(AMap, crd.latitude, crd.longitude)
+      },
+      err => {
+        console.error(err)
+        if (this.hasGeoValue) {
+          if (this.geoValue.lat && this.geoValue.lng) {
+            this.#initMap(AMap, this.geoValue.lat, this.geoValue.lng)
+          } else {
+            this.#initMap(AMap, 39.984120, 116.307484)
+          }
+        } else {
+          this.#initMap(AMap, 39.984120, 116.307484)
+        }
+      },
+      {
+        enableHighAccuracy: true,
+        timeout: 5000,
+        maximumAge: 0
+      }
+    )
+  }
+
+  #initMap(AMap, lat, lng) {
+    const map = new AMap.Map(
+      this.containerTarget,
+      {
+        center: [lat, lng]
+      }
+    )
+    map.addControl(new AMap.Scale())
+
+    const marker = new AMap.Marker({
+      map: map,
+      icon: 'https://webapi.amap.com/theme/v1.3/markers/n/mark_b.png',
+      draggable: true,
+      position: [lat, lng]
     })
   }
 
