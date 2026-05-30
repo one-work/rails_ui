@@ -29,7 +29,7 @@ export default class extends Controller {
     }).then(AMap => {
       const geolocation = new AMap.Geolocation({
         enableHighAccuracy: true,
-        timeout: 10000,
+        timeout: 1000, // 超时为 1s
         offset: [10, 20],
         zoomToAccuracy: true,
         position: 'RB'
