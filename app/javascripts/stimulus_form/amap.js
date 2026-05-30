@@ -1,7 +1,7 @@
 import { Controller } from '@hotwired/stimulus'
 
 export default class extends Controller {
-  static targets = ['container', 'input']
+  static targets = ['container', 'input', 'address']
   static values = {
     key: String,
     code: String,
@@ -19,7 +19,7 @@ export default class extends Controller {
     AMapLoader.load({
       key: this.keyValue,
       version: '2.0',
-      plugins: ['AMap.Scale', 'AMap.Geolocation', 'AMap.AutoComplete', 'AMap.PlaceSearch'],
+      plugins: ['AMap.Scale', 'AMap.Geolocation', 'AMap.AutoComplete', 'AMap.PlaceSearch', 'AMap.Geocoder'],
       AMapUI: {
         version: '1.1',
         plugins: ['overlay/SimpleMarker']
@@ -82,6 +82,11 @@ export default class extends Controller {
     )
     map.addControl(new AMap.Scale())
 
+    const geocoder = new AMap.Geocoder({
+      radius: 10000
+    })
+    window.geocoder = geocoder
+
     const marker = new AMap.Marker({
       map: map,
       icon: 'https://webapi.amap.com/theme/v1.3/markers/n/mark_b.png',
@@ -89,9 +94,17 @@ export default class extends Controller {
       position: [lng, lat]
     })
     marker.on('dragend', e => {
+      const lnglat = [e.lnglat.lng, e.lnglat.lat]
       if (this.hasInputTarget) {
         this.inputTarget.value = `POINT (${e.lnglat.lng} ${e.lnglat.lat})`
       }
+      geocoder.getAddress(lnglat, (status, result) => {
+        window.xx1 = lnglat
+        window.xx2 = result
+        if (this.hasAddressTarget) {
+          this.addressTarget.value = result.regeocode.formattedAddress
+        }
+      })
     })
 
     const auto = new AMap.AutoComplete({
@@ -103,6 +116,8 @@ export default class extends Controller {
     auto.on('select', e => {
       placeSearch.setCity(e.poi.adcode)
       placeSearch.search(e.poi.name)
+      window.xxx = e
+      marker.setPosition(e.poi.location.lng, e.poi.location.lat)
     })
   }
 
