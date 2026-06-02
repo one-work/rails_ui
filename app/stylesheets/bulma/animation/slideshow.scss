@@ -1,16 +1,21 @@
 @keyframes scrollStep {
-  from { transform: translateY(0); }
-  to { transform: translateY(-22.5px); }
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
 }
 
 .animation-scroll-step {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+
   animation-name: scrollStep;
   animation-duration: 3s;
   animation-iteration-count: infinite;
-  animation-timing-function: steps(2);
 }
 
 .scroll-wrapper {
+  position: relative;
   box-sizing: content-box;
   height: 22.5px;
   min-height: 22.5px;
