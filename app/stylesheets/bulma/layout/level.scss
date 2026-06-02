@@ -1,5 +1,4 @@
 @use '../utilities/css-variables' as cv;
-@use '../utilities/mixins' as mx;
 @use '../utilities/extends';
 
 $level-item-spacing: calc(#{cv.getVar("block-spacing")} * 0.5) !default;

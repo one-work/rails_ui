@@ -29,8 +29,8 @@ $media-level-2-spacing: 0.5rem !default;
 
   --bulma-link-text: var(--bulma-dark);
 
-  align-items: flex-start;
   display: flex;
+  align-items: flex-start;
   text-align: inherit;
 
   .content:not(:last-child) {
@@ -38,10 +38,10 @@ $media-level-2-spacing: 0.5rem !default;
   }
 
   .media {
+    display: flex;
     border-top-color: cv.getVar("media-border-color");
     border-top-style: solid;
     border-top-width: cv.getVar("media-border-size");
-    display: flex;
     padding-top: cv.getVar("media-level-1-spacing");
 
     .content:not(:last-child),
