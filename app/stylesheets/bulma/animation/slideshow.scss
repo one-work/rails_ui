@@ -1,6 +1,10 @@
 @keyframes scrollStep {
-  from { transform: translateY(100%); }
-  to { transform: translateY(0); }
+  0% { transform: translateY(100%); }
+  8% { transform: translateY(0); }  // 2s
+  12% { transform: translateY(0); }  // 1s
+  20% { transform: translateY(-100%); } // 2s
+
+  100% { transform: translateY(-100%); }  // 等待 20s
 }
 
 .animation-scroll-step {
@@ -10,7 +14,7 @@
   right: 0;
 
   animation-name: scrollStep;
-  animation-duration: 3s;
+  animation-duration: 25s;
   animation-iteration-count: infinite;
 }
 
@@ -20,4 +24,8 @@
   height: 22.5px;
   min-height: 22.5px;
   overflow: hidden;
+
+  p {
+    transform: translateY(100%);
+  }
 }
