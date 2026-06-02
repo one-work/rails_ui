@@ -5,17 +5,20 @@ export default class extends Controller {
   static values = {
     key: String,
     code: String,
-    geo: Object
+    geo: Object,
+    auto: { type: Boolean, default: true }
   }
 
   connect() {
     window._AMapSecurityConfig = {
       securityJsCode: this.codeValue
     }
-    this.#loadAMap()
+    if (this.autoValue) {
+      this.loadAMap()
+    }
   }
 
-  #loadAMap() {
+  loadAMap() {
     AMapLoader.load({
       key: this.keyValue,
       version: '2.0',
