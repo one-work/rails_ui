@@ -96,3 +96,13 @@ ul.media-info {
     border-left: 1px solid var(--bulma-grey);
   }
 }
+
+.medias {
+  .button_to {
+    display: flex;
+
+    .media {
+      flex-grow: 1;
+    }
+  }
+}
