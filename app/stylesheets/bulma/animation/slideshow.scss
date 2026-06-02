@@ -1,10 +1,10 @@
 @keyframes scrollStep {
   0% { transform: translateY(100%); }
-  8% { transform: translateY(0); }  // 2s
-  12% { transform: translateY(0); }  // 1s
-  20% { transform: translateY(-100%); } // 2s
+  10% { transform: translateY(0); }  // 2s
+  15% { transform: translateY(0); }  // 1s
+  25% { transform: translateY(-100%); } // 2s
 
-  100% { transform: translateY(-100%); }  // 等待 20s
+  100% { transform: translateY(-100%); }  // 等待 15s
 }
 
 .animation-scroll-step {
