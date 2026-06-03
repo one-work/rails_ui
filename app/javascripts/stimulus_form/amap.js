@@ -22,7 +22,14 @@ export default class extends Controller {
     AMapLoader.load({
       key: this.keyValue,
       version: '2.0',
-      plugins: ['AMap.Scale', 'AMap.Geolocation', 'AMap.AutoComplete', 'AMap.PlaceSearch', 'AMap.Geocoder'],
+      plugins: [
+        'AMap.Scale',
+        'AMap.ToolBar', // 显示缩放控件
+        'AMap.Geolocation',
+        'AMap.AutoComplete',
+        'AMap.PlaceSearch',
+        'AMap.Geocoder'
+      ],
       AMapUI: {
         version: '1.1',
         plugins: ['overlay/SimpleMarker']
@@ -87,9 +94,8 @@ export default class extends Controller {
         center: [lng, lat]
       }
     )
+    map.addControl(new AMap.ToolBar())
     map.addControl(new AMap.Scale())
-
-
 
     const auto = new AMap.AutoComplete({
       input: 'tipinput'
