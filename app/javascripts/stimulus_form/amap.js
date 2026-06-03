@@ -43,15 +43,17 @@ export default class extends Controller {
         position: 'RB'
       })
 
-      geolocation.getCurrentPosition((status, result) => {
-        if (result.status === 0) {
-          this.#initMap(AMap, geolocation, result.position.lng, result.position.lat)
-        } else if (this.hasGeoValue) {
-          this.#initMap(AMap, geolocation, this.geoValue.lng, this.geoValue.lat)
-        } else {
-          this.#initMap(AMap, geolocation, 116.307484, 39.984120)
-        }
-      })
+      if (this.hasGeoValue) {
+        this.#initMap(AMap, geolocation, this.geoValue.lng, this.geoValue.lat)
+      } else {
+        geolocation.getCurrentPosition((status, result) => {
+          if (result.status === 0) {
+            this.#initMap(AMap, geolocation, result.position.lng, result.position.lat)
+          } else {
+            this.#initMap(AMap, geolocation, 116.307484, 39.984120)
+          }
+        })
+      }
     }).catch(e => {
       console.error(e)
     })

@@ -3,8 +3,7 @@ import BaseController from '../base_controller'
 export default class extends BaseController {
   static values = {
     redirect: Boolean,
-    assign: Boolean,
-    map: Boolean
+    assign: Boolean
   }
 
   connect() {
@@ -14,8 +13,6 @@ export default class extends BaseController {
       this.url()
     } else if (this.hasAssignValue) {
       this.assign()
-    } else if (this.hasMapValue) {
-      this.map()
     }
   }
 
@@ -25,30 +22,6 @@ export default class extends BaseController {
         const crd = pos.coords;
         console.debug(crd)
         this.patch(this.urlValue, JSON.stringify(crd))
-      },
-      err => {
-        alert(JSON.stringify(err))
-      },
-      {
-        enableHighAccuracy: true,
-        timeout: 5000,
-        maximumAge: 0
-      }
-    )
-  }
-
-  map() {
-    navigator.geolocation.getCurrentPosition(
-      pos => {
-        const crd = pos.coords;
-        console.debug(crd)
-
-        const map = this.element.getController('amap')
-        map.geoValue = {
-          lat: crd.latitude,
-          lng: crd.longitude
-        }
-        map.loadAMap()
       },
       err => {
         alert(JSON.stringify(err))
