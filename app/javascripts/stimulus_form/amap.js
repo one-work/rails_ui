@@ -40,10 +40,11 @@ export default class extends Controller {
       })
 
       geolocation.getCurrentPosition((status, result) => {
-        window.xx = result
-        alert(status)
-        alert(JSON.stringify(result))
-        this.initMapWithLocation(AMap)
+        if (result.status === 0) {
+          this.#initMap(AMap, result.position[0], result.position[1])
+        } else {
+          this.initMapWithLocation(AMap)
+        }
       })
     }).catch(e => {
       console.error(e)
@@ -55,7 +56,7 @@ export default class extends Controller {
       pos => {
         const crd = pos.coords
         console.debug(crd)
-        this.#initMap(AMap, crd.latitude, crd.longitude)
+        this.#initMap(AMap, crd.longitude, crd.latitude)
       },
       err => {
         console.error(err)
@@ -99,7 +100,6 @@ export default class extends Controller {
     auto.on('select', e => {
       placeSearch.setCity(e.poi.adcode)
       placeSearch.search(e.poi.name)
-      window.xxx = e
 
       this.#setMarker(AMap, map, e.poi.location.lng, e.poi.location.lat)
     })
@@ -123,8 +123,6 @@ export default class extends Controller {
         this.inputTarget.value = `POINT (${e.lnglat.lng} ${e.lnglat.lat})`
       }
       geocoder.getAddress(lnglat, (status, result) => {
-        window.xx1 = lnglat
-        window.xx2 = result
         if (this.hasAddressTarget) {
           this.addressTarget.value = result.regeocode.formattedAddress
         }
