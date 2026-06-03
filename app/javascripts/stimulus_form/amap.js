@@ -41,7 +41,7 @@ export default class extends Controller {
       const geolocation = new AMap.Geolocation({
         enableHighAccuracy: true,
         timeout: 1000, // 超时为 1s
-        offset: [17, 87],
+        offset: [18, 86],
         zoomToAccuracy: true,
         position: 'RB'
       })
