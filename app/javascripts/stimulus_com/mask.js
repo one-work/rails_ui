@@ -2,23 +2,17 @@ import { Controller } from '@hotwired/stimulus'
 
 export default class extends Controller {
 
-  close() {
-    const ele = this.element
-    ele.classList.add('display-none')
-  }
-
   show() {
-    const ele = this.element
-    ele.classList.remove('display-none')
-  }
+    const mask = document.createElement('div')
+    mask.classList.add('weui-mask-share')
+    document.body.appendChild(mask)
 
-  toggle() {
-    const x = this.element
-    if (x.classList.contains('weui-mask-share')) {
-      x.classList.remove('weui-mask-share')
-    } else {
-      x.classList.add('weui-mask-share')
-    }
+    mask.addEventListener(
+      'click',
+      e => {
+        e.currentTarget.remove()
+      }
+    )
   }
 
 }
