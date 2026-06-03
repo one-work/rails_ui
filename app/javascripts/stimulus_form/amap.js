@@ -76,20 +76,23 @@ export default class extends Controller {
     const placeSearch = new AMap.PlaceSearch({
       map: map
     })
+    const geocoder = new AMap.Geocoder({
+      radius: 10000
+    })
+    window.geocoder = geocoder
+
     auto.on('select', e => {
       placeSearch.setCity(e.poi.adcode)
       placeSearch.search(e.poi.name)
 
       this.#setMarker(AMap, map, e.poi.location.lng, e.poi.location.lat)
     })
+    map.on('touchend', e => {
+      this.#setInput(e, geocoder)
+    })
   }
 
   #setMarker(AMap, map, lng, lat) {
-    const geocoder = new AMap.Geocoder({
-      radius: 10000
-    })
-    window.geocoder = geocoder
-
     const marker = new AMap.Marker({
       map: map,
       icon: 'https://webapi.amap.com/theme/v1.3/markers/n/mark_b.png',
@@ -97,9 +100,6 @@ export default class extends Controller {
       position: [lng, lat]
     })
     marker.on('dragend', e => {
-      this.#setInput(e, geocoder)
-    })
-    map.on('touchend', e => {
       this.#setInput(e, geocoder)
     })
   }
