@@ -49,40 +49,15 @@ export default class extends Controller {
       geolocation.getCurrentPosition((status, result) => {
         if (result.status === 0) {
           this.#initMap(AMap, result.position[0], result.position[1])
+        } else if (this.hasGeoValue) {
+          this.#initMap(AMap, this.geoValue.lng, this.geoValue.lat)
         } else {
-          this.initMapWithLocation(AMap)
+          this.#initMap(AMap, 116.307484, 39.984120)
         }
       })
     }).catch(e => {
       console.error(e)
     })
-  }
-
-  initMapWithLocation(AMap) {
-    navigator.geolocation.getCurrentPosition(
-      pos => {
-        const crd = pos.coords
-        console.debug(crd)
-        this.#initMap(AMap, crd.longitude, crd.latitude)
-      },
-      err => {
-        console.error(err)
-        if (this.hasGeoValue) {
-          if (this.geoValue.lat && this.geoValue.lng) {
-            this.#initMap(AMap, this.geoValue.lng, this.geoValue.lat)
-          } else {
-            this.#initMap(AMap, 116.307484, 39.984120)
-          }
-        } else {
-          this.#initMap(AMap, 116.307484, 39.984120)
-        }
-      },
-      {
-        enableHighAccuracy: true,
-        timeout: 5000,
-        maximumAge: 0
-      }
-    )
   }
 
   #initMap(AMap, lng, lat) {
