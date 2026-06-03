@@ -41,6 +41,8 @@ export default class extends Controller {
 
       geolocation.getCurrentPosition((status, result) => {
         window.xx = result
+        alert(status)
+        alert(JSON.stringify(result))
         this.initMapWithLocation(AMap)
       })
     }).catch(e => {
