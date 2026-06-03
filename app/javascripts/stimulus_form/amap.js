@@ -33,9 +33,6 @@ export default class extends Controller {
       AMapUI: {
         version: '1.1',
         plugins: ['overlay/SimpleMarker']
-      },
-      Loca: {
-        version: '2.0'
       }
     }).then(AMap => {
       const geolocation = new AMap.Geolocation({
@@ -48,8 +45,6 @@ export default class extends Controller {
 
       geolocation.getCurrentPosition((status, result) => {
         if (result.status === 0) {
-          alert(result.position.lat)
-          alert(JSON.stringify(result))
           this.#initMap(AMap, geolocation, result.position.lng, result.position.lat)
         } else if (this.hasGeoValue) {
           this.#initMap(AMap, geolocation, this.geoValue.lng, this.geoValue.lat)
@@ -102,15 +97,22 @@ export default class extends Controller {
       position: [lng, lat]
     })
     marker.on('dragend', e => {
-      const lnglat = [e.lnglat.lng, e.lnglat.lat]
-      if (this.hasInputTarget) {
-        this.inputTarget.value = `POINT (${e.lnglat.lng} ${e.lnglat.lat})`
+      this.#setInput(e, geocoder)
+    })
+    map.on('touchend', e => {
+      this.#setInput(e, geocoder)
+    })
+  }
+
+  #setInput(e, geocoder) {
+    const lnglat = [e.lnglat.lng, e.lnglat.lat]
+    if (this.hasInputTarget) {
+      this.inputTarget.value = `POINT (${e.lnglat.lng} ${e.lnglat.lat})`
+    }
+    geocoder.getAddress(lnglat, (status, result) => {
+      if (this.hasAddressTarget) {
+        this.addressTarget.value = result.regeocode.formattedAddress
       }
-      geocoder.getAddress(lnglat, (status, result) => {
-        if (this.hasAddressTarget) {
-          this.addressTarget.value = result.regeocode.formattedAddress
-        }
-      })
     })
   }
 
