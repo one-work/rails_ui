@@ -48,6 +48,7 @@ export default class extends Controller {
 
       geolocation.getCurrentPosition((status, result) => {
         if (result.status === 0) {
+          alert(result.position[0])
           this.#initMap(AMap, geolocation, result.position[0], result.position[1])
         } else if (this.hasGeoValue) {
           this.#initMap(AMap, geolocation, this.geoValue.lng, this.geoValue.lat)
