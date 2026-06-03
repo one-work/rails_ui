@@ -41,18 +41,18 @@ export default class extends Controller {
       const geolocation = new AMap.Geolocation({
         enableHighAccuracy: true,
         timeout: 1000, // 超时为 1s
-        offset: [10, 20],
+        offset: [17, 87],
         zoomToAccuracy: true,
         position: 'RB'
       })
 
       geolocation.getCurrentPosition((status, result) => {
         if (result.status === 0) {
-          this.#initMap(AMap, result.position[0], result.position[1])
+          this.#initMap(AMap, geolocation, result.position[0], result.position[1])
         } else if (this.hasGeoValue) {
-          this.#initMap(AMap, this.geoValue.lng, this.geoValue.lat)
+          this.#initMap(AMap, geolocation, this.geoValue.lng, this.geoValue.lat)
         } else {
-          this.#initMap(AMap, 116.307484, 39.984120)
+          this.#initMap(AMap, geolocation, 116.307484, 39.984120)
         }
       })
     }).catch(e => {
@@ -60,7 +60,7 @@ export default class extends Controller {
     })
   }
 
-  #initMap(AMap, lng, lat) {
+  #initMap(AMap, geolocation, lng, lat) {
     const map = new AMap.Map(
       this.containerTarget,
       {
@@ -71,6 +71,7 @@ export default class extends Controller {
     )
     map.addControl(new AMap.ToolBar())
     map.addControl(new AMap.Scale())
+    map.addControl(geolocation)
 
     const auto = new AMap.AutoComplete({
       input: 'tipinput'
