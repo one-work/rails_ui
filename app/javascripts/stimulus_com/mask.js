@@ -6,13 +6,11 @@ export default class extends Controller {
     const mask = document.createElement('div')
     mask.classList.add('weui-mask-share')
     document.body.appendChild(mask)
-    document.body.classList.add('clipped')
 
     mask.addEventListener(
       'click',
       e => {
         e.currentTarget.remove()
-        document.body.classList.remove('clipped')
       }
     )
   }
