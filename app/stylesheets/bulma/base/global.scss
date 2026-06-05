@@ -1,19 +1,5 @@
-del {
-  color: red;
-}
-
-input {
-  line-height: inherit;
-}
-
-time {
-  font-family: monospace;
-  font-size: 14px;
-}
-
-a[disabled=disabled] {
-  pointer-events: none;
-  opacity: 0.6;
+html.no-hover * {
+  pointer-events: none !important;
 }
 
 .as-attached-top:not(:last-child) {

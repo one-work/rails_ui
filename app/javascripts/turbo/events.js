@@ -13,3 +13,10 @@ document.addEventListener('turbo:before-frame-render', event => {
     document.title = event.detail.newFrame.title
   }
 })
+
+document.addEventListener('turbo:load', event => {
+  document.documentElement.classList.add('no-hover')
+  setTimeout(() => {
+    document.documentElement.classList.remove('no-hover')
+  }, 50)
+})

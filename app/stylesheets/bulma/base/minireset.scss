@@ -89,3 +89,21 @@ th {
     text-align: inherit;
   }
 }
+
+del {
+  color: red;
+}
+
+input {
+  line-height: inherit;
+}
+
+time {
+  font-family: monospace;
+  font-size: 14px;
+}
+
+a[disabled=disabled] {
+  pointer-events: none;
+  opacity: 0.6;
+}
