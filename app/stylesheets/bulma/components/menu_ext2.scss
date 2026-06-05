@@ -9,10 +9,9 @@
 
     flex-grow: 1;
 
-
     .menu-item:not(.is-active),
     .menu-list a:not(.is-active) {
-      // background-color: transparent;
+      background-color: transparent;
     }
 
     .cell:not(.is-active) {
@@ -31,7 +30,7 @@
 
     .menu-item:not(.is-active),
     .menu-list a:not(.is-active) {
-      //background-color: white;
+      background-color: white;
     }
 
     .menu-item {
