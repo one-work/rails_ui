@@ -1,6 +1,7 @@
 Turbo.StreamActions.visit = function() {
   const url = this.getAttribute('url')
-  const action = this.getAttribute('action')
+  const action = this.getAttribute('turbo_action')
+  console.debug('-------', action)
 
   if (action) {
     Turbo.visit(url || this.baseURI, { action: action })

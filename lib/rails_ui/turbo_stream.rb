@@ -12,7 +12,7 @@ module RailsUi
         url = URI(url)
         url.query = params.to_query
       end
-      turbo_stream_action_tag :visit, url: url.to_s, action: action
+      turbo_stream_action_tag :visit, url: url.to_s, turbo_action: action
     end
 
   end
