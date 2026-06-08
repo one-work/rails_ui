@@ -146,11 +146,3 @@ $card-media-margin: cv.getVar("block-spacing") !default;
     border-inline-end: cv.getVar("card-footer-border-top");
   }
 }
-
-// Combinations
-
-.card {
-  .media:not(:last-child) {
-    margin-bottom: cv.getVar("card-media-margin");
-  }
-}

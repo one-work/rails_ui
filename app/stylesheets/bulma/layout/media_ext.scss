@@ -1,5 +1,6 @@
 .media {
-  .box > & {
+  .box > &,
+  .card-content > & {
     --bulma-media-spacing: 0.75rem;
 
     padding-left: 1rem;
