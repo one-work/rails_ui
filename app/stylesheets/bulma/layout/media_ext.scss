@@ -68,17 +68,16 @@
     flex-direction: column;
     justify-content: center;
     align-items: end;
+
+    .button_to {
+      align-self: stretch;
+    }
   }
 
   &.as-centered {
     display: flex;
     align-items: center;
     gap: 0.25rem;
-  }
-
-  .fa-chevron-right,
-  .fa-qrcode {
-    color: var(--bulma-grey);
   }
 }
 

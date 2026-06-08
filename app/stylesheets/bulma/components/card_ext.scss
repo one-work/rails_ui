@@ -109,6 +109,8 @@
   }
 
   &.as-xx {
+    --bulma-card-content-padding: 0;
+
     .card-header {
       justify-content: space-between;
       align-items: center;
