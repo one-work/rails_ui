@@ -108,7 +108,7 @@
     }
   }
 
-  &.as-xx {
+  &.as-head {
     --bulma-card-content-padding: 0;
 
     .card-header {
@@ -116,6 +116,11 @@
       align-items: center;
       padding: 0.75rem 1rem;
       background-color: hsl(221, 14%, 92%);
+    }
+
+    .card-footer {
+      justify-content: space-between;
+      padding: 0.75rem 1rem;
     }
   }
 
