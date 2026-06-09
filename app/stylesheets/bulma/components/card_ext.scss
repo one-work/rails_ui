@@ -138,7 +138,8 @@
     }
 
     .card-footer {
-
+      padding: cv.getVar('card-content-padding');
+      box-shadow: cv.getVar("card-shadow");
     }
   }
 }
