@@ -10,6 +10,9 @@ export default class extends BaseController {
   static targets = ['input']
 
   input() {
+    if (wx) {
+
+    }
     wx.ready(() => {
       wx.scanQRCode({
         needResult: 1,
@@ -26,6 +29,11 @@ export default class extends BaseController {
   }
 
   report(event) {
+    if (wx) {
+    } else {
+      alert('wx is not defined!')
+    }
+
     const ele = event.currentTarget
     let url = ele.dataset.reportUrl
     let body
