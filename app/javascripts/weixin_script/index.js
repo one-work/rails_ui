@@ -1,4 +1,4 @@
-const weixin_fetch = function(configUrl, { url = location.href, success, ...args } = {}) {
+function weixin_fetch(configUrl, { url = location.href, success, ...args } = {}) {
   fetch(configUrl, {
     method: 'POST',
     headers: {
@@ -45,15 +45,13 @@ const weixin_fetch = function(configUrl, { url = location.href, success, ...args
   })
 }
 
-const weixin_script = document.getElementById('weixin_script')
-const wxwork_script = document.getElementById('wxwork_script')
+(() => {
+  const weixin_script = document.createElement('script')
+  weixin_script.src = 'https://res.wx.qq.com/open/js/jweixin-1.6.0.js'
+  weixin_script.async = true
+  document.head.appendChild(weixin_script)
 
-if (weixin_script && wxwork_script) {
-  wxwork_script.addEventListener('load', event => {
-    wxwork_fetch()
-  })
-} else if (weixin_script) {
   weixin_script.addEventListener('load', () => {
-    weixin_fetch(weixin_script.dataset.url)
+    weixin_fetch('/wechat/js')
   })
-}
+})();

@@ -39,3 +39,4 @@ const wxwork_fetch = function({ url = location.href, success, ...args } = {}) {
   })
 }
 window.wxwork_fetch = wxwork_fetch
+const wxwork_script = document.getElementById('wxwork_script')
