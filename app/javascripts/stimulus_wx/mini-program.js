@@ -2,11 +2,6 @@ import ProgramController from '../program_controller'
 
 export default class extends ProgramController {
   static values = {
-    url: String, // url must begin with /pages
-    data: { type: Object, default: {} },
-    direct: Boolean,
-    launch: Boolean,
-    nav: Boolean,
     debug: Boolean
   }
 

@@ -1,6 +1,14 @@
 import { Controller } from '@hotwired/stimulus'
 
 export default class extends Controller {
+  static values = {
+    url: String, // url must begin with /pages
+    data: { type: Object, default: {} },
+    direct: Boolean,
+    launch: Boolean,
+    nav: Boolean,
+    debug: Boolean
+  }
 
   xx() {
     let url = this.urlValue
