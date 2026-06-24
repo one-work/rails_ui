@@ -1,11 +1,6 @@
-import { Controller } from '@hotwired/stimulus'
+import ProgramController from '../program_controller'
 
-export default class extends Controller {
-  static values = {
-    url: String, // url must begin with /pages
-    data: { type: Object, default: {} },
-    direct: Boolean
-  }
+export default class extends ProgramController {
 
   connect() {
     if (this.directValue) {
@@ -22,7 +17,7 @@ export default class extends Controller {
   }
 
   navTo() {
-
+    const url = this.xx()
 
     tt.miniProgram.redirectTo({ url: url })
   }

@@ -6,8 +6,7 @@ export default class extends Controller {
     data: { type: Object, default: {} },
     direct: Boolean,
     launch: Boolean,
-    nav: Boolean,
-    debug: Boolean
+    nav: Boolean
   }
 
   xx() {
@@ -22,6 +21,7 @@ export default class extends Controller {
         url = this.urlValue.concat('?').concat(query)
       }
     }
+    console.debug('mini program nav url:', url)
   }
 
 }

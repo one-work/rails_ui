@@ -1,9 +1,6 @@
 import ProgramController from '../program_controller'
 
 export default class extends ProgramController {
-  static values = {
-    debug: Boolean
-  }
 
   connect() {
     if (window.__wxjs_environment === 'miniprogram') {
@@ -30,18 +27,7 @@ export default class extends ProgramController {
   }
 
   navTo() {
-    let url = this.urlValue
-
-    let query = new URLSearchParams(this.dataValue).toString()
-    if (query.length > 0) {
-      query = query.replace(/\+/g, '%20') // 将 + 转为 %20 方便 decodeURLParams 解析
-      if (this.urlValue.includes('?')) {
-        url = this.urlValue.concat('&').concat(query)
-      } else {
-        url = this.urlValue.concat('?').concat(query)
-      }
-    }
-    console.debug('mini program nav url:', url)
+    let url = this.xx()
 
     if (this.launchValue) {
       wx.miniProgram.reLaunch({ url: url })
