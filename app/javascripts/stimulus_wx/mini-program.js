@@ -3,7 +3,7 @@ import { Controller } from '@hotwired/stimulus'
 export default class extends Controller {
   static values = {
     url: String, // url must begin with /pages
-    data: Object,
+    data: { type: Object, default: {} },
     direct: Boolean,
     launch: Boolean,
     nav: Boolean,
@@ -11,10 +11,10 @@ export default class extends Controller {
   }
 
   connect() {
-    const weixin_script = document.getElementById('weixin_script')
     if (window.__wxjs_environment === 'miniprogram') {
       if (this.directValue) {
         if (typeof wx === 'undefined') {
+          const weixin_script = document.getElementById('weixin_script')
           weixin_script.addEventListener('load', () => {
             this.navTo()
           })
@@ -35,8 +35,9 @@ export default class extends Controller {
   }
 
   navTo() {
-    let query = new URLSearchParams(this.dataValue).toString()
     let url = this.urlValue
+
+    let query = new URLSearchParams(this.dataValue).toString()
     if (query.length > 0) {
       query = query.replace(/\+/g, '%20') // 将 + 转为 %20 方便 decodeURLParams 解析
       if (this.urlValue.includes('?')) {
@@ -46,6 +47,7 @@ export default class extends Controller {
       }
     }
     console.debug('mini program nav url:', url)
+
     if (this.launchValue) {
       wx.miniProgram.reLaunch({ url: url })
     } else if (this.navValue) {
