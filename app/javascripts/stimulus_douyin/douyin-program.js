@@ -3,12 +3,13 @@ import { Controller } from '@hotwired/stimulus'
 export default class extends Controller {
   static values = {
     url: String, // url must begin with /pages
-    direct: Boolean
+    direct: Boolean,
+    data: Object
   }
 
   connect() {
     if (this.directValue) {
-      this.noticeUrl()
+      this.navTo()
     }
   }
 
@@ -19,5 +20,10 @@ export default class extends Controller {
         url: this.urlValue
       }
     })
+  }
+
+  navTo() {
+    let url = this.urlValue
+    tt.miniProgram.redirectTo({ url: url })
   }
 }
