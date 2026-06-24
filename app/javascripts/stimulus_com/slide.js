@@ -1,4 +1,4 @@
-import TouchController from './touch'
+import TouchController from '../touch_controller'
 import { DateTime } from 'luxon'
 
 // z-index: 0, 当前显示的图片/即将显示的图片，touch move 时动态设定；

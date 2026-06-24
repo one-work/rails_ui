@@ -1,6 +1,6 @@
-import { Controller } from '@hotwired/stimulus'
+import ProgramController from '../program_controller'
 
-export default class extends Controller {
+export default class extends ProgramController {
   static values = {
     url: String, // url must begin with /pages
     data: { type: Object, default: {} },

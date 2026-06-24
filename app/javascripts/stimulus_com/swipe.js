@@ -1,4 +1,4 @@
-import TouchController from './touch'
+import TouchController from '../touch_controller'
 
 export default class extends TouchController {
   static targets = ['open']
