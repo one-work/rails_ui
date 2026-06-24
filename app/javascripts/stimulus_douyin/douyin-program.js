@@ -13,6 +13,7 @@ export default class extends Controller {
   }
 
   noticeUrl() {
+    console.debug('dddddddd')
     tt.miniProgram.postMessage({
       data: {
         url: this.urlValue
