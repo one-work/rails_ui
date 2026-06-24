@@ -22,6 +22,7 @@ export default class extends Controller {
       }
     }
     console.debug('mini program nav url:', url)
+    return url
   }
 
 }
