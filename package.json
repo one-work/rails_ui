@@ -40,12 +40,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/work.design/rails_ui.git"
+    "url": "git+https://github.com/one.work/rails_ui.git"
   },
   "author": "mingyuanqin<mingyuan0715@foxmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/work.design/rails_design/issues"
+    "url": "https://github.com/one.work/rails_ui/issues"
   },
-  "homepage": "https://github.com/work.design/rails_design"
+  "homepage": "https://github.com/one.work/rails_ui"
 }
