@@ -1,5 +1,5 @@
 import '../weixin_script'
-const wxwork_fetch = function({ url = location.href, success, ...args } = {}) {
+const wxwork_fetch = function({ url = location.href } = {}) {
   weixin_fetch({
     url: url,
     success: () => {
@@ -26,9 +26,6 @@ const wxwork_fetch = function({ url = location.href, success, ...args } = {}) {
             } else {
               console.debug('wx.agentConfig success', JSON.stringify(res))
             }
-            if (success) {
-              success(args)
-            }
           },
           fail: res => {
             new Error('wx.agentConfig fail ' + JSON.stringify(res))
@@ -38,5 +35,3 @@ const wxwork_fetch = function({ url = location.href, success, ...args } = {}) {
     }
   })
 }
-window.wxwork_fetch = wxwork_fetch
-const wxwork_script = document.getElementById('wxwork_script')
