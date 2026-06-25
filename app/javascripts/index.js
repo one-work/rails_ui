@@ -3,8 +3,4 @@ window.Idiomorph = Idiomorph
 
 import './core'
 import './turbo'
-import './stimulus/base'
-import './stimulus/com'
-import './stimulus/channels'
-import './stimulus/bulma'
-import './stimulus/form'
+import './stimulus'
