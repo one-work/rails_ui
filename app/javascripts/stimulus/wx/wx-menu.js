@@ -3,7 +3,7 @@ import { Controller } from '@hotwired/stimulus'
 export default class extends Controller {
   static values = {
     list: {
-      type: Object,
+      type: Array,
       default: [
         'menuItem:share:appMessage',
         'menuItem:share:timeline',
