@@ -9,31 +9,25 @@ export default class extends BaseController {
   }
   static targets = ['input']
 
-  input() {
-    if (wx) {
+  connect() {
+    this.element.disabled = false
+  }
 
-    }
-    wx.ready(() => {
-      wx.scanQRCode({
-        needResult: 1,
-        success: (res) => {
-          if (this.hasRegexValue) {
-            const regex = new RegExp(this.regexValue, 'gm')
-            this.inputTarget.value = res.resultStr.match(regex)
-          } else {
-            this.inputTarget.value = res.resultStr
-          }
+  input() {
+    wx.scanQRCode({
+      needResult: 1,
+      success: (res) => {
+        if (this.hasRegexValue) {
+          const regex = new RegExp(this.regexValue, 'gm')
+          this.inputTarget.value = res.resultStr.match(regex)
+        } else {
+          this.inputTarget.value = res.resultStr
         }
-      })
+      }
     })
   }
 
   report(event) {
-    if (wx) {
-    } else {
-      alert('wx is not defined!')
-    }
-
     const ele = event.currentTarget
     let url = ele.dataset.reportUrl
     let body
@@ -49,26 +43,23 @@ export default class extends BaseController {
         body.append(k, this.paramsValue[k])
       })
     }
-    wx.ready(() => {
-      wx.scanQRCode({
-        needResult: 1,
-        success: (res) => {
-          body.append('result', res.resultStr)
-          this.request(url, 'POST', body, { 'X-CSRF-Token': this.csrfToken() })
-        }
-      })
+
+    wx.scanQRCode({
+      needResult: 1,
+      success: (res) => {
+        body.append('result', res.resultStr)
+        this.request(url, 'POST', body, { 'X-CSRF-Token': this.csrfToken() })
+      }
     })
   }
 
   invoke() {
-    wx.ready(() => {
-      wx.scanQRCode({
-        complete: (res) => {
-          if (this.hasDebugValue && this.debugValue) {
-            alert(JSON.stringify(res))
-          }
+    wx.scanQRCode({
+      complete: (res) => {
+        if (this.hasDebugValue && this.debugValue) {
+          alert(JSON.stringify(res))
         }
-      })
+      }
     })
   }
 

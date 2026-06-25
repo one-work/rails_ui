@@ -51,9 +51,6 @@ export default class extends BaseController {
           address: '点击测试',
           scale: 15
         })
-      },
-      fail: () => {
-        weixin_fetch({ success: this.location, controller: this })
       }
     })
   }
@@ -71,19 +68,7 @@ export default class extends BaseController {
             this.mediaTarget.form.requestSubmit()
           }
         })
-      },
-      fail: () => {
-        weixin_fetch({ success: this.chooseImage, controller: this })
       }
-    })
-  }
-
-  showMenu() {
-    wx.ready(() => {
-      wx.showMenuItems({
-        menuList: ['menuItem:copyUrl']
-      })
-      wx.showOptionMenu()
     })
   }
 

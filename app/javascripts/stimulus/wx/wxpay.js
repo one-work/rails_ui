@@ -31,16 +31,15 @@ export default class extends Controller {
   }
 
   onBridgeReady() {
-    wx.ready(() => {
-      WeixinJSBridge.invoke(
-        'getBrandWCPayRequest',
-        this.paramsValue,
-        res => {
-          if (res.err_msg === 'get_brand_wcpay_request:ok') {
-            //alert('pay success!')
-          }
-        })
-    })
+    WeixinJSBridge.invoke(
+      'getBrandWCPayRequest',
+      this.paramsValue,
+      res => {
+        if (res.err_msg === 'get_brand_wcpay_request:ok') {
+          //alert('pay success!')
+        }
+      }
+    )
   }
 
 }
