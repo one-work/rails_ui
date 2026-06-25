@@ -6,6 +6,7 @@ export default class extends Controller {
     title: String,
     desc: String,
     link: String,
+    content: String,
     image: String
   }
 
@@ -16,11 +17,16 @@ export default class extends Controller {
   }
 
   updateTimeline() {
+    let content = this.titleValue
+    if (this.hasContentValue) {
+      content = this.contentValue
+    }
+
     wx.updateTimelineShareData({
-      title: this.titleValue,
+      title: content,
       link: this.linkValue,
       imgUrl: this.imageValue,
-      fail: (res) => {
+      fail: () => {
         alert('分享到朋友圈')
       }
     })
@@ -32,7 +38,7 @@ export default class extends Controller {
       desc: this.descValue,
       link: this.linkValue,
       imgUrl: this.imageValue,
-      fail: (res) => {
+      fail: () => {
         alert('转发给朋友')
       }
     })
@@ -40,7 +46,6 @@ export default class extends Controller {
 
   // 实际测试不能正常工作，文档未说明
   showMenu() {
-    wx.hideAllNonBaseMenuItem()
     wx.hideMenuItems({
       menuList: [
         'share:appMessage',
