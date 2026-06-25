@@ -4,6 +4,6 @@ window.utils = {
       calendar: 'chinese',
       timeZone: 'Asia/Shanghai'
     })
-    format.format(date)
+    return format.format(date)
   }
 }
