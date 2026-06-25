@@ -56,4 +56,4 @@ function weixin_fetch(configUrl, { url = location.href } = {}) {
   weixin_script.addEventListener('load', () => {
     weixin_fetch('/wechat/js')
   })
-})();
+})()
