@@ -1,4 +1,4 @@
-function weixin_fetch(configUrl, { url = location.href, success, ...args } = {}) {
+function weixin_fetch(configUrl, { url = location.href } = {}) {
   fetch(configUrl, {
     method: 'POST',
     headers: {
@@ -25,17 +25,15 @@ function weixin_fetch(configUrl, { url = location.href, success, ...args } = {})
       alert('body is:' + JSON.stringify(config))
     }
     wx.config(config)
+
     wx.ready(() => {
       if (body['debug']) {
         alert('wx.config ready')
       } else {
         console.debug('ready, ok')
       }
-      import '../stimulus/wx'
-      if (success) {
-        success(args)
-      }
     })
+
     wx.error(res => {
       if (body['debug']) {
         alert('wx.config: ' + JSON.stringify(res) + '\n' + `location: ${location.href}`)
