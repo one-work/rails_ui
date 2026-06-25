@@ -1,4 +1,4 @@
-module Design
+module Ui
   class HomeController < BaseController
 
     def swipe

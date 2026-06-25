@@ -31,11 +31,7 @@
     "luxon": "^3.5.0",
     "sortablejs": "^1.15.2"
   },
-  "devDependencies": {
-    "jest": "^27.0.6"
-  },
   "scripts": {
-    "test": "jest",
     "lint": "eslint package/"
   },
   "repository": {
