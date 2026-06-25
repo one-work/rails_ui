@@ -23,4 +23,18 @@ export default class extends Controller {
     })
   }
 
+  hiddenAll() {
+    wx.hideAllNonBaseMenuItem()
+  }
+
+  showMenu() {
+    wx.showMenuItems({
+      menuList: []
+    })
+  }
+
+  showAll() {
+    wx.showAllNonBaseMenuItem()
+  }
+
 }
