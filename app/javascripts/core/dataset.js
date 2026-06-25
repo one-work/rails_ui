@@ -1,6 +1,6 @@
 // el.dataset.add('controller', 'xx')
 // el.dataset.add('', 'xx')
-DOMStringMap.prototype.add = function(name, value) {
+DOMStringMap.prototype.add = (name, value) => {
   if (typeof this[name] === 'string') {
     const values = this[name].split(' ')
     if (!values.includes(value)) {
@@ -13,7 +13,7 @@ DOMStringMap.prototype.add = function(name, value) {
 }
 
 // el.dataset.remove('controller', 'xx')
-DOMStringMap.prototype.remove = function(name, value) {
+DOMStringMap.prototype.remove = (name, value) => {
   if (typeof this[name] === 'string') {
     const values = this[name].split(' ')
     const index = values.indexOf(value)
@@ -25,7 +25,7 @@ DOMStringMap.prototype.remove = function(name, value) {
 }
 
 // el.dataset.replace('action', old, 'new')
-DOMStringMap.prototype.replace = function(name, old_value, new_value) {
+DOMStringMap.prototype.replace = (name, old_value, new_value) => {
   if (typeof this[name] === 'string') {
     const values = this[name].split(' ')
     const reg = new RegExp(old_value)

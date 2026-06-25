@@ -1,5 +1,5 @@
 import '../weixin_script'
-const wxwork_fetch = function({ url = location.href } = {}) {
+function wxwork_fetch({ url = location.href } = {}) {
   weixin_fetch({
     url: url,
     success: () => {

@@ -1,5 +1,5 @@
 window.utils = {
-  xx: (date) => {
+  timeFormat: (date) => {
     const format = new Intl.DateTimeFormat(
       'zh-Hans-CN',
       {
