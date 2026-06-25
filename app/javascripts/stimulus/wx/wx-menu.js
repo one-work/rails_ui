@@ -5,10 +5,9 @@ export default class extends Controller {
     list: {
       type: Array,
       default: [
-        'menuItem:share:appMessage',
         'menuItem:share:timeline',
-        'menuItem:profile',
-        'menuItem:share:brand'
+        'menuItem:share:email',
+        'menuItem:share:originPage'
       ]
     }
   }
