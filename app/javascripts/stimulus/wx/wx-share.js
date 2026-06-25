@@ -48,7 +48,7 @@ export default class extends Controller {
   showMenu() {
     wx.hideMenuItems({
       menuList: [
-        'share:appMessage',
+        'menuItem:share:appMessage',
         'share:timeline',
         'profile'
       ]
