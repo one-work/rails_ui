@@ -32,6 +32,9 @@ function weixin_fetch(configUrl, { url = location.href } = {}) {
       } else {
         console.debug('ready, ok')
       }
+      const script = document.createElement('script')
+      script.src = RAILS_ASSET_URL('wechat.js')
+      document.head.appendChild(script)
     })
 
     wx.error(res => {
