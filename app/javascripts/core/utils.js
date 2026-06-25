@@ -3,7 +3,7 @@ window.utils = {
     const format = new Intl.DateTimeFormat(
       'zh-Hans-CN',
       {
-        calendar: 'chinese',
+        calendar: 'gregory',
         timeZone: 'Asia/Shanghai',
         dateStyle: 'full',
         timeStyle: 'full'
