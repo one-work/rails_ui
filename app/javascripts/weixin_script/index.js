@@ -31,6 +31,7 @@ function weixin_fetch(configUrl, { url = location.href, success, ...args } = {})
       } else {
         console.debug('ready, ok')
       }
+      import '../stimulus/wx'
       if (success) {
         success(args)
       }
