@@ -13,7 +13,7 @@ export default class extends Controller {
   connect() {
     this.updateTimeline()
     this.updateShare()
-    this.showMenu()
+    this.hiddenMenu()
   }
 
   updateTimeline() {
@@ -44,16 +44,15 @@ export default class extends Controller {
     })
   }
 
-  // 实际测试不能正常工作，文档未说明
-  showMenu() {
+  hiddenMenu() {
     wx.hideMenuItems({
       menuList: [
         'menuItem:share:appMessage',
-        'share:timeline',
-        'profile'
+        'menuItem:share:timeline',
+        'menuItem:profile',
+        'menuItem:share:brand'
       ]
     })
-    //wx.showOptionMenu()
   }
 
 }
