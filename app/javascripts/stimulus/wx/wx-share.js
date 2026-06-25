@@ -1,7 +1,6 @@
 import { Controller } from '@hotwired/stimulus'
 
 export default class extends Controller {
-  static targets = ['preview', 'media']
   static values = {
     title: String,
     desc: String,
@@ -13,7 +12,6 @@ export default class extends Controller {
   connect() {
     this.updateTimeline()
     this.updateShare()
-    this.hiddenMenu()
   }
 
   updateTimeline() {
@@ -41,17 +39,6 @@ export default class extends Controller {
       fail: () => {
         alert('转发给朋友')
       }
-    })
-  }
-
-  hiddenMenu() {
-    wx.hideMenuItems({
-      menuList: [
-        'menuItem:share:appMessage',
-        'menuItem:share:timeline',
-        'menuItem:profile',
-        'menuItem:share:brand'
-      ]
     })
   }
 
