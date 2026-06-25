@@ -53,7 +53,7 @@ export default class extends Controller {
         'profile'
       ]
     })
-    wx.showOptionMenu()
+    //wx.showOptionMenu()
   }
 
 }
