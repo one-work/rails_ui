@@ -6,6 +6,7 @@
   "exports": {
     ".": "./app/javascripts/index.js",
     "./weixin_script": "./app/javascripts/weixin_script.js",
+    "./wxwork_script": "./app/javascripts/wxwork_script.js",
     "./*": [
       "./app/javascripts/*/index.js",
       "./app/stylesheets/*/index.scss",
