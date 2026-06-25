@@ -20,7 +20,7 @@ export default class extends Controller {
       title: this.titleValue,
       link: this.linkValue,
       imgUrl: this.imageValue,
-      fail: () => {
+      fail: (res) => {
         alert('分享到朋友圈')
       }
     })
@@ -32,11 +32,8 @@ export default class extends Controller {
       desc: this.descValue,
       link: this.linkValue,
       imgUrl: this.imageValue,
-      fail: () => {
+      fail: (res) => {
         alert('转发给朋友')
-      },
-      success: (res) => {
-        console.debug(res, '设置消息成功')
       }
     })
   }
@@ -44,7 +41,7 @@ export default class extends Controller {
   // 实际测试不能正常工作，文档未说明
   showMenu() {
     wx.hideAllNonBaseMenuItem()
-    wx.showMenuItems({
+    wx.hideMenuItems({
       menuList: [
         'menuItem:share:appMessage',
         'menuItem:share:timeline',
