@@ -5,7 +5,6 @@ export default class extends Controller {
     list: {
       type: Array,
       default: [
-        'menuItem:share:timeline',
         'menuItem:share:email',
         'menuItem:share:originPage'
       ]

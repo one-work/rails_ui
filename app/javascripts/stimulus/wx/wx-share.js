@@ -24,8 +24,8 @@ export default class extends Controller {
       title: content,
       link: this.linkValue,
       imgUrl: this.imageValue,
-      fail: () => {
-        alert('分享到朋友圈')
+      fail: (err) => {
+        alert(JSON.stringify(err))
       }
     })
   }
@@ -36,8 +36,8 @@ export default class extends Controller {
       desc: this.descValue,
       link: this.linkValue,
       imgUrl: this.imageValue,
-      fail: () => {
-        alert('转发给朋友')
+      fail: (err) => {
+        alert(JSON.stringify(err))
       }
     })
   }
