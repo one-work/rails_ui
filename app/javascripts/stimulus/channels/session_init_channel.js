@@ -1,4 +1,5 @@
 import BaseCable from './base_cable'
+import { createConsumer } from '@rails/actioncable/src'
 
 // 专门用于微信扫码登录
 export default class extends BaseCable {
@@ -8,9 +9,10 @@ export default class extends BaseCable {
   }
 
   subscribe() {
+    const consumer = createConsumer('https://linlishenghuo.com/cable')
     const urlParams = new URLSearchParams(location.search)
 
-    this.subscription = BaseCable.consumer.subscriptions.create(
+    this.subscription = consumer.subscriptions.create(
       {
         channel: 'Wechat::SessionInitChannel',
         state: urlParams.get('state')
