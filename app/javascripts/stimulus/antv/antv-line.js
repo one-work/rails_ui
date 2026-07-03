@@ -5,9 +5,11 @@ export default class extends AntvBaseController {
   connect() {
     super.connect()
     this.chart.options({
+      type: 'line',
       encode: {
         x: 'title',
-        y: 'value'
+        y: 'value',
+        shape: 'smooth'
       },
       axis: {
         y: {
@@ -15,21 +17,10 @@ export default class extends AntvBaseController {
           labelFormatter: (v) => `${v}`.replace(/\d{1,3}(?=(\d{3})+$)/g, (s) => `${s},`)
         }
       },
-      children: [
+      labels: [
         {
-          type: 'line',
-          encode: { shape: 'smooth' },
-          labels: [
-            {
-              text: "value",
-              style: { dx: -10, dy: -12 }
-            }
-          ]
-        },
-        {
-          type: 'point',
-          encode: { shape: 'point' },
-          tooltip: false
+          text: 'value',
+          style: { dx: -10, dy: -12 }
         }
       ]
     })
