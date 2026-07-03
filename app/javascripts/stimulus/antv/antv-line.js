@@ -19,7 +19,12 @@ export default class extends AntvBaseController {
         {
           type: 'line',
           encode: { shape: 'smooth' },
-          labels: [{ text: "value", style: { dx: -10, dy: -12 } }]
+          labels: [
+            {
+              text: "value",
+              style: { dx: -10, dy: -12 }
+            }
+          ]
         },
         {
           type: 'point',
