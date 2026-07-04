@@ -14,7 +14,6 @@ export default class extends Controller {
       autoFit: true
     })
     this.chart.options({
-      type: 'interval',
       ...this.optionsValue
     })
 
