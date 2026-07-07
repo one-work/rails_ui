@@ -1,11 +1,14 @@
 import { Controller } from '@hotwired/stimulus'
 
 export default class extends Controller {
-  static targets = ['input', 'cancel']
+  static targets = ['input', 'cancel', 'filter']
 
   connect() {
     if (this.hasInputTarget && this.inputTarget.value.length > 0) {
       this.cancelTarget.classList.remove('display-none')
+      if (this.hasFilterTarget) {
+        this.filterTarget.classList.add('display-none')
+      }
     }
   }
 
