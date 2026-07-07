@@ -94,6 +94,9 @@ application.register('scroll-next', ScrollNextController)
 import SeatsController from './seats'
 application.register('seats', SeatsController)
 
+import SearchController from './search'
+application.register('search', SearchController)
+
 import ShowController from './show'
 application.register('show', ShowController)
 
