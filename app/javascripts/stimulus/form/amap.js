@@ -112,9 +112,9 @@ export default class extends Controller {
       this.inputTarget.value = `POINT (${e.lnglat.lng} ${e.lnglat.lat})`
     }
     geocoder.getAddress(lnglat, (status, result) => {
-      if (this.hasAddressTarget) {
-        this.addressTarget.value = result.regeocode.formattedAddress
-      }
+      this.addressTargets.forEach(address => {
+        address.value = result.regeocode.formattedAddress
+      })
     })
   }
 
