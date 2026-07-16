@@ -2,7 +2,7 @@ import { BridgeComponent, BridgeElement } from '@hotwired/hotwire-native-bridge'
 
 export default class extends BridgeComponent {
   static component = 'menu'
-  static targets = ["title", "item"]
+  static targets = ['title', 'item']
 
   show(event) {
     if (this.enabled) {
