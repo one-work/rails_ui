@@ -1,14 +1,14 @@
-import AntvBarController from './antv-bar'
+import AntvBarController from './bar'
 application.register('antv-bar', AntvBarController)
 
-import AntvLineController from './antv-line'
+import AntvLineController from './line'
 application.register('antv-line', AntvLineController)
 
-import AntvLineMultiController from './antv-line-multi'
+import AntvLineMultiController from './line-multi'
 application.register('antv-line-multi', AntvLineMultiController)
 
-import AntvLineXController from './antv-line-x'
+import AntvLineXController from './line-x'
 application.register('antv-line-x', AntvLineXController)
 
-import AntvPieController from './antv-pie'
+import AntvPieController from './pie'
 application.register('antv-pie', AntvPieController)

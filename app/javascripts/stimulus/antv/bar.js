@@ -1,4 +1,4 @@
-import AntvBaseController from './antv-base'
+import AntvBaseController from './base'
 
 export default class extends AntvBaseController {
 
