@@ -22,7 +22,7 @@ export default class extends BridgeComponent {
       source: { x, y, width, height }
     }
 
-    this.send("display", payload, message => {
+    this.send('display', payload, message => {
       const selectedIndex = message.data.selectedIndex
       const selectedItem = new BridgeElement(this.itemTargets[selectedIndex])
 

@@ -2,49 +2,14 @@ import { BridgeComponent, BridgeElement } from '@hotwired/hotwire-native-bridge'
 
 export default class extends BridgeComponent {
   static component = 'bluetooth'
-  static targets = ['title', 'item']
 
-  show(event) {
-    if (this.enabled) {
-      event.stopImmediatePropagation()
-      this.notifyBridgeToDisplayMenu(event)
-    }
-  }
+  startScan() {
+    const payload = {}
 
-  notifyBridgeToDisplayMenu(event) {
-    const title = new BridgeElement(this.titleTarget).title
-    const items = this.makeMenuItems(this.itemTargets)
-    const { x, y, width, height } = event.target.getBoundingClientRect()
-
-    const payload = {
-      title,
-      items,
-      source: { x, y, width, height }
-    }
-
-    this.send("display", payload, message => {
+    // 向原生端发送消息，要求开始扫描
+    this.send('scan', payload, message => {
       const selectedIndex = message.data.selectedIndex
-      const selectedItem = new BridgeElement(this.itemTargets[selectedIndex])
-
-      selectedItem.click()
     })
   }
 
-  makeMenuItems(elements) {
-    const items = elements.map((element, index) => this.menuItem(element, index))
-    const enabledItems = items.filter(item => item)
-
-    return enabledItems
-  }
-
-  menuItem(element, index) {
-    const bridgeElement = new BridgeElement(element)
-
-    if (bridgeElement.disabled) return null
-
-    return {
-      title: bridgeElement.title,
-      index: index
-    }
-  }
 }
