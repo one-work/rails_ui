@@ -16,6 +16,8 @@ export default class extends BridgeComponent {
 
   search() {
     this.send('search', {}, (devices) => {
+      window.xx = devices
+      console.log(devices)
       this.renderDevices(devices)
     })
   }
@@ -49,16 +51,6 @@ export default class extends BridgeComponent {
 
   renderDevices(devices) {
     const list = this.element.querySelector("#device-list")
-    list.innerHTML = devices.map(d => `
-      <div class="device-item">
-        <span>${d.name || "未知设备"}</span>
-        <span>${d.address}</span>
-        <button data-action="click->bridge--bluetooth#connectDevice" 
-                data-address="${d.address}">
-          连接
-        </button>
-      </div>
-    `).join("")
   }
 
   updateStatus(text) {
