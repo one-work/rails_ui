@@ -2,7 +2,7 @@ import { BridgeComponent, BridgeElement } from '@hotwired/hotwire-native-bridge'
 
 export default class extends BridgeComponent {
   static component = 'form'
-  static targets = [ 'submit' ]
+  static targets = ['submit']
 
   connect() {
     super.connect()

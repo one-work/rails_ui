@@ -1,2 +1,2 @@
-import BluetoothController from './bluetooth'
-application.register('bridge-bluetooth', BluetoothController)
+import BridgeBluetoothController from './bluetooth'
+application.register('bridge-bluetooth', BridgeBluetoothController)
