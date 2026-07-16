@@ -9,32 +9,27 @@ export default class extends BridgeComponent {
   }
 
   notifyBridgeOfConnect() {
-    // 通知原生层蓝牙组件已连接
-    this.send("connect", {}, () => {
-      console.log("蓝牙组件已就绪")
+    this.send('connect', {}, () => {
+      console.log('蓝牙组件已就绪')
     })
   }
 
-  // 搜索蓝牙设备
   search() {
-    this.send("search", {}, (devices) => {
-      // 原生层返回设备列表后，渲染到页面
+    this.send('search', {}, (devices) => {
       this.renderDevices(devices)
     })
   }
 
-  // 连接指定设备
   connectDevice(event) {
     const address = event.target.dataset.address
-    this.send("connect_device", { address }, (success) => {
+    this.send('connect_device', { address }, (success) => {
       if (success) {
         this.connectedAddress = address
-        this.updateStatus("已连接")
+        this.updateStatus('已连接')
       }
     })
   }
 
-  // 发送数据
   sendData() {
     const input = this.element.querySelector("input")
     const data = input.value
