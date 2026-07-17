@@ -2,6 +2,10 @@ import { BridgeComponent } from '@hotwired/hotwire-native-bridge'
 
 export default class extends BridgeComponent {
   static component = 'bluetooth'
+  static targets = ['list']
+  static values = {
+    template: { type: String, default: 'template-item' }
+  }
 
   connect() {
     super.connect()
@@ -15,10 +19,10 @@ export default class extends BridgeComponent {
   }
 
   search() {
-    this.send('search', {}, (devices) => {
-      window.xx = devices
-      console.log(devices)
-      this.renderDevices(devices)
+    this.send('search', {}, (data) => {
+      window.xx = data
+      console.log(data)
+      this.renderDevices(data.data.devices)
     })
   }
 
@@ -50,7 +54,12 @@ export default class extends BridgeComponent {
   }
 
   renderDevices(devices) {
-    const list = this.element.querySelector("#device-list")
+    const template = document.getElementById(this.templateValue)
+    devices.forEach(device => {
+      const fragment = template.content.cloneNode(true)
+      const form = fragment.querySelector('.media-content')
+      form.innerText = device.name
+    })
   }
 
   updateStatus(text) {
