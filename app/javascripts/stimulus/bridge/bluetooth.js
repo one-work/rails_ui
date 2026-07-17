@@ -27,11 +27,12 @@ export default class extends BridgeComponent {
   }
 
   connectDevice(event) {
-    const address = event.target.dataset.address
-    this.send('connect_device', { address }, (success) => {
+    const item = event.currentTarget.dataset.address
+    this.send('connect_device', {}, (success) => {
+      console.debug(success)
       if (success) {
-        this.connectedAddress = address
-        this.updateStatus('已连接')
+        //this.connectedAddress = address
+        item.parentNode.querySelector('.media-right').innerText = '已连接'
       }
     })
   }
@@ -57,14 +58,11 @@ export default class extends BridgeComponent {
     const template = document.getElementById(this.templateValue)
     devices.forEach(device => {
       const fragment = template.content.cloneNode(true)
-      const form = fragment.querySelector('.media-content')
-      form.innerText = device.name
+      const content = fragment.querySelector('.media-content')
+      content.innerText = device.name
+      content.dataset.add('address', device.address)
 
       this.listTarget.appendChild(fragment)
     })
-  }
-
-  updateStatus(text) {
-    this.element.querySelector("#status").textContent = text
   }
 }
