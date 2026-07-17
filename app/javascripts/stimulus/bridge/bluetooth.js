@@ -27,11 +27,11 @@ export default class extends BridgeComponent {
   }
 
   connectDevice(event) {
-    const item = event.currentTarget.dataset.address
-    this.send('connect_device', {}, (success) => {
+    const item = event.currentTarget
+    this.send('connect_device', { address: item.dataset.address }, (success) => {
       console.debug(success)
       if (success) {
-        //this.connectedAddress = address
+        this.connectedAddress = item.dataset.address
         item.parentNode.querySelector('.media-right').innerText = '已连接'
       }
     })
