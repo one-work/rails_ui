@@ -59,6 +59,8 @@ export default class extends BridgeComponent {
       const fragment = template.content.cloneNode(true)
       const form = fragment.querySelector('.media-content')
       form.innerText = device.name
+
+      this.listTarget.appendChild(fragment)
     })
   }
 
