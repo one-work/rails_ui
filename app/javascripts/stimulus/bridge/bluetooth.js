@@ -4,7 +4,7 @@ export default class extends BridgeComponent {
   static component = 'bluetooth'
   static targets = ['list']
   static values = {
-    template: { type: String, default: 'template-item' }
+    template: { type: String, default: 'bluetooth-item' }
   }
 
   connect() {
