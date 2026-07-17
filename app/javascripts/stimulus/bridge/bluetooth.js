@@ -37,19 +37,9 @@ export default class extends BridgeComponent {
     })
   }
 
-  sendData() {
-    const input = this.element.querySelector("input")
-    const data = input.value
-
-    if (!this.connectedAddress) {
-      alert("请先连接设备")
-      return
-    }
-
-    this.send("send_data", {
-      address: this.connectedAddress,
-      data: data
-    }, (result) => {
+  // 打印自测页
+  selfTest() {
+    this.send('send_data', { address: this.connectedAddress, data: [0x12, 0x54] }, (result) => {
       console.log("发送结果:", result)
     })
   }
