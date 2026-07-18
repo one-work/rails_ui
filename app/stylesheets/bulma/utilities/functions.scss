@@ -281,12 +281,20 @@
     "9": 9,
   );
 
-  @for $i from if(sass($minus): 2; else: 1) through string.length($value) {
+  $start: 1;
+  @if $minus {
+    $start: 2;
+  }
+  @for $i from $start through string.length($value) {
     $character: string.slice($value, $i, $i);
 
     @if not(list.index(map.keys($numbers), $character) or $character == ".") {
+      $signed-result: $result;
+      @if $minus {
+        $signed-result: -$result;
+      }
       @return to-length(
-        if(sass($minus): -$result; else: $result),
+        $signed-result,
         string.slice($value, $i)
       );
     }
@@ -301,5 +309,8 @@
     }
   }
 
-  @return if(sass($minus): -$result; else: $result);
+  @if $minus {
+    @return -$result;
+  }
+  @return $result;
 }

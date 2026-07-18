@@ -6,8 +6,12 @@
 @mixin typography-size($target: "") {
   @each $size in dv.$sizes {
     $i: list.index(dv.$sizes, $size);
+    $suffix: '';
+    @if $target != "" {
+      $suffix: "-" + $target;
+    }
 
-    .size-#{$i}#{if(sass($target == ""): ""; else: "-" + $target)} {
+    .size-#{$i}#{$suffix} {
       font-size: $size !important;
     }
   }
