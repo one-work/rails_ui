@@ -36,7 +36,7 @@
 
   &.as-navbar {
     --tabs-border-bottom-width: 0;
-    --bulma-tabs-link-padding: 0.25em 0.5em;
+    --tabs-link-padding: 0.25em 0.5em;
 
     justify-content: space-around;
     z-index: 2;
@@ -44,13 +44,13 @@
     a {
       background-color: #f7f7f7;
       &.is-active {
-        color: var(--bulma-primary);
+        color: var(--primary);
       }
     }
   }
 
   &.absolute-bottom {
-    --bulma-tabs-border-bottom-width: 0;
+    --tabs-border-bottom-width: 0;
   }
 
   &.is-centered {
@@ -60,9 +60,9 @@
   &.is-boxed {
     a {
       &.is-active {
-        background-color: var(--bulma-tabs-boxed-link-active-background-color);
-        border-color: var(--bulma-tabs-boxed-link-active-border-color);
-        border-bottom-color: var(--bulma-tabs-boxed-link-active-border-bottom-color) !important;
+        background-color: var(--tabs-boxed-link-active-background-color);
+        border-color: var(--tabs-boxed-link-active-border-color);
+        border-bottom-color: var(--tabs-boxed-link-active-border-bottom-color) !important;
       }
     }
 

@@ -5,7 +5,7 @@
   top: 0;
   height: 100%;
   width: 1px;
-  background: var(--bulma-grey);
+  background: var(--grey);
 }
 
 .events {
@@ -30,13 +30,13 @@
 
 // Some coloring to make our life easier.
 .event.life .marker {
-  fill: var(--bulma-warning);
+  fill: var(--warning);
 }
 .event.programming .marker {
   fill: var(--melange_b_magenta);
 }
 .event.family .marker {
-  fill: var(--bulma-danger);
+  fill: var(--danger);
 }
 .content time {
   font-family: concourse_4, Helvetica, sans-serif;

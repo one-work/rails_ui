@@ -1,5 +1,5 @@
 :root {
-  --bulma-body-overflow-y: auto;
+  --body-overflow-y: auto;
 }
 
 body {
@@ -11,11 +11,11 @@ main {
   flex-direction: column;
 
   > :last-child {
-    margin-bottom: var(--bulma-block-spacing);
+    margin-bottom: var(--block-spacing);
   }
 
   > .button-to:not(:last-child) {
-    margin-bottom: var(--bulma-block-spacing);
+    margin-bottom: var(--block-spacing);
   }
 
   & > .box:first-child,

@@ -46,10 +46,10 @@ $box-link-active-shadow:
   }
 
   &.is-padding-less {
-    --bulma-box-padding: 0;
+    --box-padding: 0;
 
     > :only-child {
-      border-radius: var(--bulma-box-radius);
+      border-radius: var(--box-radius);
     }
   }
 
@@ -73,7 +73,7 @@ a.box {
 
 
 a.box-header {
-  color: var(--bulma-box-color);
+  color: var(--box-color);
 }
 
 .box-footer {

@@ -39,7 +39,7 @@
 }
 
 .menu-item > .pop-right {
-  --bulma-scheme-main: hsl(var(--bulma-menu-item-h), var(--bulma-menu-item-s), 95%);
+  --scheme-main: hsl(var(--menu-item-h), var(--menu-item-s), 95%);
   width: 100%;
 
   .dropdown-content {
@@ -53,15 +53,15 @@
     width: 6em;
 
     .icon {
-      --bulma-icon-dimensions-small: 1.5rem;
+      --icon-dimensions-small: 1.5rem;
     }
   }
 }
 
 .menu {
   background-color: hsl(
-    var(--bulma-menu-item-h),
-    var(--bulma-menu-item-s),
-    calc(var(--bulma-menu-item-background-l) + var(--bulma-menu-item-background-l-delta))
+    var(--menu-item-h),
+    var(--menu-item-s),
+    calc(var(--menu-item-background-l) + var(--menu-item-background-l-delta))
   );
 }

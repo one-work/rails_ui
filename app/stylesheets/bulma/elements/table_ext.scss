@@ -65,7 +65,7 @@ td:has(table) {
   }
 
   &.is-border {
-    border: solid 1px var(--bulma-text-light);
+    border: solid 1px var(--text-light);
   }
 
   &.as-search {
@@ -79,7 +79,7 @@ td:has(table) {
     th {
       text-align: right;
       white-space: nowrap;
-      color: var(--bulma-text-40);
+      color: var(--text-40);
       font-size: 0.75em;
     }
 
@@ -117,17 +117,17 @@ td:has(table) {
   &.as-boxed {
     thead {
       th:first-child {
-        border-top-left-radius: var(--bulma-radius-large);
+        border-top-left-radius: var(--radius-large);
       }
 
       th:last-child {
-        border-top-right-radius: var(--bulma-radius-large);
+        border-top-right-radius: var(--radius-large);
       }
     }
   }
 
   &.is-embed {
-    --bulma-table-color: var(--bulma-grey);
+    --table-color: var(--grey);
     background-color: transparent;
 
     td {
@@ -148,19 +148,19 @@ td:has(table) {
   &.x-border-color {
     th:first-child,
     td:first-child {
-      border-left-color: var(--ext-border-color, var(--bulma-primary));
+      border-left-color: var(--ext-border-color, var(--primary));
     }
 
     th:last-child,
     td:last-child {
-      border-right-color: var(--ext-border-color, var(--bulma-primary));
+      border-right-color: var(--ext-border-color, var(--primary));
     }
   }
 
   &.top-border-color {
     tr:first-child {
       th, td {
-        border-top-color: var(--ext-border-color, var(--bulma-primary));
+        border-top-color: var(--ext-border-color, var(--primary));
       }
     }
   }
@@ -168,7 +168,7 @@ td:has(table) {
   &.bottom-border-color {
     tbody tr:last-child {
       th, td {
-        border-bottom-color: var(--ext-border-color, var(--bulma-primary));
+        border-bottom-color: var(--ext-border-color, var(--primary));
       }
     }
   }
@@ -182,7 +182,7 @@ td:has(table) {
 
   tr.left-border {
     td:first-child {
-      border-left: solid 1px var(--bulma-text-light);
+      border-left: solid 1px var(--text-light);
     }
   }
 }

@@ -1,14 +1,14 @@
 .modal-card {
   .modal-card-body:first-child,
   .as-bar {
-    border-start-start-radius: var(--bulma-modal-card-head-radius);
-    border-start-end-radius: var(--bulma-modal-card-head-radius);
+    border-start-start-radius: var(--modal-card-head-radius);
+    border-start-end-radius: var(--modal-card-head-radius);
   }
 }
 
 .modal-card-body {
   &.is-narrow {
-    --bulma-modal-card-body-padding: 0.75rem;
+    --modal-card-body-padding: 0.75rem;
   }
 }
 

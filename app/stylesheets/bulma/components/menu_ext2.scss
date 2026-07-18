@@ -1,11 +1,11 @@
 .menu {
-  --bulma-menu-item-h: 550;
-  --bulma-menu-item-s: 52%;
-  --bulma-menu-item-background-l: 95%;
+  --menu-item-h: 550;
+  --menu-item-s: 52%;
+  --menu-item-background-l: 95%;
 
   &.as-wrap {
-    --bulma-menu-item-selected-h: 188;
-    --bulma-menu-item-selected-s: 71%;
+    --menu-item-selected-h: 188;
+    --menu-item-selected-s: 71%;
 
     flex-grow: 1;
 
@@ -15,14 +15,14 @@
     }
 
     .cell:not(.is-active) {
-      color: hsl(var(--bulma-menu-item-h), var(--bulma-menu-item-s), var(--bulma-text-l));
+      color: hsl(var(--menu-item-h), var(--menu-item-s), var(--text-l));
     }
   }
 
   &.as-side {
-    --bulma-menu-item-selected-h: 0;
-    --bulma-menu-item-selected-s: 0%;
-    --bulma-menu-item-selected-color-l: 20%;
+    --menu-item-selected-h: 0;
+    --menu-item-selected-s: 0%;
+    --menu-item-selected-color-l: 20%;
 
     .menu-list {
       height: 100%;
@@ -36,12 +36,12 @@
     .menu-item {
       text-align: center;
       background-color: #f0f0f0;
-      --bulma-menu-list-link-padding: 0.7em 0.75em;
+      --menu-list-link-padding: 0.7em 0.75em;
     }
 
     .menu-item.is-active {
-      --bulma-menu-item-selected-background-l: 98%;
-      --bulma-menu-item-background-l-delta: -5%;
+      --menu-item-selected-background-l: 98%;
+      --menu-item-background-l-delta: -5%;
       background-color: #f9f9f9;
     }
 
@@ -67,7 +67,7 @@
   }
 
   &.as-logo {
-    --bulma-menu-item-radius: 0;
+    --menu-item-radius: 0;
 
     .menu-item {
       display: flex;

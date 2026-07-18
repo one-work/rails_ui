@@ -1,11 +1,11 @@
 .label:not(:last-child) {
   margin-bottom: 0.25rem;
   font-size: 0.9em;
-  font-weight: var(--bulma-weight-normal);
+  font-weight: var(--weight-normal);
 }
 
 .field {
-  --bulma-block-spacing: 1rem;
+  --block-spacing: 1rem;
 }
 
 label.field {
