@@ -129,8 +129,7 @@
     );
   }
 
-  @return map.get($color-rgb, "red") * 0.2126 + map.get($color-rgb, "green") *
-    0.7152 + map.get($color-rgb, "blue") * 0.0722;
+  @return map.get($color-rgb, "red") * 0.2126 + map.get($color-rgb, "green") * 0.7152 + map.get($color-rgb, "blue") * 0.0722;
 }
 
 @function bulmaFindColorInvert($color) {
@@ -194,17 +193,13 @@
 @function bulmaColorBrightness($n) {
   $color-brightness: math.round(
     math.div(
-      (color.channel($n, "red", $space: rgb) * 299) +
-        (color.channel($n, "green", $space: rgb) * 587) +
-        (color.channel($n, "blue", $space: rgb) * 114),
+      (color.channel($n, "red", $space: rgb) * 299) + (color.channel($n, "green", $space: rgb) * 587) + (color.channel($n, "blue", $space: rgb) * 114),
       1000
     )
   );
   $light-color: math.round(
     math.div(
-      (color.channel(#ffffff, "red", $space: rgb) * 299) +
-        (color.channel(#ffffff, "green", $space: rgb) * 587) +
-        (color.channel(#ffffff, "blue", $space: rgb) * 114),
+      (color.channel(#ffffff, "red", $space: rgb) * 299) +(color.channel(#ffffff, "green", $space: rgb) * 587) + (color.channel(#ffffff, "blue", $space: rgb) * 114),
       1000
     )
   );
