@@ -19,17 +19,14 @@ $text-strong: iv.$grey-darker !default;
 
 // Status colors
 
-$primary: iv.$turquoise !default;
-$info: iv.$cyan !default;
-$success: iv.$green !default;
-$warning: iv.$yellow !default;
-$danger: iv.$red !default;
+$primary: hsl(171, 100%, 41%) !default;
+$info: hsl(198, 100%, 70%) !default;
+$success: hsl(153, 53%, 53%) !default;
+$warning: hsl(42, 100%, 53%) !default;
+$danger: hsl(348, 100%, 70%) !default;
 $light: iv.$white-ter !default;
 $dark: iv.$grey-darker !default;
-
-// Link colors
-
-$link: iv.$blue !default;
+$link: hsl(233, 100%, 63%) !default;
 
 // Decorative colors
 
@@ -39,7 +36,7 @@ $border-weak: iv.$grey-lightest !default;
 
 // Code colors
 
-$code: iv.$red !default;
+$code: hsl(348, 100%, 70%) !default;
 $code-background: $background !default;
 
 $pre: $text !default;
