@@ -199,7 +199,7 @@
   );
   $light-color: math.round(
     math.div(
-      (color.channel(#ffffff, "red", $space: rgb) * 299) +(color.channel(#ffffff, "green", $space: rgb) * 587) + (color.channel(#ffffff, "blue", $space: rgb) * 114),
+      (color.channel(#ffffff, "red", $space: rgb) * 299) + (color.channel(#ffffff, "green", $space: rgb) * 587) + (color.channel(#ffffff, "blue", $space: rgb) * 114),
       1000
     )
   );
