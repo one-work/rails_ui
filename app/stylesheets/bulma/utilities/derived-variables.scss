@@ -58,29 +58,17 @@ $custom-shades: null !default;
 
 $colors: fn.mergeColorMaps(
   (
-    "white": (
-      iv.$white,
-      iv.$black,
-    ),
-    "black": (
-      iv.$black,
-      iv.$white,
-    ),
-    "light": (
-      $light,
-      $dark,
-    ),
-    "dark": (
-      $dark,
-      $light,
-    ),
+    "white": (iv.$white, iv.$black),
+    "black": (iv.$black, iv.$white),
+    "light": ($light, $dark),
+    "dark": ($dark, $light),
     "text": $text,
     "primary": $primary,
     "link": $link,
     "info": $info,
     "success": $success,
     "warning": $warning,
-    "danger": $danger,
+    "danger": $danger
   ),
   $custom-colors
 ) !default;
