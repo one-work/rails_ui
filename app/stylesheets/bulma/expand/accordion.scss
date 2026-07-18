@@ -8,7 +8,7 @@
     cursor: pointer;
 
     &:not([role]) {
-      color: var(--bulma-black-ter);
+      color: var(--black-ter);
     }
 
 
@@ -33,7 +33,7 @@
       display: block;
       width: 1rem;
       height: 1rem;
-      margin-inline-start: calc(var(--bulma-size-small, 1rem) * 0.5);
+      margin-inline-start: calc(var(--size-small, 1rem) * 0.5);
       float: right;
       transform: rotate(-90deg);
       background-image: url(icons/chevron-down.svg);
@@ -48,15 +48,15 @@
       outline: none;
 
       &:not([role]) {
-        color: var(--bulma-primary);
+        color: var(--primary);
       }
     }
 
     &:focus-visible {
       &:not([role]) {
-        outline: 0.125rem solid var(--bulma-primary);
-        outline-offset: calc(var(--bulma-size-small, 1rem) * 0.5);
-        color: var(--bulma-primary);
+        outline: 0.125rem solid var(--primary);
+        outline-offset: calc(var(--size-small, 1rem) * 0.5);
+        color: var(--primary);
       }
     }
 
@@ -75,11 +75,11 @@
   // Open
   &[open] {
     > summary {
-      margin-bottom: var(--bulma-size-small);
+      margin-bottom: var(--size-small);
 
       &:not([role]) {
         &:not(:focus) {
-          color: var(--bulma-primary);
+          color: var(--primary);
         }
       }
 

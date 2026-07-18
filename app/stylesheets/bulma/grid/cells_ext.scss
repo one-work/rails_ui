@@ -8,12 +8,12 @@
       }
       svg {
         font-size: 1.5em;
-        color: var(--bulma-primary);
+        color: var(--primary);
       }
       span,
       strong {
         font-size: 0.8rem;
-        color: var(--bulma-grey);
+        color: var(--grey);
       }
       svg + span, strong,
       div + span, strong {
@@ -21,7 +21,7 @@
         margin-top: 0.25rem;
       }
       svg + span {
-        font-weight: var(--bulma-body-weight);
+        font-weight: var(--body-weight);
       }
     }
   }

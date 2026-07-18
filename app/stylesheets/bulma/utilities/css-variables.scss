@@ -337,7 +337,7 @@
   }
 
   // The output needs to be:
-  // --bulma-primary-invert-l: var(--bulma-primary-100-l);
+  // --primary-invert-l: var(--bulma-primary-100-l);
 
   @each $bg, $fg in $combos {
     // Just using this loop to register all 20 digits

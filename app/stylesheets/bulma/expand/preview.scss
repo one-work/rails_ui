@@ -1,6 +1,6 @@
 dl.as-show {
-  padding: var(--bulma-block-spacing);
-  margin-bottom: var(--bulma-block-spacing);
+  padding: var(--block-spacing);
+  margin-bottom: var(--block-spacing);
 
   &.grid {
     column-gap: 3rem;
@@ -11,21 +11,21 @@ dl.as-show {
     row-gap: 0;
 
     & > div {
-      padding: 0.5rem var(--bulma-block-spacing);
+      padding: 0.5rem var(--block-spacing);
     }
 
     & > div:nth-child(even) {
-      background-color: var(--bulma-scheme-main-bis);
+      background-color: var(--scheme-main-bis);
 
       .input,
       .textarea {
-        background-color: var(--bulma-scheme-main-bis);
+        background-color: var(--scheme-main-bis);
       }
     }
 
     & > div:last-child {
-      border-bottom-left-radius: var(--bulma-radius-large);
-      border-bottom-right-radius: var(--bulma-radius-large);
+      border-bottom-left-radius: var(--radius-large);
+      border-bottom-right-radius: var(--radius-large);
     }
 
     dt {
@@ -43,7 +43,7 @@ dl.as-show {
   }
 
   dt {
-    color: var(--bulma-text-60);
+    color: var(--text-60);
     font-size: 0.9em;
     text-align-last: auto;
     width: auto;
@@ -65,7 +65,7 @@ dl.as-show {
       padding-bottom: 0;
       box-shadow: none;
       text-align: right;
-      font-size: var(--bulma-body-font-size);
+      font-size: var(--body-font-size);
       width: 100%;
     }
 

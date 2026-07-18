@@ -10,7 +10,7 @@
 
 .image {
   &.is-border {
-    border: solid 2px var(--image-selected, var(--bulma-danger));
+    border: solid 2px var(--image-selected, var(--danger));
     border-radius: 4px;
   }
 

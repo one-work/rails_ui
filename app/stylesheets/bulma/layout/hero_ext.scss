@@ -1,7 +1,7 @@
 .hero-body {
   h2 {
     text-align: center;
-    color: var(--bulma-black);
+    color: var(--black);
     font-size: 2rem;
     font-weight: bold;
     line-height: 1.125;
@@ -28,10 +28,10 @@
     padding-bottom: 1rem;
 
     a {
-      background-color: var(--bulma-danger);
+      background-color: var(--danger);
       padding: 0.5rem 1rem;
       border-radius: 4px;
-      color: var(--bulma-white);
+      color: var(--white);
     }
   }
 }

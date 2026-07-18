@@ -232,7 +232,7 @@ $file-colors: shared.$form-colors !default;
   overflow: hidden;
   position: relative;
   border-style: solid;
-  border-width: var(--bulma-control-border-width);
+  border-width: var(--control-border-width);
   border-color: hsl(cv.getVar("file-h"), cv.getVar("file-s"), calc(#{cv.getVar("file-border-l")} + #{cv.getVar("file-border-l-delta")}));
   border-radius: cv.getVar("file-radius");
   background-color: hsl(cv.getVar("file-h"), cv.getVar("file-s"), calc(#{cv.getVar("file-background-l")} + #{cv.getVar("file-background-l-delta")}));

@@ -1,12 +1,12 @@
 .media {
   .box > &,
   .card-content > & {
-    --bulma-media-spacing: 0.75rem;
+    --media-spacing: 0.75rem;
 
     padding-left: 1rem;
     padding-right: 1rem;
-    padding-top: var(--bulma-media-spacing);
-    padding-bottom: var(--bulma-media-spacing);
+    padding-top: var(--media-spacing);
+    padding-bottom: var(--media-spacing);
     margin-bottom: 0;
     margin-top: 0;
   }
@@ -93,7 +93,7 @@ ul.media-info {
   }
   li + li {
     padding-left: 0.5em;
-    border-left: 1px solid var(--bulma-grey);
+    border-left: 1px solid var(--grey);
   }
 }
 

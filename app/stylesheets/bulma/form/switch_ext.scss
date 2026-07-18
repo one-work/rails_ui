@@ -3,15 +3,15 @@
 @use '../utilities/derived-variables' as dv;
 @use '../utilities/initial-variables' as iv;
 
-$switch-background: var(--bulma-grey-light) !default;
+$switch-background: var(--grey-light) !default;
 $switch-border: .1rem solid transparent !default;
-$switch-background-active: var(--bulma-primary) !default;
-$switch-radius: var(--bulma-radius) !default;
-$switch-paddle-background: var(--bulma-white) !default;
-$switch-paddle-background-active: var(--bulma-primary) !default;
+$switch-background-active: var(--primary) !default;
+$switch-radius: var(--radius) !default;
+$switch-paddle-background: var(--white) !default;
+$switch-paddle-background-active: var(--primary) !default;
 $switch-paddle-offset: 0.25rem !default;
 $switch-paddle-transition: all 0.25s ease-out !default;
-$switch-focus: 1px dotted var(--bulma-text-dark) !default;
+$switch-focus: 1px dotted var(--text-dark) !default;
 
 @mixin switch-size($size) {
   $switch-height: $size * 1.5;
@@ -116,13 +116,13 @@ $switch-focus: 1px dotted var(--bulma-text-dark) !default;
       height: math.div($switch-height, 4);
     }
     &::after {
-      box-shadow: 0 0 3px var(--bulma-text-dark);
+      box-shadow: 0 0 3px var(--text-dark);
     }
   }
 
   &.is-rounded {
     &::before {
-      border-radius: var(--bulma-radius-large);
+      border-radius: var(--radius-large);
     }
     &::after {
       border-radius: 50%;

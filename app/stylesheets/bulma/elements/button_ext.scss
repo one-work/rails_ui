@@ -70,7 +70,7 @@ a.button.is-borderless:first-child {
 }
 
 .weui-check:checked + .button {
-  background-color: var(--bulma-primary);
+  background-color: var(--primary);
   border-color: transparent;
   color: #fff;
 }

@@ -2,10 +2,10 @@
 
 .clipped {
   overflow: hidden !important;
-  background-color: hsla(var(--bulma-scheme-h), var(--bulma-scheme-s), var(--bulma-scheme-invert-l), 0.86);
+  background-color: hsla(var(--scheme-h), var(--scheme-s), var(--scheme-invert-l), 0.86);
 
   body {
-    background-color: var(--bulma-body-background-color);
+    background-color: var(--body-background-color);
   }
 }
 

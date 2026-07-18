@@ -1,7 +1,7 @@
 td.has-inner-table,
 td:has(table) {
   padding: 0;
-  border-left: solid 1px var(--bulma-text-light);
+  border-left: solid 1px var(--text-light);
 
   & > .table {
     tr {
@@ -9,7 +9,7 @@ td:has(table) {
     }
     tbody {
       tr > td {
-        border-bottom: solid 1px var(--bulma-text-light);
+        border-bottom: solid 1px var(--text-light);
       }
       tr:last-child > td {
         border-bottom: none;
@@ -19,14 +19,14 @@ td:has(table) {
 }
 
 .table {
-  --bulma-link-text: var(--bulma-dark);
+  --link-text: var(--dark);
 
   thead th {
     text-align: left;
     font-size: 0.9em;
     font-weight: normal;
-    color: var(--bulma-text-40);
-    background-color: var(--bulma-table-striped-row-even-background-color);
+    color: var(--text-40);
+    background-color: var(--table-striped-row-even-background-color);
   }
 
   thead td,

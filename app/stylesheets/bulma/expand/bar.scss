@@ -3,7 +3,7 @@
   flex-shrink: 0;
   align-items: center;
   margin-bottom: 0;
-  background-color: var(--bulma-scheme-main);
+  background-color: var(--scheme-main);
   height: 45px; // 有在弹出框中应用(position: fixed), 必须指定高度；
 
   a,
@@ -23,7 +23,7 @@
 }
 
 .as-bottom {
-  background-color: var(--bulma-scheme-main);
+  background-color: var(--scheme-main);
   box-shadow: inset #ddd 0 5px 0.75rem;
   margin-bottom: 0 !important;
 

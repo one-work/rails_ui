@@ -114,7 +114,7 @@ $input-radius: cv.getVar("radius") !default;
   &:focus-within,
   &.is-focused {
     border-color: hsl(cv.getVar("input-focus-h"), cv.getVar("input-focus-s"), cv.getVar("input-focus-l"));
-    --bulma-input-focus-h: 210;
+    --input-focus-h: 210;
     //box-shadow: cv.getVar("input-focus-shadow-size") hsla(cv.getVar("input-focus-h"), cv.getVar("input-focus-s"), cv.getVar("input-focus-l"), cv.getVar("input-focus-shadow-alpha"));
   }
 

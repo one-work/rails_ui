@@ -5,13 +5,13 @@
 .as-boxed {
   border-collapse: separate;
   border-spacing: 0;
-  border-radius: var(--bulma-radius-large);
-  box-shadow: var(--bulma-shadow);
-  background-color: var(--bulma-scheme-main);
+  border-radius: var(--radius-large);
+  box-shadow: var(--shadow);
+  background-color: var(--scheme-main);
 }
 
 .has-border-primary {
-  border: 1px solid var(--bulma-primary);
+  border: 1px solid var(--primary);
 }
 
 .has-border-bottom {
@@ -23,7 +23,7 @@
 }
 
 .has-border-left-primary {
-  border-left: 4px solid var(--bulma-primary);
+  border-left: 4px solid var(--primary);
   padding-left: 0.5em;
 }
 

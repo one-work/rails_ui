@@ -2,8 +2,8 @@
   flex-shrink: 0;
 
   &.as-bottom {
-    --bulma-tabs-toggle-link-radius: 0;
-    --bulma-tabs-border-bottom-width: 0;
+    --tabs-toggle-link-radius: 0;
+    --tabs-border-bottom-width: 0;
     overflow: visible;
 
     a {
@@ -12,10 +12,10 @@
       flex-direction: column;
       flex-grow: 1;
       flex-shrink: 0;
-      color: var(--bulma-grey);
+      color: var(--grey);
 
       &.is-active {
-        color: var(--bulma-primary);
+        color: var(--primary);
       }
 
       svg + span {
@@ -35,7 +35,7 @@
   }
 
   &.as-navbar {
-    --bulma-tabs-border-bottom-width: 0;
+    --tabs-border-bottom-width: 0;
     --bulma-tabs-link-padding: 0.25em 0.5em;
 
     justify-content: space-around;
