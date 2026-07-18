@@ -1,5 +1,4 @@
 // Scheme Hue and Saturation
-
 $scheme-h: 221 !default;
 $scheme-s: 14% !default;
 $dark-l: 20% !default;
@@ -120,7 +119,6 @@ $breakpoints: (
 ) !default;
 
 // Miscellaneous
-
 $duration: 294ms !default;
 $easing: ease-out !default;
 $radius-small: 0.25rem !default;
@@ -131,11 +129,8 @@ $radius-rounded: 9999px !default;
 $speed: 86ms !default;
 
 // Flags
-
 $variable-columns: true !default;
 $rtl: false !default;
 
 // Prefixes
-
-$cssvars-prefix: "bulma-" !default;
 $variables-host: ":root" !default;

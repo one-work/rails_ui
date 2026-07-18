@@ -6,7 +6,7 @@
 @use 'functions' as fn;
 
 @function buildVarName($name, $prefix: "", $suffix: "") {
-  @return "--#{iv.$cssvars-prefix}#{$prefix}#{$name}#{$suffix}";
+  @return "--#{$prefix}#{$name}#{$suffix}";
 }
 
 @function buildHslaString($name, $l, $a: 1) {
