@@ -26,7 +26,7 @@
     "@hotwired/stimulus": "^3.2.2",
     "@hotwired/hotwire-native-bridge": "^1.2.2",
     "@hotwired/turbo-rails": "^8.0.21",
-    "@rails/activestorage": "^7.0.0",
+    "@rails/activestorage": "^8.1.300",
     "fullcalendar": "^6.1.10",
     "highlight.js": "^11.5.1",
     "idiomorph": "^0.3.0",
