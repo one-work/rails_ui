@@ -1,4 +1,4 @@
-Rails.application.routes.draw do
+Rails.app.routes.draw do
 
   namespace :design, defaults: { business: 'design' } do
 
