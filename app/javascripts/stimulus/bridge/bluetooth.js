@@ -14,6 +14,7 @@ export default class extends BridgeComponent {
 
   notifyBridgeOfConnect() {
     this.send('connect', {}, (data) => {
+      this.connectedAddress = data.address
       console.debug('蓝牙组件已就绪', data)
     })
   }
