@@ -13,14 +13,13 @@ export default class extends BridgeComponent {
   }
 
   notifyBridgeOfConnect() {
-    this.send('connect', {}, () => {
-      console.log('蓝牙组件已就绪')
+    this.send('connect', {}, (data) => {
+      console.debug('蓝牙组件已就绪', data)
     })
   }
 
   search() {
     this.send('search', {}, (data) => {
-      window.xx = data
       console.log(data)
       this.renderDevices(data.data.devices)
     })
