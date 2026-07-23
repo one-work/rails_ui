@@ -3,6 +3,10 @@ import { PrintPOS } from 'xcprinter'
 
 export default class extends Controller {
 
+  connect() {
+    this.element.dataset.add('controller', 'bridge-bluetooth')
+  }
+
   print() {
     const arr = []
     this.element.querySelectorAll('[data-print]').forEach(item => {
