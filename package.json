@@ -31,7 +31,8 @@
     "highlight.js": "^11.5.1",
     "idiomorph": "^0.3.0",
     "luxon": "^3.5.0",
-    "sortablejs": "^1.15.2"
+    "sortablejs": "^1.15.2",
+    "xcprinter": "^1.0.10"
   },
   "scripts": {
     "lint": "eslint package/"
