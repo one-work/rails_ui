@@ -38,9 +38,16 @@ export default class extends BridgeComponent {
   }
 
   // 打印自测页
+  print(arr) {
+    this.send('send_data', { address: this.connectedAddress, data: arr }, (result) => {
+      console.debug('打印结果：', result)
+    })
+  }
+
+  // 打印自测页
   selfTest() {
     this.send('send_data', { address: this.connectedAddress, data: [0x12, 0x54] }, (result) => {
-      console.log("发送结果:", result)
+      console.debug('打印结果：', result)
     })
   }
 
