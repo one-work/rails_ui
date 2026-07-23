@@ -9,7 +9,16 @@ export default class extends Controller {
       arr.push([item.dataset.print, item.innerText])
     })
 
-    window.xx = arr
+    const pos = new PrintPOS()
+    arr.forEach(item => {
+      pos[item[0]](item[1])
+    })
+    const data = pos.render()
+    console.debug('打印数据：', data)
+
+    const bluetoothPrinter = application.getControllerForElementAndIdentifier(this.element, 'bridge-bluetooth')
+    window.bluetoothPrinter = bluetoothPrinter
+    bluetoothPrinter.print(data)
   }
 
 }
