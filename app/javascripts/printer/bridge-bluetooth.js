@@ -33,7 +33,19 @@ export default class extends BridgeComponent {
       console.debug(success)
       if (success) {
         this.connectedAddress = item.dataset.address
+        item.dataset.replace('action')
         item.parentNode.querySelector('.media-right').innerText = '已连接'
+      }
+    })
+  }
+
+  disconnectDevice(event) {
+    const item = event.currentTarget
+    this.send('disconnect_device', { address: item.dataset.address }, (success) => {
+      console.debug(success)
+      if (success) {
+        this.connectedAddress = null
+        item.parentNode.querySelector('.media-right').innerText = '断开连接'
       }
     })
   }
