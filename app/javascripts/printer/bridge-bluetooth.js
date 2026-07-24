@@ -23,7 +23,7 @@ export default class extends BridgeComponent {
   search() {
     this.send('search', {}, (data) => {
       console.log(data)
-      this.renderDevices(data.data.devices)
+      this.renderDevices(data.data.device)
     })
   }
 
@@ -58,15 +58,14 @@ export default class extends BridgeComponent {
     })
   }
 
-  renderDevices(devices) {
+  renderDevices(device) {
     const template = document.getElementById(this.templateValue)
-    devices.forEach(device => {
-      const fragment = template.content.cloneNode(true)
-      const content = fragment.querySelector('.media-content')
-      content.innerText = device.name
-      content.dataset.add('address', device.address)
 
-      this.listTarget.appendChild(fragment)
-    })
+    const fragment = template.content.cloneNode(true)
+    const content = fragment.querySelector('.media-content')
+    content.innerText = device.name
+    content.dataset.add('address', device.address)
+
+    this.listTarget.appendChild(fragment)
   }
 }
