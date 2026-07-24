@@ -33,7 +33,7 @@ export default class extends BridgeComponent {
       console.debug(success)
       if (success) {
         this.connectedAddress = item.dataset.address
-        item.dataset.replace('action', 'click->bridge-bluetooth#disconnectDevice')
+        item.dataset.action = 'click->bridge-bluetooth#disconnectDevice'
         item.parentNode.querySelector('.media-right').innerText = '已连接'
       }
     })
@@ -45,7 +45,7 @@ export default class extends BridgeComponent {
       console.debug(success)
       if (success) {
         this.connectedAddress = null
-        item.dataset.replace('action', 'click->bridge-bluetooth#connectDevice')
+        item.dataset.action = 'click->bridge-bluetooth#connectDevice'
         item.parentNode.querySelector('.media-right').innerText = '断开连接'
       }
     })
