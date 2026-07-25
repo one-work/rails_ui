@@ -1,5 +1,5 @@
 import './base'
-import '../core/utils'
+import '../core/dataset'
 
 import PrintPosController from './print-pos'
 application.register('print-pos', PrintPosController)
