@@ -6,6 +6,7 @@ body,
 
 body {
   min-height: 100vh;
+  min-height: 100dvh; // 兼容 ios 视窗逻辑
 }
 
 #panel {
