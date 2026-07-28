@@ -76,7 +76,9 @@ export default class extends BridgeComponent {
 
   renderDeviceActive(device) {
     const item = this.renderDevice(device)
-    item.querySelector('.media-right').innerText = '已连接'
+    item.dataset.action = 'click->bridge-bluetooth#disconnectDevice'
+    item.parentNode.classList.add('background-light')
+    item.parentNode.querySelector('.media-right').innerText = '已连接'
   }
 
   renderDevice(device) {
@@ -88,6 +90,6 @@ export default class extends BridgeComponent {
     content.dataset.add('address', device.address)
 
     this.listTarget.appendChild(fragment)
-    return fragment
+    return content
   }
 }
