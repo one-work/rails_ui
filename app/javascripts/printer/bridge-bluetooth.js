@@ -30,7 +30,7 @@ export default class extends BridgeComponent {
 
   connectDevice(event) {
     const item = event.currentTarget
-    this.send('connect_device', { address: item.dataset.address }, (success) => {
+    this.send('connect_device', { address: item.dataset.address, name: item.innerText }, (success) => {
       console.debug(success)
       if (success) {
         this.connectedAddress = item.dataset.address
