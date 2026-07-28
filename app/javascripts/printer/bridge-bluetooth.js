@@ -16,7 +16,7 @@ export default class extends BridgeComponent {
     this.send('connect', {}, (data) => {
       this.connectedAddress = data.data.address
       this.element.dataset.add('address', data.data.address)
-      this.renderDevice(data.data)
+      this.renderDeviceActive(data.data)
       console.debug('蓝牙组件已就绪', data)
     })
   }
@@ -74,6 +74,11 @@ export default class extends BridgeComponent {
     })
   }
 
+  renderDeviceActive(device) {
+    const item = this.renderDevice(device)
+    item.querySelector('.media-right').innerText = '已连接'
+  }
+
   renderDevice(device) {
     const template = document.getElementById(this.templateValue)
 
@@ -83,5 +88,6 @@ export default class extends BridgeComponent {
     content.dataset.add('address', device.address)
 
     this.listTarget.appendChild(fragment)
+    return fragment
   }
 }
