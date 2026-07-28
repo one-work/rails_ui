@@ -76,13 +76,17 @@ export default class extends BridgeComponent {
 
   renderDeviceActive(device) {
     const item = this.renderDevice(device)
-    item.dataset.action = 'click->bridge-bluetooth#disconnectDevice'
-    item.parentNode.classList.add('background-light')
-    item.parentNode.querySelector('.media-right').innerText = '已连接'
+
+    if (item) {
+      item.dataset.action = 'click->bridge-bluetooth#disconnectDevice'
+      item.parentNode.classList.add('background-light')
+      item.parentNode.querySelector('.media-right').innerText = '已连接'
+    }
   }
 
   renderDevice(device) {
     const template = document.getElementById(this.templateValue)
+    if (!template) { return }
 
     const fragment = template.content.cloneNode(true)
     const content = fragment.querySelector('.media-content')
