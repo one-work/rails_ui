@@ -48,6 +48,7 @@ export default class extends BridgeComponent {
         this.connectedAddress = null
         item.dataset.action = 'click->bridge-bluetooth#connectDevice'
         item.parentNode.classList.remove('background-light')
+        item.parentNode.querySelector('.media-right').innerText = ''
       }
     })
   }
