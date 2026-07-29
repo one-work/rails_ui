@@ -31,7 +31,8 @@ export default class extends BridgeComponent {
   connectDevice(event) {
     const item = event.currentTarget
     this.send('connect_device', { address: item.dataset.address, name: item.innerText }, (data) => {
-      console.debug(data)
+      console.debug(data.success)
+      window.xx = data.success
       if (data.success) {
         this.connectedAddress = item.dataset.address
         item.dataset.action = 'click->bridge-bluetooth#disconnectDevice'
