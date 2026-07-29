@@ -4,7 +4,8 @@ export default class extends BridgeComponent {
   static component = 'bluetooth'
   static targets = ['list']
   static values = {
-    template: { type: String, default: 'bluetooth-item' }
+    template: { type: String, default: 'bluetooth-item' },
+    init: { type: Boolean, default: false }
   }
 
   connect() {
@@ -23,7 +24,7 @@ export default class extends BridgeComponent {
 
         if (this.hasListTarget) {
           this.renderDeviceActive(data)
-        } else {
+        } else if (this.hasInitValue) {
           this.send('connect_device', { address: data.address, name: data.name }, (msg) => {
             console.debug('初始自动连接', msg)
           })
