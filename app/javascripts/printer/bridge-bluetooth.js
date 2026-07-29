@@ -32,6 +32,10 @@ export default class extends BridgeComponent {
 
   connectDevice(event) {
     const item = event.currentTarget
+    this.#doConnect(item)
+  }
+
+  #doConnect(item) {
     const name = item.querySelector('.media-content').innerText
     this.send('connect_device', { address: item.dataset.address, name: name }, (data) => {
       console.debug(data)
@@ -88,8 +92,9 @@ export default class extends BridgeComponent {
         item.classList.add('background-light')
         item.querySelector('.media-right').innerText = '已连接'
       } else {
-        item.dataset.action = 'click->bridge-bluetooth#connectDevice'
-        item.querySelector('.media-right').innerText = '未连接'
+        this.#doConnect(item)
+        //item.dataset.action = 'click->bridge-bluetooth#connectDevice'
+        //item.querySelector('.media-right').innerText = '未连接'
       }
     }
   }
