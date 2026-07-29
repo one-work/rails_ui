@@ -13,20 +13,29 @@ export default class extends BridgeComponent {
   }
 
   notifyBridgeOfConnect() {
-    this.send('connect', {}, (data) => {
-      console.debug('蓝牙组件已就绪', data)
-      if (data.data.address) {
-        this.element.dataset.add('address', data.data.address)
-        this.element.dataset.add('name', data.data.name)
-        this.renderDeviceActive(data.data)
+    this.send('connect', {}, (message) => {
+      console.debug('蓝牙组件就绪', message)
+      const data = message.data
+
+      if (data.address) {
+        this.element.dataset.add('address', data.address)
+        this.element.dataset.add('name', data.name)
+
+        if (this.hasListTarget) {
+          this.renderDeviceActive(data)
+        } else {
+          this.send('connect_device', { address: data.address, name: data.name }, (msg) => {
+            console.debug('初始自动连接', msg)
+          })
+        }
       }
     })
   }
 
   search() {
-    this.send('search', {}, (data) => {
-      console.log(data)
-      this.renderDevice(data.data.device)
+    this.send('search', {}, (msg) => {
+      console.debug(data)
+      this.renderDevice(msg.data.device)
     })
   }
 
@@ -37,15 +46,17 @@ export default class extends BridgeComponent {
 
   #doConnect(item) {
     const name = item.querySelector('.media-content').innerText
-    this.send('connect_device', { address: item.dataset.address, name: name }, (data) => {
-      console.debug(data)
-      if (data.data.success) {
+    this.send('connect_device', { address: item.dataset.address, name: name }, (msg) => {
+      console.debug('主动连接', msg)
+      const data = msg.data
+
+      if (data.success) {
         item.dataset.action = 'click->bridge-bluetooth#disconnectDevice'
         item.classList.add('background-light')
         item.querySelector('.media-right').innerText = '已连接'
 
-        this.element.dataset.add('address', data.data.address)
-        this.element.dataset.add('name', data.data.name)
+        this.element.dataset.add('address', data.address)
+        this.element.dataset.add('name', data.name)
       } else {
         item.querySelector('.media-right').innerText = '连接失败'
       }
@@ -54,9 +65,9 @@ export default class extends BridgeComponent {
 
   disconnectDevice(event) {
     const item = event.currentTarget
-    this.send('disconnect_device', { address: item.dataset.address }, (data) => {
-      console.debug(data)
-      if (data.data.success) {
+    this.send('disconnect_device', { address: item.dataset.address }, (msg) => {
+      console.debug('断开连接', msg)
+      if (msg.data.success) {
         item.dataset.action = 'click->bridge-bluetooth#connectDevice'
         item.classList.remove('background-light')
         item.querySelector('.media-right').innerText = ''
@@ -68,9 +79,9 @@ export default class extends BridgeComponent {
   print(arr) {
     const address = this.element.dataset.address
     const name = this.element.dataset.name
-    this.send('connect_device', { address: address, name: name }, (success) => {
-      console.debug(success)
-      if (success) {
+    this.send('connect_device', { address: address, name: name }, (msg) => {
+      console.debug('打印时主动连接', msg.data)
+      if (msg.data.success) {
         this.send('send_data', { address: address, data: arr }, (result) => {
           console.debug('打印结果：', result)
         })
