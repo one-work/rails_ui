@@ -33,9 +33,10 @@ export default class extends BridgeComponent {
     })
   }
 
+  // 搜索蓝牙设备
   search() {
     this.send('search', {}, (msg) => {
-      console.debug(data)
+      console.debug(msg)
       this.renderDevice(msg.data.device)
     })
   }
