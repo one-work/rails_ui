@@ -33,7 +33,7 @@ export default class extends BridgeComponent {
     this.send('connect_device', { address: item.dataset.address, name: item.innerText }, (data) => {
       console.debug(data)
       window.xx = data
-      if (data.success) {
+      if (data.data.success) {
         this.connectedAddress = item.dataset.address
         item.dataset.action = 'click->bridge-bluetooth#disconnectDevice'
         item.parentNode.classList.add('background-light')
@@ -48,7 +48,7 @@ export default class extends BridgeComponent {
     const item = event.currentTarget
     this.send('disconnect_device', { address: item.dataset.address }, (data) => {
       console.debug(data)
-      if (data.success) {
+      if (data.data.success) {
         this.connectedAddress = null
         item.dataset.action = 'click->bridge-bluetooth#connectDevice'
         item.parentNode.classList.remove('background-light')
