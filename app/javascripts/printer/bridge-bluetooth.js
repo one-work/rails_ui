@@ -15,9 +15,9 @@ export default class extends BridgeComponent {
   notifyBridgeOfConnect() {
     this.send('connect', {}, (data) => {
       console.debug('蓝牙组件已就绪', data)
-      this.connectedAddress = data.data.address
       if (data.data.address) {
         this.element.dataset.add('address', data.data.address)
+        this.element.dataset.add('name', data.data.name)
         this.renderDeviceActive(data.data)
       }
     })
@@ -40,10 +40,12 @@ export default class extends BridgeComponent {
     this.send('connect_device', { address: item.dataset.address, name: name }, (data) => {
       console.debug(data)
       if (data.data.success) {
-        this.connectedAddress = item.dataset.address
         item.dataset.action = 'click->bridge-bluetooth#disconnectDevice'
         item.classList.add('background-light')
         item.querySelector('.media-right').innerText = '已连接'
+
+        this.element.dataset.add('address', data.data.address)
+        this.element.dataset.add('name', data.data.name)
       } else {
         item.querySelector('.media-right').innerText = '连接失败'
       }
@@ -55,7 +57,6 @@ export default class extends BridgeComponent {
     this.send('disconnect_device', { address: item.dataset.address }, (data) => {
       console.debug(data)
       if (data.data.success) {
-        this.connectedAddress = null
         item.dataset.action = 'click->bridge-bluetooth#connectDevice'
         item.classList.remove('background-light')
         item.querySelector('.media-right').innerText = ''
@@ -66,7 +67,8 @@ export default class extends BridgeComponent {
   // 打印
   print(arr) {
     const address = this.element.dataset.address
-    this.send('connect_device', { address: address }, (success) => {
+    const name = this.element.dataset.name
+    this.send('connect_device', { address: address, name: name }, (success) => {
       console.debug(success)
       if (success) {
         this.send('send_data', { address: address, data: arr }, (result) => {
@@ -78,7 +80,8 @@ export default class extends BridgeComponent {
 
   // 打印自测页
   selfTest() {
-    this.send('send_data', { address: this.connectedAddress, data: [0x12, 0x54] }, (result) => {
+    const address = this.element.dataset.address
+    this.send('send_data', { address: address, data: [0x12, 0x54] }, (result) => {
       console.debug('打印结果：', result)
     })
   }
