@@ -98,12 +98,12 @@ export default class extends BridgeComponent {
     if (!template) { return }
 
     const fragment = template.content.cloneNode(true)
-    fragment.dataset.add('address', device.address)
-
+    const item = fragment.querySelector('.media')
+    item.dataset.add('address', device.address)
     const content = fragment.querySelector('.media-content')
     content.innerText = device.name
 
     this.listTarget.appendChild(fragment)
-    return fragment
+    return item
   }
 }
