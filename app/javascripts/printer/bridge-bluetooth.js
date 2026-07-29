@@ -32,14 +32,13 @@ export default class extends BridgeComponent {
     const item = event.currentTarget
     this.send('connect_device', { address: item.dataset.address, name: item.innerText }, (data) => {
       console.debug(data)
-      window.xx = data
       if (data.data.success) {
         this.connectedAddress = item.dataset.address
         item.dataset.action = 'click->bridge-bluetooth#disconnectDevice'
-        item.parentNode.classList.add('background-light')
-        item.parentNode.querySelector('.media-right').innerText = '已连接'
+        item.classList.add('background-light')
+        item.querySelector('.media-right').innerText = '已连接'
       } else {
-        item.parentNode.querySelector('.media-right').innerText = '连接失败'
+        item.querySelector('.media-right').innerText = '连接失败'
       }
     })
   }
@@ -51,8 +50,8 @@ export default class extends BridgeComponent {
       if (data.data.success) {
         this.connectedAddress = null
         item.dataset.action = 'click->bridge-bluetooth#connectDevice'
-        item.parentNode.classList.remove('background-light')
-        item.parentNode.querySelector('.media-right').innerText = ''
+        item.classList.remove('background-light')
+        item.querySelector('.media-right').innerText = ''
       }
     })
   }
@@ -83,11 +82,11 @@ export default class extends BridgeComponent {
     if (item) {
       if (device.state === 'connected') {
         item.dataset.action = 'click->bridge-bluetooth#disconnectDevice'
-        item.parentNode.classList.add('background-light')
-        item.parentNode.querySelector('.media-right').innerText = '已连接'
+        item.classList.add('background-light')
+        item.querySelector('.media-right').innerText = '已连接'
       } else {
         item.dataset.action = 'click->bridge-bluetooth#connectDevice'
-        item.parentNode.querySelector('.media-right').innerText = '未连接'
+        item.querySelector('.media-right').innerText = '未连接'
       }
     }
   }
@@ -97,11 +96,12 @@ export default class extends BridgeComponent {
     if (!template) { return }
 
     const fragment = template.content.cloneNode(true)
+    fragment.dataset.add('address', device.address)
+
     const content = fragment.querySelector('.media-content')
     content.innerText = device.name
-    content.dataset.add('address', device.address)
 
     this.listTarget.appendChild(fragment)
-    return content
+    return fragment
   }
 }
