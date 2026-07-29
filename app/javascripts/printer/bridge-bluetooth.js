@@ -30,22 +30,24 @@ export default class extends BridgeComponent {
 
   connectDevice(event) {
     const item = event.currentTarget
-    this.send('connect_device', { address: item.dataset.address, name: item.innerText }, (success) => {
-      console.debug(success)
-      if (success) {
+    this.send('connect_device', { address: item.dataset.address, name: item.innerText }, (data) => {
+      console.debug(data)
+      if (data.success) {
         this.connectedAddress = item.dataset.address
         item.dataset.action = 'click->bridge-bluetooth#disconnectDevice'
         item.parentNode.classList.add('background-light')
         item.parentNode.querySelector('.media-right').innerText = '已连接'
+      } else {
+        item.parentNode.querySelector('.media-right').innerText = '连接失败'
       }
     })
   }
 
   disconnectDevice(event) {
     const item = event.currentTarget
-    this.send('disconnect_device', { address: item.dataset.address }, (success) => {
-      console.debug(success)
-      if (success) {
+    this.send('disconnect_device', { address: item.dataset.address }, (data) => {
+      console.debug(data)
+      if (data.success) {
         this.connectedAddress = null
         item.dataset.action = 'click->bridge-bluetooth#connectDevice'
         item.parentNode.classList.remove('background-light')
