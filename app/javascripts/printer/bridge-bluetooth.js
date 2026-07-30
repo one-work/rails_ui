@@ -111,8 +111,6 @@ export default class extends BridgeComponent {
         this.#activeItem(item)
       } else {
         this.#doConnect(item)
-        //item.dataset.action = 'click->bridge-bluetooth#connectDevice'
-        //item.querySelector('.media-right').innerText = '未连接'
       }
     }
   }
