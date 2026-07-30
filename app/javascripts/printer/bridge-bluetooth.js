@@ -54,9 +54,8 @@ export default class extends BridgeComponent {
       const data = msg.data
 
       if (data.success) {
-        item.dataset.action = 'click->bridge-bluetooth#disconnectDevice'
-        item.classList.add('background-light')
-        item.querySelector('.media-right').innerText = '已连接'
+        this.#disconnectOther()
+        this.#activeItem(item)
 
         this.element.dataset.add('address', data.address)
         this.element.dataset.add('name', data.name)
@@ -66,14 +65,18 @@ export default class extends BridgeComponent {
     })
   }
 
+  #disconnectOther() {
+    this.listTarget.querySelectorAll('.background-light').forEach(el => {
+      this.#inactiveItem(el)
+    })
+  }
+
   disconnectDevice(event) {
     const item = event.currentTarget
     this.send('disconnect_device', { address: item.dataset.address }, (msg) => {
       console.debug('断开连接', msg)
       if (msg.data.success) {
-        item.dataset.action = 'click->bridge-bluetooth#connectDevice'
-        item.classList.remove('background-light')
-        item.querySelector('.media-right').innerText = ''
+        this.#inactiveItem(item)
       }
     })
   }
@@ -105,9 +108,7 @@ export default class extends BridgeComponent {
 
     if (item) {
       if (device.state === 'connected') {
-        item.dataset.action = 'click->bridge-bluetooth#disconnectDevice'
-        item.classList.add('background-light')
-        item.querySelector('.media-right').innerText = '已连接'
+        this.#activeItem(item)
       } else {
         this.#doConnect(item)
         //item.dataset.action = 'click->bridge-bluetooth#connectDevice'
@@ -128,5 +129,17 @@ export default class extends BridgeComponent {
 
     this.listTarget.appendChild(fragment)
     return item
+  }
+
+  #activeItem(item) {
+    item.dataset.action = 'click->bridge-bluetooth#disconnectDevice'
+    item.classList.add('background-light')
+    item.querySelector('.media-right').innerText = '已连接'
+  }
+
+  #inactiveItem(item) {
+    item.dataset.action = 'click->bridge-bluetooth#connectDevice'
+    item.classList.remove('background-light')
+    item.querySelector('.media-right').innerText = ''
   }
 }
