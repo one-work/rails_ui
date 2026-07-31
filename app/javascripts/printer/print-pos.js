@@ -5,6 +5,7 @@ export default class extends Controller {
 
   connect() {
     this.element.dataset.add('controller', 'bridge-bluetooth')
+    this.element.dataset.add('controller', 'bridge-overflow-menu')
   }
 
   print() {
