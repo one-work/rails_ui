@@ -12,7 +12,7 @@ export default class extends BridgeComponent {
     const label = this.bridgeElement.title
 
     this.send('connect', { label }, (msg) => {
-      alert(msg)
+      console.debug('浮动菜单连接', msg)
       this.bridgeElement.click()
     })
   }
