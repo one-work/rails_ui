@@ -11,7 +11,8 @@ export default class extends BridgeComponent {
   notifyBridgeOfConnect() {
     const label = this.bridgeElement.title
 
-    this.send('connect', {label}, () => {
+    this.send('connect', { label }, (msg) => {
+      alert(msg)
       this.bridgeElement.click()
     })
   }
