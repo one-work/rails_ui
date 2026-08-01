@@ -97,10 +97,7 @@ export default class extends BridgeComponent {
 
   // 打印自测页
   selfTest() {
-    const address = this.element.dataset.address
-    this.send('send_data', { address: address, data: [0x12, 0x54] }, (result) => {
-      console.debug('打印结果：', result)
-    })
+    this.print([0x12, 0x54])
   }
 
   renderDeviceActive(device) {
