@@ -95,6 +95,12 @@ export default class extends BridgeComponent {
     })
   }
 
+  printData(e) {
+    const item = e.currentTarget
+    const arr = item.dataset.content.split(',').map(i => parseInt(i, 16))
+    this.print(arr)
+  }
+
   // 打印自测页
   selfTest() {
     this.print([0x12, 0x54])
