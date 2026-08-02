@@ -135,9 +135,13 @@ export default class extends BridgeComponent {
   }
 
   #activeItem(item, state) {
-    let text = '已连接'
+    let text
     if (state === 'connecting') {
       text = '连接中'
+    } else if (state === 'connected') {
+      text = '已连接'
+    } else {
+      text = state
     }
 
     item.dataset.action = 'click->bridge-bluetooth#disconnectDevice'
