@@ -55,7 +55,7 @@ export default class extends BridgeComponent {
 
       if (data.success) {
         this.#disconnectOther()
-        this.#activeItem(item)
+        this.#activeItem(item, 'connected')
 
         this.element.dataset.add('address', data.address)
         this.element.dataset.add('name', data.name)
@@ -111,7 +111,9 @@ export default class extends BridgeComponent {
 
     if (item) {
       if (device.state === 'connected') {
-        this.#activeItem(item)
+        this.#activeItem(item, device.state)
+      } else if (device.state === 'connecting') {
+        this.#activeItem(item, device.state)
       } else {
         this.#doConnect(item)
       }
@@ -132,10 +134,15 @@ export default class extends BridgeComponent {
     return item
   }
 
-  #activeItem(item) {
+  #activeItem(item, state) {
+    let text = '已连接'
+    if (state === 'connecting') {
+      text = '连接中'
+    }
+
     item.dataset.action = 'click->bridge-bluetooth#disconnectDevice'
     item.classList.add('background-light')
-    item.querySelector('.media-right').innerText = '已连接'
+    item.querySelector('.media-right').innerText = text
   }
 
   #inactiveItem(item) {
