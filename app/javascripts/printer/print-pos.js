@@ -2,9 +2,12 @@ import { Controller } from '@hotwired/stimulus'
 import { PrintPOS } from 'xcprinter'
 
 export default class extends Controller {
+  static values = {
+    body: { type: Boolean, default: false }
+  }
 
   connect() {
-    this.element.dataset.add('controller', 'bridge-bluetooth')
+    this.bluetoothItem.dataset.add('controller', 'bridge-bluetooth')
     this.element.dataset.add('controller', 'bridge-overflow-menu')
   }
 
@@ -21,9 +24,17 @@ export default class extends Controller {
     const data = pos.render()
     console.debug('打印数据：', data)
 
-    const bluetoothPrinter = application.getControllerForElementAndIdentifier(this.element, 'bridge-bluetooth')
+    const bluetoothPrinter = application.getControllerForElementAndIdentifier(this.bluetoothItem, 'bridge-bluetooth')
     window.bluetoothPrinter = bluetoothPrinter
     bluetoothPrinter.print(data)
+  }
+
+  get bluetoothItem() {
+    if (this.bodyValue) {
+      return this.element
+    } else  {
+      return document.body
+    }
   }
 
 }
