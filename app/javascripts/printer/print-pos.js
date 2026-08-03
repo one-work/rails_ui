@@ -3,12 +3,18 @@ import { PrintPOS } from 'xcprinter'
 
 export default class extends Controller {
   static values = {
-    body: { type: Boolean, default: false }
+    body: { type: Boolean, default: false },
+    button: String
   }
 
   connect() {
     this.bluetoothItem.dataset.add('controller', 'bridge-bluetooth')
     this.element.dataset.add('controller', 'bridge-overflow-menu')
+
+    if (this.hasButtonValue) {
+      const button = document.getElementById(this.buttonValue)
+      button.addEventListener('click', this.print)
+    }
   }
 
   print() {
