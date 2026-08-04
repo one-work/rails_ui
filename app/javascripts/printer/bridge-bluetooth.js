@@ -48,7 +48,7 @@ export default class extends BridgeComponent {
   }
 
   #doConnect(item) {
-    const name = item.querySelector('.media-content').innerText
+    const name = item.querySelector('span').innerText
     this.send('connect_device', { address: item.dataset.address, name: name }, (msg) => {
       console.debug('主动连接', msg)
       const data = msg.data
@@ -127,7 +127,7 @@ export default class extends BridgeComponent {
     const fragment = template.content.cloneNode(true)
     const item = fragment.querySelector('.media')
     item.dataset.add('address', device.address)
-    const content = fragment.querySelector('.media-content')
+    const content = fragment.querySelector('span')
     content.innerText = device.name
 
     this.listTarget.appendChild(fragment)
