@@ -18,12 +18,24 @@ export default class extends BridgeComponent {
       console.debug('蓝牙组件就绪', message)
       const data = message.data
 
-      if (data.ready && data.address) {
+      if (data.address) {
         this.element.dataset.add('address', data.address)
         this.element.dataset.add('name', data.name)
 
         if (this.hasListTarget) {
-          this.renderDeviceActive(data)
+          const item = this.renderDevice(device)
+
+          if (item) {
+            if (device.state === 'connected') {
+              this.#activeItem(item, device.state)
+            } else if (device.state === 'connecting') {
+              this.#activeItem(item, device.state)
+            } else {
+              if (data.ready) {
+                this.#doConnect(item)
+              }
+            }
+          }
         } else if (this.hasInitValue) {
           console.debug('发起初始连接！')
           this.send('connect_device', { address: data.address, name: data.name }, (msg) => {
@@ -108,17 +120,7 @@ export default class extends BridgeComponent {
   }
 
   renderDeviceActive(device) {
-    const item = this.renderDevice(device)
 
-    if (item) {
-      if (device.state === 'connected') {
-        this.#activeItem(item, device.state)
-      } else if (device.state === 'connecting') {
-        this.#activeItem(item, device.state)
-      } else {
-        this.#doConnect(item)
-      }
-    }
   }
 
   renderDevice(device) {
