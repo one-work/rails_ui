@@ -23,13 +23,13 @@ export default class extends BridgeComponent {
         this.element.dataset.add('name', data.name)
 
         if (this.hasListTarget) {
-          const item = this.renderDevice(device)
+          const item = this.renderDevice(data)
 
           if (item) {
-            if (device.state === 'connected') {
-              this.#activeItem(item, device.state)
-            } else if (device.state === 'connecting') {
-              this.#activeItem(item, device.state)
+            if (data.state === 'connected') {
+              this.#activeItem(item, data.state)
+            } else if (data.state === 'connecting') {
+              this.#activeItem(item, data.state)
             } else {
               if (data.ready) {
                 this.#doConnect(item)
