@@ -26,8 +26,9 @@ export default class extends BridgeComponent {
         if (this.hasListTarget) {
           this.renderDeviceActive(data)
         } else if (this.hasInitValue) {
+          console.debug('发起初始连接！')
           this.send('connect_device', { address: data.address, name: data.name }, (msg) => {
-            console.debug('初始自动连接', msg)
+            console.debug('初始连接结果：', msg)
           })
         }
       }
@@ -48,9 +49,10 @@ export default class extends BridgeComponent {
   }
 
   #doConnect(item) {
+    console.debug('发起主动连接！')
     const name = item.querySelector('span').innerText
     this.send('connect_device', { address: item.dataset.address, name: name }, (msg) => {
-      console.debug('主动连接', msg)
+      console.debug('主动连接结果：', msg)
       const data = msg.data
 
       if (data.success) {
