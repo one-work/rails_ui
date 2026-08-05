@@ -1,8 +1,6 @@
 @charset "utf-8";
 
-@use 'theme' with (
-  $primary: #AF52DE
-);
+@use 'theme';
 
 @forward 'base';
 //@forward 'base/skeleton';
