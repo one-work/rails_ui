@@ -16,10 +16,9 @@ export default class extends BridgeComponent {
   notifyBridgeOfConnect() {
     this.send('connect', {}, (message) => {
       console.debug('蓝牙组件就绪', message)
-      window.xx = message
       const data = message.data
 
-      if (data.address) {
+      if (data.ready && data.address) {
         this.element.dataset.add('address', data.address)
         this.element.dataset.add('name', data.name)
 
