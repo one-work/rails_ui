@@ -23,7 +23,7 @@ export default class extends BridgeComponent {
         this.element.dataset.add('name', data.name)
 
         if (this.hasListTarget) {
-          const item = this.renderDevice(data)
+          const item = this.listTarget.querySelector(`[data-address=${data.address}]`) || this.renderDevice(data)
 
           if (item) {
             if (data.state === 'connected') {
