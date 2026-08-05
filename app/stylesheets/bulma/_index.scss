@@ -1,8 +1,8 @@
 @charset "utf-8";
 
-@use 'utilities';
-
-@forward 'theme';
+@use 'theme' with (
+  $primary: #AF52DE
+);
 
 @forward 'base';
 //@forward 'base/skeleton';
@@ -15,6 +15,5 @@
 @forward 'helpers';
 @forward 'layout';
 @forward 'transition';
-@forward 'utilities';
 @forward 'utilities/variables';
 @forward 'expand';
