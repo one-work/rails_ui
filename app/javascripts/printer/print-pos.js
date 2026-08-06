@@ -1,5 +1,5 @@
 import { Controller } from '@hotwired/stimulus'
-import { PrintPOS } from 'xcprinter'
+import { PrintPOS, PrintCommand } from 'xcprinter'
 
 export default class extends Controller {
   static values = {

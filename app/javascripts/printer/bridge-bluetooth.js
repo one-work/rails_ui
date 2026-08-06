@@ -1,4 +1,5 @@
 import { BridgeComponent } from '@hotwired/hotwire-native-bridge'
+import { PrintCommand } from 'xcprinter'
 
 export default class extends BridgeComponent {
   static component = 'bluetooth'
@@ -119,8 +120,14 @@ export default class extends BridgeComponent {
     this.print([0x12, 0x54])
   }
 
-  renderDeviceActive(device) {
+  setWifi(e) {
+    const item = e.currentTarget
+    const ssid = item.parentNode.querySelector('[name=ssid]').value
+    const password = item.parentNode.querySelector('[name=password]').value
 
+    const pos = new PrintCommand()
+    const data = pos.setWifi(ssid, password)
+    this.print(data)
   }
 
   renderDevice(device) {
