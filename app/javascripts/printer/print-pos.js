@@ -14,6 +14,8 @@ export default class extends Controller {
     const button = document.getElementById(this.element.dataset.buttonId)
     if (button) {
       button.disabled = true
+      bluetoothPrinter.initValue = true
+
       this.print = this.print.bind(this)
       button.addEventListener('click', this.print)
     }
