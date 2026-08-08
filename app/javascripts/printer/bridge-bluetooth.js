@@ -27,9 +27,7 @@ export default class extends BridgeComponent {
           const item = this.listTarget.querySelector(`[data-address='${data.address}']`) || this.renderDevice(data)
 
           if (item) {
-            if (data.state === 'connected') {
-              this.#activeItem(item, data.state)
-            } else if (data.state === 'connecting') {
+            if (data.state) {
               this.#activeItem(item, data.state)
             } else {
               if (data.ready) {
