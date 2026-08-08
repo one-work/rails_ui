@@ -117,7 +117,7 @@ export default class extends BridgeComponent {
     this.send('connect_device', { address: address, name: name }, (msg) => {
       console.debug('打印时主动连接', msg.data)
       if (msg.data.success) {
-        this.send('send_data', { address: address, data: arr }, (result) => {
+        this.send('send_data', { data: arr }, (result) => {
           console.debug('打印结果：', result)
         })
       }
