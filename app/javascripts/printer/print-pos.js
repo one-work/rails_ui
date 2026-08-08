@@ -8,7 +8,7 @@ export default class extends Controller {
   }
 
   connect() {
-    this.bluetoothItem.dataset.add('controller', 'bridge-bluetooth')
+    this.element.dataset.add('controller', 'bridge-bluetooth')
     this.element.dataset.add('controller', 'bridge-overflow-menu')
 
     if (this.hasButtonValue) {
@@ -34,17 +34,9 @@ export default class extends Controller {
   }
 
   get bluetoothPrinter() {
-    const bluetoothPrinter = application.getControllerForElementAndIdentifier(this.bluetoothItem, 'bridge-bluetooth')
+    const bluetoothPrinter = application.getControllerForElementAndIdentifier(this.element, 'bridge-bluetooth')
     window.bluetoothPrinter = bluetoothPrinter
     return bluetoothPrinter
-  }
-
-  get bluetoothItem() {
-    if (this.bodyValue) {
-      return this.element
-    } else  {
-      return document.body
-    }
   }
 
 }
