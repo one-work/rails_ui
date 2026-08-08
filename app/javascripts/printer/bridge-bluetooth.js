@@ -53,7 +53,9 @@ export default class extends BridgeComponent {
 
     this.send('search', {}, (msg) => {
       console.debug(msg)
-      this.renderDevice(msg.data.device)
+      if (this.listTarget.classList.contains('bluetooth-list')) {
+        this.renderDevice(msg.data.device)
+      }
     })
   }
 
