@@ -152,6 +152,10 @@ export default class extends BridgeComponent {
       text = '连接中'
     } else if (state === 'connected') {
       text = '已连接'
+      const button = document.getElementById(this.element.dataset.buttonId)
+      if (button) {
+        button.disabled = false
+      }
     } else {
       text = state
     }

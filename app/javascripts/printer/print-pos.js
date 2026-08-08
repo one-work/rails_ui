@@ -11,10 +11,9 @@ export default class extends Controller {
     this.element.dataset.add('controller', 'bridge-bluetooth')
     this.element.dataset.add('controller', 'bridge-overflow-menu')
 
-    if (this.hasButtonValue) {
-      const button = document.getElementById(this.buttonValue)
+    const button = document.getElementById(this.element.dataset.buttonId)
+    if (button) {
       button.disabled = true
-
       this.print = this.print.bind(this)
       button.addEventListener('click', this.print)
     }
