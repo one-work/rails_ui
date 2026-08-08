@@ -37,6 +37,10 @@ export default class extends BridgeComponent {
           this.send('connect_device', { address: data.address, name: data.name }, (msg) => {
             console.debug('初始连接结果：', msg)
           })
+        } else {
+          if (data.state === 'connected') {
+            this.#enableButton()
+          }
         }
       }
     })
@@ -152,10 +156,7 @@ export default class extends BridgeComponent {
       text = '连接中'
     } else if (state === 'connected') {
       text = '已连接'
-      const button = document.getElementById(this.element.dataset.buttonId)
-      if (button) {
-        button.disabled = false
-      }
+      this.#enableButton()
     } else {
       text = state
     }
@@ -169,5 +170,12 @@ export default class extends BridgeComponent {
     item.dataset.action = 'click->bridge-bluetooth#connectDevice'
     item.classList.remove('background-light')
     item.querySelector('.media-right').innerText = ''
+  }
+
+  #enableButton() {
+    const button = document.getElementById(this.element.dataset.buttonId)
+    if (button) {
+      button.disabled = false
+    }
   }
 }
