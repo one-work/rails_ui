@@ -20,9 +20,6 @@ export default class extends BridgeComponent {
       const data = message.data
 
       if (data.address) {
-        this.element.dataset.address = data.address
-        this.element.dataset.name = data.name
-
         if (this.hasListTarget) {
           const item = this.listTarget.querySelector(`[data-address='${data.address}']`) || this.renderDevice(data)
 
@@ -85,9 +82,6 @@ export default class extends BridgeComponent {
       if (data.success) {
         this.#disconnectOther()
         this.#activeItem(item, 'connected')
-
-        this.element.dataset.address = item.dataset.address
-        this.element.dataset.name = name
       } else {
         item.querySelector('.media-right').innerText = '连接失败'
       }
