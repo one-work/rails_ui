@@ -86,8 +86,8 @@ export default class extends BridgeComponent {
         this.#disconnectOther()
         this.#activeItem(item, 'connected')
 
-        this.element.dataset.add('address', item.dataset.address)
-        this.element.dataset.add('name', name)
+        this.element.dataset.address = item.dataset.address
+        this.element.dataset.name = name
       } else {
         item.querySelector('.media-right').innerText = '连接失败'
       }
