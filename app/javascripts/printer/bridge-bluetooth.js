@@ -47,6 +47,8 @@ export default class extends BridgeComponent {
 
   // 搜索蓝牙设备
   search() {
+    this.listTarget.classList.add('overflow-y-scroll', 'box')
+    this.listTarget.style.height = '300px'
     this.send('search', {}, (msg) => {
       console.debug(msg)
       this.renderDevice(msg.data.device)
