@@ -47,12 +47,18 @@ export default class extends BridgeComponent {
 
   // 搜索蓝牙设备
   search() {
-    this.listTarget.classList.add('overflow-y-scroll', 'box')
-    this.listTarget.style.height = '300px'
+    this.listTarget.classList.add('bluetooth-list')
+    this.listTarget.dataset.action = 'click->bridge-bluetooth#hide'
+
     this.send('search', {}, (msg) => {
       console.debug(msg)
       this.renderDevice(msg.data.device)
     })
+  }
+
+  hide() {
+    this.listTarget.classList.remove('bluetooth-list')
+    this.listTarget.dataset.action = 'click->bridge-bluetooth#search'
   }
 
   connectDevice(event) {
