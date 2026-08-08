@@ -14,7 +14,7 @@ export default class extends Controller {
     const button = document.getElementById(this.element.dataset.buttonId)
     if (button) {
       button.disabled = true
-      bluetoothPrinter.initValue = true
+      this.bluetoothPrinter.initValue = true
 
       this.print = this.print.bind(this)
       button.addEventListener('click', this.print)
@@ -33,7 +33,7 @@ export default class extends Controller {
     })
     const data = pos.render()
     console.debug('打印数据：', data)
-    bluetoothPrinter.print(data)
+    this.bluetoothPrinter.print(data)
   }
 
   get bluetoothPrinter() {
