@@ -20,8 +20,8 @@ export default class extends BridgeComponent {
       const data = message.data
 
       if (data.address) {
-        this.element.dataset.add('address', data.address)
-        this.element.dataset.add('name', data.name)
+        this.element.dataset.address = data.address
+        this.element.dataset.name = data.name
 
         if (this.hasListTarget) {
           const item = this.listTarget.querySelector(`[data-address='${data.address}']`) || this.renderDevice(data)
