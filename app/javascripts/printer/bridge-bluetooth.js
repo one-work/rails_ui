@@ -37,7 +37,7 @@ export default class extends BridgeComponent {
           this.send('connect_device', { address: data.address, name: data.name }, (msg) => {
             console.debug('初始连接结果：', msg)
             const conData = msg.data
-            if (conData.state === 'connected') {
+            if (conData.success) {
               this.#enableButton()
             }
           })
