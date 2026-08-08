@@ -137,6 +137,7 @@ export default class extends BridgeComponent {
 
     const pos = new PrintCommand()
     const data = pos.setWifi(ssid, password)
+    console.debug('setWifi', data)
     this.print(data)
   }
 
