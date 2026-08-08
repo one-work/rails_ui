@@ -59,8 +59,11 @@ export default class extends BridgeComponent {
 
   hide(e) {
     const item = e.currentTarget
-    this.listTarget.classList.remove('bluetooth-list')
     item.dataset.action = 'click->bridge-bluetooth#search'
+    this.listTarget.classList.remove('bluetooth-list')
+    this.listTarget.querySelectorAll('[data-action="click->bridge-bluetooth#connectDevice"]').forEach(el => {
+      el.remove()
+    })
   }
 
   connectDevice(event) {
