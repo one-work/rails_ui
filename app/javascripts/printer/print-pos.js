@@ -13,6 +13,8 @@ export default class extends Controller {
 
     if (this.hasButtonValue) {
       const button = document.getElementById(this.buttonValue)
+      button.disabled = true
+
       this.print = this.print.bind(this)
       button.addEventListener('click', this.print)
     }
