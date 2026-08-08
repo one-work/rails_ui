@@ -2,6 +2,7 @@ import { Controller } from '@hotwired/stimulus'
 import { PrintPOS, PrintCommand } from 'xcprinter'
 
 export default class extends Controller {
+  static targets = ['button']
   static values = {
     body: { type: Boolean, default: false },
     button: String
@@ -11,10 +12,12 @@ export default class extends Controller {
     this.bluetoothItem.dataset.add('controller', 'bridge-bluetooth')
     this.element.dataset.add('controller', 'bridge-overflow-menu')
 
+    this.print = this.print.bind(this)
     if (this.hasButtonValue) {
       const button = document.getElementById(this.buttonValue)
-      this.print = this.print.bind(this)
       button.addEventListener('click', this.print)
+    } else if (this.hasButtonTarget) {
+      this.buttonTarget.addEventListener('click', this.print)
     }
   }
 
