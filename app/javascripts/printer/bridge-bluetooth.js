@@ -60,6 +60,7 @@ export default class extends BridgeComponent {
 
   #doConnect(item) {
     console.debug('发起主动连接！')
+    item.querySelector('.media-right').innerText = '开始连接'
     const name = item.querySelector('span').innerText
     this.send('connect_device', { address: item.dataset.address, name: name }, (msg) => {
       console.debug('主动连接结果：', msg)
