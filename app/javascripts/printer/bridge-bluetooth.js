@@ -60,7 +60,7 @@ export default class extends BridgeComponent {
       console.debug(msg)
       const data = msg.data
       if (this.listTarget.classList.contains('bluetooth-list')) {
-        const item = this.listTarget.children.querySelector(`:scope > [data-address='${data.device.address}']`)
+        const item = this.listTarget.querySelector(`:scope > [data-address='${data.device.address}']`)
         if (item) {
         } else {
           this.renderDevice(data.device)
