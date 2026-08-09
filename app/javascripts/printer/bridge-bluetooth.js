@@ -67,7 +67,6 @@ export default class extends BridgeComponent {
         }
       }
     })
-    this.listTarget.dataset.add('id', id)
   }
 
   hide(e) {
