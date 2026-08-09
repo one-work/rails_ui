@@ -56,10 +56,11 @@ export default class extends BridgeComponent {
     this.listTarget.classList.add('bluetooth-list')
     item.dataset.action = 'click->bridge-bluetooth#hide'
 
-    const id = this.send('search', {}, (msg) => {
-      console.debug(id, msg)
-      if (this.listTarget.classList.contains('bluetooth-list')) {
-        this.renderDevice(msg.data.device)
+    this.send('search', {}, (msg) => {
+      console.debug(msg)
+      const data = msg.data
+      if (this.listTarget.classList.contains('bluetooth-list') && this.listTarget.children.querySelector(`:scope > [data-address='${data.device.address}']`)) {
+        this.renderDevice(data.device)
       }
     })
     this.listTarget.dataset.add('id', id)
