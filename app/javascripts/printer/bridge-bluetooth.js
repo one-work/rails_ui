@@ -55,6 +55,8 @@ export default class extends BridgeComponent {
     const item = e.currentTarget
     this.listTarget.classList.add('bluetooth-list')
     item.dataset.action = 'click->bridge-bluetooth#hide'
+    const svg = item.querySelector('use')
+    svg.setAttribute('href', svg.href.baseVal.replace('down', 'up'))
 
     this.send('search', {}, (msg) => {
       console.debug(msg)
@@ -72,6 +74,9 @@ export default class extends BridgeComponent {
   hide(e) {
     const item = e.currentTarget
     item.dataset.action = 'click->bridge-bluetooth#search'
+    const svg = item.querySelector('use')
+    svg.setAttribute('href', svg.href.baseVal.replace('up', 'down'))
+
     this.listTarget.classList.remove('bluetooth-list')
     this.listTarget.querySelectorAll('[data-action="click->bridge-bluetooth#connectDevice"]').forEach(el => {
       el.remove()
