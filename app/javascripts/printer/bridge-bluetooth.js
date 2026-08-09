@@ -80,6 +80,7 @@ export default class extends BridgeComponent {
 
   connectDevice(event) {
     const item = event.currentTarget
+    this.#disconnectOther()
     this.#doConnect(item)
   }
 
@@ -92,7 +93,6 @@ export default class extends BridgeComponent {
       const data = msg.data
 
       if (data.success) {
-        this.#disconnectOther()
         this.#activeItem(item, 'connected')
       } else {
         item.querySelector('.media-right').innerText = '连接失败'
