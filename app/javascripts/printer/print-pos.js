@@ -19,9 +19,17 @@ export default class extends Controller {
     }
   }
 
+  printInner(e) {
+    this.#doPrint(e.currentTarget)
+  }
+
   print() {
+    this.#doPrint(this.element)
+  }
+
+  #doPrint(item) {
     const arr = []
-    this.element.querySelectorAll('[data-print]').forEach(item => {
+    item.querySelectorAll('[data-print]').forEach(item => {
       arr.push([item.dataset.print, item.innerText])
     })
 
