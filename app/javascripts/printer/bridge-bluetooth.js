@@ -55,7 +55,7 @@ export default class extends BridgeComponent {
     const item = e.currentTarget
     item.dataset.action = 'click->bridge-bluetooth#unfilter'
     const svg = item.querySelector('use')
-    svg.setAttribute('href', svg.href.baseVal.replace('square', 'square-check'))
+    svg.setAttribute('href', svg.href.baseVal.replace('#square', '#square-check'))
 
     Array.from(this.listTarget.children).forEach(el => {
       if (this.listValue.some(e => el.dataset.name.includes(e))) {
@@ -69,7 +69,7 @@ export default class extends BridgeComponent {
     const item = e.currentTarget
     item.dataset.action = 'click->bridge-bluetooth#filter'
     const svg = item.querySelector('use')
-    svg.setAttribute('href', svg.href.baseVal.replace('square-check', 'square'))
+    svg.setAttribute('href', svg.href.baseVal.replace('#square-check', '#square'))
     this.listTarget.querySelectorAll(':scope > .display-none').forEach(el => {
       el.classList.remove('display-none')
     })
