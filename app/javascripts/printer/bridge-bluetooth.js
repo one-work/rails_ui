@@ -65,7 +65,7 @@ export default class extends BridgeComponent {
     })
   }
 
-  unfilter() {
+  unfilter(e) {
     const item = e.currentTarget
     item.dataset.action = 'click->bridge-bluetooth#filter'
     const svg = item.querySelector('use')
