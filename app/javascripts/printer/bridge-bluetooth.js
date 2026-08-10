@@ -59,9 +59,8 @@ export default class extends BridgeComponent {
 
     Array.from(this.listTarget.children).forEach(el => {
       if (this.listValue.some(e => el.dataset.name.includes(e))) {
-
       } else {
-        el.className.add('display-none')
+        el.classList.add('display-none')
       }
     })
   }
@@ -72,7 +71,7 @@ export default class extends BridgeComponent {
     const svg = item.querySelector('use')
     svg.setAttribute('href', svg.href.baseVal.replace('square-check', 'square'))
     this.listTarget.querySelectorAll(':scope > .display-none').forEach(el => {
-      el.classLIst.remove('display-none')
+      el.classList.remove('display-none')
     })
   }
 
