@@ -150,6 +150,26 @@ export default class extends BridgeComponent {
     this.print(data)
   }
 
+  setName(e) {
+    const item = e.currentTarget
+    const name = item.parentNode.querySelector('[name=name]').value
+
+    const pos = new PrintCommand()
+    const data = pos.setName(name)
+    console.debug('setName', data)
+    this.print(data)
+  }
+
+  setTime(e) {
+    const item = e.currentTarget
+    const time = item.parentNode.querySelector('[name=time]').value
+
+    const pos = new PrintCommand()
+    const data = pos.setTime(time)
+    console.debug('setTime', data)
+    this.print(data)
+  }
+
   renderDevice(device) {
     const template = document.getElementById(this.templateValue)
     if (!template) { return }

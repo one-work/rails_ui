@@ -32,7 +32,7 @@
     "idiomorph": "^0.3.0",
     "luxon": "^3.5.0",
     "sortablejs": "^1.15.2",
-    "xcprinter": "^1.0.14"
+    "xcprinter": "^1.0.15"
   },
   "scripts": {
     "lint": "eslint package/"
