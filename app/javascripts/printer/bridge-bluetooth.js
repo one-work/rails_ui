@@ -6,7 +6,8 @@ export default class extends BridgeComponent {
   static targets = ['list']
   static values = {
     template: { type: String, default: 'bluetooth-item' },
-    init: { type: Boolean, default: false }
+    init: { type: Boolean, default: false },
+    list: { type: Array, default: [] }
   }
 
   connect() {
@@ -47,6 +48,31 @@ export default class extends BridgeComponent {
           }
         }
       }
+    })
+  }
+
+  filter(e) {
+    const item = e.currentTarget
+    item.dataset.action = 'click->bridge-bluetooth#unfilter'
+    const svg = item.querySelector('use')
+    svg.setAttribute('href', svg.href.baseVal.replace('square', 'square-check'))
+
+    Array.from(this.listTarget.children).forEach(el => {
+      if (this.listValue.some(e => el.dataset.name.includes(e))) {
+
+      } else {
+        el.className.add('display-none')
+      }
+    })
+  }
+
+  unfilter() {
+    const item = e.currentTarget
+    item.dataset.action = 'click->bridge-bluetooth#filter'
+    const svg = item.querySelector('use')
+    svg.setAttribute('href', svg.href.baseVal.replace('square-check', 'square'))
+    this.listTarget.querySelectorAll(':scope > .display-none').forEach(el => {
+      el.classLIst.remove('display-none')
     })
   }
 
