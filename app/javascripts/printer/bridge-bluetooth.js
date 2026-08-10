@@ -3,7 +3,7 @@ import { PrintCommand } from 'xcprinter'
 
 export default class extends BridgeComponent {
   static component = 'bluetooth'
-  static targets = ['list']
+  static targets = ['list', 'filter']
   static values = {
     template: { type: String, default: 'bluetooth-item' },
     init: { type: Boolean, default: false },
@@ -82,6 +82,10 @@ export default class extends BridgeComponent {
     item.dataset.action = 'click->bridge-bluetooth#hide'
     const svg = item.querySelector('use')
     svg.setAttribute('href', svg.href.baseVal.replace('down', 'up'))
+    if (this.hasFilterTarget) {
+      this.filterTarget.dataset.action = 'click->bridge-bluetooth#filter'
+      this.filterTarget.classList.remove('display-none')
+    }
 
     this.send('search', {}, (msg) => {
       console.debug(msg)
@@ -101,6 +105,9 @@ export default class extends BridgeComponent {
     item.dataset.action = 'click->bridge-bluetooth#search'
     const svg = item.querySelector('use')
     svg.setAttribute('href', svg.href.baseVal.replace('up', 'down'))
+    if (this.hasFilterTarget) {
+      this.filterTarget.classList.add('display-none')
+    }
 
     this.listTarget.classList.remove('bluetooth-list')
     this.listTarget.querySelectorAll('[data-action="click->bridge-bluetooth#connectDevice"]').forEach(el => {
