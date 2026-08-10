@@ -57,6 +57,7 @@ export default class extends BridgeComponent {
     item.dataset.action = 'click->bridge-bluetooth#unfilter'
     const svg = item.querySelector('use')
     svg.setAttribute('href', svg.href.baseVal.replace('#square', '#square-check'))
+    this.filterValue = true
 
     Array.from(this.listTarget.children).forEach(el => {
       this.#doFilter(el)
@@ -68,6 +69,8 @@ export default class extends BridgeComponent {
     item.dataset.action = 'click->bridge-bluetooth#filter'
     const svg = item.querySelector('use')
     svg.setAttribute('href', svg.href.baseVal.replace('#square-check', '#square'))
+    this.filterValue = false
+
     this.listTarget.querySelectorAll(':scope > .display-none').forEach(el => {
       el.classList.remove('display-none')
     })
