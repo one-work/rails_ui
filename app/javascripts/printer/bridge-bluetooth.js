@@ -57,12 +57,7 @@ export default class extends BridgeComponent {
     const svg = item.querySelector('use')
     svg.setAttribute('href', svg.href.baseVal.replace('#square', '#square-check'))
 
-    Array.from(this.listTarget.children).forEach(el => {
-      if (this.listValue.some(e => el.dataset.name.includes(e))) {
-      } else {
-        el.classList.add('display-none')
-      }
-    })
+    this.#doFilter()
   }
 
   unfilter(e) {
@@ -83,7 +78,7 @@ export default class extends BridgeComponent {
     const svg = item.querySelector('use')
     svg.setAttribute('href', svg.href.baseVal.replace('down', 'up'))
     if (this.hasFilterTarget) {
-      this.filterTarget.dataset.action = 'click->bridge-bluetooth#filter'
+      this.filterTarget.dataset.action = 'click->bridge-bluetooth#unfilter'
       this.filterTarget.classList.remove('display-none')
     }
 
@@ -119,6 +114,15 @@ export default class extends BridgeComponent {
     const item = event.currentTarget
     this.#disconnectOther()
     this.#doConnect(item)
+  }
+
+  #doFilter() {
+    Array.from(this.listTarget.children).forEach(el => {
+      if (this.listValue.some(e => el.dataset.name.includes(e))) {
+      } else {
+        el.classList.add('display-none')
+      }
+    })
   }
 
   #doConnect(item) {
