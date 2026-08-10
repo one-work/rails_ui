@@ -7,7 +7,8 @@ export default class extends BridgeComponent {
   static values = {
     template: { type: String, default: 'bluetooth-item' },
     init: { type: Boolean, default: false },
-    list: { type: Array, default: [] }
+    list: { type: Array, default: [] },
+    filter: { type: Boolean, default: true }
   }
 
   connect() {
@@ -57,7 +58,9 @@ export default class extends BridgeComponent {
     const svg = item.querySelector('use')
     svg.setAttribute('href', svg.href.baseVal.replace('#square', '#square-check'))
 
-    this.#doFilter()
+    Array.from(this.listTarget.children).forEach(el => {
+      this.#doFilter(el)
+    })
   }
 
   unfilter(e) {
@@ -116,13 +119,11 @@ export default class extends BridgeComponent {
     this.#doConnect(item)
   }
 
-  #doFilter() {
-    Array.from(this.listTarget.children).forEach(el => {
-      if (this.listValue.some(e => el.dataset.name.includes(e))) {
-      } else {
-        el.classList.add('display-none')
-      }
-    })
+  #doFilter(el) {
+    if (this.listValue.some(e => el.dataset.name.includes(e))) {
+    } else {
+      el.classList.add('display-none')
+    }
   }
 
   #doConnect(item) {
@@ -213,6 +214,9 @@ export default class extends BridgeComponent {
     const item = fragment.querySelector('.media')
     item.dataset.address = device.address
     item.dataset.name = device.name
+    if (this.filterValue) {
+      this.#doFilter(item)
+    }
 
     const content = fragment.querySelector('span')
     content.innerText = device.name
