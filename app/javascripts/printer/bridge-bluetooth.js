@@ -23,17 +23,7 @@ export default class extends BridgeComponent {
 
       if (data.address) {
         if (this.hasListTarget) {
-          const item = this.listTarget.querySelector(`[data-address='${data.address}']`) || this.renderDevice(data)
-
-          if (item) {
-            if (data.state) {
-              this.#activeItem(item, data.state)
-            } else {
-              if (data.ready) {
-                this.#doConnect(item)
-              }
-            }
-          }
+          this.renderDevice(data)
         } else if (this.hasInitValue) {
           console.debug('发起初始连接！')
           this.send('connect_device', { address: data.address, name: data.name }, (msg) => {
@@ -219,6 +209,12 @@ export default class extends BridgeComponent {
     const item = fragment.querySelector('.media')
     item.dataset.address = device.address
     item.dataset.name = device.name
+
+    if (device.state) {
+      this.#activeItem(item, device.state)
+    } else if (device.ready) {
+      this.#doConnect(item)
+    }
     if (this.filterValue) {
       this.#doFilter(item)
     }
