@@ -2,15 +2,16 @@ import { BridgeComponent } from '@hotwired/hotwire-native-bridge'
 
 export default class extends BridgeComponent {
   static component = 'apple-sign-in'
+  static targets = ['login']
 
   connect() {
     super.connect()
-    this.element.addEventListener('click', this.signIn)
+    this.loginTarget.addEventListener('click', this.signIn)
   }
 
   disconnect() {
     super.disconnect()
-    this.element.removeEventListener('click', this.signIn)
+    this.loginTarget.removeEventListener('click', this.signIn)
   }
 
   signIn() {
