@@ -6,6 +6,7 @@ export default class extends BridgeComponent {
 
   connect() {
     super.connect()
+    this.signIn = this.signIn.bind(this)
     this.loginTarget.addEventListener('click', this.signIn)
   }
 
