@@ -84,7 +84,9 @@ export default class extends BridgeComponent {
     const svg = item.querySelector('use')
     svg.setAttribute('href', svg.href.baseVal.replace('down', 'up'))
     if (this.hasFilterTarget) {
-      this.filterTarget.dataset.action = 'click->bridge-bluetooth#unfilter'
+      if (!this.filterTarget.dataset.action) {
+        this.filterTarget.dataset.action = 'click->bridge-bluetooth#unfilter'
+      }
       this.filterTarget.classList.remove('display-none')
     }
 
