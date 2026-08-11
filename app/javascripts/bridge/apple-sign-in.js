@@ -14,6 +14,7 @@ export default class extends BridgeComponent {
 
   signIn() {
     this.send('signIn', {}, (message) => {
+      console.debug(message)
       const data = message.data || {}
       if (!data.success) {
         if (!data.cancelled) alert(data.error || "登录失败，请重试")
