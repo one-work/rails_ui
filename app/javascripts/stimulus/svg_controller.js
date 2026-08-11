@@ -9,5 +9,4 @@ export default class extends Controller {
     console.debug('-------------',href)
     use.setAttribute('href', href.toString())
   }
-
 }
