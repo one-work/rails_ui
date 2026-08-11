@@ -104,11 +104,7 @@ export default class extends Controller {
         ...headers
       },
       body: body
-    }).then(response => {
-      return response.text()
-    }).then(body => {
-      Turbo.renderStreamMessage(body)
-    })
+    }).then(response => response.text()).then(body => Turbo.renderStreamMessage(body))
   }
 
   get locale() {

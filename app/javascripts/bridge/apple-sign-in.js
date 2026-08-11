@@ -21,20 +21,15 @@ export default class extends BridgeComponent {
         return
       }
 
-      const csrfToken = document.querySelector('meta[name="csrf-token"]').content
-      fetch("/apple_sign_ins", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "X-CSRF-Token": csrfToken },
+      const csrfToken = document.querySelector('meta[name=csrf-token]').content
+      fetch('auth/apple', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-Token': csrfToken
+        },
         body: JSON.stringify(data)
-      })
-        .then((response) => response.json())
-        .then((result) => {
-          if (result.success) {
-            Turbo.visit(result.redirect_to || "/", { action: "replace" })
-          } else {
-            alert(result.error || "登录失败，请重试")
-          }
-        })
+      }).then(response => response.text()).then(body => Turbo.renderStreamMessage(body))
     })
   }
 }
