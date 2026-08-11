@@ -125,7 +125,7 @@ export default class extends BridgeComponent {
   }
 
   #doFilter(el) {
-    if (this.listValue.some(e => el.dataset.name.includes(e))) {
+    if (this.listValue.some(e => el.dataset.name.includes(e)) || el.dataset.action.includes('disconnectDevice')) {
     } else {
       el.classList.add('display-none')
     }
