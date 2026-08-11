@@ -1,0 +1,6 @@
+import './stimulus/base'
+import './stimulus/com'
+import './stimulus/channels'
+import './stimulus/bulma'
+import './stimulus/form'
+import './stimulus/turbo'

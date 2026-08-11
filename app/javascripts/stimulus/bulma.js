@@ -1,23 +1,23 @@
-import BulmaDropdownController from './dropdown'
+import BulmaDropdownController from './bulma/dropdown'
 application.register('bulma-dropdown', BulmaDropdownController)
 
-import AutoActiveController from './auto-active'
+import AutoActiveController from './bulma/auto-active'
 application.register('auto-active', AutoActiveController)
 
-import MenuController from './menu'
+import MenuController from './bulma/menu'
 application.register('menu', MenuController)
 
-import MenuPopupController from './menu-popup'
+import MenuPopupController from './bulma/menu-popup'
 application.register('menu-popup', MenuPopupController)
 
-import ModalController from './modal'
+import ModalController from './bulma/modal'
 application.register('modal', ModalController)
 
-import NavbarController from './navbar'
+import NavbarController from './bulma/navbar'
 application.register('navbar', NavbarController)
 
-import PopupController from './popup'
+import PopupController from './bulma/popup'
 application.register('popup', PopupController)
 
-import SkeletonController from './skeleton'
+import SkeletonController from './bulma/skeleton'
 application.register('skeleton', SkeletonController)

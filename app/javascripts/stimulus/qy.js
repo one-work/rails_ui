@@ -1,5 +1,5 @@
-import ShareMomentController from './share-moment'
+import ShareMomentController from './qy/share-moment'
 application.register('share-moment', ShareMomentController)
 
-import OpenDataController from './open-data'
+import OpenDataController from './qy/open-data'
 application.register('open-data', OpenDataController)

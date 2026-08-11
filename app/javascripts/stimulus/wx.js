@@ -1,22 +1,22 @@
-import '../base'
+import './base'
 
-import MiniProgramController from './mini-program'
+import MiniProgramController from './wx/mini-program'
 application.register('mini-program', MiniProgramController)
 
-import MpMessageController from './mp-message'
+import MpMessageController from './wx/mp-message'
 application.register('mp-message', MpMessageController)
 
-import ScanController from './scan'
+import ScanController from './wx/scan'
 application.register('scan', ScanController)
 
-import WechatController from './wechat'
+import WechatController from './wx/wechat'
 application.register('wechat', WechatController)
 
-import WxMenuController from './wx-menu'
+import WxMenuController from './wx/wx-menu'
 application.register('wx-menu', WxMenuController)
 
-import WxShareController from './wx-share'
+import WxShareController from './wx/wx-share'
 application.register('wx-share', WxShareController)
 
-import WxpayController from './wxpay'
+import WxpayController from './wx/wxpay'
 application.register('wxpay', WxpayController)
