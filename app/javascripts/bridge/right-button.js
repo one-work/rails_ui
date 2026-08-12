@@ -10,8 +10,7 @@ export default class extends BridgeComponent {
   }
 
   notifyBridgeOfConnect() {
-    const element = this.bridgeElement
-    const title = element.dataset.title
+    const title = this.element.dataset.title
 
     this.send('connect', { title }, () => {
       this.element.click()
