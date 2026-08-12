@@ -1,4 +1,4 @@
-import { BridgeComponent, BridgeElement } from '@hotwired/hotwire-native-bridge'
+import { BridgeComponent } from '@hotwired/hotwire-native-bridge'
 
 export default class extends BridgeComponent {
   static component = 'right-button'
@@ -10,21 +10,11 @@ export default class extends BridgeComponent {
   }
 
   notifyBridgeOfConnect() {
-    const submitButton = new BridgeElement(this.submitTarget)
-    const submitTitle = submitButton.title
+    const element = this.bridgeElement
+    const title = element.dataset.title
 
-    this.send('connect', { submitTitle }, () => {
-      this.submitTarget.click()
+    this.send('connect', { title }, () => {
+      this.element.click()
     })
-  }
-
-  submitStart(event) {
-    this.submitTarget.disabled = true
-    this.send('submitDisabled')
-  }
-
-  submitEnd(event) {
-    this.submitTarget.disabled = false
-    this.send('submitEnabled')
   }
 }
