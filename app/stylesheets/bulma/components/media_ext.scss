@@ -44,13 +44,13 @@
     }
   }
 
-  &:active {
-    background-color: hsl(var(--light-h), var(--light-s), var(--light-l));
-  }
-
   p + p {
     margin-top: 0.25rem;
   }
+}
+
+a.media:active {
+  background-color: hsl(var(--light-h), var(--light-s), var(--light-l));
 }
 
 .media-left,
