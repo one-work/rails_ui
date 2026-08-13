@@ -5,6 +5,7 @@ export default class extends BridgeComponent {
 
   connect() {
     super.connect()
+    this.element.disabled = false
     this.element.addEventListener('click', this.startScanning)
   }
 
