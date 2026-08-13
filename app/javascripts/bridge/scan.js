@@ -38,6 +38,7 @@ export default class extends BridgeComponent {
             body.append(k, this.paramsValue[k])
           })
         }
+        body.append('result', value)
         const csrfToken = document.querySelector('meta[name=csrf-token]').content
         fetch(url, {
           method: 'POST',
