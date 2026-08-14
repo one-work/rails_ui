@@ -57,6 +57,10 @@ $box-link-active-shadow:
     box-shadow: cv.getVar('box-link-active-shadow');
     background-color: cv.getVar('white-ter');
   }
+
+  &:not(:has(*)) {
+    box-shadow: none;
+  }
 }
 
 a.box {
@@ -69,8 +73,6 @@ a.box {
     box-shadow: cv.getVar("box-link-active-shadow");
   }
 }
-
-
 
 a.box-header {
   color: var(--box-color);
