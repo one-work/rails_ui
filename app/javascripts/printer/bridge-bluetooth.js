@@ -68,6 +68,7 @@ export default class extends BridgeComponent {
 
   // 搜索蓝牙设备
   search(e) {
+    console.debug('do search')
     const item = e.currentTarget
     this.listTarget.classList.add('bluetooth-list')
     item.dataset.action = 'click->bridge-bluetooth#hide'
