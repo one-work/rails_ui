@@ -139,12 +139,16 @@ export default class extends BridgeComponent {
 
   #disconnectOther() {
     this.listTarget.querySelectorAll('.background-light').forEach(el => {
-      this.#inactiveItem(el)
+      this.#doDisconnect(el)
     })
   }
 
   disconnectDevice(event) {
     const item = event.currentTarget
+    this.#doDisconnect(item)
+  }
+
+  #doDisconnect(item) {
     this.send('disconnect_device', { address: item.dataset.address }, (msg) => {
       console.debug('断开连接', msg)
       if (msg.data.success) {
