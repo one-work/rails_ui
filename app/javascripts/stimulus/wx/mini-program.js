@@ -5,14 +5,7 @@ export default class extends ProgramController {
   connect() {
     if (window.__wxjs_environment === 'miniprogram') {
       if (this.directValue) {
-        if (typeof wx === 'undefined') {
-          const weixin_script = document.getElementById('weixin_script')
-          weixin_script.addEventListener('load', () => {
-            this.navTo()
-          })
-        } else {
-          this.navTo()
-        }
+        this.navTo()
       }
     }
   }
