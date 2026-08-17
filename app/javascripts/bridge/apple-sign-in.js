@@ -21,7 +21,7 @@ export default class extends BridgeComponent {
         return
       }
 
-      const csrfToken = document.querySelector('meta[name=csrf-token]').content
+      const csrfToken = utils.metaContent('csrf-token')
       fetch('auth/apple', {
         method: 'POST',
         headers: {

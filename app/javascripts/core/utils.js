@@ -10,5 +10,10 @@ window.utils = {
       }
     )
     return format.format(date)
+  },
+
+  metaContent: (name) => {
+    const element = document.head.querySelector(`meta[name="${name}"]`)
+    return element && element.content
   }
 }
