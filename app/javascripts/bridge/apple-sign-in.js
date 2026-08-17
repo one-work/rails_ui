@@ -21,12 +21,11 @@ export default class extends BridgeComponent {
         return
       }
 
-      const csrfToken = utils.metaContent('csrf-token')
       fetch('auth/apple', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'X-CSRF-Token': csrfToken
+          'X-CSRF-Token': utils.metaContent('csrf-token')
         },
         body: JSON.stringify(data)
       }).then(response => response.text()).then(body => Turbo.renderStreamMessage(body))

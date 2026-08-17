@@ -39,11 +39,13 @@ export default class extends BridgeComponent {
           })
         }
         body.append('result', value)
-        const csrfToken = document.querySelector('meta[name=csrf-token]').content
+
         fetch(url, {
           method: 'POST',
           body: body,
-          headers: { 'X-CSRF-Token': csrfToken }
+          headers: {
+            'X-CSRF-Token': utils.metaContent('csrf-token')
+          }
         }).then(response => response.text()).then(body => Turbo.renderStreamMessage(body))
       }
     })
