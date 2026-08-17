@@ -1,2 +1,2 @@
-import CalendarMonthController from './month'
+import CalendarMonthController from './calendar/month'
 application.register('calendar-month', CalendarMonthController)
