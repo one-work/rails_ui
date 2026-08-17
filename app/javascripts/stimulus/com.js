@@ -88,6 +88,9 @@ application.register('print', PrintController)
 import QyLoginController from './com/qy-login'
 application.register('qy-login', QyLoginController)
 
+import ReportController from './com/report'
+application.register('report', ReportController)
+
 import ScrollController from './com/scroll'
 application.register('scroll', ScrollController)
 
