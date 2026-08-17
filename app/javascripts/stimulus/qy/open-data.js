@@ -14,8 +14,6 @@ export default class extends Controller {
 
     if (location.href === this.urlValue) {
       this.xx({ controller: this })
-    } else {
-      wxwork_fetch({ success: this.xx, controller: this })
     }
   }
 
