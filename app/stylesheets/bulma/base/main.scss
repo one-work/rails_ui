@@ -5,6 +5,7 @@ body,
 }
 
 body {
+  height: 100vh; // 只有设置了 height, 子元素的 height 100% 才会生效
   min-height: 100vh;
   min-height: 100dvh; // 兼容 ios 视窗逻辑
 }
