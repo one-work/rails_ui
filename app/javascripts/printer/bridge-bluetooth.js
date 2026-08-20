@@ -24,7 +24,7 @@ export default class extends BridgeComponent {
       if (data.address) {
         if (this.hasListTarget) {
           this.renderDevice(data)
-        } else if (this.hasInitValue) {
+        } else if (this.hasInitValue && data.state !== 'connected') {
           console.debug('发起初始连接！')
           this.send('connect_device', { address: data.address, name: data.name }, (msg) => {
             console.debug('初始连接结果：', msg)
