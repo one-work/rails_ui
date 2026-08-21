@@ -23,7 +23,7 @@ export default class extends BridgeComponent {
 
       if (data.address) {
         if (this.hasListTarget) {
-          const item = this.listTarget.querySelector(`:scope > [data-address='${data.device.address}']`)
+          const item = this.listTarget.querySelector(`:scope > [data-address='${data.address}']`)
           if (item) {
           } else {
             this.renderDevice(data.device)
