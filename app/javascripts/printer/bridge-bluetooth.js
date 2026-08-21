@@ -26,7 +26,7 @@ export default class extends BridgeComponent {
           const item = this.listTarget.querySelector(`:scope > [data-address='${data.address}']`)
           if (item) {
           } else {
-            this.renderDevice(data.device)
+            this.renderDevice(data)
           }
         } else if (this.hasInitValue && data.state !== 'connected') {
           console.debug('发起初始连接！')
