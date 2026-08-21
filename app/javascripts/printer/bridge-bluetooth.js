@@ -17,6 +17,7 @@ export default class extends BridgeComponent {
   }
 
   notifyBridgeOfConnect() {
+    console.debug('notifigraide of bridgecont')
     this.send('connect', {}, (message) => {
       console.debug('蓝牙组件就绪', message)
       const data = message.data
