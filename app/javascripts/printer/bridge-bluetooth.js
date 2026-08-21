@@ -17,14 +17,19 @@ export default class extends BridgeComponent {
   }
 
   notifyBridgeOfConnect() {
-    console.debug('notifigraide of bridgecont')
     this.send('connect', {}, (message) => {
       console.debug('蓝牙组件就绪', message)
       const data = message.data
 
       if (data.address) {
         if (this.hasListTarget) {
-          this.renderDevice(data)
+          if (this.listTarget.classList.contains('bluetooth-list')) {
+            const item = this.listTarget.querySelector(`:scope > [data-address='${data.device.address}']`)
+            if (item) {
+            } else {
+              this.renderDevice(data.device)
+            }
+          }
         } else if (this.hasInitValue && data.state !== 'connected') {
           console.debug('发起初始连接！')
           this.send('connect_device', { address: data.address, name: data.name }, (msg) => {
