@@ -9,7 +9,8 @@ export default class extends BridgeComponent {
   }
 
   notifyBridgeOfConnect() {
-    this.send('connect', {}, (msg) => {
+    const label = ''
+    this.send('connect', { label }, (msg) => {
       console.debug('浮动菜单连接', msg)
       window.xx = this
     })
