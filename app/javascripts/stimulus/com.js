@@ -19,6 +19,9 @@ application.register('appear', AppearController)
 import AudioPlayerController from './com/audio-player'
 application.register('audio-player', AudioPlayerController)
 
+import BackController from './com/back'
+application.register('back', BackController)
+
 import CableController from './com/cable'
 application.register('cable', CableController)
 
