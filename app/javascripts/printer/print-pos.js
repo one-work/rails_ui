@@ -23,6 +23,12 @@ export default class extends Controller {
     this.#doPrint(e.currentTarget)
   }
 
+  printData(e) {
+    const item = e.currentTarget
+    const arr = item.dataset.content.split(',').map(i => parseInt(i, 16))
+    this.bluetoothPrinter.print(arr)
+  }
+
   print() {
     this.#doPrint(this.element)
   }
