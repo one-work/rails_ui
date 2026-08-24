@@ -20,3 +20,6 @@ document.addEventListener('turbo:load', event => {
     document.documentElement.classList.remove('no-hover')
   }, 50)
 })
+
+document.addEventListener('turbo:load', (e) => console.log(e.type, e.detail))
+document.addEventListener('turbo:before-cache', (e) => console.log(e.type, e.detail))
