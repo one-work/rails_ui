@@ -163,6 +163,7 @@ export default class extends BridgeComponent {
 
   // 打印
   print(arr) {
+    console.debug('打印数据：', arr)
     this.send('send_data', { data: arr }, (result) => {
       console.debug('打印结果：', result)
     })

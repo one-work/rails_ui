@@ -64,7 +64,6 @@ export default class extends Controller {
       pos[item[0]](item[1])
     })
     const data = pos.render()
-    console.debug('打印数据：', data)
     this.bluetoothPrinter.print(data)
   }
 
