@@ -1,5 +1,5 @@
 import { Controller } from '@hotwired/stimulus'
-import { PrintPOS, PrintCommand } from 'xcprinter'
+import { PrintPOS, PrintPic, PrintCommand } from 'xcprinter'
 
 export default class extends Controller {
   static values = {
@@ -21,6 +21,11 @@ export default class extends Controller {
 
   printInner(e) {
     this.#doPrint(e.currentTarget)
+  }
+
+  printPic(e) {
+    const input = e.currentTarget
+    window.xxx = input
   }
 
   printData(e) {
