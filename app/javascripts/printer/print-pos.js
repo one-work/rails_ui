@@ -1,5 +1,5 @@
 import { Controller } from '@hotwired/stimulus'
-import { PrintPOS, PrintPic, PrintCommand } from 'xcprinter'
+import { PrintPOS, PrintPic } from 'xcprinter'
 
 export default class extends Controller {
   static targets = ['canvas']
@@ -30,12 +30,13 @@ export default class extends Controller {
     if (file && file.type.startsWith('image/')) {
       if (this.hasCanvasTarget) {
         const src = URL.createObjectURL(file) // 创建一个object URL，并不是你的本地路径
+        console.debug('链接', src)
         const pos = new PrintPOS()
-        const pic = new PrintPic()
+        const pic = new PrintPic(1, new Image())
         pic.loadImageToCanvas(this.canvasTarget, src, res => {
           URL.revokeObjectURL(src) // 图片加载后，释放object URL
           console.log(res)
-          const arr = pos.#image(res.data, res.meta)
+          const arr = pos.image(res.data, res.meta)
           this.bluetoothPrinter.print(arr)
         })
       }
