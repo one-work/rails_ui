@@ -36,8 +36,8 @@ export default class extends Controller {
         pic.loadImageToCanvas(this.canvasTarget, src, res => {
           URL.revokeObjectURL(src) // 图片加载后，释放object URL
           console.log(res)
-          const arr = pos.image(res.data, res.meta)
-          this.bluetoothPrinter.print(arr)
+          pos.image(res.data, res.meta)
+          this.bluetoothPrinter.print(pos.render())
         })
       }
     }
