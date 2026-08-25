@@ -1,6 +1,5 @@
 import { Controller } from '@hotwired/stimulus'
 
-// <input type="file" data-controller="picture">
 export default class extends Controller {
   static targets = ['src', 'filename', 'preview', 'upload', 'icon', 'canvas']
 
