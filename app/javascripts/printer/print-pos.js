@@ -23,9 +23,38 @@ export default class extends Controller {
     this.#doPrint(e.currentTarget)
   }
 
-  printPic(e) {
-    const input = e.currentTarget
-    window.xxx = input
+  printPic(event) {
+    const input = event.currentTarget
+    const button = Array.from(input.form.elements).find(el =>
+      el.type === 'submit' && el.name === 'commit'
+    )
+    input.disabled = true
+
+    const pos = new PrintPOS()
+
+    Array.from(input.files).forEach(file => {
+      if (file.type.startsWith('image/')) {
+        if (this.hasCanvasTarget) {
+          const src = URL.createObjectURL(file) // 创建一个object URL，并不是你的本地路径
+
+          pic.loadImageToCanvas(this.canvasTarget, src, res => {
+            URL.revokeObjectURL(src) // 图片加载后，释放object URL
+            console.log(res)
+
+            const hiddenInput = document.createElement('input')
+            hiddenInput.type = 'hidden'
+            hiddenInput.name = input.name
+            input.insertAdjacentElement('beforebegin', hiddenInput)
+
+            const arr = pos.#image(res.data, res.meta)
+            const x = new Uint8Array(arr)
+            hiddenInput.value = x.toBase64()
+          })
+        }
+      }
+    })
+
+    input.value = null
   }
 
   printData(e) {
