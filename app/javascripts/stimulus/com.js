@@ -19,9 +19,6 @@ application.register('appear', AppearController)
 import AudioPlayerController from './com/audio-player'
 application.register('audio-player', AudioPlayerController)
 
-import BackController from './com/back'
-application.register('back', BackController)
-
 import CableController from './com/cable'
 application.register('cable', CableController)
 
@@ -69,6 +66,9 @@ application.register('geo', GeoController)
 
 import GifController from './com/gif'
 application.register('gif', GifController)
+
+import HistoryController from './com/history'
+application.register('history', HistoryController)
 
 import MaskController from './com/mask'
 application.register('mask', MaskController)
