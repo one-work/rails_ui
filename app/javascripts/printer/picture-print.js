@@ -1,7 +1,7 @@
 import { Controller } from '@hotwired/stimulus'
 
 export default class extends Controller {
-  static targets = ['src', 'filename', 'preview', 'upload', 'icon', 'canvas']
+  static targets = ['src', 'filename', 'preview', 'upload', 'icon']
 
 
 
@@ -19,6 +19,6 @@ export default class extends Controller {
     const wrap = e.currentTarget.parentNode
     wrap.remove()
   }
-  
+
 
 }
