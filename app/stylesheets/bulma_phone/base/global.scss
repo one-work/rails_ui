@@ -11,7 +11,7 @@ main {
   flex-direction: column;
 
   > :last-child {
-    margin-bottom: var(--block-spacing);
+    margin-bottom: max(env(safe-area-inset-bottom), var(--block-spacing));
   }
 
   > .button-to:not(:last-child) {
