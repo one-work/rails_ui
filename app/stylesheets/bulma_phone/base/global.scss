@@ -4,16 +4,17 @@
 
 body {
   background-color: #f9f9f9;
+
+  > :last-child {
+    padding-bottom: max(env(safe-area-inset-bottom), var(--block-spacing));
+  }
 }
 
 main {
   display: flex;
   flex-direction: column;
 
-  > :last-child {
-    margin-bottom: max(env(safe-area-inset-bottom), var(--block-spacing));
-  }
-
+  > :last-child,
   > .button-to:not(:last-child) {
     margin-bottom: var(--block-spacing);
   }

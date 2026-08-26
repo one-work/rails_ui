@@ -31,7 +31,7 @@
   }
 
   &.as-bottom:last-child:has(a) {
-    padding-bottom: max(env(safe-area-inset-bottom), 0.75rem);
+    //padding-bottom: max(env(safe-area-inset-bottom), 0.75rem);
   }
 
   &.as-navbar {

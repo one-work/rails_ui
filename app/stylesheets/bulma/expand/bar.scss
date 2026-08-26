@@ -38,6 +38,6 @@
   &:has(form),
   &:has(div) {
     padding-top: 0.75rem;
-    padding-bottom: max(env(safe-area-inset-bottom), 0.75rem);
+    //padding-bottom: max(env(safe-area-inset-bottom), 0.75rem);
   }
 }
