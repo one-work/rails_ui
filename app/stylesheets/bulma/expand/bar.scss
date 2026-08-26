@@ -23,21 +23,13 @@
 }
 
 .as-bottom {
-  background-color: var(--scheme-main);
-  box-shadow: inset #ddd 0 5px 0.75rem;
   margin-bottom: 0 !important;
 
   &:has(form),
   &:has(div) {
+    background-color: var(--scheme-main);
+    box-shadow: inset #ddd 0 5px 0.75rem;
     padding-top: 0.75rem;
     padding-bottom: 0.75rem;
-  }
-}
-
-.as-bottom:nth-last-child(1 of .as-bottom) {
-  &:has(form),
-  &:has(div) {
-    padding-top: 0.75rem;
-    //padding-bottom: max(env(safe-area-inset-bottom), 0.75rem);
   }
 }

@@ -44,7 +44,7 @@ a.button.is-borderless:first-child {
 
   &.as-bottom:has(.button) {
     padding-top: 0.75rem;
-    //padding-bottom: max(env(safe-area-inset-bottom), 0.75rem);
+    padding-bottom: max(env(safe-area-inset-bottom), 0.75rem);
   }
 
   &.flex-end {
