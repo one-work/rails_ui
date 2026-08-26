@@ -8,7 +8,7 @@ export default class extends Controller {
 
   root() {
     if (history.state.turbo) {
-      history.go(-(history.state.turbo.restorationIndex + 1))
+      history.go(-history.state.turbo.restorationIndex)
     }
   }
 
