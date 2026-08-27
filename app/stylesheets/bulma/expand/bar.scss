@@ -28,7 +28,7 @@
   &:has(form),
   &:has(div) {
     background-color: var(--scheme-main);
-    box-shadow: inset #ddd 0 5px 0.75rem;
+    //box-shadow: inset #ddd 0 5px 0.75rem;
     padding-top: 0.75rem;
     padding-bottom: 0.75rem;
   }
