@@ -2,14 +2,11 @@ import BaseController from '../base_controller'
 
 export default class extends BaseController {
   static values = {
-    redirect: Boolean,
     assign: Boolean
   }
 
   connect() {
-    if (this.hasRedirectValue) {
-      this.redirect()
-    } else if (this.hasUrlValue) {
+    if (this.hasUrlValue) {
       this.url()
     } else if (this.hasAssignValue) {
       this.assign()
@@ -30,27 +27,6 @@ export default class extends BaseController {
       },
       err => {
         alert(JSON.stringify(err))
-      },
-      {
-        enableHighAccuracy: true,
-        timeout: 5000,
-        maximumAge: 0
-      }
-    )
-  }
-
-  redirect() {
-    navigator.geolocation.getCurrentPosition(
-      pos => {
-        const crd = pos.coords
-        console.debug(crd)
-
-        url.searchParams.set('latitude', crd.latitude)
-        url.searchParams.set('longitude', crd.longitude)
-        Turbo.visit(url, { action: 'replace' })
-      },
-      err => {
-        console.error(err)
       },
       {
         enableHighAccuracy: true,
