@@ -20,8 +20,13 @@ export default class extends BaseController {
     navigator.geolocation.getCurrentPosition(
       pos => {
         const crd = pos.coords
+        const url = new URL(location.href)
+        url.searchParams.delete('auth_token') // 将 auth Token 逻辑交还给默认逻辑
         console.debug(crd)
-        this.patch(this.urlValue, JSON.stringify(crd))
+        this.post(
+          this.urlValue,
+          JSON.stringify({ url: url, ...crd })
+        )
       },
       err => {
         alert(JSON.stringify(err))
@@ -39,8 +44,7 @@ export default class extends BaseController {
       pos => {
         const crd = pos.coords
         console.debug(crd)
-        const url = new URL(location.href)
-        url.searchParams.delete('auth_token') // 将 auth Token 逻辑交还给默认逻辑
+
         url.searchParams.set('latitude', crd.latitude)
         url.searchParams.set('longitude', crd.longitude)
         Turbo.visit(url, { action: 'replace' })
