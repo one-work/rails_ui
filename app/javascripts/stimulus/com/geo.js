@@ -19,7 +19,7 @@ export default class extends BaseController {
   url() {
     navigator.geolocation.getCurrentPosition(
       pos => {
-        const crd = pos.coords;
+        const crd = pos.coords
         console.debug(crd)
         this.patch(this.urlValue, JSON.stringify(crd))
       },
