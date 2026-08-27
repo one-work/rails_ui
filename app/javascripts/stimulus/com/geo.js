@@ -43,7 +43,7 @@ export default class extends BaseController {
         url.searchParams.delete('auth_token') // 将 auth Token 逻辑交还给默认逻辑
         url.searchParams.set('latitude', crd.latitude)
         url.searchParams.set('longitude', crd.longitude)
-        Turbo.visit(url)
+        Turbo.visit(url, { action: 'replace' })
       },
       err => {
         console.error(err)
