@@ -25,7 +25,7 @@ export default class extends BaseController {
         console.debug(crd)
         this.post(
           this.urlValue,
-          JSON.stringify({ url: url, ...crd })
+          JSON.stringify({ url: url, latitude: crd.latitude, longitude: crd.longitude })
         )
       },
       err => {
