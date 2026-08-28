@@ -10,9 +10,6 @@ application.register('animate-scroll', AnimateScrollController)
 import AnimateTyperController from './com/animate-typer'
 application.register('animate-typer', AnimateTyperController)
 
-import AppController from './com/app'
-application.register('app', AppController)
-
 import AppearController from './com/appear'
 application.register('appear', AppearController)
 
