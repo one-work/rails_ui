@@ -229,7 +229,7 @@ export default class extends BridgeComponent {
     } else if (device.ready) {
       this.#doConnect(item)
     }
-    if (this.filterValue) {
+    if (this.hasFilterTarget && this.filterValue) {
       this.#doFilter(item)
     }
 
