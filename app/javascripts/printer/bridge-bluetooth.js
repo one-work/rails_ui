@@ -220,7 +220,7 @@ export default class extends BridgeComponent {
     item.dataset.address = device.address
     item.dataset.name = device.name
 
-    if (device.state) {
+    if (['connected', 'connecting'].includes(device.state)) {
       this.#activeItem(item, device.state)
     } else if (device.ready) {
       this.#doConnect(item)
