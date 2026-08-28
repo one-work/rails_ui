@@ -40,6 +40,7 @@ export default class extends Controller {
           this.bluetoothPrinter.print(pos.render())
         })
       }
+      input.value = ''
     }
   }
 
