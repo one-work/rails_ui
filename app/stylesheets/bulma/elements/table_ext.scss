@@ -189,5 +189,9 @@ td:has(table) {
   tr:nth-last-child(1 of :has([rowspan])) td {
     border-bottom-width: 0;
   }
+
+  tr:not(:has([rowspan])) td:first-child {
+    border-left-width: 1px;
+  }
 }
 
