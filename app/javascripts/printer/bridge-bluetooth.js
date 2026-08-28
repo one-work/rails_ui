@@ -25,6 +25,10 @@ export default class extends BridgeComponent {
         if (this.hasListTarget) {
           const item = this.listTarget.querySelector(`:scope > [data-address='${data.address}']`)
           if (item) {
+            const state = item.querySelector('.media-right').innerText
+            if (['disconnected'].includes(state)) {
+              this.#doConnect(item)
+            }
           } else {
             this.renderDevice(data)
           }
@@ -220,7 +224,7 @@ export default class extends BridgeComponent {
     item.dataset.address = device.address
     item.dataset.name = device.name
 
-    if (['connected', 'connecting'].includes(device.state)) {
+    if (device.state) {
       this.#activeItem(item, device.state)
     } else if (device.ready) {
       this.#doConnect(item)
