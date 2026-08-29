@@ -4,8 +4,10 @@ export default class extends Controller {
 
   connect() {
     const url = new URL(location.href)
-    url.searchParams.delete('auth_token')
-    history.replaceState(history.state, '', url.toString())
+    if (url.searchParams.has('auth_token')) {
+      url.searchParams.delete('auth_token')
+      history.replaceState(history.state, '', url.toString())
+    }
   }
 
 }
