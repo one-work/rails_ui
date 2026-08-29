@@ -16,7 +16,7 @@ module RailsUi
     end
 
     def stimulus(target, controller:, action:, **dataset)
-      turbo_stream_action_tag :stimulus, target: target, controller: controller, action: action, **dataset
+      turbo_stream_action_tag :stimulus, target: target, controller: controller, exec: action, **dataset
     end
 
   end

@@ -16,13 +16,13 @@ Turbo.StreamActions.append_body = function() {
 
 Turbo.StreamActions.stimulus = function() {
   const controller = this.getAttribute('controller')
-  const action = this.getAttribute('action')
+  const exec = this.getAttribute('exec')
 
   this.targetElements.forEach(targetElement => {
-    const con = application.getControllerForElementAndIdentifier(targetElement, controller)
     Object.entries(this.dataset).forEach(([key, value]) => {
-      con[`${key}Value`] = value
+      targetElement.dataset[`${controller}-${key}-value`] = value
     })
-    con[action]()
+    const con = application.getControllerForElementAndIdentifier(targetElement, controller)
+    con[exec]()
   })
 }
