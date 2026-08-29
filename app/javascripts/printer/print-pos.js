@@ -5,6 +5,7 @@ export default class extends Controller {
   static targets = ['canvas']
   static values = {
     body: { type: Boolean, default: false },
+    data: String,
     button: String
   }
 
@@ -17,6 +18,8 @@ export default class extends Controller {
       button.disabled = true
       this.print = this.print.bind(this)
       button.addEventListener('click', this.print)
+    } else if (this.hasDataValue) {
+      this.printRaw()
     }
   }
 
@@ -47,6 +50,11 @@ export default class extends Controller {
   printData(e) {
     const item = e.currentTarget
     const arr = item.dataset.content.split(',').map(i => parseInt(i, 16))
+    this.bluetoothPrinter.print(arr)
+  }
+
+  printRaw() {
+    const arr = this.dataValue.split(',').map(i => parseInt(i, 16))
     this.bluetoothPrinter.print(arr)
   }
 
