@@ -5,7 +5,7 @@
 
 $media-border-color: hsla(#{cv.getVar("scheme-h")}, #{cv.getVar("scheme-s")}, #{cv.getVar("border-l")}, 0.5) !default;
 $media-border-size: 1px !default;
-$media-spacing: 1rem !default;
+$media-spacing: 0.75rem !default;
 $media-spacing-large: 1.5rem !default;
 $media-content-spacing: 0.75rem !default;
 $media-level-1-spacing: 0.75rem !default;
@@ -39,10 +39,10 @@ $media-level-2-spacing: 0.5rem !default;
 
   .media {
     display: flex;
-    border-top-color: cv.getVar("media-border-color");
+    padding-top: cv.getVar("media-level-1-spacing");
     border-top-style: solid;
     border-top-width: cv.getVar("media-border-size");
-    padding-top: cv.getVar("media-level-1-spacing");
+    border-top-color: cv.getVar("media-border-color");
 
     .content:not(:last-child),
     .control:not(:last-child) {
