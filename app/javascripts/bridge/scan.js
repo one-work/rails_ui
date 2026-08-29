@@ -45,6 +45,7 @@ export default class extends BridgeComponent {
           method: 'POST',
           body: body,
           headers: {
+            Accept: 'text/vnd.turbo-stream.html',
             'X-CSRF-Token': utils.metaContent('csrf-token')
           }
         }).then(response => response.text()).then(body => Turbo.renderStreamMessage(body))
