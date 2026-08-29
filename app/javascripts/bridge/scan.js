@@ -26,8 +26,9 @@ export default class extends BridgeComponent {
       if (value) {
         let url = this.element.dataset.reportUrl
         let body
-        if (this.hasFormValue) {
-          const form = document.getElementById(this.formValue)
+        const formValue = this.element.dataset.scanFormValue
+        if (formValue) {
+          const form = document.getElementById(formValue)
           body = new FormData(form)
           url = form.action
         } else {
