@@ -15,6 +15,10 @@ module RailsUi
       turbo_stream_action_tag :visit, url: url.to_s, turbo_action: action
     end
 
+    def exec(target, controller:)
+      turbo_stream_action_tag :exec, target: target, controller: controller
+    end
+
   end
 end
 

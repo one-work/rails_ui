@@ -1,7 +1,6 @@
 Turbo.StreamActions.visit = function() {
   const url = this.getAttribute('url')
   const action = this.getAttribute('turbo_action')
-  console.debug('-------', action)
 
   if (action) {
     Turbo.visit(url || this.baseURI, { action: action })
@@ -13,4 +12,16 @@ Turbo.StreamActions.visit = function() {
 Turbo.StreamActions.append_body = function() {
   const element = this.ownerDocument.body
   element.append(this.templateContent)
+}
+
+Turbo.StreamActions.stimulus = function() {
+  const controller = this.getAttribute('controller')
+  const action = this.getAttribute('action')
+  const value = this.getAttribute('value')
+
+  this.targetElements.forEach(targetElement => {
+    const con = application.getControllerForElementAndIdentifier(targetElement, controller)
+    con[value] = value
+    con[action]()
+  })
 }
