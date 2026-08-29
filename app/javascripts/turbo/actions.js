@@ -20,7 +20,7 @@ Turbo.StreamActions.stimulus = function() {
 
   this.targetElements.forEach(targetElement => {
     Object.entries(this.dataset).forEach(([key, value]) => {
-      targetElement.dataset[`${controller}${key.charAt(0).toUpperCase()}${key.slice(1)}Value`] = value
+      targetElement.dataset[`${controller}-${key}-value`.camelize()] = value
     })
     const con = application.getControllerForElementAndIdentifier(targetElement, controller)
     con[exec]()
