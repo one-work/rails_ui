@@ -15,8 +15,8 @@ module RailsUi
       turbo_stream_action_tag :visit, url: url.to_s, turbo_action: action
     end
 
-    def exec(target, controller:)
-      turbo_stream_action_tag :exec, target: target, controller: controller
+    def stimulus(target, controller:, action:, **dataset)
+      turbo_stream_action_tag :stimulus, target: target, controller: controller, action: action, **dataset
     end
 
   end
