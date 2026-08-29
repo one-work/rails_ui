@@ -54,7 +54,7 @@ export default class extends Controller {
   }
 
   printRaw() {
-    const arr = this.dataValue.split(',').map(i => parseInt(i, 16))
+    const arr = Uint8Array.fromBase64(this.dataValue.raw)
     this.bluetoothPrinter.print(arr)
   }
 
