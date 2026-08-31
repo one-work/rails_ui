@@ -251,6 +251,11 @@ $tabs-toggle-link-active-color: cv.getVar("link-invert") !default;
   // Sizes
   &.is-small {
     font-size: cv.getVar("size-small");
+
+    a {
+      padding-top: 0.25rem;
+      padding-bottom: 0.25rem;
+    }
   }
 
   &.is-medium {
