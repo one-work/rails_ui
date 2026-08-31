@@ -97,8 +97,10 @@ dl.as-show {
     form.has-select {
       display: inline-block;
       word-break: break-all;
+      width: 100%;
 
       button {
+        width: 100%;
         text-align: right;
       }
 
