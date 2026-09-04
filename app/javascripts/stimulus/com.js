@@ -13,8 +13,11 @@ application.register('animate-typer', AnimateTyperController)
 import AppController from './com/app'
 application.register('app', AppController)
 
-import AppearController from './com/appear'
-application.register('appear', AppearController)
+import AppearHiddenController from './com/appear-hidden'
+application.register('appear-hidden', AppearHiddenController)
+
+import AppearVisibleController from './com/appear-visible'
+application.register('appear-visible', AppearVisibleController)
 
 import AudioPlayerController from './com/audio-player'
 application.register('audio-player', AudioPlayerController)
