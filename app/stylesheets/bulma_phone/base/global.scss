@@ -5,8 +5,8 @@
 body {
   background-color: #f9f9f9;
 
-  > :last-child {
-    padding-bottom: max(env(safe-area-inset-bottom), 0);
+  > :last-child:has(div) {
+    padding-bottom: max(env(safe-area-inset-bottom), var(--block-spacing));
   }
 }
 
