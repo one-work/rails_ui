@@ -9,7 +9,7 @@ export default class extends BaseController {
         document.addEventListener('visibilitychange', () => {
           if (document.visibilityState === 'visible') {
             console.debug('reload after visible')
-            Turbo.visit(location, {action: 'replace'})
+            Turbo.visit(location, { action: 'replace' })
           }
         }, { once: true })
       }
@@ -17,4 +17,3 @@ export default class extends BaseController {
   }
 
 }
-

@@ -17,6 +17,23 @@ document.addEventListener('turbo:before-frame-render', event => {
   }
 })
 
+
+document.addEventListener('turbo:before-morph-element', event => {
+  const oldEl = event.target
+  if (oldEl.nodeType !== Node.ELEMENT_NODE) return
+  const ctrl = oldEl.getAttribute('data-controller')
+  if (!ctrl || !ctrl.includes('appear-visible')) return
+
+  const newEl = event.detail.newElement
+  if (newEl) {
+    oldEl.replaceWith(newEl)
+  } else {
+    oldEl.remove()
+  }
+
+  event.preventDefault()
+})
+
 document.addEventListener('turbo:load', event => {
   document.documentElement.classList.add('no-hover')
   setTimeout(() => {
