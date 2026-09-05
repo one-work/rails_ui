@@ -25,7 +25,12 @@ export default class extends ProgramController {
     if (this.launchValue) {
       wx.miniProgram.reLaunch({ url: url })
     } else {
-      wx.miniProgram.navigateTo({ url: url })
+      wx.miniProgram.navigateTo({
+        url: url,
+        success: (res) => {
+          this.directValue = false
+        }
+      })
     }
   }
 
