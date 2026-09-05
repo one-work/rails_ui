@@ -1,6 +1,7 @@
 import ProgramController from '../program_controller'
 
 export default class extends ProgramController {
+  static targets = ['show', 'hidden']
 
   connect() {
     if (window.__wxjs_environment === 'miniprogram') {
@@ -29,6 +30,12 @@ export default class extends ProgramController {
         url: url,
         success: (res) => {
           this.directValue = false
+          if (this.hasHiddenTarget) {
+            this.hiddenTarget.style.display = 'none'
+          }
+          if (this.hasShowTarget) {
+            this.showTarget.style.display = 'block'
+          }
         }
       })
     }
