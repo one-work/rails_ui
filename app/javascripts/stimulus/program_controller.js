@@ -5,8 +5,7 @@ export default class extends Controller {
     url: String, // url must begin with /pages
     data: { type: Object, default: {} },
     direct: Boolean,
-    launch: Boolean,
-    nav: Boolean
+    launch: Boolean
   }
 
   xx() {
