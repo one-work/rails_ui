@@ -25,7 +25,7 @@ export default class extends Controller {
       link: this.linkValue,
       imgUrl: this.imageValue,
       success: (res) => {
-        alert(JSON.stringify(res))
+        //alert(JSON.stringify(res))
       },
       fail: (err) => {
         //alert(JSON.stringify(err))
@@ -40,7 +40,7 @@ export default class extends Controller {
       link: this.linkValue,
       imgUrl: this.imageValue,
       success: (res) => {
-        alert(JSON.stringify(res))
+        //alert(JSON.stringify(res))
       },
       fail: (err) => {
         //alert(JSON.stringify(err))
