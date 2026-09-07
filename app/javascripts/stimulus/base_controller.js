@@ -101,7 +101,7 @@ export default class extends Controller {
         responseKind: 'turbo-stream'
       }
     )
-    await response = request.perform()
+    const response = await request.perform()
     if (response.statusCode >= 500) {
       alert('error')
     }
