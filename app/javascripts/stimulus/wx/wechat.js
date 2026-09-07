@@ -7,6 +7,10 @@ export default class extends BaseController {
     url: String
   }
 
+  connect() {
+    weixin_fetch('/wechat/js')
+  }
+
   close() {
     wx.miniProgram.getEnv(res => {
       if (res.miniprogram) {
