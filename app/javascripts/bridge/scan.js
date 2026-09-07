@@ -1,4 +1,5 @@
 import { BridgeComponent } from '@hotwired/hotwire-native-bridge'
+import { post } from '@rails/request.js'
 
 export default class extends BridgeComponent {
   static component = 'scan'
@@ -20,7 +21,7 @@ export default class extends BridgeComponent {
   }
 
   startScanning() {
-    this.send('start', {}, (message) => {
+    this.send('start', {}, async (message) => {
       console.debug('', message)
       const value = message.data.value
       if (value) {
@@ -41,14 +42,7 @@ export default class extends BridgeComponent {
         }
         body.append('result', value)
 
-        fetch(url, {
-          method: 'POST',
-          body: body,
-          headers: {
-            Accept: 'text/vnd.turbo-stream.html',
-            'X-CSRF-Token': utils.metaContent('csrf-token')
-          }
-        }).then(response => response.text()).then(body => Turbo.renderStreamMessage(body))
+        await post(url, {body: body, responseKind: 'turbo-stream'})
       }
     })
   }
