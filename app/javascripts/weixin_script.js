@@ -1,13 +1,11 @@
 function weixin_fetch(configUrl, { url = location.href } = {}) {
-  const enterUrl = new URL(url.split('#')[0])
-  enterUrl.search = encodeURIComponent(enterUrl.search.replace(/^\?/, ''))
   fetch(configUrl, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ url: enterUrl.toString() })
+    body: JSON.stringify({ url: url.split('#')[0] })
   }).then(response => {
     return response.json()
   }).then(body => {
