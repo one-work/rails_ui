@@ -49,7 +49,10 @@ export default class extends BaseController {
       needResult: 1,
       success: async (res) => {
         body.append('result', res.resultStr)
-        await post(url, { body: body, responseKind: 'turbo-stream' })
+        const response = await post(url, { body: body, responseKind: 'turbo-stream' })
+        if (response.statusCode >= 500) {
+          alert('error')
+        }
       }
     })
   }
