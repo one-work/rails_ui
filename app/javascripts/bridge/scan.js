@@ -42,7 +42,7 @@ export default class extends BridgeComponent {
         }
         body.append('result', value)
 
-        await post(url, {body: body, responseKind: 'turbo-stream'})
+        await post(url, { body: body, responseKind: 'turbo-stream' })
       }
     })
   }

@@ -1,4 +1,5 @@
 import BaseController from '../base_controller'
+import { post } from '@rails/request.js'
 
 export default class extends BaseController {
   static values = {
@@ -15,14 +16,17 @@ export default class extends BaseController {
 
   url() {
     navigator.geolocation.getCurrentPosition(
-      pos => {
+      async pos => {
         const crd = pos.coords
         const url = new URL(location.href)
         url.searchParams.delete('auth_token') // 将 auth Token 逻辑交还给默认逻辑
         console.debug(crd)
-        this.post(
+        await post(
           this.urlValue,
-          JSON.stringify({ url: url, latitude: crd.latitude, longitude: crd.longitude })
+          {
+            body: JSON.stringify({url: url, latitude: crd.latitude, longitude: crd.longitude}),
+            responseKind: 'turbo-stream'
+          }
         )
       },
       err => {
