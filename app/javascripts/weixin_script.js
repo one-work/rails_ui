@@ -1,6 +1,6 @@
 function weixin_fetch(configUrl, { url = location.href } = {}) {
   const enterUrl = new URL(url.split('#')[0])
-  enterUrl.search = encodeURIComponent(enterUrl.search)
+  enterUrl.search = encodeURIComponent(enterUrl.search.replace(/^\?/, ''))
   fetch(configUrl, {
     method: 'POST',
     headers: {
