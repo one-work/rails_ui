@@ -1,4 +1,4 @@
-function weixin_fetch(configUrl, { url = location.href } = {}) {
+function weixin_fetch(configUrl, { url = encodeURIComponent(location.href.split('#')[0]) } = {}) {
   fetch(configUrl, {
     method: 'POST',
     headers: {
