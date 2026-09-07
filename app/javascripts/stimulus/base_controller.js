@@ -1,15 +1,11 @@
 import { Controller } from '@hotwired/stimulus'
+import { FetchRequest } from '@rails/request.js'
 
 export default class extends Controller {
   static values = {
     url: String,
     input: String,
     params: Object
-  }
-
-  csrfToken() {
-    const meta = document.querySelector('meta[name=csrf-token]')
-    return meta && meta.content
   }
 
   get(url) {
@@ -21,7 +17,7 @@ export default class extends Controller {
       url,
       'POST',
       body,
-      { 'Content-Type': 'application/json', 'X-CSRF-Token': this.csrfToken(), ...headers }
+      { ...headers }
     )
   }
 
@@ -30,7 +26,7 @@ export default class extends Controller {
       url,
       'PATCH',
       body,
-      { 'Content-Type': 'application/json', 'X-CSRF-Token': this.csrfToken(), ...headers }
+      { ...headers }
     )
   }
 
@@ -39,7 +35,7 @@ export default class extends Controller {
       this.urlValue,
       'POST',
       new FormData(form),
-      { 'X-CSRF-Token': this.csrfToken() }
+      {}
     )
   }
 
@@ -68,7 +64,7 @@ export default class extends Controller {
       url,
       'POST',
       body,
-      { 'X-CSRF-Token': this.csrfToken() }
+      {}
     )
   }
 
@@ -95,16 +91,17 @@ export default class extends Controller {
     this.get(url)
   }
 
-  request(url, method, body, headers) {
-    fetch(url, {
-      credentials: 'include',
-      method: method.toUpperCase(),
-      headers: {
-        Accept: 'text/vnd.turbo-stream.html',
-        ...headers
-      },
-      body: body
-    }).then(response => response.text()).then(body => Turbo.renderStreamMessage(body))
+  async request(url, method, body, headers) {
+    const request = new FetchRequest(
+      method,
+      url,
+      {
+        body: body,
+        headers: headers,
+        responseKind: 'turbo-stream'
+      }
+    )
+    await request.perform()
   }
 
   get locale() {
