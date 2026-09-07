@@ -48,7 +48,7 @@ export default class extends BaseController {
       needResult: 1,
       success: (res) => {
         body.append('result', res.resultStr)
-        this.request(url, 'POST', body, { 'X-CSRF-Token': this.csrfToken() })
+        this.post(url, body)
       }
     })
   }

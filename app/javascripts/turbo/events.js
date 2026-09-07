@@ -40,10 +40,3 @@ document.addEventListener('turbo:load', event => {
     document.documentElement.classList.remove('no-hover')
   }, 50)
 })
-
-document.addEventListener('turbo:before-fetch-response', event => {
-  const status = event.detail.fetchResponse.serverError
-  if (status) {
-    alert('error')
-  }
-})
