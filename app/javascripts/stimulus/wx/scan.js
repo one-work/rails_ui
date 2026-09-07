@@ -1,4 +1,5 @@
 import BaseController from '../base_controller'
+import { post } from '@rails/request.js'
 
 export default class extends BaseController {
   static values = {
@@ -46,9 +47,9 @@ export default class extends BaseController {
 
     wx.scanQRCode({
       needResult: 1,
-      success: (res) => {
+      success: async (res) => {
         body.append('result', res.resultStr)
-        this.post(url, body)
+        await post(url, { body: body, responseKind: 'turbo-stream' })
       }
     })
   }
