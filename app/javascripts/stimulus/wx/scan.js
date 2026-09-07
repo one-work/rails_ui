@@ -4,7 +4,7 @@ import { post } from '@rails/request.js'
 export default class extends BaseController {
   static values = {
     debug: Boolean,
-    params: Object,
+    params: { type: Object, default: {} },
     form: String,
     regex: String
   }
@@ -30,20 +30,28 @@ export default class extends BaseController {
 
   report(event) {
     const ele = event.currentTarget
-    let url = ele.dataset.reportUrl
-    let body
-    if (this.hasFormValue) {
-      const form = document.getElementById(this.formValue)
-      body = new FormData(form)
-      url = form.action
-    } else {
-      body = new FormData()
-    }
-    if (this.hasParamsValue) {
-      Object.keys(this.paramsValue).forEach(k => {
-        body.append(k, this.paramsValue[k])
-      })
-    }
+    const url = ele.dataset.reportUrl
+    const body = new FormData()
+    Object.keys(this.paramsValue).forEach(k => {
+      body.append(k, this.paramsValue[k])
+    })
+
+    wx.scanQRCode({
+      needResult: 1,
+      success: async (res) => {
+        body.append('result', res.resultStr)
+        const response = await post(url, { body: body, responseKind: 'turbo-stream' })
+        if (response.statusCode >= 500) {
+          alert('error')
+        }
+      }
+    })
+  }
+
+  form(e) {
+    const form = document.getElementById(this.formValue)
+    const body = new FormData(form)
+    const url = form.action
 
     wx.scanQRCode({
       needResult: 1,

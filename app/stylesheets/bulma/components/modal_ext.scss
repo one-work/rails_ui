@@ -45,6 +45,12 @@ form.modal-card {
   overflow-y: hidden;
 
   .modal-card-foot {
-    justify-content: center;
+    justify-content: space-around;
+    gap: 0.75rem;
+
+    .button {
+      flex-grow: 1;
+      flex-shrink: 0;
+    }
   }
 }
