@@ -42,9 +42,8 @@ document.addEventListener('turbo:load', event => {
 })
 
 document.addEventListener('turbo:before-fetch-response', event => {
-  const status = event.detail.fetchResponse.statusCode
-  if (status >= 500) {
-    event.preventDefault()     // 阻止 Turbo 原地渲染
-    window.location.href = "/500.html" // 原生导航，整页替换
+  const status = event.detail.fetchResponse.serverError
+  if (status) {
+    alert('error')
   }
 })
