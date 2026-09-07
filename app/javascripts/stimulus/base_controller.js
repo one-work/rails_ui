@@ -101,7 +101,10 @@ export default class extends Controller {
         responseKind: 'turbo-stream'
       }
     )
-    await request.perform()
+    await response = request.perform()
+    if (response.statusCode >= 500) {
+      alert('error')
+    }
   }
 
   get locale() {
