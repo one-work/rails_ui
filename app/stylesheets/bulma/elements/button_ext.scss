@@ -64,7 +64,12 @@ a.button.is-borderless:first-child {
     }
   }
 
+  .button_to {
+    flex-grow: 1;
+  }
+
   .button_to .button {
+    flex-grow: 1;
     margin-bottom: 0;
   }
 }
