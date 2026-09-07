@@ -57,3 +57,5 @@ function weixin_fetch(configUrl, { url = location.href } = {}) {
     weixin_fetch('/wechat/js')
   })
 })()
+
+window.weixin_fetch = weixin_fetch
