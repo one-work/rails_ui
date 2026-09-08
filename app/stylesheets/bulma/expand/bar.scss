@@ -1,10 +1,20 @@
 .as-bar {
-  display: flex;
-  flex-shrink: 0;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
   margin-bottom: 0;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
   background-color: var(--scheme-main);
   height: 45px; // 有在弹出框中应用(position: fixed), 必须指定高度；
+
+  .left {
+    justify-self: start;
+  }
+
+  .right {
+    justify-self: end;
+  }
 
   a,
   button,
