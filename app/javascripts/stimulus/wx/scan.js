@@ -49,6 +49,7 @@ export default class extends BaseController {
   }
 
   form(e) {
+    const ele = e.currentTarget
     const form = document.getElementById(this.formValue)
     const body = new FormData(form)
     const url = ele.dataset.reportUrl || form.action
