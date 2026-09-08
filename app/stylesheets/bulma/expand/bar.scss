@@ -6,7 +6,7 @@
   padding-left: 0.75rem;
   padding-right: 0.75rem;
   background-color: var(--scheme-main);
-  height: 45px; // 有在弹出框中应用(position: fixed), 必须指定高度；
+  min-height: 45px; // 有在弹出框中应用(position: fixed), 必须指定高度；
 
   .left {
     justify-self: start;
