@@ -3,6 +3,12 @@ import { Controller } from '@hotwired/stimulus'
 export default class extends Controller {
   static values = { url: String }
 
+  connect() {
+    if (history.length <= 1) {
+      this.element.classList.remove('is-link')
+    }
+  }
+
   back() {
     if (history.length > 1) {
       history.back()
