@@ -17,6 +17,18 @@ export default class extends Controller {
     }
   }
 
+  direct() {
+    if (this.hasUrlValue) {
+      const index = sessionStorage.getItem(this.urlValue)
+      if (index) {
+        history.go()
+      } else {
+        history.go(-history.state.turbo.restorationIndex)
+        Turbo.visit(this.urlValue)
+      }
+    }
+  }
+
   root() {
     if (history.state.turbo) {
       history.go(-history.state.turbo.restorationIndex)
