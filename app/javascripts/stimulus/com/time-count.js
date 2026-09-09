@@ -1,50 +1,51 @@
 import { Controller } from '@hotwired/stimulus'
-import { DateTime, Duration } from 'luxon'
-window.Duration = Duration
+import dayjs from 'dayjs'
+import duration from 'dayjs/plugin/duration'
+dayjs.extend(duration)
+
+const UNITS = ['years', 'months', 'days', 'hours', 'minutes', 'seconds']
+const FORMATS = ['Y年', 'M月', 'D天', 'H时', 'mm分', 'ss秒']
 
 export default class extends Controller {
   static values = {
     time: String,
-    diff: { type: Array, default: ['years', 'months', 'days', 'hours', 'minutes', 'seconds'] }
+    diff: { type: Array, default: UNITS }
   }
 
   connect() {
     this.count()
   }
 
+  disconnect() {
+    clearInterval(this.timer)
+  }
+
   count() {
-    const time = DateTime.fromISO(this.timeValue)
-    const now = DateTime.now()
-    let result
-    if (time > now) {
-      result = time.diff(now, this.diffValue)
-    } else {
-      result = now.diff(time, this.diffValue)
+    const time = dayjs(this.timeValue)
+    const now = dayjs()
+    const countingDown = time.isAfter(now)
+    let rest = dayjs.duration(Math.abs(time.diff(now)))
+
+    const units = UNITS.filter((u) => this.diffValue.includes(u))
+    const formats = FORMATS.filter((_, i) => this.diffValue.includes(UNITS[i]))
+
+    const render = () => {
+      const values = units.map((unit) => rest[unit]())
+      // 找到第一个非零单位，从那里开始格式化（对应原代码的 format.slice(index)）
+      const start = values.findIndex((v) => v !== 0)
+      const pattern = formats.slice(start === -1 ? formats.length - 1 : start).join('')
+      this.element.textContent = rest.format(pattern)
     }
-    let format = ['y年', 'M月', 'd天', 'h时', 'mm分', 'ss秒']
-    let result_format
 
-    const timer = setInterval(() => {
-      let step
-      if (result > 0) {
-        step = 1
-      } else {
-        step = -1
-      }
-      result = result.plus({ seconds: step })
-      for (const [index, value] of Object.values(result.values).entries()) {
-        if (value > 0) {
-          result_format = format.slice(index)
-          break
-        }
-      }
+    render()
 
-      if (result <= 0) {
-        this.element.textContent = result.toFormat(result_format.join(''))
-        clearInterval(timer)
-      } else {
-        this.element.textContent = result.toFormat(result_format.join(''))
+    this.timer = setInterval(() => {
+      rest = countingDown ? rest.subtract(1, 'second') : rest.add(1, 'second')
+      render()
+
+      if (countingDown && rest.asSeconds() <= 0) {
+        clearInterval(this.timer) // 倒计时到 0 停止
       }
-    }, 1000, result)
+    }, 1000)
   }
 }

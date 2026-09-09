@@ -22,10 +22,10 @@
     "@hotwired/turbo-rails": "^8.0.21",
     "@rails/activestorage": "^8.1.300",
     "@rails/request.js": "^0.0.13",
+    "dayjs": "^1.11.23",
     "fullcalendar": "^6.1.10",
     "highlight.js": "^11.5.1",
     "idiomorph": "^0.3.0",
-    "luxon": "^3.5.0",
     "sortablejs": "^1.15.2",
     "xcprinter": "^1.0.15"
   },
