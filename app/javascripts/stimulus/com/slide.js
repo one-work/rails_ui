@@ -1,5 +1,4 @@
 import TouchController from '../touch_controller'
-import { DateTime } from 'luxon'
 
 // z-index: 0, 当前显示的图片/即将显示的图片，touch move 时动态设定；
 // z-index: -1, 未显示的图片；
@@ -33,7 +32,7 @@ export default class extends TouchController {
     this.timerId = setTimeout(() => {
       this.direction = 'left'
       this.shiftLeft(ele)
-      console.debug('Time:', DateTime.now().toFormat('TT'), 'Timer Id:', this.timerId)
+      //console.debug('Time:', DateTime.now().toFormat('TT'), 'Timer Id:', this.timerId)
     }, this.delayValue * 1000, ele)
   }
 

@@ -1,5 +1,7 @@
 import { Controller } from '@hotwired/stimulus'
-import { DateTime } from 'luxon'
+import dayjs from 'dayjs'
+import duration from 'dayjs/plugin/duration'
+dayjs.extend(duration)
 
 export default class extends Controller {
   static targets = ['goal']
@@ -17,7 +19,7 @@ export default class extends Controller {
 
   updateTime(event) {
     const ele = event.currentTarget
-    const dt = DateTime.fromISO(ele.value).plus(this.plusValue).toFormat("yyyy-MM-dd'T'HH:mm:ss")
+    const dt = dayjs(ele.value).add(dayjs.duration(this.plusValue)).format('YYYY-MM-DD[T]HH:mm:ss')
     if (this.goalTarget.value === this.goalTarget.defaultValue) {
       this.goalTarget.value = dt
     }
