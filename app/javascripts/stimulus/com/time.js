@@ -16,7 +16,15 @@ const PRESETS = {
   DATETIME_SHORT: { dateStyle: 'short', timeStyle: 'short' },
   DATETIME_MED: { dateStyle: 'medium', timeStyle: 'short' },
   DATETIME_FULL: { dateStyle: 'full', timeStyle: 'long' },
-  DATETIME_HUGE: { dateStyle: 'full', timeStyle: 'long' }
+  DATETIME_HUGE: { dateStyle: 'full', timeStyle: 'long' },
+  xx: {
+    timeZone: 'Asia/Shanghai',
+    month: 'numeric',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false
+  }
 }
 
 // data-controller="time"
