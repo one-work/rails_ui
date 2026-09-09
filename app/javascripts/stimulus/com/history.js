@@ -20,10 +20,13 @@ export default class extends Controller {
   direct() {
     if (this.hasUrlValue) {
       const index = sessionStorage.getItem(this.urlValue)
-      if (index) {
-        history.go()
-      } else {
+      const step = Turbo.session.history.currentIndex - index
+      if (step) {
+        history.go(-step)
+      } else if (history.state.turbo) {
         history.go(-history.state.turbo.restorationIndex)
+        Turbo.visit(this.urlValue)
+      } else {
         Turbo.visit(this.urlValue)
       }
     }
