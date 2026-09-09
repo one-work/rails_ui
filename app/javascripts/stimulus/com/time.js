@@ -1,8 +1,22 @@
 import { Controller } from '@hotwired/stimulus'
-import { DateTime } from 'luxon'
-window.DateTime = DateTime
+import dayjs from 'dayjs'
+window.dayjs = dayjs
 const FORMAT = {
-  human: 'yyyy-MM-dd HH:mm:ss'
+  human: 'YYYY-MM-DD HH:mm:ss'
+}
+const PRESETS = {
+  DATE_SHORT: { dateStyle: 'short' },
+  DATE_MED: { dateStyle: 'medium' },
+  DATE_MED_WITH_WEEKDAY: { dateStyle: 'full' },
+  DATE_FULL: { dateStyle: 'full' },
+  DATE_HUGE: { dateStyle: 'full' },
+  TIME_SIMPLE: { timeStyle: 'short' },
+  TIME_WITH_SECONDS: { timeStyle: 'medium' },
+  TIME_WITH_SHORT_OFFSET: { timeStyle: 'long' },
+  DATETIME_SHORT: { dateStyle: 'short', timeStyle: 'short' },
+  DATETIME_MED: { dateStyle: 'medium', timeStyle: 'short' },
+  DATETIME_FULL: { dateStyle: 'full', timeStyle: 'long' },
+  DATETIME_HUGE: { dateStyle: 'full', timeStyle: 'long' }
 }
 
 // data-controller="time"
@@ -22,11 +36,12 @@ export default class extends Controller {
     }
 
     if (this.str) {
-      const time = DateTime.fromISO(this.str)
+      const time = dayjs(this.str)
       if (this.hasLocaleValue) {
-        this.element.innerText = time.toLocaleString(DateTime[this.localeValue])
+        const options = PRESETS[this.localeValue] || { dateStyle: 'medium', timeStyle: 'short' }
+        this.element.innerText = new Intl.DateTimeFormat(undefined, options).format(time.toDate())
       } else {
-        this.element.innerText = time.toFormat(this.format)
+        this.element.innerText = time.format(this.format)
       }
       this.localizedValue = true
     }
@@ -41,14 +56,13 @@ export default class extends Controller {
     }
   }
 
-  // xx => 'yyyy-MM-dd HH:mm:ss'
+  // human => 'YYYY-MM-DD HH:mm:ss'
   get format() {
     let fmt = this.element.dataset['format']
     if (fmt === 'human') {
-      return 'yyyy-MM-dd HH:mm:ss'
+      return FORMAT.human
     } else {
-      return fmt || 'yyyy-MM-dd HH:mm'
+      return fmt || 'YYYY-MM-DD HH:mm'
     }
   }
-
 }
