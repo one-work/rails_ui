@@ -223,6 +223,7 @@ $switch-focus: 1px dotted var(--text-dark) !default;
 
 .switch-form {
   width: fit-content;
+  display: inline-block;
 }
 
 .field-body {

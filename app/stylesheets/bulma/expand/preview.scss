@@ -40,6 +40,7 @@ dl.as-show {
     padding-bottom: 0.25em;
     align-items: center;
     justify-content: space-between;
+    gap: 2rem;
   }
 
   dt {
@@ -53,10 +54,9 @@ dl.as-show {
 
   dd {
     flex-grow: 1;
-    padding-left: 2rem;
     text-align: right;
     word-break: break-all;
-    overflow-x: auto;
+    //overflow-x: auto;
 
     .input,
     textarea {
