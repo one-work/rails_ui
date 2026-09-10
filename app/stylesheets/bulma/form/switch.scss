@@ -25,10 +25,9 @@ $switch-focus: 1px dotted var(--text-dark) !default;
   align-items: center;
   justify-content: flex-start;
   font-size: $size;
-  height: 1em;
-  line-height: 1em;
+  height: 2rem;
+  line-height: 2rem;
   padding-left: $switch-width + .5;
-  padding-top: .2rem;
   cursor: pointer;
 
   &::before {
@@ -220,6 +219,10 @@ $switch-focus: 1px dotted var(--text-dark) !default;
       }
     }
   }
+}
+
+.switch-form {
+  width: fit-content;
 }
 
 .field-body {
