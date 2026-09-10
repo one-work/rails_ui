@@ -3,17 +3,19 @@
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
   margin-bottom: 0;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
   background-color: var(--scheme-main);
   min-height: 45px; // 有在弹出框中应用(position: fixed), 必须指定高度；
 
   .left {
     justify-self: start;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
   }
 
   .right {
     justify-self: end;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
   }
 
   a,
