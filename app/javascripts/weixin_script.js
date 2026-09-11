@@ -46,8 +46,8 @@ function weixin_fetch(configUrl, { url = location.href } = {}) {
       if (body['debug']) {
         alert('wx.config: ' + JSON.stringify(res) + '\n' + `location: ${location.href}`)
       } else {
-        alert('wx.config: ' + JSON.stringify(res) + '\n' + `location: ${location.href}`)
-        weixin_fetch(configUrl, { url: res.realAuthUrl })
+        alert('wx.config: ' + res.realAuthUrl[0] + '\n' + `location: ${location.href}`)
+        weixin_fetch(configUrl, { url: res.realAuthUrl[0] })
         console.debug('wx.config:', res)
       }
     })
