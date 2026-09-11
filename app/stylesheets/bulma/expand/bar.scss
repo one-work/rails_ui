@@ -18,6 +18,13 @@
     padding-right: 0.75rem;
   }
 
+  .button {
+    .icon:only-child {
+      margin-inline-start: 0;
+      margin-inline-end: 0;
+    }
+  }
+
   a,
   button,
   form {
