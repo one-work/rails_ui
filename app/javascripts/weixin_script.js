@@ -46,6 +46,7 @@ function weixin_fetch(configUrl, { url = location.href } = {}) {
       if (body['debug']) {
         alert('wx.config: ' + JSON.stringify(res) + '\n' + `location: ${location.href}`)
       } else {
+        alert('wx.config: ' + JSON.stringify(res) + '\n' + `location: ${location.href}`)
         console.debug('wx.config:', res)
       }
     })
