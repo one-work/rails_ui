@@ -64,11 +64,10 @@ $modal-breakpoint: iv.$tablet !default;
 
 .modal {
   @extend %overlay;
-
-  align-items: center;
   display: none;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   overflow: hidden;
   position: fixed;
   z-index: cv.getVar("modal-z");
@@ -120,15 +119,15 @@ $modal-breakpoint: iv.$tablet !default;
 
 .modal-card-head,
 .modal-card-foot {
-  align-items: center;
-  display: flex;
-  flex-shrink: 0;
-  justify-content: flex-start;
-  padding: cv.getVar("modal-card-head-padding");
   position: relative;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  padding: cv.getVar("modal-card-head-padding");
 }
 
 .modal-card-head {
+  justify-content: flex-start;
   background-color: cv.getVar("modal-card-head-background-color");
   border-start-start-radius: cv.getVar("modal-card-head-radius");
   border-start-end-radius: cv.getVar("modal-card-head-radius");
@@ -144,6 +143,7 @@ $modal-breakpoint: iv.$tablet !default;
 }
 
 .modal-card-foot {
+  justify-content: space-around;
   background-color: cv.getVar("modal-card-foot-background-color");
   border-end-start-radius: cv.getVar("modal-card-foot-radius");
   border-end-end-radius: cv.getVar("modal-card-foot-radius");
