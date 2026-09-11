@@ -4,6 +4,10 @@
     border-start-start-radius: var(--modal-card-head-radius);
     border-start-end-radius: var(--modal-card-head-radius);
   }
+
+  .modal-card-head.as-bar {
+    padding: 0;
+  }
 }
 
 .modal-card-body {
