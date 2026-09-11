@@ -40,5 +40,5 @@ document.addEventListener('turbo:load', event => {
     document.documentElement.classList.remove('no-hover')
   }, 50)
 
-  sessionStorage.setItem(location.href, Turbo.session.history.currentIndex)
+  sessionStorage.setItem(location.href.split('?')[0], Turbo.session.history.currentIndex)
 })
