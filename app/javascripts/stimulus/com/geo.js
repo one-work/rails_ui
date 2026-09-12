@@ -24,7 +24,7 @@ export default class extends BaseController {
         await post(
           this.urlValue,
           {
-            body: JSON.stringify({url: url, latitude: crd.latitude, longitude: crd.longitude}),
+            body: JSON.stringify({ url: url, latitude: crd.latitude, longitude: crd.longitude }),
             responseKind: 'turbo-stream'
           }
         )
