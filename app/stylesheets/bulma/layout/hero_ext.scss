@@ -10,6 +10,20 @@
   h2 + .cards {
     margin-top: 1rem;
   }
+
+  .card-footer {
+    p {
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+
+      a {
+        background-color: var(--danger);
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        color: var(--white);
+      }
+    }
+  }
 }
 
 .card-content {
@@ -19,20 +33,6 @@
     width: 1.5rem;
     height: 1.5rem;
     padding-right: 0.5rem;
-  }
-}
-
-.card-footer {
-  p {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-
-    a {
-      background-color: var(--danger);
-      padding: 0.5rem 1rem;
-      border-radius: 4px;
-      color: var(--white);
-    }
   }
 }
 
