@@ -22,7 +22,7 @@ document.addEventListener('turbo:before-morph-element', event => {
   const oldEl = event.target
   if (oldEl.nodeType !== Node.ELEMENT_NODE) return
   const ctrl = oldEl.getAttribute('data-controller')
-  if (!ctrl || !ctrl.includes('appear-visible')) return
+  if (!ctrl || !ctrl.split(' ').filter(item => ['appear-visible', 'time'].includes(item))) return
 
   const newEl = event.detail.newElement
   if (newEl) {
