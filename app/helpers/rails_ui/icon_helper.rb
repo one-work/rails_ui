@@ -15,6 +15,10 @@ module RailsUi
       end
     end
 
+    def svg_solid(name, **options)
+      svg_tag(name, kind: 'solid', **options)
+    end
+
     def svg_data_url(path = 'placeholder.svg')
       svg_content = Rails.app.assets.resolver.read path
       base64_svg = Base64.strict_encode64(svg_content)
