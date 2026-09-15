@@ -181,7 +181,8 @@ td:has(table) {
 
   &.as-compare {
     thead th,
-    tbody td:has(svg) {
+    tbody td:has(svg)
+    tbody th[rowspan] {
       text-align: center;
     }
 
