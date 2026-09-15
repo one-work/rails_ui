@@ -182,12 +182,18 @@ td:has(table) {
   &.as-compare {
     thead th,
     tbody td:has(svg),
-    tbody th[rowspan] {
+    tbody th[rowspan],
+    tbody th[colspan] {
       text-align: center;
     }
 
     tbody th {
       background-color: var(--white-ter);
+    }
+
+    tbody td {
+      text-align: center;
+      font-size: 0.75em;
     }
   }
 
