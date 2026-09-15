@@ -193,7 +193,6 @@ $hero-colors: dv.$colors !default;
 }
 
 // Components
-
 .hero-video {
   @extend %overlay;
   overflow: hidden;
@@ -243,7 +242,6 @@ $hero-colors: dv.$colors !default;
 }
 
 // Containers
-
 .hero-head,
 .hero-foot {
   flex-grow: 0;
