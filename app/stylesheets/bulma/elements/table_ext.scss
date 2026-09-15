@@ -184,6 +184,10 @@ td:has(table) {
     tbody td:has(svg) {
       text-align: center;
     }
+
+    tbody th {
+      background-color: var(--grey-lighter);
+    }
   }
 
   tr.left-border {
