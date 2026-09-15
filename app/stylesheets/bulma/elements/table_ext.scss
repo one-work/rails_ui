@@ -179,6 +179,13 @@ td:has(table) {
     }
   }
 
+  &.as-compare {
+    thead th,
+    tbody td:has(svg) {
+      text-align: center;
+    }
+  }
+
   tr.left-border {
     td:first-child {
       border-left: solid 1px var(--text-light);

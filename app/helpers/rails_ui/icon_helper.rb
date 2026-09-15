@@ -2,8 +2,10 @@ module RailsUi
   module IconHelper
 
     def svg_tag(name, kind: 'light', **options)
-      if name == 'trash'
+      if ['trash', 'times'].include?(name)
         options.with_defaults!(class: 'icon is-small text-danger')
+      elsif ['check'].include?(name)
+        options.with_defaults!(class: 'icon is-small text-success')
       else
         options.with_defaults!(class: 'icon is-small')
       end
