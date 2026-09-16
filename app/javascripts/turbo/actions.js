@@ -5,18 +5,7 @@ Turbo.StreamActions.visit = function() {
   if (['replace', 'restore'].includes(action)) {
     Turbo.visit(url || this.baseURI, { action: action })
   } else if (['back'].includes(action)) {
-    window.addEventListener('pageshow', (event) => {
-      if (event.persisted) {
-        alert('走的是原生 bfcache 恢复');
-      } else {
-        alert('普通加载（Turbo 渲染或首次加载）');
-      }
-    })
-    window.addEventListener('turbo:render', event => {
-      if (url) {
-        Turbo.visit(url, { action: 'replace' })
-      }
-    }, { once: true })
+
     history.back()
   } else {
     Turbo.visit(url || this.baseURI)

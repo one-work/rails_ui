@@ -25,3 +25,11 @@ document.addEventListener('turbo:load', event => {
 
   sessionStorage.setItem(location.href.split('?')[0], Turbo.session.history.currentIndex)
 })
+
+window.addEventListener('pageshow', (event) => {
+  if (event.persisted) {
+    alert(JSON.stringify(event));
+  } else {
+    alert('普通加载（Turbo 渲染或首次加载）');
+  }
+})
