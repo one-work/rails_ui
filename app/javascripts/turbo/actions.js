@@ -7,7 +7,7 @@ Turbo.StreamActions.visit = function() {
   } else if (['back'].includes(action)) {
     history.back()
     if (url) {
-      Turbo.visit(url || this.baseURI, { action: 'replace' })
+      Turbo.visit(url, { action: 'replace' })
     }
   } else {
     Turbo.visit(url || this.baseURI)
