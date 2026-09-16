@@ -5,11 +5,20 @@ export default class extends Controller {
 
   connect() {
     if (this.hasInputTarget && this.inputTarget.value.length > 0) {
-      this.cancelTarget.classList.remove('display-none')
+
+      if (this.hasCancelTarget) {
+        this.cancelTarget.classList.remove('display-none')
+      }
+
       if (this.hasFilterTarget) {
         this.filterTarget.classList.add('display-none')
       }
     }
+
+    if (this.hasCancelTarget) {
+      this.cancelTarget.addEventListener('click', this.cancel)
+    }
+    this.element.dataset.remove('controller', this.identifier)
   }
 
   clear() {

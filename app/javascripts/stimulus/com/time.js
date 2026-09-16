@@ -52,7 +52,7 @@ export default class extends Controller {
         this.element.innerText = time.format(this.format)
       }
       this.localizedValue = true
-      this.element.dataset.remove('controller', 'time') // 非常重要，解决 morph 更新问题
+      this.element.dataset.remove('controller', this.identifier) // 非常重要，解决 morph 更新问题
     }
   }
 

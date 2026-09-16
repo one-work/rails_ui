@@ -9,7 +9,7 @@ export default class extends BaseController {
         document.addEventListener('visibilitychange', () => {
           if (document.visibilityState === 'visible') {
             console.debug('reload after visible')
-            this.element.dataset.remove('controller', 'appear-visible')
+            this.element.dataset.remove('controller', this.identifier)
             Turbo.visit(location, { action: 'replace' })
           }
         }, { once: true })
