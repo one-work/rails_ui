@@ -30,7 +30,6 @@ window.addEventListener('pageshow', (event) => {
   if (event.persisted && sessionStorage.getItem('need_restore_url')) {
     const url = sessionStorage.getItem('need_restore_url')
     sessionStorage.removeItem('need_restore_url')
-    alert(`xiazai ${event.persisted}`)
     Turbo.visit(url, { action: 'replace' })
   }
 })
