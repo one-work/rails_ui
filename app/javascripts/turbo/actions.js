@@ -5,7 +5,9 @@ Turbo.StreamActions.visit = function() {
   if (['replace', 'restore'].includes(action)) {
     Turbo.visit(url || this.baseURI, { action: action })
   } else if (['back'].includes(action)) {
-
+    if (url) {
+      sessionStorage.setItem('need_restore_url', url)
+    }
     history.back()
   } else {
     Turbo.visit(url || this.baseURI)
