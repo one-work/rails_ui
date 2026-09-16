@@ -5,12 +5,12 @@ Turbo.StreamActions.visit = function() {
   if (['replace'].includes(action)) {
     Turbo.visit(url || this.baseURI, { action: action })
   } else if (['back'].includes(action)) {
-    window.addEventListener('popstate', (event) => {
-      alert(JSON.stringify(event))
+    window.addEventListener('popstate', event => {
+      //alert(JSON.stringify(event))
       if (url) {
         Turbo.visit(url, { action: 'replace' })
       }
-    })
+    }, { once: true })
     history.back()
   } else {
     Turbo.visit(url || this.baseURI)
