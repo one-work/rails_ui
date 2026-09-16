@@ -2,16 +2,13 @@ Turbo.StreamActions.visit = function() {
   const url = this.getAttribute('url')
   const action = this.getAttribute('turbo_action')
 
-  if (['replace'].includes(action)) {
+  if (['replace', 'restore'].includes(action)) {
     Turbo.visit(url || this.baseURI, { action: action })
   } else if (['back'].includes(action)) {
-    window.addEventListener('popstate', event => {
-      //alert(JSON.stringify(event))
-      if (url) {
-        Turbo.visit(url, { action: 'replace' })
-      }
-    }, { once: true })
     history.back()
+    if (url) {
+      Turbo.visit(url, { action: 'replace' })
+    }
   } else {
     Turbo.visit(url || this.baseURI)
   }
