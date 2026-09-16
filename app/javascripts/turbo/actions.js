@@ -2,8 +2,10 @@ Turbo.StreamActions.visit = function() {
   const url = this.getAttribute('url')
   const action = this.getAttribute('turbo_action')
 
-  if (action) {
-    Turbo.visit(url || this.baseURI, { action: action })
+  if (['replace'].includes(action)) {
+    Turbo.visit(url || this.baseURI, {action: action})
+  } else if (['back'].includes(action)) {
+    history.back()
   } else {
     Turbo.visit(url || this.baseURI)
   }
