@@ -27,6 +27,17 @@
 
 .flex-buttons {
   display: flex;
+  padding-right: 0.75rem;
+
+  .button {
+    padding-right: 0;
+  }
+
+  .button {
+    .icon:only-child {
+      margin-inline-end: 0.75rem;
+    }
+  }
 
   a.button.is-borderless:first-child {
     margin-left: -8px;
