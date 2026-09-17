@@ -1,4 +1,5 @@
 import { BridgeComponent } from '@hotwired/hotwire-native-bridge'
+import { post } from '@rails/request.js'
 
 export default class extends BridgeComponent {
   static component = 'apple-sign-in'
@@ -21,14 +22,13 @@ export default class extends BridgeComponent {
         return
       }
 
-      fetch('auth/apple', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-CSRF-Token': utils.metaContent('csrf-token')
-        },
-        body: JSON.stringify(data)
-      }).then(response => response.text()).then(body => Turbo.renderStreamMessage(body))
+      post(
+        'auth/apple',
+        {
+          body: JSON.stringify(data),
+          responseKind: 'turbo-stream'
+        }
+      )
     })
   }
 }
