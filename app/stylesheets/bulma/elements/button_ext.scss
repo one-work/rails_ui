@@ -25,6 +25,14 @@
   }
 }
 
+.flex-buttons {
+  display: flex;
+
+  a.button.is-borderless:first-child {
+    margin-left: -6.75px;
+  }
+}
+
 a.button.is-borderless:first-child {
   margin-left: calc(#{cv.getVar("button-border-width")} - #{cv.getVar("button-padding-horizontal")});
 }
