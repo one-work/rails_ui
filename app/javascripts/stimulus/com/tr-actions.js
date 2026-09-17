@@ -16,7 +16,7 @@ export default class extends Controller {
     Array.from(new Set(positions)).forEach(position => {
       const div = document.createElement('div')
       div.dataset.showTarget = 'item'
-      div.classList.add('visibility-hidden')
+      div.classList.add('visibility-hidden', 'flex')
 
       this.dataValue.filter(i => i.position === position).forEach(item => {
         if (item.action) {
