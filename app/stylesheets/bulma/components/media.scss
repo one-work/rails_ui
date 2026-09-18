@@ -59,9 +59,9 @@ $media-level-2-spacing: 0.5rem !default;
   }
 
   & + .media {
-    border-top-color: cv.getVar("media-border-color");
     border-top-style: solid;
     border-top-width: cv.getVar("media-border-size");
+    border-top-color: cv.getVar("media-border-color");
     margin-top: cv.getVar("media-spacing");
     padding-top: cv.getVar("media-spacing");
   }
@@ -100,5 +100,31 @@ $media-level-2-spacing: 0.5rem !default;
 @include mx.mobile {
   .media-content {
     overflow-x: auto;
+  }
+}
+
+.medias {
+  @include cv.register-vars(
+    (
+      "media-border-color": #{$media-border-color},
+      "media-border-size": #{$media-border-size},
+      "media-spacing": #{$media-spacing}
+    )
+  );
+
+  .button_to {
+    display: flex;
+    padding: cv.getVar("media-spacing");
+
+    .media {
+      flex-grow: 1;
+      margin-bottom: 0;
+    }
+  }
+
+  .button_to + .button_to {
+    border-top-style: solid;
+    border-top-width: cv.getVar("media-border-size");
+    border-top-color: cv.getVar("media-border-color");
   }
 }
