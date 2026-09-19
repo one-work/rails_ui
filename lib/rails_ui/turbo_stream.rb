@@ -19,6 +19,10 @@ module RailsUi
       turbo_stream_action_tag :stimulus, target: target, controller: controller, exec: action, **dataset
     end
 
+    def enable(target)
+      turbo_stream_action_tag :enable, target: target
+    end
+
   end
 end
 

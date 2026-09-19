@@ -19,6 +19,12 @@ Turbo.StreamActions.append_body = function() {
   element.append(this.templateContent)
 }
 
+Turbo.StreamActions.enable = function() {
+  this.targetElements.forEach(targetElement => {
+    targetElement.disabled = false
+  })
+}
+
 Turbo.StreamActions.stimulus = function() {
   const controller = this.getAttribute('controller')
   const exec = this.getAttribute('exec')
