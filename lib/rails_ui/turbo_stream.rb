@@ -23,6 +23,10 @@ module RailsUi
       turbo_stream_action_tag :enable, target: target
     end
 
+    def enable_all(targets)
+      turbo_stream_action_tag :enable, targets: targets
+    end
+
   end
 end
 
