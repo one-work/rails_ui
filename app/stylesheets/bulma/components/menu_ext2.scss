@@ -37,9 +37,16 @@
     }
 
     .menu-item {
+      --menu-list-link-padding: 0.7em 0.75em;
+
+      width: calc(4em + 1.5rem);
       text-align: center;
       background-color: #f0f0f0;
-      --menu-list-link-padding: 0.7em 0.75em;
+
+      svg + span {
+        margin-top: 0.25rem;
+        margin-left: 0;
+      }
     }
 
     .menu-item.is-active {
