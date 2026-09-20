@@ -9,6 +9,7 @@
 
     flex-grow: 1;
     overflow-y: scroll;
+    background-color: transparent;
 
     .menu-item:not(.is-active),
     .menu-list a:not(.is-active) {
@@ -28,6 +29,11 @@
     margin-left: -0.75rem;
     flex-shrink: 0;
     background-color: #fff;
+
+    .menu-list {
+      display: flex;
+      flex-direction: column;
+    }
 
     .menu-item:not(.is-active),
     .menu-list a:not(.is-active) {
@@ -65,7 +71,6 @@
 
   &.as-side,
   &.as-wrap {
-    background-color: transparent;
     scrollbar-width: none;
 
     .menu-item {
