@@ -24,6 +24,9 @@
     --menu-item-selected-s: 0%;
     --menu-item-selected-color-l: 20%;
 
+    margin-left: -0.75rem;
+    flex-shrink: 0;
+
     .menu-list {
       height: 100%;
     }
