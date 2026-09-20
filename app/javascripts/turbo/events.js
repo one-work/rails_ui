@@ -26,6 +26,12 @@ document.addEventListener('turbo:load', event => {
   sessionStorage.setItem(location.href.split('?')[0], Turbo.session.history.currentIndex)
 })
 
+document.addEventListener('turbo:before-stream-render', event => {
+  if (window.submitter) {
+    window.submitter.disabled = false
+  }
+})
+
 window.addEventListener('pageshow', (event) => {
   if (event.persisted && sessionStorage.getItem('need_restore_url')) {
     const url = sessionStorage.getItem('need_restore_url')
