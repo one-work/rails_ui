@@ -33,6 +33,7 @@
     .menu-list {
       display: flex;
       flex-direction: column;
+      overflow-y: scroll;
     }
 
     .menu-item:not(.is-active),
