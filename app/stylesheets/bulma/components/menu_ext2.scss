@@ -8,6 +8,7 @@
     --menu-item-selected-s: 71%;
 
     flex-grow: 1;
+    overflow-y: scroll;
 
     .menu-item:not(.is-active),
     .menu-list a:not(.is-active) {
@@ -26,10 +27,7 @@
 
     margin-left: -0.75rem;
     flex-shrink: 0;
-
-    .menu-list {
-      height: 100%;
-    }
+    background-color: #fff;
 
     .menu-item:not(.is-active),
     .menu-list a:not(.is-active) {
@@ -69,7 +67,6 @@
   &.as-wrap {
     background-color: transparent;
     scrollbar-width: none;
-    overflow-y: scroll;
 
     .menu-item {
       border-radius: 0;
