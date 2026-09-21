@@ -66,6 +66,15 @@
   align-items: end;
 }
 
+.has-column-centered,
+.has-column-left {
+  svg.icon + span,
+  svg.icon + strong {
+    margin-left: 0;
+    margin-top: 0.25rem;
+  }
+}
+
 .has-page-centered {
   display: flex !important;
   flex-direction: column;
