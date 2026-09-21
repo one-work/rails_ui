@@ -8,6 +8,13 @@
   }
 }
 
+.navbar-item {
+  svg.icon + span,
+  svg.icon + strong {
+    margin-left: 0;
+  }
+}
+
 .navbar-dropdown {
   width: max-content;
 }
