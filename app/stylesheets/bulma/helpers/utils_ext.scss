@@ -96,6 +96,7 @@
 }
 
 .is-wrap {
+  white-space: normal;
   word-wrap: break-word;
   word-break: break-all;
   overflow: hidden;
@@ -103,8 +104,8 @@
 
 .is-text {
   display: inline-block;
-  word-break: keep-all;
   white-space: nowrap;
+  word-break: keep-all;
   overflow: hidden;
   text-overflow: ellipsis;
 }
