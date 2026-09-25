@@ -5,7 +5,11 @@ export default class extends Controller {
 
   connect() {
     if (history.length <= 1) {
-      this.element.classList.remove('is-link')
+      if (this.element.classList.contains('is-link')) {
+        this.element.classList.remove('is-link')
+      } else if (this.element.children.length && this.element.children[0].tagName === 'svg') {
+        this.element.children[0].remove()
+      }
     }
   }
 
