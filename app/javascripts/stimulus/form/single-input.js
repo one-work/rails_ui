@@ -13,7 +13,7 @@ export default class extends Controller {
         ele.form.requestSubmit()
       }
     })
-    ele.addEventListener('focus', e => {
+    ele.addEventListener('focus', () => {
       if (['textarea', 'text'].includes(ele.type)) {
         ele.setSelectionRange(ele.value.length, ele.value.length)
       }
@@ -26,7 +26,7 @@ export default class extends Controller {
   }
 
   selectTargetConnected(ele) {
-    ele.addEventListener('click', e => {
+    ele.addEventListener('click', () => {
       ele.form.requestSubmit()
     })
   }
