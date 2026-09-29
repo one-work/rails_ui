@@ -17,7 +17,7 @@ document.addEventListener('turbo:before-frame-render', event => {
   }
 })
 
-document.addEventListener('turbo:load', event => {
+document.addEventListener('turbo:load', () => {
   document.documentElement.classList.add('no-hover')
   setTimeout(() => {
     document.documentElement.classList.remove('no-hover')
@@ -26,7 +26,13 @@ document.addEventListener('turbo:load', event => {
   sessionStorage.setItem(location.href.split('?')[0], Turbo.session.history.currentIndex)
 })
 
-document.addEventListener('turbo:before-stream-render', event => {
+document.addEventListener('turbo:before-stream-render', () => {
+  if (window.submitter) {
+    window.submitter.disabled = false
+  }
+})
+
+document.addEventListener('turbo:fetch-request-error', () => {
   if (window.submitter) {
     window.submitter.disabled = false
   }
