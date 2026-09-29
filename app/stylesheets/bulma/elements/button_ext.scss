@@ -16,11 +16,7 @@
     flex-direction: column;
   }
 
-  &.is-radius {
-    border-radius: 6px;
-  }
-
-  &.is-small.is-radius {
+  &.is-small.radius {
     border-radius: 5px;
   }
 }

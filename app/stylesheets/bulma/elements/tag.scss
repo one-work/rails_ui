@@ -125,6 +125,10 @@ $tag-colors: dv.$colors !default;
   }
 
   // Sizes
+  &.is-small {
+    height: auto;
+  }
+
   &.is-normal {
     font-size: cv.getVar("size-small");
   }
