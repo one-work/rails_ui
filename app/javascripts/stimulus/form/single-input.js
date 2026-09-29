@@ -7,15 +7,15 @@ export default class extends Controller {
   inputTargetConnected(ele) {
     ele.removeAttribute('id')
     ele.enterKeyHint = 'done'
+    ele.addEventListener('focus', () => {
+      if (['textarea', 'text'].includes(ele.type)) {
+        ele.setSelectionRange(ele.value.length, ele.value.length)
+      }
+    })
     ele.addEventListener('keydown', e => {
       if (e.key === 'Enter') {
         e.preventDefault()
         ele.form.requestSubmit()
-      }
-    })
-    ele.addEventListener('focus', () => {
-      if (['textarea', 'text'].includes(ele.type)) {
-        ele.setSelectionRange(ele.value.length, ele.value.length)
       }
     })
     ele.addEventListener('blur', e => {
