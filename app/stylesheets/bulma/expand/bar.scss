@@ -4,6 +4,7 @@
   align-items: center;
   margin-bottom: 0;
   background-color: var(--scheme-main);
+  color: var(--text);
   min-height: 45px; // 有在弹出框中应用(position: fixed), 必须指定高度；
 
   .left {
