@@ -61,9 +61,6 @@ application.register('fetch-auto', FetchAutoController)
 import FrameReloadController from './com/frame-reload'
 application.register('frame-reload', FrameReloadController)
 
-import HoverController from './com/hover'
-application.register('hover', HoverController)
-
 import GeoController from './com/geo'
 application.register('geo', GeoController)
 
@@ -72,6 +69,12 @@ application.register('gif', GifController)
 
 import HistoryController from './com/history'
 application.register('history', HistoryController)
+
+import HistoryBackController from './com/history-back'
+application.register('history-back', HistoryBackController)
+
+import HoverController from './com/hover'
+application.register('hover', HoverController)
 
 import MaskController from './com/mask'
 application.register('mask', MaskController)
