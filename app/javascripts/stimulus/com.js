@@ -138,6 +138,9 @@ application.register('tr-actions', TrActionsController)
 import SwitchController from './com/switch'
 application.register('switch', SwitchController)
 
+import TabsController from './com/tabs'
+application.register('tabs', TabsController)
+
 // 时间格式根据浏览器时区等进行转化
 import TimeController from './com/time'
 application.register('time', TimeController)
