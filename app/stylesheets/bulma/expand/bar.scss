@@ -46,8 +46,9 @@
   margin-bottom: 0 !important;
 
   &:has(form),
-  &:has(div) {
-    background-color: var(--scheme-main);
+  &:has(div),
+  &:has(a),
+  &:has(button) {
     //box-shadow: inset #ddd 0 5px 0.75rem;
     padding-top: 0.75rem;
     padding-bottom: 0.75rem;

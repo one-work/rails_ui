@@ -51,6 +51,7 @@ a.button.is-borderless:first-child {
     justify-content: space-around;
     padding-left: 0.75rem;
     padding-right: 0.75rem;
+    background-color: var(--scheme-main);
 
     > :only-child {
       flex-grow: 1;
