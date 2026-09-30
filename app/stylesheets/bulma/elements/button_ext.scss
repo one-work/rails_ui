@@ -55,6 +55,12 @@ a.button.is-borderless:first-child {
     > :only-child {
       flex-grow: 1;
     }
+
+    > .button,
+    > .button_to {
+      flex: 1;
+      min-width: 0;
+    }
   }
 
   &.as-bottom:has(.button) {
