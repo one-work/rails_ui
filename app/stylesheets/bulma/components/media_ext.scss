@@ -91,9 +91,11 @@ ul.media-info {
   font-size: 0.8em;
 
   li {
+    display: inline-flex;
     padding-right: 0.5em;
     line-height: 1;
   }
+
   li + li {
     padding-left: 0.5em;
     border-left: 1px solid var(--grey);
