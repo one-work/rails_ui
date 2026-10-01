@@ -4,7 +4,8 @@ export default class extends Controller {
   static classes = ['remove', 'add']
   static values = {
     order: Array,
-    only: Boolean
+    only: Boolean,
+    component: String
   }
 
   toggle(event) {
@@ -15,6 +16,10 @@ export default class extends Controller {
       this.toggleOffCss(checkbox)
     }
 
+    const componentId = checkbox.form.elements.namedItem('component_id')
+    if (componentId && this.hasComponentValue) {
+      componentId.value = this.componentValue
+    }
     checkbox.form.requestSubmit()
   }
 
