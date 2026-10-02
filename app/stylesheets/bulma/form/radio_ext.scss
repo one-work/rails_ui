@@ -5,6 +5,5 @@
   --button-border-width: max(1px, 0.0625em);
   --loading-color: hsl(var(--button-h), var(--button-s), var(--button-l));
 
-  background-color: transparent;
-  color: hsl(var(--button-h), var(--button-s), var(--button-l));
+  background-color: hsl(var(--button-h), var(--button-s), var(--button-l));
 }
