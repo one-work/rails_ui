@@ -9,14 +9,6 @@ export default class extends Controller {
     component: String
   }
 
-  //用于 label 元素上
-  tip(e) {
-    const input = e.currentTarget.control
-    if (input.disabled && this.hasTipTarget) {
-      this.tipTarget.classList.remove('display-none')
-    }
-  }
-
   toggle(event) {
     const checkbox = event.currentTarget
     if (checkbox.checked) {
@@ -29,7 +21,14 @@ export default class extends Controller {
     if (componentId && this.hasComponentValue) {
       componentId.value = this.componentValue
     }
-    checkbox.form.requestSubmit()
+
+    if (checkbox.dataset.disabled === 'true') {
+      if (this.hasTipTarget) {
+        this.tipTarget.classList.remove('display-none')
+      }
+    } else {
+      checkbox.form.requestSubmit()
+    }
   }
 
   submit(e) {
