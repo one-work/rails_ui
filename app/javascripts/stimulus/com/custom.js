@@ -1,11 +1,20 @@
 import { Controller } from '@hotwired/stimulus'
 
 export default class extends Controller {
+  static targets = ['tip']
   static classes = ['remove', 'add']
   static values = {
     order: Array,
     only: Boolean,
     component: String
+  }
+
+  //用于 label 元素上
+  tip(e) {
+    const input = e.currentTarget.control
+    if (input.disabled && this.hasTipTarget) {
+      this.tipTarget.classList.remove('display-none')
+    }
   }
 
   toggle(event) {
