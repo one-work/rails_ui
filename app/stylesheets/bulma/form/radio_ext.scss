@@ -1,12 +1,10 @@
-.is-checked {
-  input:checked + label {
-    --button-h: var(--primary-h);
-    --button-s: var(--primary-s);
-    --button-l: var(--primary-l);
-    --button-border-width: max(1px, 0.0625em);
-    --loading-color: hsl(var(--button-h), var(--button-s), var(--button-l));
+.is-checked:has(input:checked) {
+  --button-h: var(--primary-h);
+  --button-s: var(--primary-s);
+  --button-l: var(--primary-l);
+  --button-border-width: max(1px, 0.0625em);
+  --loading-color: hsl(var(--button-h), var(--button-s), var(--button-l));
 
-    background-color: transparent;
-    color: hsl(var(--button-h), var(--button-s), var(--button-l));
-  }
+  background-color: transparent;
+  color: hsl(var(--button-h), var(--button-s), var(--button-l));
 }
