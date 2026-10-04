@@ -34,14 +34,7 @@ export default class extends Controller {
       })
     })
 
-    if (input.multiple) {
-
-    } else {
-      if (this.hasIconTarget) {
-        this.iconTarget.classList.add('invisible')
-      }
-    }
-
+    this.hiddenIcon(input)
     input.value = null
   }
 
@@ -61,6 +54,15 @@ export default class extends Controller {
     img.src = url
     template.after(cloned)
     return img
+  }
+
+  hiddenIcon(input) {
+    if (input.multiple) {
+    } else {
+      if (this.hasIconTarget) {
+        this.iconTarget.classList.add('invisible')
+      }
+    }
   }
 
   removePreview(e) {

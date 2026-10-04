@@ -20,6 +20,7 @@ export default class extends Controller {
 
     const con = origin.closest('[data-controller~=picture]').getController('picture')
     con.previewUrl(selected.dataset.url)
+    con.hiddenIcon(origin)
   }
 
 }
