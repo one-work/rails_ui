@@ -44,24 +44,15 @@ a.button.is-borderless:first-child {
   margin-left: calc(#{cv.getVar("button-border-width")} - #{cv.getVar("button-padding-horizontal")});
 }
 
-.buttons {
+.grid-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(33.33%, 1fr));
   row-gap: 0.5rem;
 
   &.as-bottom {
-    justify-content: space-around;
     padding-left: 0.75rem;
     padding-right: 0.75rem;
     background-color: var(--scheme-main);
-
-    > :only-child {
-      flex-grow: 1;
-    }
-
-    > .button,
-    > .button_to {
-      flex: 1;
-      min-width: 0;
-    }
   }
 
   &.as-bottom:has(.button) {
