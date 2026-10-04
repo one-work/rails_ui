@@ -46,7 +46,7 @@ a.button.is-borderless:first-child {
 
 .grid-buttons {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(33.33%, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(25%, 1fr));
   gap: 0.5rem;
 
   &.as-bottom {
