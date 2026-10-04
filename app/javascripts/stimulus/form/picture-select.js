@@ -16,6 +16,7 @@ export default class extends Controller {
     input.value = selected.dataset.value
 
     origin.parentElement.insertBefore(input, origin)
+    selected.closest('#modal')?.remove()
   }
 
 }
