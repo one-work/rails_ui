@@ -17,6 +17,9 @@ export default class extends Controller {
 
     origin.parentElement.insertBefore(input, origin)
     selected.closest('#modal')?.remove()
+
+    const con = origin.closest('[data-controller~=picture]').getController('picture')
+    con.previewUrl(selected.dataset.url)
   }
 
 }

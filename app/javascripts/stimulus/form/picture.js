@@ -46,17 +46,21 @@ export default class extends Controller {
   }
 
   previewFile(file) {
-    const template = this.previewTarget
-    const cloned = template.cloneNode(true)
-    cloned.classList.remove('display-none')
-
-    const img = cloned.querySelector('img')
-    img.src = URL.createObjectURL(file) // 创建一个object URL，并不是你的本地路径
+    const img = this.previewUrl(URL.createObjectURL(file)) // 创建一个object URL，并不是你的本地路径
     img.addEventListener('load', () => {
       URL.revokeObjectURL(img.src) // 图片加载后，释放object URL
     })
+  }
 
+  previewUrl(url) {
+    const template = this.previewTarget
+    const cloned = template.cloneNode(true)
+    cloned.classList.remove('display-none')
+    const img = cloned.querySelector('img')
+
+    img.src = url
     template.after(cloned)
+    return img
   }
 
   removePreview(e) {
