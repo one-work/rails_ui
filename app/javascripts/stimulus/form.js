@@ -55,6 +55,9 @@ application.register('picker', PickerController)
 import PictureController from './form/picture'
 application.register('picture', PictureController)
 
+import PictureSelectController from './form/picture-select'
+application.register('picture-select', PictureSelectController)
+
 import QqMapController from './form/qq-map'
 application.register('qq-map', QqMapController)
 
