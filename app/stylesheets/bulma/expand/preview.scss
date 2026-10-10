@@ -1,6 +1,10 @@
 dl.as-show {
   padding: var(--block-spacing);
 
+  &:not(:last-child) {
+    margin-bottom: var(--block-spacing);
+  }
+
   &.grid {
     column-gap: 3rem;
   }
