@@ -28,7 +28,7 @@
     --modal-card-body-padding: 1rem;
 
     .modal-card {
-      top: env(safe-area-inset-top);
+      top: 0;
     }
 
     .modal-card-title {
