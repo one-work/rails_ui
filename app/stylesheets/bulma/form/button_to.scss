@@ -12,13 +12,13 @@
   display: inline-flex;
   max-width: 100%;
 
-  i {
+  svg {
     line-height: 1;
   }
   i:not(.fa-solid, .fa-light):before {
     color: rgba(0, 0, 0, 0.8)
   }
-  button:not(.button, .weui-btn):focus,
+  button:not(.button):focus,
   input[type=submit]:focus {
     outline: none;
   }
@@ -41,7 +41,7 @@ label.button_to {
   padding: 0;
   background: transparent;
   cursor: pointer;
-  line-height: inherit;
+  line-height: 1;
   font-size: var(--body-font-size); // 修复 safari fa 图标显示问题
 }
 
