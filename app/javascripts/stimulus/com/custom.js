@@ -10,7 +10,7 @@ export default class extends Controller {
     const input = e.currentTarget.control
     if (input.dataset.disabled === 'true' || input.disabled) {
       if (this.hasTipTarget) {
-        this.tipTarget.classList.remove('display-none')
+        this.tipTarget.classList.add('text-danger')
       }
     }
   }
