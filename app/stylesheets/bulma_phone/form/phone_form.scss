@@ -1,11 +1,11 @@
 .weui-form-wrap {
-  flex-grow: 1;
   padding-top: 0.75rem;
-  display: flex;
-  flex-direction: column;
   justify-content: center;
 }
 
 .form-fields {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
   padding: 2rem 1rem;
 }
