@@ -8,7 +8,7 @@ export default class extends Controller {
     launch: Boolean
   }
 
-  xx() {
+  getUrl() {
     let url = this.urlValue
 
     let query = new URLSearchParams(this.dataValue).toString()

@@ -1,6 +1,7 @@
 import ProgramController from '../program_controller'
 
 export default class extends ProgramController {
+  static targets = ['show', 'hidden']
 
   connect() {
     if (this.directValue) {
@@ -17,6 +18,18 @@ export default class extends ProgramController {
   }
 
   navTo() {
-    tt.miniProgram.redirectTo({ url: this.urlValue })
+    const url = this.getUrl()
+    tt.miniProgram.redirectTo({
+      url: url,
+      success: res => {
+        this.directValue = false
+        if (this.hasHiddenTarget) {
+          this.hiddenTarget.style.display = 'none'
+        }
+        if (this.hasShowTarget) {
+          this.showTarget.style.display = 'block'
+        }
+      }
+    })
   }
 }

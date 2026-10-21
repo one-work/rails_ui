@@ -21,7 +21,7 @@ export default class extends ProgramController {
   }
 
   navTo() {
-    let url = this.xx()
+    const url = this.getUrl()
 
     if (this.launchValue) {
       wx.miniProgram.reLaunch({ url: url })
