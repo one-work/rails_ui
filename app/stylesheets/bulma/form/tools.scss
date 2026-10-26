@@ -227,31 +227,32 @@ $field-block-spacing: 0.75rem !default;
 }
 
 .field-body {
+  display: flex;
+
   .field .field {
     margin-bottom: 0;
   }
 
+  .field {
+    margin-bottom: 0;
+  }
+
+  & > .field {
+    flex-shrink: 1;
+
+    &:not(.is-narrow) {
+      flex-grow: 1;
+    }
+
+    &:not(:last-child) {
+      margin-inline-end: 0.75rem;
+    }
+  }
+
   @include mx.tablet {
-    display: flex;
     flex-basis: 0;
     flex-grow: 5;
     flex-shrink: 1;
-
-    .field {
-      margin-bottom: 0;
-    }
-
-    & > .field {
-      flex-shrink: 1;
-
-      &:not(.is-narrow) {
-        flex-grow: 1;
-      }
-
-      &:not(:last-child) {
-        margin-inline-end: 0.75rem;
-      }
-    }
   }
 }
 
