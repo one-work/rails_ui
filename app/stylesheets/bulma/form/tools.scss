@@ -183,9 +183,7 @@ $field-block-spacing: 0.75rem !default;
   }
 
   &.is-horizontal {
-    @include mx.tablet {
-      display: flex;
-    }
+    display: flex;
   }
 }
 
