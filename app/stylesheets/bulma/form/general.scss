@@ -1,3 +1,5 @@
+@use '../utilities/mixins' as mx;
+
 .input {
   &.as-number {
     text-align: center;
@@ -22,7 +24,12 @@
 
     .field-label {
       white-space: nowrap;
-      min-width: 6em;
+    }
+
+    @include mx.tablet {
+      .field-label {
+        min-width: 6em;
+      }
     }
   }
 }
