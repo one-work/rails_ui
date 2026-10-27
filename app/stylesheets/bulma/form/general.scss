@@ -33,3 +33,15 @@
     }
   }
 }
+
+.form-inline {
+  flex-grow: 1;
+
+  .is-horizontal {
+    justify-content: space-between;
+
+    .field-body {
+      flex-grow: 1;
+    }
+  }
+}
