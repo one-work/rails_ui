@@ -27,14 +27,14 @@ document.addEventListener('turbo:load', () => {
 })
 
 document.addEventListener('turbo:before-stream-render', () => {
-  if (window.submitter) {
-    window.submitter.disabled = false
+  for (const submitter of disabledSubmitters) {
+    submitter.disabled = false
   }
 })
 
 document.addEventListener('turbo:fetch-request-error', () => {
-  if (window.submitter) {
-    window.submitter.disabled = false
+  for (const submitter of disabledSubmitters) {
+    submitter.disabled = false
   }
 })
 
