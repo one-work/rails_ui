@@ -19,7 +19,7 @@ export default class extends ProgramController {
 
   navTo() {
     const url = this.getUrl()
-    tt.miniProgram.redirectTo({
+    tt.miniProgram.navigateTo({
       url: url,
       success: res => {
         this.directValue = false
