@@ -6,7 +6,9 @@ export default class extends Controller {
   connect() {
     const ele = this.element
     ele.classList.remove('invisible')
-    ele.style.animationDuration = `${ele.innerText.length * 200}ms`
+    const charCount = Math.max(1, ele.innerText.length)
+    ele.style.animationDuration = `${charCount * 200}ms`
+    ele.style.animationTimingFunction = `steps(${charCount}, end)`
     ele.classList.add('has-animate-typer')
     ele.addEventListener('animationend', this.typeNext, { once: true })
   }
