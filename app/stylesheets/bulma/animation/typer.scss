@@ -1,9 +1,13 @@
 @keyframes typer {
-  from {
+  0% {
     width: 0;
   }
 
-  to {
+  40% {
+    width: 100%;
+  }
+
+  100% {
     width: 100%;
   }
 }
@@ -23,4 +27,5 @@
   transform-origin: left center;
   animation-name: typer;
   animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
 }
