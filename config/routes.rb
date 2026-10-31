@@ -1,8 +1,9 @@
 Rails.app.routes.draw do
 
-  namespace :design, defaults: { business: 'design' } do
+  namespace :ui, defaults: { business: 'ui' } do
 
     controller :home do
+      get '/' => :index
       get :swipe
     end
 

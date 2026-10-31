@@ -1,5 +1,10 @@
-<%= render layout: 'layouts/phone_head' do %>
-  <body>
-    <%= yield %>
-  </body>
+<%= render layout: 'layouts/application_head' do %>
+  <div class="columns">
+    <div class="column">
+      <%= render 'nav' %>
+    </div>
+    <div class="column">
+      <%= yield %>
+    </div>
+  </div>
 <% end %>
