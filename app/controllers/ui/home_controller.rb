@@ -1,6 +1,9 @@
 module Ui
   class HomeController < BaseController
 
+    def index
+    end
+
     def swipe
       @videos = [
         'http://qiniu-xinshengyin.work.design/01.mp4',
