@@ -15,16 +15,9 @@
       // The color name should be a string
       // and the components either a single color
       // or a colors list with at least one element
-      @if meta.type-of($name) ==
-        "string" and
-        (
-          meta.type-of($components) ==
-            "list" or
-            meta.type-of($components) ==
-            "color"
-        ) and
-        list.length($components) >=
-        1
+      @if meta.type-of($name) == "string" and
+        (meta.type-of($components) == "list" or meta.type-of($components) == "color") and
+        list.length($components) >= 1
       {
         $color-base: null;
         $color-invert: null;
