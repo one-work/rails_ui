@@ -1,10 +1,12 @@
 <%= render layout: 'layouts/application_head' do %>
-  <div class="columns">
-    <div class="column">
-      <%= render 'nav' %>
-    </div>
-    <div class="column">
-      <%= yield %>
-    </div>
+  <div class="container">
+    <main class="columns">
+      <div class="column is-narrow" style="min-width: 260px">
+        <%= render 'nav' %>
+      </div>
+      <div class="column">
+        <%= yield %>
+      </div>
+    </main>
   </div>
 <% end %>
