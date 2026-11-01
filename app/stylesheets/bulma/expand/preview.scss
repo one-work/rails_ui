@@ -10,6 +10,8 @@ dl.as-show {
   }
 
   &.is-striped {
+    --block-spacing: 1.5rem;
+
     padding: 0;
     row-gap: 0;
 
