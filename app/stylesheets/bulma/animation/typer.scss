@@ -1,9 +1,13 @@
 @keyframes typer {
-  from {
+  0% {
     width: 0;
   }
 
-  to {
+  40% {
+    width: 100%;
+  }
+
+  100% {
     width: 100%;
   }
 }
@@ -11,8 +15,8 @@
 .typer-wrap {
   display: inline-block;
   width: max-content;
-  overflow: hidden;
   line-height: 1;
+  vertical-align: -0.05em; // 抵消中西文字体度量差异，使基线对齐
 }
 
 .has-animate-typer {
@@ -23,4 +27,5 @@
   transform-origin: left center;
   animation-name: typer;
   animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
 }
