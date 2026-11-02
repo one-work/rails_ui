@@ -2,13 +2,12 @@
   transition-property: height;
   transition-duration: 2s;
   transition-timing-function: ease;
+  border: solid 1px var(--light);
 }
 
 .has-animate-scale:hover {
   transform: translateY(-2%);
   border-color: var(--primary);
-  border-width: 1px;
-  border-style: solid;
   box-shadow: 0 18px 45px rgba(23,35,45,.07);
 }
 
