@@ -1,0 +1,12 @@
+<section class="hero is-medium">
+  <div class="hero-body container is-fullwidth">
+    <%= item[:header]&.html_safe %>
+    <div
+      data-controller="enter-section"
+      data-enter-section-target="children"
+      class="cards is-<%= [3, 4].min_by(&->(i){ item[:items].size.modulo(i) }) %>"
+    >
+      <%= yield %>
+    </div>
+  </div>
+</section>
