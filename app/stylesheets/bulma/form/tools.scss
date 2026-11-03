@@ -192,35 +192,29 @@ $field-block-spacing: 0.75rem !default;
     font-size: inherit;
   }
 
-  @include mx.mobile {
-    margin-bottom: 0.5rem;
+  flex-basis: 0;
+  flex-grow: 1;
+  flex-shrink: 0;
+  margin-inline-end: 0.75rem;
+  text-align: right;
+
+  &.is-small {
+    font-size: cv.getVar("size-small");
+    padding-top: 0.375em;
   }
 
-  @include mx.tablet {
-    flex-basis: 0;
-    flex-grow: 1;
-    flex-shrink: 0;
-    margin-inline-end: 0.75rem;
-    text-align: right;
+  &.is-normal {
+    padding-top: 0.375em;
+  }
 
-    &.is-small {
-      font-size: cv.getVar("size-small");
-      padding-top: 0.375em;
-    }
+  &.is-medium {
+    font-size: cv.getVar("size-medium");
+    padding-top: 0.375em;
+  }
 
-    &.is-normal {
-      padding-top: 0.375em;
-    }
-
-    &.is-medium {
-      font-size: cv.getVar("size-medium");
-      padding-top: 0.375em;
-    }
-
-    &.is-large {
-      font-size: cv.getVar("size-large");
-      padding-top: 0.375em;
-    }
+  &.is-large {
+    font-size: cv.getVar("size-large");
+    padding-top: 0.375em;
   }
 }
 
