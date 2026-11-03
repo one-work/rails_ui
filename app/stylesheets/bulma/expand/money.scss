@@ -27,8 +27,9 @@
   align-self: baseline;
 }
 
-.has-text-through {
+.text-through {
   display: inline-flex;
+  width: fit-content;
   background: linear-gradient(grey, grey) no-repeat;
   background-size: 100% 1px;
   background-position: 0 0.6em;
