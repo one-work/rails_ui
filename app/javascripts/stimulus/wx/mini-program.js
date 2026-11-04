@@ -39,6 +39,10 @@ export default class extends ProgramController {
         }
       })
     }
+
+    if (this.hasHideValue && this.hideValue) {
+      this.element.remove()
+    }
   }
 
 }
