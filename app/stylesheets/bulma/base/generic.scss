@@ -209,7 +209,7 @@ pre {
   font-size: cv.getVar("pre-font-size");
   overflow-x: auto;
   padding: cv.getVar("pre-padding");
-  white-space: pre;
+  white-space: pre-wrap;
   word-wrap: normal;
 
   code {
