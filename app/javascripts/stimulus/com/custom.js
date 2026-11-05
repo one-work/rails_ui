@@ -7,7 +7,7 @@ export default class extends Controller {
   }
 
   tip(e) {
-    const input = e.currentTarget.control
+    const input = e.currentTarget
     if (input.dataset.disabled === 'true' || input.disabled) {
       if (this.hasTipTarget) {
         this.tipTarget.classList.add('text-danger')
