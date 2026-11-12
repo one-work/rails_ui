@@ -1,7 +1,0 @@
-@use 'sass:color';
-
-@function getDarken($name, $amount) {
-  $xname: #{var($name)};
-  @debug $xname;
-  @return color.scale($name, $lightness: $amount);
-}
