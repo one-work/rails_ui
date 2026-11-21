@@ -38,12 +38,17 @@ module RailsUi
     def copy
       icons_hash.each do |kind, icons|
         icons.uniq.sort.each do |icon|
-          from = RailsUi.config.svg_dir.join(kind, "#{icon}.svg")
+
           to = RailsUi.config.out_dir.join(kind, "#{icon}.svg")
           to.dirname.exist? || to.dirname.mkdir
           FileUtils.copy(from, to, verbose: true)
         end
       end
+    end
+
+    def svg_copy(name, kind: 'light')
+      from = RailsUi.config.svg_dir.join(kind, "#{name}.svg").read
+      xml = Nokogiri::XML(svg_content)
     end
 
     def svg_parse(name, kind: 'regular')
