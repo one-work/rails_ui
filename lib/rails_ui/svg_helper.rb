@@ -30,25 +30,28 @@ module RailsUi
         icons.uniq.sort.each do |icon|
           defs << svg_parse(icon, kind: kind)
         end
-        r = Nokogiri::XML(builder.to_xml) {|doc| doc.default_xml.noblanks }.to_xml(NOKOGIRI_SAVE_OPTIONS.dup.merge(indent: 2))
+        r = Nokogiri::XML(builder.to_xml) { |doc| doc.default_xml.noblanks }.to_xml(NOKOGIRI_SAVE_OPTIONS.dup.merge(indent: 2))
         Rails.root.join('app/assets/images', "icons_#{kind}.svg").write r
       end
     end
 
-    def copy
+    def copy(fill: 'red')
       icons_hash.each do |kind, icons|
         icons.uniq.sort.each do |icon|
-
           to = RailsUi.config.out_dir.join(kind, "#{icon}.svg")
           to.dirname.exist? || to.dirname.mkdir
-          FileUtils.copy(from, to, verbose: true)
+          to.write svg_copy(icon, kind: kind, fill: fill)
         end
       end
     end
 
-    def svg_copy(name, kind: 'light')
-      from = RailsUi.config.svg_dir.join(kind, "#{name}.svg").read
+    def svg_copy(name, fill:, kind: 'light')
+      svg_content = RailsUi.config.svg_dir.join(kind, "#{name}.svg").read
       xml = Nokogiri::XML(svg_content)
+      xml.css('path').each do |path|
+        path.set_attribute :fill, fill
+      end
+      xml.to_xml(NOKOGIRI_SAVE_OPTIONS.dup.merge(indent: 2))
     end
 
     def svg_parse(name, kind: 'regular')
