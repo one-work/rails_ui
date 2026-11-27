@@ -63,7 +63,6 @@ export default class extends Controller {
   }
 
   print(e) {
-    alert(e.currentTarget)
     const button = e.currentTarget
     if (button.dataset.enabled === 'off') {
       this.#getConfig()
@@ -74,13 +73,8 @@ export default class extends Controller {
 
   async #getConfig() {
     const request = new FetchRequest(
-      'GET',
-      'https://linlishenghuo.com/bluetooth/menus',
-      {
-        body: body,
-        headers: headers,
-        responseKind: 'turbo-stream'
-      }
+      'get',
+      'https://linlishenghuo.com/bluetooth/menus'
     )
     const response = await request.perform()
     if (response.statusCode >= 500) {
