@@ -64,7 +64,7 @@ export default class extends Controller {
   print(e) {
     const button = e.currentTarget
     if (button.dataset.enabled === 'off') {
-      window.location.href = 'https://linlishenghuo.com/bluetooth/menus'
+      Turbo.visit('https://linlishenghuo.com/bluetooth/menus')
     } else {
       this.#doPrint(this.element)
     }
