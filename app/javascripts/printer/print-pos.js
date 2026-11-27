@@ -1,5 +1,6 @@
 import { Controller } from '@hotwired/stimulus'
 import { PrintPOS, PrintPic } from 'xcprinter'
+import { FetchRequest } from '@rails/request.js'
 
 export default class extends Controller {
   static targets = ['canvas']
@@ -15,7 +16,10 @@ export default class extends Controller {
 
     const button = document.getElementById(this.element.dataset.buttonId)
     if (button) {
-      button.disabled = true
+      button.dataset.enabled = 'off'
+      button.dataset.oldValue = button.innerText
+      button.innerText = '正在连接打印机'
+
       this.print = this.print.bind(this)
       button.addEventListener('click', this.print)
     } else if (this.hasDataValue) {
@@ -58,8 +62,30 @@ export default class extends Controller {
     this.bluetoothPrinter.print(Array.from(arr))
   }
 
-  print() {
-    this.#doPrint(this.element)
+  print(e) {
+    const button = e.currentTarget
+    if (button.dataset.enabled === 'off') {
+      this.#getConfig()
+    } else {
+      this.#doPrint(this.element)
+    }
+  }
+
+  async #getConfig() {
+    const request = new FetchRequest(
+      'GET',
+      'https://linlishenghuo.com/bluetooth/menus',
+      {
+        body: body,
+        headers: headers,
+        responseKind: 'turbo-stream'
+      }
+    )
+    const response = await request.perform()
+    if (response.statusCode >= 500) {
+      alert('error')
+    }
+    return response
   }
 
   #doPrint(item) {

@@ -266,7 +266,8 @@ export default class extends BridgeComponent {
     const button = document.getElementById(this.element.dataset.buttonId)
     console.debug('button 找到', button)
     if (button) {
-      button.disabled = false
+      button.innerText = button.dataset.oldValue
+      button.dataset.enabled = 'on'
     }
   }
 }
