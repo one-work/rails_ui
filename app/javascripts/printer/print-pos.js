@@ -63,6 +63,7 @@ export default class extends Controller {
   }
 
   print(e) {
+    alert(e.currentTarget)
     const button = e.currentTarget
     if (button.dataset.enabled === 'off') {
       this.#getConfig()
