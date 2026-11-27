@@ -1,6 +1,5 @@
 import { Controller } from '@hotwired/stimulus'
 import { PrintPOS, PrintPic } from 'xcprinter'
-import { FetchRequest } from '@rails/request.js'
 
 export default class extends Controller {
   static targets = ['canvas']
@@ -65,22 +64,10 @@ export default class extends Controller {
   print(e) {
     const button = e.currentTarget
     if (button.dataset.enabled === 'off') {
-      this.#getConfig()
+      window.location.href = 'https://linlishenghuo.com/bluetooth/menus'
     } else {
       this.#doPrint(this.element)
     }
-  }
-
-  async #getConfig() {
-    const request = new FetchRequest(
-      'get',
-      'https://linlishenghuo.com/bluetooth/menus'
-    )
-    const response = await request.perform()
-    if (response.statusCode >= 500) {
-      alert('error')
-    }
-    return response
   }
 
   #doPrint(item) {
